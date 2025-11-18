@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2025-06-27 17:45:38 by Eclipse SUMO netedit Version 1.23.1
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <!-- 基础车辆类型定义 -->
+    <vType id="car_eco"   lcAssertive="1.1" lcSpeedGainRemainTime="15" lcSpeedGainRight="0.3" lcSpeedGainLookahead="5" lcKeepRight="0.8" lcOvertakeRight="0.2" lcSpeedGain="100" lcStrategic="0.5" maxSpeed="30.56" tau="1.5" accel="1.8" decel="3.5" sigma="0.3" length="4.5" width="1.7" minGap="2.0" speedFactor="normc(0.85,0.15,0.8,1.3)" vClass="private" color="#00FF00"/>
+    <vType id="car_sedan" lcAssertive="1.5" lcSpeedGainRemainTime="5"  lcSpeedGainRight="0.5" lcSpeedGainLookahead="2" lcKeepRight="0.2" lcOvertakeRight="0.5" lcSpeedGain="100"  lcStrategic="1" maxSpeed="36.11" tau="1.2" accel="2.2" decel="4.0" sigma="0.5" length="5.0" width="1.8" minGap="2.5" speedFactor="normc(1.05,0.15,0.85,1.35)" vClass="private" color="#FF00FF"/>
+    <vType id="car_sport" lcAssertive="5.0" lcSpeedGainRemainTime="2"  lcSpeedGainRight="1.0" lcSpeedGainLookahead="0" lcKeepRight="0.0" lcOvertakeRight="1.0" lcSpeedGain="10000" lcStrategic="1000" maxSpeed="44.44" tau="0.8" accel="3.5" decel="6.0" sigma="0.2" length="4.8" width="1.9" minGap="2.0" speedFactor="normc(1.15,0.2,0.9,1.5)" vClass="private" color="#FF0000"/>
+    <vType id="car_suv"   lcAssertive="1.2" lcSpeedGainRemainTime="8"  lcSpeedGainRight="0.4" lcSpeedGainLookahead="1" lcKeepRight="0.3" lcOvertakeRight="0.2" lcSpeedGain="100" lcStrategic="10" maxSpeed="33.33" tau="1.3" accel="2.0" decel="3.8" sigma="0.6" length="5.2" width="2.0" minGap="3.0" speedFactor="normc(0.95,0.15,0.8,1.3)" vClass="private" color="#808080"/>
+    <vType id="car_van"   lcAssertive="1.0" lcSpeedGainRemainTime="10" lcSpeedGainRight="0.1" lcSpeedGainLookahead="2" lcKeepRight="0.1" lcOvertakeRight="0.6" lcSpeedGain="100" lcStrategic="15" maxSpeed="27.78" tau="1.4" accel="1.6" decel="3.2" sigma="0.7" length="5.5" width="1.9" minGap="3.5" speedFactor="normc(0.90,0.15,0.75,1.25)" vClass="private" color="#C0C0C0"/>
+    <vType id="car_bus"   lcAssertive="0.9" lcSpeedGainRemainTime="20" lcSpeedGainRight="0.2" lcSpeedGainLookahead="6" lcKeepRight="0.8" lcOvertakeRight="0.1" lcSpeedGain="100" lcStrategic="30" maxSpeed="27.78" tau="1.6" accel="1.4" decel="3.0" sigma="0.8" length="12.0" width="2.5" minGap="4.0" vClass="bus" speedFactor="normc(0.9,0.1,0.7,1.2)" color="#FFFF00"/>
+
+    <!-- 卡车类型 -->
+    <vType id="truck_light" lcKeepRight="0.8" maxSpeed="30.56" tau="1.5" accel="1.8" decel="3.5" sigma="0.6" length="7.5" width="2.3" minGap="4.0" vClass="truck" speedFactor="normc(1.0,0.1,0.8,1.2)" color="#A52A2A"/>
+    <vType id="truck_medium" lcKeepRight="0.9" maxSpeed="27.78" tau="1.6" accel="1.5" decel="3.0" sigma="0.7" length="10.0" width="2.4" minGap="5.0" vClass="truck" speedFactor="normc(0.95,0.1,0.75,1.15)" color="#006400"/>
+    <vType id="truck_heavy" lcKeepRight="1.0" maxSpeed="26.00" tau="1.8" accel="1.2" decel="2.5" sigma="0.8" length="12.5" width="2.5" minGap="6.0" vClass="truck" speedFactor="normc(0.9,0.1,0.7,1.1)" color="#0F0C8B"/>
+    <vType id="truck_concrete" lcKeepRight="1.0" maxSpeed="22.22" tau="2.0" accel="1.0" decel="2.0" sigma="0.9" length="14.0" width="2.6" minGap="7.0" vClass="truck" speedFactor="normc(0.85,0.1,0.65,1.05)" color="#2F4F4F"/>
+
+    <!-- 拖车类型 -->
+    <vType id="trailer_standard" lcKeepRight="1.0" maxSpeed="25.00" tau="1.8" accel="1.2" decel="2.5" sigma="0.7" length="16.5" width="2.5" minGap="7.0" vClass="trailer" speedFactor="normc(1.0,0.1,0.75,1.35)" color="#800080"/>
+    <vType id="trailer_long" lcKeepRight="1.0" maxSpeed="26.22" tau="2.0" accel="1.0" decel="2.2" sigma="0.8" length="20.0" width="2.5" minGap="8.0" vClass="trailer" speedFactor="normc(1.05,0.1,0.7,1.3)" color="#4B0082"/>
+    <vType id="trailer_double" lcKeepRight="1.0" maxSpeed="25.00" tau="2.2" accel="0.9" decel="2.0" sigma="0.9" length="24.0" width="2.6" minGap="9.0" vClass="trailer" speedFactor="normc(0.95,0.1,0.65,1.45)" color="#483D8B"/>
+    <vType id="tank_truck" lcAssertive="0.6" lcKeepRight="1.0" maxSpeed="26.22" tau="1.9" accel="1.1" decel="2.3" sigma="0.8" length="18.0" width="2.5" minGap="6.5" vClass="trailer" speedFactor="normc(0.98,0.1,0.9,1.5)" color="#FFA500"/>
+
+    <!-- 基础子分布定义 -->
+    <vTypeDistribution id="car_types" vTypes="car_eco car_sedan car_sport car_suv car_van car_bus" probabilities="0.15 0.3 0.1 0.25 0.15 0.05"/>
+    <vTypeDistribution id="truck_types" vTypes="truck_light truck_medium truck_heavy truck_concrete" probabilities="0.4 0.35 0.2 0.05"/>
+    <vTypeDistribution id="trailer_types" vTypes="trailer_standard trailer_long trailer_double tank_truck" probabilities="0.5 0.3 0.199 0.001"/>
+
+    <!-- 复合子分布 -->
+    <vTypeDistribution id="light_vehicles" vTypes="car_types truck_light" probabilities="0.95 0.05"/>
+    <vTypeDistribution id="heavy_vehicles" vTypes="truck_types trailer_types" probabilities="0.6 0.4"/>
+
+    <!-- 主要分布定义 -->
+    <vTypeDistribution id="urban_traffic" vTypes="light_vehicles truck_medium trailer_standard" probabilities="0.9 0.08 0.02"/>
+
+    <vTypeDistribution id="highway_traffic" vTypes="car_types truck_types trailer_types" probabilities="0.7 0.2 0.1"/>
+
+    <vTypeDistribution id="industrial_traffic" vTypes="car_van car_suv heavy_vehicles" probabilities="0.15 0.15 0.7"/>
+
+    <vTypeDistribution id="night_traffic" vTypes="car_sedan car_sport car_eco truck_light trailer_standard" probabilities="0.4 0.2 0.3 0.07 0.03"/>
+
+    <vTypeDistribution id="holiday_traffic" vTypes="car_sedan car_sport car_suv car_van car_eco truck_light trailer_standard" probabilities="0.25 0.15 0.25 0.15 0.1 0.08 0.02"/>
+
+    <vTypeDistribution id="full_traffic_mix" vTypes="car_types truck_types trailer_types" probabilities="0.7 0.2 0.1"/>
+    
+    
+
+    <!-- Routes -->
+    <route id="route_exit" edges="96615334#2 1264142694#1-AddedOffRampEdge 96614676#0 96614676#1-AddedOnRampEdge" color="green"/>
+    <route id="route_main" edges="96615334#2 1264142694#1-AddedOffRampEdge 48963655#1 225202305#1 96614679 96614679-AddedOffRampEdge" color="yellow"/>
+    <route id="route_merge" edges="216048993 225202305#1 96614679 96614679-AddedOffRampEdge" color="red"/> 
+    <!-- Vehicles, persons and containers (sorted by depart) -->
+    <flow id="flow_merge" type="highway_traffic" begin="0.00" departLane="0" departPos="0.00" departSpeed="10" route="route_merge" end="3600.00" vehsPerHour="1000"/>
+    <flow id="flow_exit" type="highway_traffic" begin="0.00" departLane="1" departPos="6000.00" departSpeed="22.22" route="route_exit" end="3600.00" vehsPerHour="1000"/>
+    <flow id="flow_main" type="highway_traffic" begin="0.00" departLane="0" departPos="6000.00" departSpeed="22.22" route="route_main" end="3600.00" vehsPerHour="2000"/>
+    <vehicle id="t_0" type="tank_truck" depart="120.00" departLane="0" departPos="6000.00" departSpeed="22.22" route="route_exit"/>
+
+ 
+</routes>
