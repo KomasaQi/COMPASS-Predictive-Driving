@@ -13,8 +13,8 @@ open('get_DynMC_SimTree_route.m') % 仿真树搜索
 open('realWorldStepOnce.m') % 用于控制SUMO步进一步，同时刷新GUI界面，可以设置更新的步数与刷新频率
 
 open('initCurrentScenario.m') % 用于在预测性决策算法开始时初始化当前场景
-open('E:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\Dynamic-MC-Game决策算法开发\@SimScenario\globalMOBIL.m')
-open('E:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\Dynamic-MC-Game决策算法开发\@SimScenario\step.m') % 仿真推演的主程序
+open('globalMOBIL.m')
+open('src\algorithm\classes\@SimScenario\step.m') % 仿真推演的主程序
 
 % 一般用如下格式进行测试
 % COMPASS_Run_01
