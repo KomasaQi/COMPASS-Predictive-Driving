@@ -1,0 +1,158 @@
+[
+  {
+    "directory": "E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei",
+    "command": "C:\\ProgramData\\MATLAB\\SupportPackages\\R2023a\\3P.instrset\\mingw_w64.instrset\\bin\\gcc -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\\interface\" -I \"D:\\Program Files\\MATLAB\\R2023a\\extern\\include\" -I \".\" -DMODEL=trailer_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2  trailer_mei_data.c -o build/win64/trailer_mei_data.o",
+    "file": "trailer_mei_data.c",
+    "output": "build/win64/trailer_mei_data.o"
+  },
+  {
+    "directory": "E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei",
+    "command": "C:\\ProgramData\\MATLAB\\SupportPackages\\R2023a\\3P.instrset\\mingw_w64.instrset\\bin\\gcc -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\\interface\" -I \"D:\\Program Files\\MATLAB\\R2023a\\extern\\include\" -I \".\" -DMODEL=trailer_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2  rt_nonfinite.c -o build/win64/rt_nonfinite.o",
+    "file": "rt_nonfinite.c",
+    "output": "build/win64/rt_nonfinite.o"
+  },
+  {
+    "directory": "E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei",
+    "command": "C:\\ProgramData\\MATLAB\\SupportPackages\\R2023a\\3P.instrset\\mingw_w64.instrset\\bin\\gcc -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\\interface\" -I \"D:\\Program Files\\MATLAB\\R2023a\\extern\\include\" -I \".\" -DMODEL=trailer_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2  trailer_mei_initialize.c -o build/win64/trailer_mei_initialize.o",
+    "file": "trailer_mei_initialize.c",
+    "output": "build/win64/trailer_mei_initialize.o"
+  },
+  {
+    "directory": "E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei",
+    "command": "C:\\ProgramData\\MATLAB\\SupportPackages\\R2023a\\3P.instrset\\mingw_w64.instrset\\bin\\gcc -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\\interface\" -I \"D:\\Program Files\\MATLAB\\R2023a\\extern\\include\" -I \".\" -DMODEL=trailer_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2  trailer_mei_terminate.c -o build/win64/trailer_mei_terminate.o",
+    "file": "trailer_mei_terminate.c",
+    "output": "build/win64/trailer_mei_terminate.o"
+  },
+  {
+    "directory": "E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei",
+    "command": "C:\\ProgramData\\MATLAB\\SupportPackages\\R2023a\\3P.instrset\\mingw_w64.instrset\\bin\\gcc -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\\interface\" -I \"D:\\Program Files\\MATLAB\\R2023a\\extern\\include\" -I \".\" -DMODEL=trailer_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2  trailer_mei.c -o build/win64/trailer_mei.o",
+    "file": "trailer_mei.c",
+    "output": "build/win64/trailer_mei.o"
+  },
+  {
+    "directory": "E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei",
+    "command": "C:\\ProgramData\\MATLAB\\SupportPackages\\R2023a\\3P.instrset\\mingw_w64.instrset\\bin\\gcc -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\\interface\" -I \"D:\\Program Files\\MATLAB\\R2023a\\extern\\include\" -I \".\" -DMODEL=trailer_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2  colon.c -o build/win64/colon.o",
+    "file": "colon.c",
+    "output": "build/win64/colon.o"
+  },
+  {
+    "directory": "E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei",
+    "command": "C:\\ProgramData\\MATLAB\\SupportPackages\\R2023a\\3P.instrset\\mingw_w64.instrset\\bin\\gcc -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\\interface\" -I \"D:\\Program Files\\MATLAB\\R2023a\\extern\\include\" -I \".\" -DMODEL=trailer_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2  atan2.c -o build/win64/atan2.o",
+    "file": "atan2.c",
+    "output": "build/win64/atan2.o"
+  },
+  {
+    "directory": "E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei",
+    "command": "C:\\ProgramData\\MATLAB\\SupportPackages\\R2023a\\3P.instrset\\mingw_w64.instrset\\bin\\gcc -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\\interface\" -I \"D:\\Program Files\\MATLAB\\R2023a\\extern\\include\" -I \".\" -DMODEL=trailer_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2  ixfun.c -o build/win64/ixfun.o",
+    "file": "ixfun.c",
+    "output": "build/win64/ixfun.o"
+  },
+  {
+    "directory": "E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei",
+    "command": "C:\\ProgramData\\MATLAB\\SupportPackages\\R2023a\\3P.instrset\\mingw_w64.instrset\\bin\\gcc -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\\interface\" -I \"D:\\Program Files\\MATLAB\\R2023a\\extern\\include\" -I \".\" -DMODEL=trailer_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2  assertCompatibleDims.c -o build/win64/assertCompatibleDims.o",
+    "file": "assertCompatibleDims.c",
+    "output": "build/win64/assertCompatibleDims.o"
+  },
+  {
+    "directory": "E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei",
+    "command": "C:\\ProgramData\\MATLAB\\SupportPackages\\R2023a\\3P.instrset\\mingw_w64.instrset\\bin\\gcc -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\\interface\" -I \"D:\\Program Files\\MATLAB\\R2023a\\extern\\include\" -I \".\" -DMODEL=trailer_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2  get_rect_poly_corners.c -o build/win64/get_rect_poly_corners.o",
+    "file": "get_rect_poly_corners.c",
+    "output": "build/win64/get_rect_poly_corners.o"
+  },
+  {
+    "directory": "E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei",
+    "command": "C:\\ProgramData\\MATLAB\\SupportPackages\\R2023a\\3P.instrset\\mingw_w64.instrset\\bin\\gcc -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\\interface\" -I \"D:\\Program Files\\MATLAB\\R2023a\\extern\\include\" -I \".\" -DMODEL=trailer_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2  intersect_polypoly.c -o build/win64/intersect_polypoly.o",
+    "file": "intersect_polypoly.c",
+    "output": "build/win64/intersect_polypoly.o"
+  },
+  {
+    "directory": "E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei",
+    "command": "C:\\ProgramData\\MATLAB\\SupportPackages\\R2023a\\3P.instrset\\mingw_w64.instrset\\bin\\gcc -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\\interface\" -I \"D:\\Program Files\\MATLAB\\R2023a\\extern\\include\" -I \".\" -DMODEL=trailer_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2  intersect_lineline.c -o build/win64/intersect_lineline.o",
+    "file": "intersect_lineline.c",
+    "output": "build/win64/intersect_lineline.o"
+  },
+  {
+    "directory": "E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei",
+    "command": "C:\\ProgramData\\MATLAB\\SupportPackages\\R2023a\\3P.instrset\\mingw_w64.instrset\\bin\\gcc -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\\interface\" -I \"D:\\Program Files\\MATLAB\\R2023a\\extern\\include\" -I \".\" -DMODEL=trailer_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2  interface/_coder_trailer_mei_api.c -o build/win64/_coder_trailer_mei_api.o",
+    "file": "interface/_coder_trailer_mei_api.c",
+    "output": "build/win64/_coder_trailer_mei_api.o"
+  },
+  {
+    "directory": "E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei",
+    "command": "C:\\ProgramData\\MATLAB\\SupportPackages\\R2023a\\3P.instrset\\mingw_w64.instrset\\bin\\gcc -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\\interface\" -I \"D:\\Program Files\\MATLAB\\R2023a\\extern\\include\" -I \".\" -DMODEL=trailer_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2  interface/_coder_trailer_mei_mex.c -o build/win64/_coder_trailer_mei_mex.o",
+    "file": "interface/_coder_trailer_mei_mex.c",
+    "output": "build/win64/_coder_trailer_mei_mex.o"
+  },
+  {
+    "directory": "E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei",
+    "command": "C:\\ProgramData\\MATLAB\\SupportPackages\\R2023a\\3P.instrset\\mingw_w64.instrset\\bin\\gcc -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\\interface\" -I \"D:\\Program Files\\MATLAB\\R2023a\\extern\\include\" -I \".\" -DMODEL=trailer_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2  eml_int_forloop_overflow_check.c -o build/win64/eml_int_forloop_overflow_check.o",
+    "file": "eml_int_forloop_overflow_check.c",
+    "output": "build/win64/eml_int_forloop_overflow_check.o"
+  },
+  {
+    "directory": "E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei",
+    "command": "C:\\ProgramData\\MATLAB\\SupportPackages\\R2023a\\3P.instrset\\mingw_w64.instrset\\bin\\gcc -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\\interface\" -I \"D:\\Program Files\\MATLAB\\R2023a\\extern\\include\" -I \".\" -DMODEL=trailer_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2  exp.c -o build/win64/exp.o",
+    "file": "exp.c",
+    "output": "build/win64/exp.o"
+  },
+  {
+    "directory": "E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei",
+    "command": "C:\\ProgramData\\MATLAB\\SupportPackages\\R2023a\\3P.instrset\\mingw_w64.instrset\\bin\\gcc -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\\interface\" -I \"D:\\Program Files\\MATLAB\\R2023a\\extern\\include\" -I \".\" -DMODEL=trailer_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2  atan.c -o build/win64/atan.o",
+    "file": "atan.c",
+    "output": "build/win64/atan.o"
+  },
+  {
+    "directory": "E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei",
+    "command": "C:\\ProgramData\\MATLAB\\SupportPackages\\R2023a\\3P.instrset\\mingw_w64.instrset\\bin\\gcc -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\\interface\" -I \"D:\\Program Files\\MATLAB\\R2023a\\extern\\include\" -I \".\" -DMODEL=trailer_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2  tan.c -o build/win64/tan.o",
+    "file": "tan.c",
+    "output": "build/win64/tan.o"
+  },
+  {
+    "directory": "E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei",
+    "command": "C:\\ProgramData\\MATLAB\\SupportPackages\\R2023a\\3P.instrset\\mingw_w64.instrset\\bin\\gcc -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\\interface\" -I \"D:\\Program Files\\MATLAB\\R2023a\\extern\\include\" -I \".\" -DMODEL=trailer_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2  log.c -o build/win64/log.o",
+    "file": "log.c",
+    "output": "build/win64/log.o"
+  },
+  {
+    "directory": "E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei",
+    "command": "C:\\ProgramData\\MATLAB\\SupportPackages\\R2023a\\3P.instrset\\mingw_w64.instrset\\bin\\gcc -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\\interface\" -I \"D:\\Program Files\\MATLAB\\R2023a\\extern\\include\" -I \".\" -DMODEL=trailer_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2  cos.c -o build/win64/cos.o",
+    "file": "cos.c",
+    "output": "build/win64/cos.o"
+  },
+  {
+    "directory": "E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei",
+    "command": "C:\\ProgramData\\MATLAB\\SupportPackages\\R2023a\\3P.instrset\\mingw_w64.instrset\\bin\\gcc -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\\interface\" -I \"D:\\Program Files\\MATLAB\\R2023a\\extern\\include\" -I \".\" -DMODEL=trailer_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2  sin.c -o build/win64/sin.o",
+    "file": "sin.c",
+    "output": "build/win64/sin.o"
+  },
+  {
+    "directory": "E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei",
+    "command": "C:\\ProgramData\\MATLAB\\SupportPackages\\R2023a\\3P.instrset\\mingw_w64.instrset\\bin\\gcc -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\\interface\" -I \"D:\\Program Files\\MATLAB\\R2023a\\extern\\include\" -I \".\" -DMODEL=trailer_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2  sqrt.c -o build/win64/sqrt.o",
+    "file": "sqrt.c",
+    "output": "build/win64/sqrt.o"
+  },
+  {
+    "directory": "E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei",
+    "command": "C:\\ProgramData\\MATLAB\\SupportPackages\\R2023a\\3P.instrset\\mingw_w64.instrset\\bin\\gcc -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\\interface\" -I \"D:\\Program Files\\MATLAB\\R2023a\\extern\\include\" -I \".\" -DMODEL=trailer_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2  div.c -o build/win64/div.o",
+    "file": "div.c",
+    "output": "build/win64/div.o"
+  },
+  {
+    "directory": "E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei",
+    "command": "C:\\ProgramData\\MATLAB\\SupportPackages\\R2023a\\3P.instrset\\mingw_w64.instrset\\bin\\gcc -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\\interface\" -I \"D:\\Program Files\\MATLAB\\R2023a\\extern\\include\" -I \".\" -DMODEL=trailer_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2  trailer_mei_emxutil.c -o build/win64/trailer_mei_emxutil.o",
+    "file": "trailer_mei_emxutil.c",
+    "output": "build/win64/trailer_mei_emxutil.o"
+  },
+  {
+    "directory": "E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei",
+    "command": "C:\\ProgramData\\MATLAB\\SupportPackages\\R2023a\\3P.instrset\\mingw_w64.instrset\\bin\\gcc -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\\interface\" -I \"D:\\Program Files\\MATLAB\\R2023a\\extern\\include\" -I \".\" -DMODEL=trailer_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2  interface/_coder_trailer_mei_info.c -o build/win64/_coder_trailer_mei_info.o",
+    "file": "interface/_coder_trailer_mei_info.c",
+    "output": "build/win64/_coder_trailer_mei_info.o"
+  },
+  {
+    "directory": "E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei",
+    "command": "C:\\ProgramData\\MATLAB\\SupportPackages\\R2023a\\3P.instrset\\mingw_w64.instrset\\bin\\gcc -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\" -I \"E:\\我的文件\\大学学习\\_硕士学习\\毕设硕士\\车辆控制算法开发\\EI Emergency Index评价指标\\trailer-MEI\\codegen\\mex\\trailer_mei\\interface\" -I \"D:\\Program Files\\MATLAB\\R2023a\\extern\\include\" -I \".\" -DMODEL=trailer_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2  \"D:/Program Files/MATLAB/R2023a/extern/version/c_mexapi_version.c\" -o build/win64/c_mexapi_version.o",
+    "file": "D:/Program Files/MATLAB/R2023a/extern/version/c_mexapi_version.c",
+    "output": "build/win64/c_mexapi_version.o"
+  }
+]

@@ -1,0 +1,15 @@
+LIBRARY trailer_mei_mex.mexw64
+EXPORTS
+mexFunction
+mexfilerequiredapiversion
+emlrtMexFcnProperties
+trailer_mei
+trailer_mei_initialize
+trailer_mei_terminate
+trailer_mei_atexit
+emxEnsureCapacity_boolean_T
+emxFree_real_T
+emxFree_boolean_T
+emxInit_real_T
+emxInit_boolean_T
+emxEnsureCapacity_real_T

@@ -25,6 +25,12 @@ addpath("src\dependencies\utils\mex\")
 addpath("src\dependencies\classes\")
 addpath("src\dependencies\scripts\")
 
+addpath("src\trailer-MEI\")
+addpath("src\trailer-MEI\classes\")
+addpath("src\trailer-MEI\scripts\")
+addpath("src\trailer-MEI\utils\")
+addpath("src\trailer-MEI\utils\mex\")
+
 addpath("assets\")
 addpath("assets\img\")
 addpath("assets\gif\")

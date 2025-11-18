@@ -1,0 +1,1 @@
+主要的函数是`trailer_mei.m`，调用示例在`drag_line_proj_fast.m`中；`compute_SSM.m`是对MEI的python程序的复现。带mex后缀的程序经过MATLAB2023a的编译，如有需要可在不同版本重新编译，相比未编译的版本计算时间会提高2~10倍（取决于内部算法）
