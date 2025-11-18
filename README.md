@@ -37,8 +37,12 @@ The official implementation of the on cloud predictive planning for vehicle-road
 ### Qualitative Results
 
 ## Getting Started
-
+To get started with the simulation, follow these steps:
 ### Prerequisites
+  - Matlab 2023a or later
+  - SUMO version 1.23.1 or later
+
+  follow [Matlab SUMO Cosimulation Setup tutorial](/tutorials/sumo_matlab_cosim/install_sumo_and_setup_cosim.md) to finish preparation of the simulation environment.
 
 ### Run Simulations
 
@@ -53,4 +57,5 @@ The code is under cleaning and will be released gradually.
 - [ ] adding uncertainty calculation
 - [ ] integrate with trailer-MEI
 - [ ] guidance tutorial
+- [ ] mex function compilation code
 
