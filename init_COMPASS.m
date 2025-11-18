@@ -1,6 +1,7 @@
 addpath("data\")
 addpath("data\maps\")
 addpath("data\test_cases\")
+addpath("data\models\")
 
 addpath("simulation\")
 addpath("simulation\utils\")
