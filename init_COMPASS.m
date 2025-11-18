@@ -19,6 +19,12 @@ addpath("src\cosim\utils\")
 addpath("src\cosim\utils\mex\")
 addpath("src\cosim\scripts\")
 
+addpath("src\dependencies\")
+addpath("src\dependencies\utils\")
+addpath("src\dependencies\utils\mex\")
+addpath("src\dependencies\classes\")
+addpath("src\dependencies\scripts\")
+
 addpath("assets\")
 addpath("assets\img\")
 addpath("assets\gif\")
