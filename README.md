@@ -47,7 +47,7 @@ The official implementation of the on cloud predictive planning for vehicle-road
 
 The code is under cleaning and will be released gradually.
 
-- [√] maps setup
+- [x] maps setup
 - [ ] basic runtime packaging
 - [ ] runtime debug
 - [ ] adding uncertainty calculation
