@@ -11,9 +11,9 @@ The official implementation of the on cloud predictive planning for vehicle-road
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 2%;">
 
-  <img src="./assets/gif/NewYizhaungTestRun_01.gif" width="50%" alt="Video 1">
+  <img src="./assets/gif/NewYizhaungTestRun_01.gif" width="48%" alt="Video 1">
 
-  <img src="./assets/gif/NewYizhaungTestRun_02.gif" width="50%" alt="Video 2">
+  <img src="./assets/gif/NewYizhaungTestRun_02.gif" width="48%" alt="Video 2">
 
 </div>
 
