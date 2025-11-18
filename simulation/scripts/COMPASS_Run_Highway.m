@@ -17,7 +17,7 @@ if startSim
     sumoBinary = 'sumo-gui'; % 或者使用'sumo'进行无GUI仿真  YizhuangSim SimulateOneRout
     % sumoCmd = [sumoBinary ' -c "E:\SUMO_FILES\MyYizhuangSim.sumocfg"' ' --start'];
     % sumoCmd = [sumoBinary ' -c "E:\SUMO_FILES\LianYG_YanC.sumocfg"' ' --start'];
-    sumoCmd = [sumoBinary ' -c "E:\SUMO_FILES\test_cases\no1_4500_pass_1.sumocfg"' ' --start'];
+    sumoCmd = [sumoBinary ' -c "data\test_cases\no1_4500_pass_1.sumocfg"' ' --start'];
     traci.start(sumoCmd);
     
     
