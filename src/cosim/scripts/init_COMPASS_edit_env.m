@@ -3,7 +3,7 @@
 open('DriviingGUI_Test_01.m') % 这是最早的GUI测试文件，可以参考用
 
 open('COMPASS_Run_01.m') % 用于从头初始化本COMPASS场景
-
+open('COMPASS_Run_Highway.m') % 用于从头初始化本COMPASS场景
 open('COMPASS_Checking_01.m') % 用于绘制推演过程的简图动画
 open('scenarioOneStep.m') % 用于步进推演过程
 
