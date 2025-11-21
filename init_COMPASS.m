@@ -6,6 +6,7 @@ addpath("data\models\")
 addpath("simulation\")
 addpath("simulation\utils\")
 addpath("simulation\scripts\")
+addpath("simulation\config\")
 
 addpath("src\")
 addpath("src\algorithm\")

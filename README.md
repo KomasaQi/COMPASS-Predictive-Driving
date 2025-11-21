@@ -52,7 +52,7 @@ To get started with the simulation, follow these steps:
 The code is under cleaning and will be released gradually.
 
 - [x] maps setup
-- [ ] basic runtime packaging
+- [x] basic runtime packaging
 - [ ] runtime debug
 - [ ] adding uncertainty calculation
 - [ ] integrate with trailer-MEI

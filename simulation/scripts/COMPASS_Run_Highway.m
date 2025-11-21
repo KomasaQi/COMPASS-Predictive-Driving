@@ -1,50 +1,39 @@
 close all
 clc
 %% 启动SUMO仿真
+% 从参数服务器获取参数
+params = LianYG_YG_params();
 % 加载地图数据
 if ~exist('entity_dict','var')
-    load ProcessedMap_lianyg_yanc.mat
+    load(params.mat_data_name);
 end
-startSim = sqrt(1);
-ifOutGIF = sqrt(0);
-gifName = 'LianYG_YanC_01.gif';
-gifDelayTime = 0.1;
-vehicleID = 't_0';
-% jumpToTime = [];
-jumpToTime = 330; % 跳到第几秒
-% jumpToTime = 80;
-if startSim
-    sumoBinary = 'sumo-gui'; % 或者使用'sumo'进行无GUI仿真  YizhuangSim SimulateOneRout
-    % sumoCmd = [sumoBinary ' -c "E:\SUMO_FILES\MyYizhuangSim.sumocfg"' ' --start'];
-    % sumoCmd = [sumoBinary ' -c "E:\SUMO_FILES\LianYG_YanC.sumocfg"' ' --start'];
-    sumoCmd = [sumoBinary ' -c "data\test_cases\no1_4500_pass_1.sumocfg"' ' --start'];
+vehicleID = params.vehicleID;
+if params.if_start_sim
+    sumoCmd = [params.sumoBinary ' -c "data\test_cases\' params.sumo_file_name '"' ' --start'];
     traci.start(sumoCmd);
-    
-    
     % 设置SUMO GUI的视角和跟踪车辆
-    % 设置SUMO GUI的显式模式为'real world'
-    viewID = 'View #0'; % 默认视角ID
-    schema = 'real world';
-    traci.gui.setSchema(viewID, schema);
-    
-    % 设置放大倍数
-    zoomLevel = 50000; % 根据需要调整放大倍数
-    traci.gui.setZoom(viewID, zoomLevel);
-    if isempty(jumpToTime)
+    traci.gui.setSchema(params.viewID, params.schema);
+    traci.gui.setZoom(params.viewID, params.zoomLevel);
+    if isempty(params.InitTime)
         traci.simulationStep(); % 进行一步仿真
     else
-        while traci.simulation.getTime()<jumpToTime
+        while traci.simulation.getTime()<params.InitTime
             traci.simulationStep(); % 进行一步仿真
         end
     end
     vehicleIDs = traci.vehicle.getIDList(); % 获取所有车辆ID
     % 聚焦到指定车辆
-    traci.gui.trackVehicle(viewID, vehicleID);
+    traci.gui.trackVehicle(params.viewID, vehicleID);
+end
+% 创建结果输出保存文件夹
+if ~exist(params.output_dir,'dir')
+    mkdir(params.output_dir);
+    disp(['创建仿真结果输出文件夹：' params.output_dir]);
 end
 %% 导入地图
 % load ProcessedMap_yizhuang.mat
-figureID = 1; % 用来打开自驾可视化界面GUI
-resultFigID = 2; % 用于展示运行时间结果
+figureID = params.figureID; % 用来打开自驾可视化界面GUI
+resultFigID = params.resultFigID; % 用于展示运行时间结果
 % 添加光源
 hLight = light('Position',[10 30 200],'Style','infinite');
 % 设置材质属性
@@ -59,24 +48,19 @@ plotReq_dirArrow = PlotReq('color','w','faceAlpha',0.9,'height',0.001,'lineWidth
 
 %% 构建道路场景
 %场景初始化
-sampleTime = 0.1; %修改采样时间
 scenario = drivingScenario; %初始化场景
-scenario.SampleTime = sampleTime;  
-
-
+scenario.SampleTime = params.sampleTime;  
 %% 构建车辆信息
-% 定义用于画面显示的虚拟动力学
-tau_heading = 0.1;
-% vehicleLength = traci.vehicle.getLength(vehicleID);
-sensingFront = 5; % 假如感知范围是一个圆形，那么我关注的是自车前方sensingFront为中心的一个圆形
-radius = 200; % 显示半径，配合center中心偏移，显示本车前方以center为中心radius半径的圆形区域
+sensingFront = params.sensingFront; % 假如感知范围是一个圆形，那么我关注的是自车前方sensingFront为中心的一个圆形
+radius = params.display_radius; % 显示半径，配合center中心偏移，显示本车前方以center为中心radius半径的圆形区域
 %% 获取自车全局路径
 globalRoute = traci.vehicle.getRoute(vehicleID);
 
 
 %% 在场景中添加车辆
 %生成初始化的周车
-maxVehNum = 20;
+maxVehNum = params.maxVehNum;
+sampleTime = params.sampleTime;
 vehicleDummies = cell(1,maxVehNum);
 vehTrajDummies = cell(1,maxVehNum+1);
 initHeading_cos_sin = [1,0];
@@ -90,11 +74,11 @@ load tankTruckMesh_COMPASS.mat tankTruckMesh
 global trailerMesh %#ok
 load trailerMesh_COMPASS.mat trailerMesh
 ego = VehicleDummy('laneID','notSpecified','edgeID','notSpecified','lanePosition',initLanePosition,'speed',initSpeed,...
-        'waypoints',initWayPoints,'heading_cos_sin',initHeading_cos_sin,'length',18,...
+        'waypoints',initWayPoints,'heading_cos_sin',initHeading_cos_sin,'length',params.egoLength,...
         'pos',initPos,'vClass','trailer','vehicle',vehicle(scenario,'ClassID',1,...
-        'Position',initPos,'Mesh',tankTruckMesh,'Length',18.0,'Width',2.55,'Height',3.5));
+        'Position',initPos,'Mesh',tankTruckMesh,'Length',params.egoLength,'Width',params.egoWidth,'Height',params.egoHight));
 
-ego.vehicle.PlotColor = [1 0.7 0.5];% 紫色
+ego.vehicle.PlotColor = params.egoColor;
 ego = updataVehicleData(ego,entity_dict,vehicleID,sampleTime);
 trajectory(ego.vehicle,ego.waypoints,ego.speed);
 
@@ -234,21 +218,11 @@ end
 setAxisRange(ego.pos([1 2]),radius+250);% 设置坐标轴范围，缩小到感兴趣的局部区域
 pause(0.01)
 
-if ifOutGIF
+if params.if_record_gif
     theFrame = getframe(gcf); %获取影片帧
     [I,map]=rgb2ind(theFrame.cdata,256); %RGB图像转索引图像
-    imwrite(I,map,gifName,'DelayTime',gifDelayTime,'LoopCount',Inf) %gif图像无限循环
+    imwrite(I,map,params.gifName,'DelayTime',params.gifDelayTime,'LoopCount',Inf) %gif图像无限循环
 end
-
-
-
-
-
-
-
-
-
-
 
 
 % simTime = 200; % 秒
@@ -291,7 +265,7 @@ for iterNum = 1:totalStepNum
     
     if ~mod(iterNum,2)
     % 获取车辆相关状态
-    ego = updataVehicleData(ego,entity_dict,vehicleID,sampleTime,tau_heading);
+    ego = updataVehicleData(ego,entity_dict,vehicleID,sampleTime,params.tau_heading);
     
     
 
@@ -456,10 +430,10 @@ for iterNum = 1:totalStepNum
     % break
     end
     runtimeList(iterNum) = tSpend;
-    if ifOutGIF
+    if params.if_record_gif 
         theFrame = getframe(gcf); %获取影片帧
         [I,map]=rgb2ind(theFrame.cdata,256);
-        imwrite(I,map,gifName,'WriteMode','append','DelayTime',gifDelayTime) %添加到图像
+        imwrite(I,map,params.gifName,'WriteMode','append','DelayTime',params.gifDelayTime) %添加到图像
     end
 
 end
