@@ -40,6 +40,15 @@ function params = LianYG_YG_params()
     params.sensingFront = 5;           % 假如感知范围是一个圆形，那么我关注的是自车前方sensingFront为中心的一个圆形
     params.display_radius = 200;       % 显示半径，配合center中心偏移，显示本车前方以center为中心radius半径的圆形区域
     
+    % 推演检查界面设置
+    params.scenario_gui.show_pos = false; % 推演检查界面是否显示车辆位置
+    params.scenario_gui.show_spd = true;  % 推演检查界面是否显示车辆速度
+    params.scenario_gui.text_x_dev = 2; % 推演检查界面的文字x方向偏移
+    params.scenario_gui.text_y_dev = 2; % 推演检查界面的文字y方向偏移
+    params.scenario_gui.font_size = 8;  % 推演检查界面的文字大小
+    
+
+
     %% 云端周车跟踪设置
     params.maxVehNum = 20;            %最多追踪多少辆周车
     params.egoClass = 2;              % 1 Car 2 Truck
@@ -47,6 +56,16 @@ function params = LianYG_YG_params()
     params.egoWidth = 2.55;           % m 自车宽度
     params.egoHight = 3.5;            % m 自车高度
     params.egoColor = [1 0.7 0.5];    % RGB 橙色
+
+    %% 车辆参数更新（观测）
+    params.lc_thred = 0.5;            % m 偏离车道中心多少算作正在换道状态
+
+
+    %% 自车安全仲裁
+    params.D_SAFE = 0.2;                % m 安全距离
+    params.lc_default_dev = 3;          % m 用于安全仲裁的假设横向换道距离
+    params.min_MEI_thred = -0.2;           % m/s 用于安全仲裁的最大MEI
+
 
 
     %% 杂项设置

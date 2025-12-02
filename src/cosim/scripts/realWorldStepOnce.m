@@ -1,7 +1,7 @@
 for i = 1:10
     % 进行一步仿真，需要先运行get_DynMC_SimTree_route进行规划才行哦
     spdDesCmdDeviationStep = spdDesCmdDeviationStep + 1;
-    lastDecisionTimeGap = lastDecisionTimeGap + sampleTime;
+    lastDecisionTimeGap = lastDecisionTimeGap + params.sampleTime;
     iterNum = iterNum + 1;
     tic;%-------------------------探针---------------开始计时
     thredSpd = theScene.getEgoDesSpd+5;
@@ -26,7 +26,7 @@ for i = 1:10
     
     if ~mod(iterNum,10)
         % 获取车辆相关状态
-        ego = updataVehicleData(ego,entity_dict,vehicleID,sampleTime,tau_heading);
+        ego = updataVehicleData(ego,entity_dict,vehicleID,params.sampleTime,params.tau_heading);
         
         
         
@@ -158,7 +158,7 @@ for i = 1:10
                 objTracking_dict(addVehID) = entityIdx;% 建立新加入车辆与显示实体的对应关系
         
                 vehicleDummies{entityIdx} = ...
-                    updataVehicleData(vehicleDummies{entityIdx},entity_dict,addVehID,sampleTime);
+                    updataVehicleData(vehicleDummies{entityIdx},entity_dict,addVehID,params.sampleTime);
                 trajectory(vehicleDummies{entityIdx}.vehicle,...
                     vehicleDummies{entityIdx}.waypoints,vehicleDummies{entityIdx}.speed);
             end
@@ -171,7 +171,7 @@ for i = 1:10
                 existID = existingVehicleList{j};
                 entityIdx = objTracking_dict(existID);
                 vehicleDummies{entityIdx} = ...
-                    updataVehicleData(vehicleDummies{entityIdx},entity_dict,existID,sampleTime);
+                    updataVehicleData(vehicleDummies{entityIdx},entity_dict,existID,params.sampleTime);
                 trajectory(vehicleDummies{entityIdx}.vehicle,...
                     vehicleDummies{entityIdx}.waypoints,vehicleDummies{entityIdx}.speed); 
             end
@@ -200,7 +200,7 @@ for i = 1:10
             % drawnow limitrate
         end
         drawnow limitrate % 自动限制画面刷新率，如果超过20Hz就会抛弃一次刷新
-        if ifOutGIF
+        if params.if_record_gif
             theFrame = getframe(gcf); %获取影片帧
             [I,map]=rgb2ind(theFrame.cdata,256);
             imwrite(I,map,gifName,'WriteMode','append','DelayTime',gifDelayTime) %添加到图像

@@ -141,7 +141,7 @@ classdef SimScenario
         w_efficiency_spdDiff = 30;% 高效-->实际速度和期望速度绝对差值 10
         w_smooth_acc = 1;         % 平稳-节能-->加速度大小 1 → 1000 
         w_smooth_jerk = 0.1;          % 平稳-节能-->jerk大小 1
-        w_rule_lane = 100;          % 规则-->是否行驶在不期望的车道 
+        w_rule_lane = 1000;          % 规则-->是否行驶在不期望的车道 
         w_right_lane = 0.05;           % 规则-->是否靠右行驶 →增加了本项
         w_consist = 0.1;             % 决策一致性-->上次决策和本次的差距 10
         w_envVeh = 0.3;             % 环境车的最大代价与自车代价的比例

@@ -42,16 +42,18 @@ if ~ego.changeLane % 如果自车当前没有在换道，就可以规划哒
     spdDesCmdDeviationStep = 1;% 原来是1，我改成10，就是提前1s后的速度给到车辆
     lastDecisionTimeGap = 0; % 上次决策的时间置零
     LC_decision = theScene.getDecision;
-    if LC_decision > 0
+    [safe_flag, min_MEI, lc_min_MEI] = SaftyArbitration(ego,vehicleDummies,LC_decision);
+    if LC_decision > 0 && safe_flag
         traci.vehicle.changeSublane(ego.vehID,3.2*(1-theScene.getEgoInitIdxDev));
-    elseif LC_decision < 0
+    elseif LC_decision < 0 && safe_flag
         traci.vehicle.changeSublane(ego.vehID,-3.2*(1-theScene.getEgoInitIdxDev));
-    else % 当前没有换道指令，但是没在中心线行驶，那就换到车道中线去
+    else % 当前没有换道指令，但是没在中心线行驶，那就换到车道中线去，或者安全仲裁没通过
         theDev = theScene.getEgoInitIdxDev;
         if abs(theDev) > 0.1
             traci.vehicle.changeSublane(ego.vehID,-3.2*theScene.getEgoInitIdxDev);
         end
     end
+    plan_steps = plan_steps + 1;
 else
     disp(repmat('#',1,60));
     disp([repmat('#',1,20) '当前正在换道，跳过一次规划' repmat('#',1,20)]);

@@ -1,4 +1,5 @@
 function vehicle = updataVehicleData(vehicle,entity_dict,vehicleID,sampleTime,headingDynTau)
+    global params %#ok
     if ~strcmp(vehicle.vehID,vehicleID) % 当这个实体被赋予给了一个新的vehicleID的时候，就需要更新车辆路线
         new_vehicle_flag = true;
         vehicle.vehID = vehicleID;
@@ -52,17 +53,13 @@ function vehicle = updataVehicleData(vehicle,entity_dict,vehicleID,sampleTime,he
 
     newLaneNo = vehicle.getLaneNo();
     
-    % t1 = toc;
-    
-    % tic
+
     oldEdgeID = vehicle.edgeID;
     newEdgeID = entity_dict{laneID}.getEdgeID();
     vehicle.edgeID = newEdgeID;
-    % t2 = toc;
 
-    % tic
     veh_pos = traci.vehicle.getPosition(vehicleID);
-    % t3 = toc;
+
     oldDev = vehicle.dev;
     [~, newDev, ~, ~] = projPoint2Polyline_mex(entity_dict{laneID}.shape, veh_pos);
     vehicle.dev = newDev;
@@ -75,9 +72,9 @@ function vehicle = updataVehicleData(vehicle,entity_dict,vehicleID,sampleTime,he
         else
             if newLaneNo == oldLaneNo % 至少车道还没变
                 devDiff = newDev - oldDev;
-                if devDiff > 0 && newDev > 0.1 % 保证至少有一定的偏离
+                if devDiff > 0 && newDev > params.lc_thred % 保证至少有一定的偏离
                     vehicle.changeLane = 1;
-                elseif devDiff < 0 && newDev < -0.1
+                elseif devDiff < 0 && newDev < -params.lc_thred
                     vehicle.changeLane = -1;
                 else
                     vehicle.changeLane = 0;
@@ -94,10 +91,7 @@ function vehicle = updataVehicleData(vehicle,entity_dict,vehicleID,sampleTime,he
 
 
     vehicle.targetLaneIdx = max(min(newLaneNo + vehicle.changeLane,entity_dict{newEdgeID}.laneNum-1),0);
-    % [tm,idx] = max([t1 t2 t3]);
-    % if tm > 0.1
-    %     disp(['这里有问题！！！************************************************,t' num2str(idx) '用时' num2str(tm*1000) 'ms, vehicleID: ' vehicleID])
-    % end
+
 
     dPos = veh_pos - vehicle.pos([1 2]);
     dDist = norm(dPos);

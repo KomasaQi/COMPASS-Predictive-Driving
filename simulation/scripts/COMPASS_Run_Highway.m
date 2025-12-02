@@ -2,7 +2,10 @@ close all
 clc
 %% 启动SUMO仿真
 % 从参数服务器获取参数
+global params %#ok
 params = LianYG_YG_params();
+% 求解步数
+plan_steps = 0;
 % 加载地图数据
 if ~exist('entity_dict','var')
     load(params.mat_data_name);

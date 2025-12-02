@@ -9,13 +9,13 @@ classdef Vehicle4COMPASS %#codegen
         b_comf= 2;   % 舒适减速度
         v_des = 30;  % 期望车速
         delta = 4;   % 加速度系数
-        T_hw  = 1; % 期望跟车时距 1
+        T_hw  = 1;   % 期望跟车时距
         s_min = 3;   % 最小车间距（静止时）
 
         % mobil换道参数
         politenss = 0.2; % 礼让系数
 
-        % idm参数
+        % idm参数方差
         sigma_a_max = 0.3;   % 最大加速度
         sigma_b_comf= 0.2;   % 舒适减速度
         sigma_v_des = 3;  % 期望车速
@@ -36,8 +36,6 @@ classdef Vehicle4COMPASS %#codegen
         route       % 路线cell(routeNum,1)--->ID
         routeIdx    % 当前（创造场景时）在哪一段范围内
         routeNum    % 路线一共有多少段
-
-        % routeNo
 
         % 路线状态
         laneID      % 创造场景时的车道ID
