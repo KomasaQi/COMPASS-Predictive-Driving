@@ -1,6 +1,12 @@
 %% 画图SUMO实体
 % 在指定figureID的图上画，idList是一个cell的形式，包含所有要画图的实体id
-function plotSUMOentity(entity_dict,idList,figureID)
+function plotSUMOentity(entity_dict,idList,figureID,faceAlpha,edgeColor)
+    if nargin < 4 || isempty(faceAlpha)
+        faceAlpha = 0.2;
+    end
+    if nargin < 5 || isempty(edgeColor)
+        edgeColor = [0 0 0];
+    end
     figure(figureID)
     hold on
 
@@ -18,15 +24,15 @@ function plotSUMOentity(entity_dict,idList,figureID)
             segment1 = offset2DCurve_forLane(line,(entity.width)/2,rot2Dvec90deg(vec0,'left'));
             segment2 = offset2DCurve_forLane(line,(entity.width)/2,rot2Dvec90deg(vec0,'right'));
             segment = [segment1;segment2(end:-1:1,:)];
-            fill(segment(:,1),segment(:,2),'k','FaceAlpha',0.2);
+            fill(segment(:,1),segment(:,2),'k','FaceAlpha',faceAlpha,'EdgeColor',edgeColor);
         elseif isa(entity,'Edge_SUMO')
             newIDlist = cell(entity_dict{id}.laneNum,1);
             for j = 1:entity_dict{id}.laneNum
                  newIDlist{j} = entity_dict{id}.getLaneID(j-1);
             end
-            plotSUMOentity(entity_dict,newIDlist,figureID)
+            plotSUMOentity(entity_dict,newIDlist,figureID,faceAlpha,edgeColor)
         elseif isa(entity,'Junction_SUMO')
-            fill(entity.shape(:,1),entity.shape(:,2),'r','FaceAlpha',0.2)
+            fill(entity.shape(:,1),entity.shape(:,2),'r','FaceAlpha',faceAlpha,'EdgeColor',edgeColor)
         else
             error(['id ' id '不是支持的绘图类型，主人快检查一下嘛'])
         end

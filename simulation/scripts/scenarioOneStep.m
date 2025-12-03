@@ -5,9 +5,18 @@
 s = s.step();
 
 for i = 1:s.vehNum
+    % 设置车辆轨迹线结果
+    driveLine = s.vehDriveLine{i};
+    if ~isempty(driveLine)
+        set(veh_driveLine_handles{i},'XData',driveLine(:,1),'YData',driveLine(:,2));
+    end
+
+end
+
+for i = 1:s.vehNum
     % 删除上一帧的可视化图形
     delete(veh_text_handles{i});
-    delete(veh_driveLine_handles{i});
+    
 
     % 从仿真结果提取状态信息
     pos_x = s.vehState(i,s.var.x);
@@ -26,11 +35,6 @@ for i = 1:s.vehNum
         spd_string = [];
     end
     
-    % 设置车辆轨迹线结果
-    driveLine = s.vehDriveLine{i};
-    if ~isempty(driveLine)
-        veh_driveLine_handles{i} = plot(driveLine(:,1),driveLine(:,2),'g','LineWidth',1.5);
-    end
 
     % 设置车头车尾位置
     set(veh_dot_handles{i},"XData",pos_x+[0,-cos(heading)*s.vehicles{i}.L],"YData",pos_y+[0,-sin(heading)*s.vehicles{i}.L]);
@@ -38,17 +42,17 @@ for i = 1:s.vehNum
     % 设置相关参数显示
     if s.vehState(i,s.var.opsState) == 2
         veh_text_handles{i} = text(pos_x + params.scenario_gui.text_x_dev, ...
-            pos_y + params.scenario_gui.text_y_dev,['No.' num2str(i) ', opsState=2,' position_string]);
+            pos_y + params.scenario_gui.text_y_dev,['No.' num2str(i) ', opsState=2,' position_string],'Color',(s.vehicles{i}.color*0.9+0.1).^0.1);
     else
         if i == 1
             veh_text_handles{i} = text(pos_x + params.scenario_gui.text_x_dev, ...
                 pos_y + params.scenario_gui.text_y_dev,{['No.' num2str(i) '--ego' ], ...
-                spd_string,position_string},"FontSize",params.scenario_gui.font_size,"FontWeight","bold");
+                spd_string,position_string},"FontSize",params.scenario_gui.font_size,"FontWeight","bold",'Color',(s.vehicles{i}.color*0.9+0.1).^0.1);
         else
             veh_text_handles{i} = text(pos_x + params.scenario_gui.text_x_dev, ...
                 pos_y + params.scenario_gui.text_y_dev,{['No.' num2str(i) '--' ...
                 escapeUnderscore(vehicleDummies{i-1}.vehID)], ...
-                spd_string,position_string} ,"FontSize",params.scenario_gui.font_size);
+                spd_string,position_string} ,"FontSize",params.scenario_gui.font_size,'Color',(s.vehicles{i}.color*0.9+0.1).^0.1);
         end
     end
 end

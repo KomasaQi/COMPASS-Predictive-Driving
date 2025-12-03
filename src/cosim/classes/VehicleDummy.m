@@ -22,6 +22,8 @@ classdef VehicleDummy
         length = 3.5 % vehicle length 
         width = 1.8  % vehicle width
         vClass = 'undetermined' % 车辆类型
+        vType = 'undetermined'  % 具体车型
+        sumo_params = Vehicle4SUMO()
         history
     end
     methods

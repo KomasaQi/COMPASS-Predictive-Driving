@@ -20,8 +20,7 @@ egoState = convertVehState(new_entity_dict,lane_from_connection_dict, ...
 
 s = s.addVehicle(Vehicle4COMPASS('route',ego.route,...
     'routeIdx',ego.routeIdx,'routeNum',length(ego.route),'edgeID',ego.edgeID,'laneID',ego.laneID,...
-                'L',ego.length,...
-            'W',ego.width),egoState);
+                'L',ego.length,'W',ego.width,'color',ego.sumo_params.color),egoState);
 
 for i = 1:length(vehKeys)
     vehKey = vehKeys{i};
@@ -38,7 +37,8 @@ for i = 1:length(vehKeys)
             'routeNum',length(vehicleDummies{vehNo}.route), ...
             'v_des',vehicleDummies{vehNo}.v_des,...
             'L',vehicleDummies{vehNo}.length,...
-            'W',vehicleDummies{vehNo}.width),vehState);
+            'W',vehicleDummies{vehNo}.width,...
+            'color',vehicleDummies{vehNo}.vehicle.PlotColor),vehState);
     end
 
 end
@@ -51,14 +51,14 @@ s = s.initSenario();
 % 获取仿真检查界面的ID
 simSceneFig = figure(simFigID);
 clf(simSceneFig)
-title('周围交通实时推演情况')
+title('周围交通实时推演情况','Color','w',"FontWeight","bold")
 xlabel('地图相对位置x坐标[m]')
 ylabel('地图相对位置y坐标[m]')
 grid on
-plotReq_edge0 = PlotReq('color','r','faceAlpha',0.2,'height',0,'lineWidth',0.5,'edgeColor',[1 0.6 0.6]);
+plotReq_edge0 = PlotReq('color','r','faceAlpha',0.9,'height',0,'lineWidth',0.5,'edgeColor',[1 0.9 0.9]);
 hold on
 % 绘制道路
-plotSUMOentity(new_entity_dict,s.net.edgeList,simFigID);
+plotSUMOentity(new_entity_dict,s.net.edgeList,simFigID,0.9,[1 1 1]);
 hold on
 for i = 1:length(s.net.edgeList)
     if s.net.frindgeEdgeArray(i)
@@ -71,6 +71,14 @@ hold on
 veh_text_handles = cell(s.vehNum,1);
 veh_dot_handles = cell(s.vehNum,1);
 veh_driveLine_handles = cell(s.vehNum,1);
+
+for i = 1:s.vehNum
+    % 设置车辆轨迹线结果
+    driveLine = s.vehDriveLine{i};
+    if ~isempty(driveLine)
+        veh_driveLine_handles{i} = plot(driveLine(:,1),driveLine(:,2),'LineWidth',1.5,'Color',s.vehicles{i}.color.^0.2);
+    end
+end
 for i = 1:s.vehNum
     % 获取当前车辆状态
     pos_x = s.vehState(i,s.var.x);
@@ -89,43 +97,35 @@ for i = 1:s.vehNum
         spd_string = [];
     end
 
-    % 设置车辆轨迹线结果
-    driveLine = s.vehDriveLine{i};
-    if ~isempty(driveLine)
-        veh_driveLine_handles{i} = plot(driveLine(:,1),driveLine(:,2),'g','LineWidth',1.5);
-    end
+
 
     % 设置车头车尾位置
-    if i == 1
-        veh_dot_handles{i} = plot(pos_x+[0,-cos(heading)*s.vehicles{i}.L],...
-            pos_y+[0,-sin(heading)*s.vehicles{i}.L], ...
-            "Color",[0.8941 0.6275 0.4471],"LineWidth",5);
-    else
-        veh_dot_handles{i} = plot(s.vehState(i,s.var.x)+[0,-cos(s.vehState(i,s.var.heading))*s.vehicles{i}.L],...
-            s.vehState(i,s.var.y)+[0,-sin(s.vehState(i,s.var.heading))*s.vehicles{i}.L], ...
-            "LineWidth",5);
-    end
+    veh_dot_handles{i} = plot(s.vehState(i,s.var.x)+[0,-cos(s.vehState(i,s.var.heading))*s.vehicles{i}.L],...
+        s.vehState(i,s.var.y)+[0,-sin(s.vehState(i,s.var.heading))*s.vehicles{i}.L], ...
+        "LineWidth",5,'Color',s.vehicles{i}.color);
+
     
     % 设置相关参数显示
     if s.vehState(i,s.var.opsState) == 2
         veh_text_handles{i} = text(pos_x + params.scenario_gui.text_x_dev, ...
-                pos_y + params.scenario_gui.text_y_dev,['No.' num2str(i) ', opsState=2,' position_string]);
+                pos_y + params.scenario_gui.text_y_dev,['No.' num2str(i) ', opsState=2,' position_string],'color',(s.vehicles{i}.color*0.9+0.1).^0.1);
     else
         if i == 1
             veh_text_handles{i} = text(pos_x + params.scenario_gui.text_x_dev, ...
                 pos_y + params.scenario_gui.text_y_dev,{['No.' num2str(i) '--ego' ], ...
-                spd_string,position_string},"FontSize",params.scenario_gui.font_size,"FontWeight","bold");
+                spd_string,position_string},"FontSize",params.scenario_gui.font_size,"FontWeight","bold",'color',(s.vehicles{i}.color*0.9+0.1).^0.1);
         else
             veh_text_handles{i} = text(pos_x + params.scenario_gui.text_x_dev, ...
                 pos_y + params.scenario_gui.text_y_dev,{['No.' num2str(i) '--' ...
                 escapeUnderscore(vehicleDummies{i-1}.vehID)], ...
-                spd_string,position_string},"FontSize",params.scenario_gui.font_size);
+                spd_string,position_string},"FontSize",params.scenario_gui.font_size,'color',(s.vehicles{i}.color*0.9+0.1).^0.1);
         end
     end
 end
 
 axis equal
-
+set(gcf,'color',[91,114,125]/255)
+axis off
 
 
 

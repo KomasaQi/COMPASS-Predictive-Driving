@@ -41,7 +41,8 @@ classdef Vehicle4COMPASS %#codegen
         laneID      % 创造场景时的车道ID
         edgeID      % 创造场景时的边ID
 
-        
+        % 显示参数
+        color = [0.5 0.5 0.5]; 
         
     end
     methods

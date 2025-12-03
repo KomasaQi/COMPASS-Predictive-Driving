@@ -21,6 +21,11 @@ function vehicle = updataVehicleData(vehicle,entity_dict,vehicleID,sampleTime,he
     vehicleWidth = traci.vehicle.getWidth(vehicleID);
     vehicle.width = vehicleWidth;
     vClass = traci.vehicle.getVehicleClass(vehicleID);
+    vType = traci.vehicle.getTypeID(vehicleID);
+    vehicle.sumo_params = params.sumo_vehicle_lib(vType);
+    vehicle.vehicle.PlotColor = vehicle.sumo_params.color.^params.enlightening_factor;
+    vehicle.vehicle.Length = vehicle.sumo_params.length;
+    vehicle.vehicle.Width = vehicle.sumo_params.width;
     if ~strcmpi(vehicle.vClass,vClass)
         if strcmpi(vClass,'private')
             vehicle.vehicle.Height = 1.4;
@@ -50,6 +55,7 @@ function vehicle = updataVehicleData(vehicle,entity_dict,vehicleID,sampleTime,he
 
     end
     vehicle.vClass = vClass;
+    vehicle.vType = vType;
 
     newLaneNo = vehicle.getLaneNo();
     

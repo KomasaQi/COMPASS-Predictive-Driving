@@ -25,6 +25,7 @@ function params = LianYG_YG_params()
      if ~params.If_Finish && params.if_start_sim
         error('仿真场景案例未设置，无法进行仿真哒，请检查一下是否做了这个场景的sumo文件并配置了xlsx表格！')
      end
+     params.sumo_vehicle_lib = readSumoRouFile_getSumoVehLib(['./data/test_cases/' params.rou_file_name]);
      
     %% 仿真界面设置
     % SUMO界面设置
@@ -39,6 +40,7 @@ function params = LianYG_YG_params()
     params.tau_heading = 0.1;          % 定义用于画面显示的虚拟动力学
     params.sensingFront = 5;           % 假如感知范围是一个圆形，那么我关注的是自车前方sensingFront为中心的一个圆形
     params.display_radius = 200;       % 显示半径，配合center中心偏移，显示本车前方以center为中心radius半径的圆形区域
+    params.enlightening_factor = 0.4;  % GUI界面车辆颜色提亮系数（加上阴影以后比sumo暗淡了，需要提亮才能看上去和sumo一样）
     
     % 推演检查界面设置
     params.scenario_gui.show_pos = false; % 推演检查界面是否显示车辆位置
