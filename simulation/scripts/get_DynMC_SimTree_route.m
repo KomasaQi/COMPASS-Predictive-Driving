@@ -4,7 +4,11 @@ thePool = gcp();
 coreNum = thePool.NumWorkers;
 initCurrentScenario
 if ~ego.changeLane % 如果自车当前没有在换道，就可以规划哒
-    [tempRoute,theTempScene,results] = callParallel_DynMC_SimTree(s,coreNum);
+    
+    %*********************************核心算法**********************************
+    [tempRoute,theTempScene,results] = callParallel_DynMC_SimTree(s,coreNum); 
+    %**************************************************************************
+
     if ~isempty(tempRoute)
         route = tempRoute;
         theScene = theTempScene;
@@ -23,26 +27,27 @@ if ~ego.changeLane % 如果自车当前没有在换道，就可以规划哒
         disp(['最终选择场景' theScene.showAllowedPattern ', 动作:'...
             theScene.egoSemActionLog ', 代价：'  num2str(theScene.cost)])
         if strcmp(ctrlMode,'SUMO')
-            traci.vehicle.setLaneChangeMode(ego.vehID, 0b000000000000); % 把控制权给COMPASS
-            traci.vehicle.setSpeedMode(ego.vehID,0b011110); % bit5 bit4 ... bit0. bit0是考虑安全速度，把其勾选走了
+            % traci.vehicle.setLaneChangeMode(ego.vehID, 0b000000000000); % 把控制权给COMPASS
+            % traci.vehicle.setSpeedMode(ego.vehID,0b011110); % bit5 bit4 ... bit0. bit0是考虑安全速度，把其勾选走了
             ctrlMode = 'COMPASS';
             disp('COMASS恢复有解，控制权回到COMPASS')
         end
     else
         if strcmp(ctrlMode,'COMPASS')
-            traci.vehicle.setLaneChangeMode(ego.vehID, 0b101010101010); % 把控制权交还给SUMO
-            traci.vehicle.setSpeedMode(ego.vehID,0b011111); % bit5 bit4 ... bit0. bit0是考虑安全速度，把其勾选上
-            traci.vehicle.setSpeed(ego.vehID,-1);
+            % traci.vehicle.setLaneChangeMode(ego.vehID, 0b101010101010); % 把控制权交还给SUMO
+            % traci.vehicle.setSpeedMode(ego.vehID,0b011111); % bit5 bit4 ... bit0. bit0是考虑安全速度，把其勾选上
+            % traci.vehicle.setSpeed(ego.vehID,-1);
             ctrlMode = 'SUMO';
             disp('COMPASS无解，将控制权交回SUMO')
         end
     end
-    spdDesCmds = max(theScene.getSpdDesCmds(sampleTime),1);
+    % spdDesCmds = max(theScene.getSpdDesCmds(sampleTime),1);
     routeRenewHight = 0;
-    spdDesCmdDeviationStep = 1;% 原来是1，我改成10，就是提前1s后的速度给到车辆
+    % spdDesCmdDeviationStep = 1;% 原来是1，我改成10，就是提前1s后的速度给到车辆
     lastDecisionTimeGap = 0; % 上次决策的时间置零
     LC_decision = theScene.getDecision;
     [safe_flag, min_MEI, lc_min_MEI] = SaftyArbitration(ego,vehicleDummies,LC_decision);
+    
     if LC_decision > 0 && safe_flag
         traci.vehicle.changeSublane(ego.vehID,3.2*(1-theScene.getEgoInitIdxDev));
     elseif LC_decision < 0 && safe_flag
@@ -107,7 +112,7 @@ function [route,theScene,results] = callParallel_DynMC_SimTree(s,coreNum)
     disp([repmat('-',1,20) '仿真场景树并行搜索' repmat('-',1,20)])
     parfor parSceNum = 1:length(balancedSet) % 场景并行
         % parSceNum = 1;
-        maxIterCaseNum = max([3 4 5 5 5  5 5 4 3 3  2 2 1 1],1); % 只提取每阶段最优的n个场景展开 35→3
+        maxIterCaseNum = max([3 4 5 5 5  5 5 4 3 3  2 2 1 1],5); % 只提取每阶段最优的n个场景展开 35→3
         currentTime = 0; 
         validCounter = 1; % 有效场景数量
         % scenarioSet = {s}; % 上次仿真得到的有效场景集合

@@ -41,7 +41,17 @@ function params = LianYG_YG_params()
     params.sensingFront = 5;           % 假如感知范围是一个圆形，那么我关注的是自车前方sensingFront为中心的一个圆形
     params.display_radius = 200;       % 显示半径，配合center中心偏移，显示本车前方以center为中心radius半径的圆形区域
     params.enlightening_factor = 0.4;  % GUI界面车辆颜色提亮系数（加上阴影以后比sumo暗淡了，需要提亮才能看上去和sumo一样）
-    
+    params.radius_range = 250;         % 查找周车的范围再+的范围用于可视化
+    params.update_interval = 5;        % 云端隔多少个时间周期步能获得一次全局信息（单位0.1s）
+    params.arrow_refreshStepInterval = 5;         % 刷新箭头的步数间隔
+    params.edge_junction_refreshStepInterval = 7; % 刷新路面的步数间隔
+    params.ring_refreshStepInterval = 1;          % 车辆光环刷新的步数间隔
+    params.timeRange4ImpssbVehID = 5;             % 这些时间间隔之后会更新一次不可能到达的周车状态
+    params.maxSpeedLimit = 120/3.6;               % 最高时速限制
+    params.safetyCoeff = 1.5;                     % 不可达距离安全系数
+    params.veh_traj_alpha = 0.3;                  % 周车轨迹的不透明度
+    params.veh_traj_width = 5;                    % 周车轨迹粗细
+
     % 推演检查界面设置
     params.scenario_gui.show_pos = false; % 推演检查界面是否显示车辆位置
     params.scenario_gui.show_spd = true;  % 推演检查界面是否显示车辆速度

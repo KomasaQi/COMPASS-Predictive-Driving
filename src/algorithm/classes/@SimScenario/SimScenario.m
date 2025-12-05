@@ -999,7 +999,7 @@ classdef SimScenario
             LCD_idxs = diff(obj.getLogData(1,obj.var_changingLane));
             LC_step_inc = obj.egoLCDuration/obj.timeStep;
             % 可以提前一点换道，在时间步round(LC_step_inc/2)内有换道建议，就及早执行
-            LC_decision = sum(LCD_idxs(1:round(LC_step_inc/4))); 
+            LC_decision = sum(LCD_idxs(1:round(LC_step_inc/3))); 
             % if ~
             
         end
