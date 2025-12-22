@@ -3,9 +3,9 @@ function [edgeList,junctionList] = plotNLevelRoadNet(entity_dict,connection_dict
     if N ~= 0
         if nargin<7
             [divertEdgeListLast,viaEdgesLast,~] = ...
-                findLastPossibleEdegeDiversion(entity_dict,connection_dict,edgeID);
+                findLastPossibleEdgeDiversion(entity_dict,connection_dict,edgeID);
             [divertEdgeListNext,viaEdgesNext,~] = ...
-                findNextPossibleEdegeDiversion(entity_dict,connection_dict,edgeID);
+                findLastPossibleEdgeDiversion(entity_dict,connection_dict,edgeID);
             divertEdgeList = unique([divertEdgeListNext,divertEdgeListLast]);
             viaEdges = unique([viaEdgesLast;viaEdgesNext]);
             edgeList = unique([divertEdgeList';viaEdges]);
@@ -54,8 +54,8 @@ function [edgeList,junctionList] = plotNLevelRoadNet(entity_dict,connection_dict
                 {getFromJunctionID(entity_dict,theEdgeID)}]);
         end
         if strncmp(plotType,'2',1)
-            plotSUMOentity(entity_dict,connection_dict,edgeList,figureID)
-            plotSUMOentity(entity_dict,connection_dict,junctionList,figureID)
+            plotSUMOentity(entity_dict,edgeList,figureID)
+            plotSUMOentity(entity_dict,junctionList,figureID)
         else
             plot3SUMOentity(entity_dict,edgeList,figureID)
             plot3SUMOentity(entity_dict,junctionList,figureID)

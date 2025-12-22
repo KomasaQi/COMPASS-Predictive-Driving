@@ -70,7 +70,7 @@ function vehicle = updataVehicleData(vehicle,entity_dict,vehicleID,sampleTime,he
     [~, newDev, ~, ~] = projPoint2Polyline_mex(entity_dict{laneID}.shape, veh_pos);
     vehicle.dev = newDev;
 
-    if new_vehicle_flag %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%需要验证新加入的2个状态是否准确,验证了，基本没问题
+    if new_vehicle_flag
         vehicle.changeLane = 0;
     else
         if ~strcmp(oldEdgeID,newEdgeID) % 如果到了一条新的道
@@ -93,50 +93,21 @@ function vehicle = updataVehicleData(vehicle,entity_dict,vehicleID,sampleTime,he
         end
     end 
 
-
-
-
     vehicle.targetLaneIdx = max(min(newLaneNo + vehicle.changeLane,entity_dict{newEdgeID}.laneNum-1),0);
 
 
-    dPos = veh_pos - vehicle.pos([1 2]);
-    dDist = norm(dPos);
-    headingAvail_Flag = false;
     dist = traci.vehicle.getLanePosition(vehicleID);
     vehicle.lanePosition = dist;
-    if dDist>1e-1 && dDist < 100 
-        vehicle.heading = atan2(dPos(2),dPos(1));
-        headingAvail_Flag = true;
+    heading = (pi/2 - traci.vehicle.getAngle(vehicleID)/180*pi);
+    if heading < -pi
+        heading = heading + 2*pi;
     end
-
-    if ~headingAvail_Flag % 如果直接求heading不好用，再用笨办法求heading_cos_sin
-        
-        [~,heading_cos_sin] = getVehicleHeading(entity_dict,laneID,dist);
-        if ~isempty(heading_cos_sin)
-            if nargin == 4
-                vehicle.heading_cos_sin = heading_cos_sin;
-                vehicle.heading = atan2(heading_cos_sin(2),heading_cos_sin(1));
-            elseif nargin == 5
-                 vehicle.heading_cos_sin = ...
-                     vehicle.heading_cos_sin + 1/headingDynTau*(heading_cos_sin - vehicle.heading_cos_sin)*sampleTime;
-                 vehicle.heading = atan2(vehicle.heading_cos_sin(2),vehicle.heading_cos_sin(1));
-            else
-                error('输入参数数量不对，请参阅本函数的具体定义，喵喵~')
-            end
-        end
-
-    else
-        heading_cos_sin = dPos/dDist;
-        if nargin < 5
-            vehicle.heading_cos_sin = heading_cos_sin;
-        elseif nargin == 5
-             vehicle.heading_cos_sin = ...
-                 vehicle.heading_cos_sin + 1/headingDynTau*(heading_cos_sin - vehicle.heading_cos_sin)*sampleTime;
-        else
-            error('输入参数数量不对，请参阅本函数的具体定义，喵喵~')
-        end
-        vehicle.heading = atan2(vehicle.heading_cos_sin(2),vehicle.heading_cos_sin(1));
+    if heading > pi
+        heading = heading - 2*pi;
     end
+    vehicle.heading = heading;
+    vehicle.heading_cos_sin = [cos(heading), sin(heading)];
+
     new_speed = abs(traci.vehicle.getSpeed(vehicleID))+1e-2;
     vehicle.acc = traci.vehicle.getAcceleration(vehicleID);
     vehicle.speed = new_speed;

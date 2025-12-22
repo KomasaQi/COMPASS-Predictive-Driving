@@ -35,8 +35,17 @@ for i = 1:s.vehNum
         spd_string = [];
     end
     
-
     % 设置车头车尾位置
+    if compare_database
+        theVehID = s.vehicles{i}.id;
+        theVehData = db.getVehicleDataAtTime(theVehID,sim_start_time - db.getDatabaseInitTime + s.getSimTime);
+        if ~isempty(fieldnames(theVehData))
+            set(playback_veh_handles{i},...
+            "XData",theVehData.pos(1)+[0,-cos(theVehData.heading)*s.vehicles{i}.L],...
+            "YData",theVehData.pos(2)+[0,-sin(theVehData.heading)*s.vehicles{i}.L] ...
+            );
+        end
+    end
     set(veh_dot_handles{i},"XData",pos_x+[0,-cos(heading)*s.vehicles{i}.L],"YData",pos_y+[0,-sin(heading)*s.vehicles{i}.L]);
 
     % 设置相关参数显示

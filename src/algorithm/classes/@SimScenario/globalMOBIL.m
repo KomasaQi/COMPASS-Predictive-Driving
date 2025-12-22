@@ -54,7 +54,7 @@ function [changingLanes, targetLaneIdxs, accs] = globalMOBIL(obj)
             front_veh_Spd = surrVehSpdMat0(2*vNo-1,2); % 前车速度
             front_veh_dist = surrVehDistMat0(2*vNo-1,2); % 前车距离
             % 首先对所有车辆进行一次不换道时的加速度计算与存储
-            noLC_accs(vNo) = obj.vehicles{vNo}.idm(spds(vNo),front_veh_Spd,front_veh_dist,spdDesList(vNo));
+            noLC_accs(vNo) = obj.vehicles{vNo}.idm(spds(vNo),front_veh_Spd,front_veh_dist,spdDesList(vNo)*obj.vehicles{vNo}.speed_factor(1)*0.5);
         end
     end
     
@@ -73,7 +73,7 @@ function [changingLanes, targetLaneIdxs, accs] = globalMOBIL(obj)
             else
                 % 顺便设置一下偏置系数
                 if canReachNextEdges(vNo) % 如果本车道能到下一个edge，就不倾向于换道
-                    biases(vNo,2) = biases(vNo,2) + 2; % 同样，这个参数需要调节 5 → 2
+                    biases(vNo,2) = biases(vNo,2) + 5; % 同样，这个参数需要调节 5 → 2
                 else % 如果本车道到不了下一个edge，就根据意图来判断
                     switch dirs(vNo)
                         case {-1,2} % 停车，右转
@@ -117,13 +117,13 @@ function [changingLanes, targetLaneIdxs, accs] = globalMOBIL(obj)
                     else % 计算向左换道的收益
                         % (a_ego_hat - a_ego) + p*((a_hat_fhat - a_fhat)+(a_hat_f - a_f)) > delta_a + a_bias
                         a_ego = noLC_accs(vNo);
-                        a_ego_hat = obj.vehicles{vNo}.idm(spds(vNo),surrVehSpdMat0(2*vNo-1,1),surrVehDistMat0(2*vNo-1,1),spdDesList(vNo));
+                        a_ego_hat = obj.vehicles{vNo}.idm(spds(vNo),surrVehSpdMat0(2*vNo-1,1),surrVehDistMat0(2*vNo-1,1),spdDesList(vNo)*obj.vehicles{vNo}.speed_factor(1)*0.5);
                         u_ego = a_ego_hat - a_ego;
                         veh_f_No = surroundVehMat0(2*vNo,2);
                         if veh_f_No % 如果存在后车
                             a_f = noLC_accs(veh_f_No);
                             a_hat_f = obj.vehicles{veh_f_No}.idm(spds(veh_f_No),surrVehSpdMat0(2*vNo-1,2), ...
-                                surrVehDistMat0(2*vNo,2)+surrVehDistMat0(2*vNo-1,2),spdDesList(veh_f_No));
+                                surrVehDistMat0(2*vNo,2)+surrVehDistMat0(2*vNo-1,2),spdDesList(veh_f_No)*obj.vehicles{veh_f_No}.speed_factor(1)*0.5);
                             u_f = a_hat_f - a_f;
                         else
                             u_f = 0;
@@ -132,7 +132,7 @@ function [changingLanes, targetLaneIdxs, accs] = globalMOBIL(obj)
                         if veh_hatf_No
                             a_hatf = noLC_accs(veh_hatf_No);
                             a_hat_hatf = obj.vehicles{veh_hatf_No}.idm(spds(veh_hatf_No),spds(vNo), ...
-                                surrVehDistMat0(2*vNo,1),spdDesList(veh_hatf_No));
+                                surrVehDistMat0(2*vNo,1),spdDesList(veh_hatf_No)*obj.vehicles{veh_hatf_No}.speed_factor(1)*0.5);
                             u_hatf = a_hat_hatf - a_hatf;
                         else
                             u_hatf = 0;
@@ -145,14 +145,14 @@ function [changingLanes, targetLaneIdxs, accs] = globalMOBIL(obj)
                     else % 计算向右换道的收益
                         % (a_ego_hat - a_ego) + p*((a_hat_fhat - a_fhat)+(a_hat_f - a_f)) > delta_a + a_bias
                         a_ego = noLC_accs(vNo);
-                        a_ego_hat = obj.vehicles{vNo}.idm(spds(vNo),surrVehSpdMat0(2*vNo-1,3),surrVehDistMat0(2*vNo-1,3),spdDesList(vNo));
+                        a_ego_hat = obj.vehicles{vNo}.idm(spds(vNo),surrVehSpdMat0(2*vNo-1,3),surrVehDistMat0(2*vNo-1,3),spdDesList(vNo)*obj.vehicles{vNo}.speed_factor(1)*0.5);
                         u_ego = a_ego_hat - a_ego;
                         veh_f_No = surroundVehMat0(2*vNo,2);
                         if u_f ~= -999 % 如果计算过一遍，就不要再计算啦
                             if veh_f_No % 如果存在后车
                                 a_f = noLC_accs(veh_f_No);
                                 a_hat_f = obj.vehicles{veh_f_No}.idm(spds(veh_f_No),surrVehSpdMat0(2*vNo-1,2), ...
-                                    surrVehDistMat0(2*vNo,2)+surrVehDistMat0(2*vNo-1,2),spdDesList(veh_f_No));
+                                    surrVehDistMat0(2*vNo,2)+surrVehDistMat0(2*vNo-1,2),spdDesList(veh_f_No)*obj.vehicles{veh_f_No}.speed_factor(1)*0.5);
                                 u_f = a_hat_f - a_f;
                             else
                                 u_f = 0;
@@ -162,7 +162,7 @@ function [changingLanes, targetLaneIdxs, accs] = globalMOBIL(obj)
                         if veh_hatf_No
                             a_hatf = noLC_accs(veh_hatf_No);
                             a_hat_hatf = obj.vehicles{veh_hatf_No}.idm(spds(veh_hatf_No),spds(vNo), ...
-                                surrVehDistMat0(2*vNo,3),spdDesList(veh_hatf_No));
+                                surrVehDistMat0(2*vNo,3),spdDesList(veh_hatf_No)*obj.vehicles{veh_hatf_No}.speed_factor(1)*0.5);
                             u_hatf = a_hat_hatf - a_hatf;
                         else
                             u_hatf = 0;

@@ -62,7 +62,7 @@ function params = LianYG_YG_params()
 
 
     %% 云端周车跟踪设置
-    params.maxVehNum = 20;            %最多追踪多少辆周车
+    params.maxVehNum = 60;            %最多追踪多少辆周车
     params.egoClass = 2;              % 1 Car 2 Truck
     params.egoLength = 18;            % m 自车总长度
     params.egoWidth = 2.55;           % m 自车宽度
@@ -71,8 +71,11 @@ function params = LianYG_YG_params()
 
     %% 车辆参数更新（观测）
     params.lc_thred = 0.5;            % m 偏离车道中心多少算作正在换道状态
-
-
+    params.rushness_dict = dictionary(string([]),[]); % 自车纵向跟驰模型的delta，加速急不急，一般小车是4
+    params.rushness_dict('private') = 4;
+    params.rushness_dict('bus') = 3;
+    params.rushness_dict('truck') = 2;
+    params.rushness_dict('trailer') = 1.5;
     %% 自车安全仲裁
     params.D_SAFE = 0.2;                % m 安全距离
     params.lc_default_dev = 3;          % m 用于安全仲裁的假设横向换道距离
@@ -84,7 +87,7 @@ function params = LianYG_YG_params()
     % 案例结果保存
     currentTime = datetime('now', 'Format', 'yyyy-MM-dd_HH-mm-ss'); % 1. 获取当前时间（精确到秒）
     timeStr = char(currentTime); % 2. 转换为字符串（char类型，可直接用于保存/输出）
-    params.case_name = ['LianYG_YanC_no' num2str(params.case_number) '_' ...
+    params.case_name = ['LygYc_no' num2str(params.case_number) '_' ...
         num2str(params.Avg_Stream) '_' params.Case_Name '_' timeStr];
     params.output_dir = ['output\' params.case_name];
     % 动图录制
@@ -92,6 +95,35 @@ function params = LianYG_YG_params()
     params.gifName = 'LianYG_YanC_01.gif'; % 动图命名名称
     params.gifDelayTime = 0.1;        % 秒 动图两帧之间的实际间隔时间（非仿真时间，决定帧率）
  
+    %% 生成路网图模型参数
+    % 车道纵向的平均节点距离
+    params.graph.avg_node_dist = 5.0;    % 车道纵向的平均节点距离
+
+    % 车道属性特征
+    params.graph.lane_feat.center = 0;   % 车道级的3条纵向节点集，车道中心线的特征
+    params.graph.lane_feat.left = 1.0;   % 车道级的3条纵向节点集，车道左边缘的特征
+    params.graph.lane_feat.right = 0.5;  % 车道级的3条纵向节点集，车道右边缘的特征
+    params.graph.lane_feat.bound = 2.0;  % 车道级的3条纵向节点集，道路边缘的特征 
+    params.graph.lane_feat.junction = 0.1; % Junction内的所有节点的特征
+
+    % 边的特征
+    params.graph.link_wight.next = -0.5; % 顺着道路连接方向的边的特征
+    params.graph.link_wight.side = 0.5;  % 包含横向移动的边的特征（可以修改成向左向右不同）
+    params.graph.link_wight.junction = 0.0; % 路口连接的网状结构
+
+    % 标记edge/lane/edge组合的起点终点
+    params.graph.marker.start = 1;       % 自由终点
+    params.graph.marker.end = -1;        % 自由起点
+
+    % 弹性带方法松弛Junction节点位置参数
+    params.graph.slack.stiffness = 1;     % 弹簧刚度系数
+    params.graph.slack.dump = 0.5;        % 弹簧阻尼系数
+    params.graph.slack.lr = 0.15;        % 学习率更新
+    params.graph.slack.max_iter = 200;    % 最大迭代数
+    params.graph.slack.tol = 1e-2;        % 收敛误差范围  
+    params.graph.slack.repel = 150;         % 不同节点之间的排斥力刚度
+    params.graph.slack.pure_contract_iter = 20; % 纯收缩的步数，此步数后启用收缩+排斥
+    params.graph.slack.clip = 0.5;        % 一次最多更新的大小 m
 
 
 

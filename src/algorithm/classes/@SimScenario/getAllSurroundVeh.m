@@ -43,7 +43,7 @@ function [surroundVehMat,surrVehDistMat,surrVehSpdMat] = getAllSurroundVeh(obj)
     for vNo = 1:vehNumber % 对每辆车寻找周车
         opsState = opsStates(vNo);
         if opsState % 如果没有终止
-            bidx = 2*(vNo-1)+1;
+            bidx = 2*vNo-1;
             currentEdgeID = edgeIDs{vNo};
             currentJunctionID = junctionIDs{vNo};
             remDist = remDists(vNo);
@@ -84,7 +84,11 @@ function [surroundVehMat,surrVehDistMat,surrVehSpdMat] = getAllSurroundVeh(obj)
 
             if front_veh_No % 如果是同一个lane的前车，那么对其来说我就是后车没得跑
                 surroundVehMat(front_veh_No*2,2) = vNo;
-                surrVehDistMat(front_veh_No*2,2) = front_veh_dist;
+                if obj.isvalid_vehNo(front_veh_No)
+                    surrVehDistMat(front_veh_No*2,2) = front_veh_dist - obj.vehicles{front_veh_No}.L;
+                else
+                    surrVehDistMat(front_veh_No*2,2) = front_veh_dist;
+                end
                 surrVehSpdMat(front_veh_No*2,2) = spds(vNo);
             end
 
@@ -128,7 +132,11 @@ function [surroundVehMat,surrVehDistMat,surrVehSpdMat] = getAllSurroundVeh(obj)
                 front_veh_No, front_veh_spd,spds,sameJunctionList,politenss,xs,ys,dirs,vehicleDriveLine,'direct');
             
             surroundVehMat(bidx,2) = front_veh_No; % 如果检查了就是没有，那就大大方方写0,否则就是有号码
-            surrVehDistMat(bidx,2) = front_veh_dist;
+            if obj.isvalid_vehNo(front_veh_No)
+                surrVehDistMat(bidx,2) = front_veh_dist - obj.vehicles{front_veh_No}.L;
+            else
+                surrVehDistMat(bidx,2) = front_veh_dist;
+            end
             if front_veh_No
                 surrVehSpdMat(bidx,2) = front_veh_spd;
             else
@@ -195,7 +203,11 @@ function [surroundVehMat,surrVehDistMat,surrVehSpdMat] = getAllSurroundVeh(obj)
 
                 if left_front_veh_No % 如果已经在左边的车道找到了左前车，那么对其来说我就是右后车啦
                     surroundVehMat(left_front_veh_No*2,3) = vNo;
-                    surrVehDistMat(left_front_veh_No*2,3) = left_front_veh_dist;
+                    if obj.isvalid_vehNo(left_front_veh_No)
+                        surrVehDistMat(left_front_veh_No*2,3) = max(left_front_veh_dist - obj.vehicles{left_front_veh_No}.L,0);
+                    else
+                        surrVehDistMat(left_front_veh_No*2,3) = left_front_veh_dist;
+                    end
                     surrVehSpdMat(left_front_veh_No*2,3) = spds(vNo);
                     
                 % 如果没检查出来，再检查虚拟车
@@ -216,7 +228,11 @@ function [surroundVehMat,surrVehDistMat,surrVehSpdMat] = getAllSurroundVeh(obj)
                 end
 
                 surroundVehMat(bidx,1) = left_front_veh_No; % 如果检查了就是没有，那就大大方方写0,否则就是有号码
-                surrVehDistMat(bidx,1) = left_front_veh_dist;
+                if obj.isvalid_vehNo(left_front_veh_No)
+                    surrVehDistMat(bidx,1) = max(left_front_veh_dist - obj.vehicles{left_front_veh_No}.L,0);
+                else
+                    surrVehDistMat(bidx,1) = left_front_veh_dist;
+                end
                 if left_front_veh_No
                     surrVehSpdMat(bidx,1) = left_front_veh_spd;
                 else
@@ -253,7 +269,11 @@ function [surroundVehMat,surrVehDistMat,surrVehSpdMat] = getAllSurroundVeh(obj)
 
                 if right_front_veh_No % 如果已经在右边的车道找到了右前车，那么对其来说我就是左后车啦
                     surroundVehMat(right_front_veh_No*2,1) = vNo;
-                    surrVehDistMat(right_front_veh_No*2,1) = right_front_veh_dist;
+                    if obj.isvalid_vehNo(right_front_veh_No)
+                        surrVehDistMat(right_front_veh_No*2,1) = max(right_front_veh_dist - obj.vehicles{right_front_veh_No}.L,0);
+                    else
+                        surrVehDistMat(right_front_veh_No*2,1) = right_front_veh_dist;
+                    end
                     surrVehSpdMat(right_front_veh_No*2,1) = spds(vNo);
                     
                 % 如果没检查出来，再检查虚拟车
@@ -273,7 +293,11 @@ function [surroundVehMat,surrVehDistMat,surrVehSpdMat] = getAllSurroundVeh(obj)
                 end
 
                 surroundVehMat(bidx,3) = right_front_veh_No; % 如果检查了就是没有，那就大大方方写0,否则就是有号码
-                surrVehDistMat(bidx,3) = right_front_veh_dist;
+                if obj.isvalid_vehNo(right_front_veh_No)
+                    surrVehDistMat(bidx,3) = max(right_front_veh_dist - obj.vehicles{right_front_veh_No}.L,0);
+                else
+                    surrVehDistMat(bidx,3) = right_front_veh_dist;
+                end
                 if right_front_veh_No
                     surrVehSpdMat(bidx,3) = right_front_veh_spd;
                 else

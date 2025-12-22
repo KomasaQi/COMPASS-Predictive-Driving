@@ -1,5 +1,7 @@
 classdef Vehicle4COMPASS %#codegen
     properties
+        % 车辆ID 
+        id = 'unspecified'; % 车辆全局ID
         % 车辆几何参数
         L = 5;       % 车辆长度
         W = 2;       % 车辆宽度
@@ -8,12 +10,17 @@ classdef Vehicle4COMPASS %#codegen
         a_max = 3;   % 最大加速度 
         b_comf= 2;   % 舒适减速度
         v_des = 30;  % 期望车速
+        max_spd = 40; % 物理最高车速
         delta = 4;   % 加速度系数
         T_hw  = 1;   % 期望跟车时距
         s_min = 3;   % 最小车间距（静止时）
+        speed_factor = [1 0.1 0.9 1.2]; % 速度系数：[均值 方差 下限 上限]（单位：1倍道路限速）
+
 
         % mobil换道参数
         politenss = 0.2; % 礼让系数
+        lc_speed_gain = 100; % 为增加车速而换道的系数
+        lc_speed_gain_right = 0.1; % 向右换道增加速度的倾向性
 
         % idm参数方差
         sigma_a_max = 0.3;   % 最大加速度
@@ -31,7 +38,7 @@ classdef Vehicle4COMPASS %#codegen
         mu = 0.8;    % 路面附着系数
 
 
-
+    
         % 路线意图
         route       % 路线cell(routeNum,1)--->ID
         routeIdx    % 当前（创造场景时）在哪一段范围内

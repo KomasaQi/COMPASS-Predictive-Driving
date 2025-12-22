@@ -1,51 +1,12 @@
 %#######################COMPASS交互式推演模块可视化检查#########################
 %% 初始化推演场景
-% 获取当前位置推演用的地图
-new_edgeID_dist = genEdgeID_dist(ego.edgeID,ego.lanePosition,resolution);
-if isKey(simRoadNetwork_dict,new_edgeID_dist)
-    edgeID_dist = new_edgeID_dist;
-else
-    disp('当前位置没有记录新的推演地图，别担心哒，仍然使用上一个推演地图哦')
+initCurrentScenario
+
+% 判断是否需要展示云端数据库回放对比
+compare_database = false;
+if exist('cloud_db') && cloud_db.isusable() %#ok
+    compare_database = true;
 end
-
-% 生成推演场景
-s = SimScenario('net',simRoadNetwork_dict{edgeID_dist});
-
-% 获取当前对象跟踪器映射
-vehKeys = objTracking_dict.keys;
-
-% 添加自车和他车到场景
-egoState = convertVehState(new_entity_dict,lane_from_connection_dict, ...
-           lane_to_connection_dict,s,ego);
-
-s = s.addVehicle(Vehicle4COMPASS('route',ego.route,...
-    'routeIdx',ego.routeIdx,'routeNum',length(ego.route),'edgeID',ego.edgeID,'laneID',ego.laneID,...
-                'L',ego.length,'W',ego.width,'color',ego.sumo_params.color),egoState);
-
-for i = 1:length(vehKeys)
-    vehKey = vehKeys{i};
-    % 下面进行判断车辆是否在仿真路网内部
-    vehNo = objTracking_dict(vehKey);
-    if s.net.isInNet(vehicleDummies{vehNo}.edgeID)
-        vehState = convertVehState(new_entity_dict,lane_from_connection_dict, ...
-                   lane_to_connection_dict,s,vehicleDummies{vehNo});
- 
-        s = s.addVehicle(Vehicle4COMPASS('route',vehicleDummies{vehNo}.route,...
-            'routeIdx',vehicleDummies{vehNo}.routeIdx,...
-            'edgeID',vehicleDummies{vehNo}.edgeID,...
-            'laneID',vehicleDummies{vehNo}.laneID, ...
-            'routeNum',length(vehicleDummies{vehNo}.route), ...
-            'v_des',vehicleDummies{vehNo}.v_des,...
-            'L',vehicleDummies{vehNo}.length,...
-            'W',vehicleDummies{vehNo}.width,...
-            'color',vehicleDummies{vehNo}.vehicle.PlotColor),vehState);
-    end
-
-end
-
-% 推演场景初始化
-s = s.initSenario();
-
 
 %% 可视化界面绘制
 % 获取仿真检查界面的ID
@@ -71,6 +32,10 @@ hold on
 veh_text_handles = cell(s.vehNum,1);
 veh_dot_handles = cell(s.vehNum,1);
 veh_driveLine_handles = cell(s.vehNum,1);
+if compare_database
+    playback_veh_handles = cell(s.vehNum,1);
+    sim_start_time = traci.simulation.getTime;
+end
 
 for i = 1:s.vehNum
     % 设置车辆轨迹线结果
@@ -98,8 +63,16 @@ for i = 1:s.vehNum
     end
 
 
-
     % 设置车头车尾位置
+    if compare_database
+        theVehID = s.vehicles{i}.id;
+        theVehData = db.getVehicleDataAtTime(theVehID,sim_start_time - db.getDatabaseInitTime);
+        if ~isempty(fieldnames(theVehData))
+            playback_veh_handles{i} = plot(theVehData.pos(1)+[0,-cos(theVehData.heading)*s.vehicles{i}.L],...
+            theVehData.pos(2)+[0,-sin(theVehData.heading)*s.vehicles{i}.L], ...
+            "LineWidth",5,'Color',[(s.vehicles{i}.color*0.8+(1-0.8)*[1 0 0]),0.5]);
+        end
+    end
     veh_dot_handles{i} = plot(s.vehState(i,s.var.x)+[0,-cos(s.vehState(i,s.var.heading))*s.vehicles{i}.L],...
         s.vehState(i,s.var.y)+[0,-sin(s.vehState(i,s.var.heading))*s.vehicles{i}.L], ...
         "LineWidth",5,'Color',s.vehicles{i}.color);

@@ -10,7 +10,7 @@ if ~isempty(outVehicleList)
         deleteID = outVehicleList{j};
         entityIdx = objTracking_dict(deleteID);
         availlableObjQueue = availlableObjQueue.enqueue(entityIdx);% 把可用实体还回去
-        objTracking_dict(deleteID) = [];% 删除掉最早的车辆与实体的对应关系
+        objTracking_dict(deleteID) = [];%#ok 删除掉最早的车辆与实体的对应关系
     
         trajectory(vehicleDummies{entityIdx}.vehicle,initWayPoints,initSpeed);
     end
@@ -25,7 +25,7 @@ if ~isempty(addVehicleList)
         objTracking_dict(addVehID) = entityIdx;% 建立新加入车辆与显示实体的对应关系
 
         vehicleDummies{entityIdx} = ...
-            updataVehicleData(vehicleDummies{entityIdx},entity_dict,addVehID,sampleTime);
+            updataVehicleData(vehicleDummies{entityIdx},entity_dict,addVehID,sampleTime); %#ok
         trajectory(vehicleDummies{entityIdx}.vehicle,...
             vehicleDummies{entityIdx}.waypoints,vehicleDummies{entityIdx}.speed);
     end
@@ -38,7 +38,7 @@ if ~isempty(existingVehicleList)
         existID = existingVehicleList{j};
         entityIdx = objTracking_dict(existID);
         vehicleDummies{entityIdx} = ...
-            updataVehicleData(vehicleDummies{entityIdx},entity_dict,existID,sampleTime);
+            updataVehicleData(vehicleDummies{entityIdx},entity_dict,existID,sampleTime); %#ok
         trajectory(vehicleDummies{entityIdx}.vehicle,...
             vehicleDummies{entityIdx}.waypoints,vehicleDummies{entityIdx}.speed); 
     end

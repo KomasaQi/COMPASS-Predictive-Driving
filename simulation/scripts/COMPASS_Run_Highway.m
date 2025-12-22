@@ -10,7 +10,10 @@ lastDecisionTimeGap = 0;
 theScene = []; % 初始化一下最优决策场景theScene
 % 加载地图数据
 if ~exist('entity_dict','var')
+    global entity_dict connection_dict dirArrowMap lane_to_connection_dict  %#ok
+    global lane_from_connection_dict new_entity_dict proxyMat smallMap map to_connection_dict %#ok
     load(params.mat_data_name);
+    
 end
 vehicleID = params.vehicleID;
 if params.if_start_sim
@@ -70,7 +73,7 @@ vehicleDummies = cell(1,maxVehNum);
 vehTrajDummies = cell(1,maxVehNum+1);
 initHeading_cos_sin = [1,0];
 initPos = zeros(1,3);
-initWayPoints = [initPos(1,[1 2]);1,1];
+initWayPoints = initPos(1,[1 2])+[0 0;1 1];
 initSpeed = 1e-2;
 initLanePosition = 0;
 

@@ -534,7 +534,17 @@ classdef SimScenario
             end
             % spdDesList(2) = 1/3.6; % #要修改，我自己随意为了测试自车行为加入的
         end
-
+        
+        function flag = isvalid_vehNo(obj, vehNo)
+            % 车的No，-1为还未检查，无车为0，虚拟车为666，无法换道则为999，
+            % 但是我们可以用更简洁的方式，应对可能的特殊车辆变化，只要>0且小于一个大数，如100即可。
+            if vehNo > 0 && vehNo < 100
+                flag = true;
+            else
+                flag = false;
+            end
+            
+        end
 
         % 一次性获取所有的当前edge速度限制和下一个edge的速度限制
         function [spdLims,nextSpdLims] = getAllSpdLim(obj) % 需要事先初始化好dirs，nextEdgeIDs
