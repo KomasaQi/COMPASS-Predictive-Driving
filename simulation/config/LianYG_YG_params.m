@@ -5,7 +5,7 @@ function params = LianYG_YG_params()
     params.case_number = 1;      % 仿真案例代号（1~28）
     params.sampleTime = 0.1;     % DrivingScenario采样时间与SUMO同默认0.1s
     params.if_start_sim  = true; % 是否进行仿真 
-    params.mat_data_name = 'ProcessedMap_lianyg_yanc.mat'; % 路网预处理文件名称
+    params.mat_data_name = 'ProcessedMap_lianyg_yanc_w_type.mat'; % 路网预处理文件名称
     params.vehicleID = 't_0';
 
     % 案例相关参数读取
@@ -106,6 +106,11 @@ function params = LianYG_YG_params()
     params.graph.lane_feat.bound = 2.0;  % 车道级的3条纵向节点集，道路边缘的特征 
     params.graph.lane_feat.junction = 0.1; % Junction内的所有节点的特征
 
+    % 车道类型特征
+    params.graph.road_type_feat.highway_motorway = 1.0; % 不同车道类型的特征
+    params.graph.road_type_feat.others = 0.0;           % 除了高速主干道以外的其他类型
+    params.graph.junction_speedlim = 33.33;             % 交叉口处的限速
+
     % 边的特征
     params.graph.link_wight.next = -0.5; % 顺着道路连接方向的边的特征
     params.graph.link_wight.side = 0.5;  % 包含横向移动的边的特征（可以修改成向左向右不同）
@@ -125,10 +130,43 @@ function params = LianYG_YG_params()
     params.graph.slack.pure_contract_iter = 20; % 纯收缩的步数，此步数后启用收缩+排斥
     params.graph.slack.clip = 0.5;        % 一次最多更新的大小 m
 
+    % 用于可视化的colormap函数
+    params.graph.vis.color_map_lanefeat = @(Graph) genColorMap_laneFeat(Graph); % 车道特征
+    params.graph.vis.color_map_freeends = @(Graph) genColorMap_freeEnds(Graph); % 自由端点特征
+    params.graph.vis.color_map_laneno = @(Graph) genColorMap_laneNo(Graph);     % 车道编号特征
+    params.graph.vis.color_map_speedlim = @(Graph) genColorMap_speedlim(Graph); % 速度限制特征
+    params.graph.vis.color_map_roadtype = @(Graph) genColorMap_roadType(Graph); % 速度限制特征
 
 
 end
 
+%% 辅助函数
+function colorMat = genColorMap_laneFeat(Graph)
 
-
-
+       color_map= dictionary(20,{[1 0 0]},0,{[1 1 0]},5,{[0 0 1]},10,{[0 1 0]},1,{[1,0,1]}); % 用于可视化的colormap
+    nodes_colors = arrayfun(@(c) color_map{c}, round(Graph.Nodes.nodes_type_feat*10),'UniformOutput',false);
+    colorMat = reshape([nodes_colors{:}],3,[])';
+end
+function colorMat = genColorMap_freeEnds(Graph)
+    color_map= dictionary(-1,{[1 0 0]},0,{[0 0 1]},1,{[0 1 0]}); % 用于可视化的colormap
+    nodes_colors = arrayfun(@(c) color_map{c}, round(Graph.Nodes.free_ends_feat),'UniformOutput',false);
+    colorMat = reshape([nodes_colors{:}],3,[])';
+end
+function colorMat = genColorMap_laneNo(Graph)
+    colorMat = Graph.Nodes.lane_number*ones(1,3);
+    colorMat = colorMat + 1/3;
+    colorMat = colorMat/max(colorMat,[],"all");
+end
+function colorMat = genColorMap_speedlim(Graph)
+    max_speed = 33.33;
+    cmap = jet(256);
+    colorMat = round(Graph.Nodes.speed_lim/max_speed*255)+1;
+    colorMat(colorMat < 1) = 1;
+    colorMat(colorMat > 256) = 256;
+    colorMat = cmap(colorMat,:);
+end
+function colorMat = genColorMap_roadType(Graph)
+    color_map= dictionary(0,{[0 0 1]},1,{[1 0 0]}); % 用于可视化的colormap
+    nodes_colors = arrayfun(@(c) color_map{c}, round(Graph.Nodes.road_type),'UniformOutput',false);
+    colorMat = reshape([nodes_colors{:}],3,[])';
+end

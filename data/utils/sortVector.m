@@ -63,22 +63,22 @@ function sorted_idxs = sortVector(vecs)
 
     % 第六步：生成两个候选路径（正向 和 反向）
     forward_path  = sorted_order;           % 沿主方向从小到大
-    backward_path = flipud(sorted_order);   % 沿主方向从大到小
+    % backward_path = flipud(sorted_order);   % 沿主方向从大到小
+    % 
+    % % 第七步：定义“改动程度”的度量标准
+    % % 原始索引顺序为 [1; 2; 3; ...; n]
+    % original_order = (1:n)';
+    % 
+    % % 计算每个候选路径与原始顺序的“绝对位移和”
+    % % 即 sum(|candidate(i) - i|)，i 从 1 到 n
+    % cost_forward  = sum(abs(forward_path  - original_order));
+    % cost_backward = sum(abs(backward_path - original_order));
 
-    % 第七步：定义“改动程度”的度量标准
-    % 原始索引顺序为 [1; 2; 3; ...; n]
-    original_order = (1:n)';
-
-    % 计算每个候选路径与原始顺序的“绝对位移和”
-    % 即 sum(|candidate(i) - i|)，i 从 1 到 n
-    cost_forward  = sum(abs(forward_path  - original_order));
-    cost_backward = sum(abs(backward_path - original_order));
-
-    % 第八步：选择改动更小的方向作为最终结果
-    if cost_forward <= cost_backward
+    % % 第八步：选择改动更小的方向作为最终结果
+    % if cost_forward <= cost_backward
         sorted_idxs = forward_path;
-    else
-        sorted_idxs = backward_path;
-    end
+    % else
+    %     sorted_idxs = backward_path;
+    % end
 
 end

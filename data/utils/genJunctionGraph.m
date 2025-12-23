@@ -1,4 +1,4 @@
-function [src, tgt, insert_nodes_pos, weights,nodes_type_feat,free_ends_feat] = genJunctionGraph(...
+function [src, tgt, weights,insertNodesTable] = genJunctionGraph(...
     starter_poss, ender_poss, starter_idxs, ender_idxs, old_total_node_num)
     global params %#ok
     
@@ -210,8 +210,12 @@ function [src, tgt, insert_nodes_pos, weights,nodes_type_feat,free_ends_feat] = 
     if ~early_stop
         disp(['达到最大迭代次数'  num2str(iter) '步未收敛，迭代停止，当前位置误差为'  num2str(max(abs(d_node_pos),[],"all"))]);
     end
-    insert_nodes_pos = insert_nodes_pos(1:insert_nodes_num,:);
+    nodes_pos = insert_nodes_pos(1:insert_nodes_num,:);
     weights = params.graph.link_wight.junction*ones(size(src,1),1);
     nodes_type_feat = params.graph.lane_feat.junction*ones(insert_nodes_num,1);
     free_ends_feat = zeros(insert_nodes_num,1);
+    lane_number = zeros(insert_nodes_num,1);
+    road_type = params.graph.road_type_feat.highway_motorway*ones(insert_nodes_num,1);
+    speed_lim = params.graph.junction_speedlim*ones(insert_nodes_num,1);
+    insertNodesTable = table(nodes_pos,nodes_type_feat,free_ends_feat,lane_number,road_type,speed_lim);
 end

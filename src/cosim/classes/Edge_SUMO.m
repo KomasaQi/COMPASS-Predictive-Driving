@@ -4,6 +4,7 @@ classdef Edge_SUMO
         from
         to
         laneNum
+        type
     end
     methods
         function obj = Edge_SUMO(varargin)

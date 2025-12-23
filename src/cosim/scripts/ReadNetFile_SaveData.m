@@ -1,8 +1,9 @@
 %% 定义路网文件位置和名称
 roadnetFileName = 'lianyg_yanc.net.xml';
-roadnetFilePath = ['E:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\SUMO与matlab联合仿真调试\' roadnetFileName];
+saveRootPath = [pwd '\data\maps\'];
+roadnetFilePath = [saveRootPath roadnetFileName];
 mapName = strrep(roadnetFileName, '.net.xml', '');
-DatafileName = ['ProcessedMap_' mapName '.mat'];
+DatafileName = [saveRootPath 'ProcessedMap_' mapName '_w_type.mat'];
 if exist(DatafileName,'file') == 2
     disp(['数据文件' DatafileName '已经存在,未生成新文件嘻嘻'])
 else
@@ -15,7 +16,7 @@ disp(['文件读取成功！CPU时间花费：' num2str(timeReadingFile) '秒'])
 %% 构建实体字典和关系字典
 disp('正在构建实体字典、关系字典中~')
 tic;
-[entity_dict,connection_dict,to_connection_dict] = StoreMapDictionary(map);
+[entity_dict,connection_dict,to_connection_dict,type_dict] = StoreMapDictionary(map);
 new_entity_dict = correctInternalLanesShape(entity_dict,connection_dict);
 [lane_from_connection_dict, lane_to_connection_dict] = genLaneConnectionDict(connection_dict);
 timeReadingFile = toc;
@@ -36,16 +37,17 @@ disp(['小地图数据构建完成！CPU时间花费：' num2str(timeReadingFile
 %% 保存处理好的路网数据
 disp('正在保存处理好的地图数据！')
 save(DatafileName,'map','connection_dict','entity_dict','proxyMat','dirArrowMap', ...
-    'smallMap','new_entity_dict','to_connection_dict','lane_to_connection_dict','lane_from_connection_dict')
+    'smallMap','new_entity_dict','to_connection_dict','lane_to_connection_dict','lane_from_connection_dict','type_dict')
 disp(['数据文件' DatafileName '保存成功~'])
 end
 
 
 %% 子函数库
-function [entity_dict,connection_dict,to_connection_dict] = StoreMapDictionary(map)
+function [entity_dict,connection_dict,to_connection_dict,type_dict] = StoreMapDictionary(map)
     entity_dict = dictionary(); % 初始化实体字典
     connection_dict = dictionary(string([]),{}); % 初始化关系字典
     to_connection_dict = dictionary(string([]),{}); % 初始化to关系字典
+    type_dict = dictionary(string([]),{});  % 道路类型字典
     processFlag = false;
     childrenNum = length(map.Children);
     if childrenNum > 1000
@@ -69,6 +71,7 @@ function [entity_dict,connection_dict,to_connection_dict] = StoreMapDictionary(m
 
        elseif strcmp(theChild.Name,'edge')
             id = getAttribute(theChild,'id'); 
+            
             if strncmp(id, ':', 1) % 如果第一个字符是':'，那么是internalEdge
                 laneNum = 0;
                 for j = 1:length(theChild.Children)
@@ -87,6 +90,7 @@ function [entity_dict,connection_dict,to_connection_dict] = StoreMapDictionary(m
                 edge = Edge_SUMO('id',id,'laneNum',laneNum);
 
             else
+                
                 laneNum = 0;
                 for j = 1:length(theChild.Children)
                     if strcmp(theChild.Children(j).Name,'lane')
@@ -103,7 +107,8 @@ function [entity_dict,connection_dict,to_connection_dict] = StoreMapDictionary(m
                 end
                 edge = Edge_SUMO('id',id,'laneNum',laneNum,...
                     'from',getAttribute(theChild,'from'), ...
-                    'to',getAttribute(theChild,'to'));
+                    'to',getAttribute(theChild,'to'),...
+                    'type',getAttribute(theChild,'type'));
             end
             entity_dict(id) = {edge};
 
@@ -141,8 +146,31 @@ function [entity_dict,connection_dict,to_connection_dict] = StoreMapDictionary(m
             to_connection_dict{id}.connection_num = oldConnectNum + 1;
             to_connection_dict{id}.connections{oldConnectNum+1} = connection;
 
+       elseif strcmp(theChild.Name,'type')
+            id = getAttribute(theChild,'id');
+            speed_lim = ones(1,3)*str2double(getAttribute(theChild,'speed'));
+            for j = 1:length(theChild.Children)
+                restrict_child = theChild.Children(j);
+                vClass = getAttribute(restrict_child,'vClass');
+                new_lim = str2double(getAttribute(restrict_child,'speed'));
+                % 对不同车型的特殊规定（如果存在这样的独立条款）就进行特殊限速
+                if strcmpi(vClass,'private')
+                    speed_lim(1) = new_lim;
+                elseif strcmpi(vClass,'truck')
+                    speed_lim(2) = new_lim;
+                elseif strcmpi(vClass,'trailer')
+                    speed_lim(3) = new_lim;
+                end
 
+            end
+            road_type = Type_SUMO('id',id,'priority',str2double(getAttribute(theChild,'priority')),...
+                    'speed_lim',speed_lim);
+
+
+            type_dict(id) = {road_type};
+            
        end
+
        if processFlag && mod(i,500)==0
             disp(['字典提取处理进度：' num2str(i) '节点/' num2str(childrenNum) '节点'])
        end

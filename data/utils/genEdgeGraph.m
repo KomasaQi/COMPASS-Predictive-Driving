@@ -15,7 +15,7 @@
 % （上述所有连接都是从i向车道前进方向i+1的有向链接）
 
 function G_edge = genEdgeGraph(edgeID,avg_node_dist,min_lane_long_node_num, lane_width_node_num, verbose)
-    global entity_dict connection_dict lane_to_connection_dict lane_from_connection_dict to_connection_dict %#ok
+    global entity_dict connection_dict type_dict lane_to_connection_dict lane_from_connection_dict to_connection_dict %#ok
     global params %#ok
     if nargin < 2 || isempty(avg_node_dist)
         avg_node_dist = 5.0; % 期望的平均节点距离
@@ -52,6 +52,7 @@ function G_edge = genEdgeGraph(edgeID,avg_node_dist,min_lane_long_node_num, lane
         inner_con_per_lane = (long_node_num - 1) * 7; 
         for i = 1:laneNum
             laneID = entity_dict{edgeID}.getLaneID(i-1);
+            laneNo = i-1;
             lane_type = 'middle_lane';
             if laneNum == 1
                 lane_type = 'single_lane';
@@ -63,24 +64,26 @@ function G_edge = genEdgeGraph(edgeID,avg_node_dist,min_lane_long_node_num, lane
                 end
                 
             end
-            laneGraphs{i} = genLaneGraph(laneID,long_node_num,offset_dist,verbose,lane_type);
+            laneGraphs{i} = genLaneGraph(laneID,long_node_num,offset_dist,verbose,lane_type,laneNo);
             
             
         end
         src = zeros(2*(long_node_num-1)*(laneNum-1) + inner_con_per_lane*laneNum, 1);
         tgt = zeros(2*(long_node_num-1)*(laneNum-1) + inner_con_per_lane*laneNum, 1);
         weights = zeros(2*(long_node_num-1)*(laneNum-1) + inner_con_per_lane*laneNum, 1);
-        nodes_pos = zeros(nodes_number_per_lane*laneNum,2);
-        nodes_type_feat = zeros(nodes_number_per_lane*laneNum,1);
-        free_ends_feat = zeros(nodes_number_per_lane*laneNum,1);
+        % nodes_pos = zeros(nodes_number_per_lane*laneNum,2);
+        % nodes_type_feat = zeros(nodes_number_per_lane*laneNum,1);
+        % free_ends_feat = zeros(nodes_number_per_lane*laneNum,1);
+        nodeTables = cell(laneNum,1);
         for i = 1:laneNum
             % 节点特征收集
-            nodes_pos((i-1)*nodes_number_per_lane+(1:nodes_number_per_lane),:) = ...
-                laneGraphs{i}.Nodes.nodes_pos;
-            nodes_type_feat((i-1)*nodes_number_per_lane+(1:nodes_number_per_lane),:) = ...
-                laneGraphs{i}.Nodes.nodes_type_feat;
-            free_ends_feat((i-1)*nodes_number_per_lane+(1:nodes_number_per_lane),:) = ...
-                laneGraphs{i}.Nodes.free_ends_feat;
+            % nodes_pos((i-1)*nodes_number_per_lane+(1:nodes_number_per_lane),:) = ...
+            %     laneGraphs{i}.Nodes.nodes_pos;
+            % nodes_type_feat((i-1)*nodes_number_per_lane+(1:nodes_number_per_lane),:) = ...
+            %     laneGraphs{i}.Nodes.nodes_type_feat;
+            % free_ends_feat((i-1)*nodes_number_per_lane+(1:nodes_number_per_lane),:) = ...
+            %     laneGraphs{i}.Nodes.free_ends_feat;
+            nodeTables{i} = laneGraphs{i}.Nodes;
 
             % 边特征收集
             src((i-1)*inner_con_per_lane+(1:inner_con_per_lane)) = ...
@@ -105,7 +108,8 @@ function G_edge = genEdgeGraph(edgeID,avg_node_dist,min_lane_long_node_num, lane
                 ];
         end
         weights((laneNum*inner_con_per_lane+1):end) = params.graph.link_wight.side;
-        nodetable = table(nodes_pos,nodes_type_feat,free_ends_feat);
+        % nodetable = table(nodes_pos,nodes_type_feat,free_ends_feat);
+        nodetable = vertcat(nodeTables{:});
     
         G_edge = digraph(src,tgt,weights,nodetable);
 
@@ -119,14 +123,14 @@ function G_edge = genEdgeGraph(edgeID,avg_node_dist,min_lane_long_node_num, lane
     end
 end
 
-function G_lane = genLaneGraph(laneID,long_node_num,offset_dist,verbose,lane_type)
+function G_lane = genLaneGraph(laneID,long_node_num,offset_dist,verbose,lane_type,laneNo)
     if nargin < 3 || isempty(offset_dist)
         offset_dist = 3.2/4;
     end
     if nargin < 4 || isempty(verbose)
         verbose = false;
     end
-    global entity_dict params %#ok
+    global entity_dict type_dict params %#ok
     % STEP2: 生成一个车道的子有向图
     % 首先统计该车道的长度
     distance = xy2dist(entity_dict{laneID}.shape); 
@@ -185,6 +189,32 @@ function G_lane = genLaneGraph(laneID,long_node_num,offset_dist,verbose,lane_typ
     free_ends_feat(1:long_node_num:(long_node_num*3)) = params.graph.marker.start; % 自由始点
     free_ends_feat((long_node_num):long_node_num:(long_node_num*3)) = params.graph.marker.end; % 自由终点
 
+    % 创建道路类型特征
+    edgeID = entity_dict{laneID}.getEdgeID();
+    roadTypeID = entity_dict{edgeID}.type;
+    % roadType = type_dict{roadTypeID};
+
+    if strcmpi(roadTypeID,'highway.motorway')
+        road_type_feat = params.graph.road_type_feat.highway_motorway;
+    else
+        road_type_feat = params.graph.road_type_feat.others;
+    end
+    road_type = road_type_feat*ones(long_node_num*3,1);
+    
+    % 创建限速特征
+    lane_spd_lim = entity_dict{laneID}.speed;
+    
+    speed_lim = ones(long_node_num*3,1)*lane_spd_lim;
+
+    % 创建车道编号特征
+    lane_number = 1/3*[...
+            -ones(long_node_num,1);...
+            zeros(long_node_num,1);...
+            ones(long_node_num,1);...
+            ]+laneNo;
+
+    
+
     % 创建车道子图并将上述特征赋予节点
     % 根据G_lane = digraph(src,tgt,wights,NodeTable)的方式来创建子图
     % 1.生成src和tgt, 1 x nodes_number的向量以及对应的边之间的weight(用节点之间的绝对距离算）
@@ -223,7 +253,7 @@ function G_lane = genLaneGraph(laneID,long_node_num,offset_dist,verbose,lane_typ
               params.graph.link_wight.side*ones(1,(long_node_num - 1)*4)];
 
     % 2.创建NodeTable并创建图
-    nodetable = table(nodes_pos,nodes_type_feat,free_ends_feat);
+    nodetable = table(nodes_pos,nodes_type_feat,free_ends_feat,lane_number,road_type,speed_lim);
 
     G_lane = digraph(src,tgt,weights,nodetable);
     if verbose

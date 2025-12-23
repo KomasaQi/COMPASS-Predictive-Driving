@@ -10,7 +10,7 @@ lastDecisionTimeGap = 0;
 theScene = []; % 初始化一下最优决策场景theScene
 % 加载地图数据
 if ~exist('entity_dict','var')
-    global entity_dict connection_dict dirArrowMap lane_to_connection_dict  %#ok
+    global entity_dict connection_dict dirArrowMap lane_to_connection_dict type_dict  %#ok
     global lane_from_connection_dict new_entity_dict proxyMat smallMap map to_connection_dict %#ok
     load(params.mat_data_name);
     

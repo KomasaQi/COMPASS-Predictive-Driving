@@ -24,23 +24,23 @@ function G_comb = seamSubGraphs(G_srcs,G_tgts,proxy_dist)
     starter_idxs = end_idxs(starter_idxs);
     ender_idxs = start_idxs(ender_idxs) + size(G_src.Nodes,1);
 
-    % s_idxs = sortVector(starter_poss);
-    % e_idxs = sortVector(ender_poss);
-    % 
-    % starter_poss = starter_poss(s_idxs,:);
-    % ender_poss = ender_poss(e_idxs,:);
-    % 
-    % starter_idxs = starter_idxs(s_idxs);
-    % ender_idxs = ender_idxs(e_idxs);
+    s_idxs = sortVector(starter_poss);
+    e_idxs = sortVector(ender_poss);
+
+    starter_poss = starter_poss(s_idxs,:);
+    ender_poss = ender_poss(e_idxs,:);
+
+    starter_idxs = starter_idxs(s_idxs);
+    ender_idxs = ender_idxs(e_idxs);
 
 
-    [src, tgt, nodes_pos, Weight,nodes_type_feat,free_ends_feat] = genJunctionGraph(...
+    [src, tgt, Weight,insertNodesTable] = genJunctionGraph(...
         starter_poss, ender_poss, starter_idxs, ender_idxs, old_total_node_num);
     
     EndNodes = [src,tgt];
     edgeTable = vertcat(G_old.Edges,table(EndNodes,Weight));
 
-    nodeTable = vertcat(G_old.Nodes,table(nodes_pos,nodes_type_feat,free_ends_feat));
+    nodeTable = vertcat(G_old.Nodes,insertNodesTable);
     G_comb = digraph(edgeTable,nodeTable);
 
     
