@@ -6,7 +6,7 @@ classdef CloudDatabase < handle
     % 3. 新增clearInstance方法：彻底清除单例+重置所有数据
 
     % 私有实例属性
-    properties (Access = private)
+    properties %(Access = private)
         % 数据库开始记录的时间
         database_init_time % 开始记录数据库时存入第一个数据对应的仿真时间
 
@@ -25,7 +25,7 @@ classdef CloudDatabase < handle
     end
 
     % 构造函数设为私有
-    methods (Access = private)
+    methods %(Access = private)
         function obj = CloudDatabase()
             % 初始化所有字典（匹配你的规则）
             obj.vehicleDBIDMap = dictionary(string([]), []);     
@@ -339,23 +339,23 @@ classdef CloudDatabase < handle
     % 静态方法：单例实现+清除单例
     methods (Static)
         function obj = getInstance()
-            persistent localInstance
-            if isempty(localInstance)
+            % persistent localInstance
+            % if isempty(localInstance)
                 localInstance = CloudDatabase();
-            end
+            % end
             obj = localInstance;
         end
 
         function clearInstance()
             % 对外暴露的清除单例方法：清空persistent变量+重置数据
-            persistent localInstance
-            if ~isempty(localInstance)
-                localInstance.resetData(); % 先重置实例内所有数据
-                localInstance = []; % 清空persistent变量
-            end
+            % persistent localInstance
+            % if ~isempty(localInstance)
+                % localInstance.resetData(); % 先重置实例内所有数据
+                % localInstance = []; % 清空persistent变量
+            % end
             % 清除工作区可能存在的db变量（可选，增强清空效果）
-            if exist('db', 'var')
-                clear db;
+            if exist('cloud_db', 'var')
+                clear cloud_db;
             end
         end
     end

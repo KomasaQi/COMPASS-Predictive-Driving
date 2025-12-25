@@ -25,7 +25,7 @@ function plotGraph(Graph,node_feat,edge_feat,figureID)
     elseif strcmpi(node_feat,'roadtype')
         nodeColors = params.graph.vis.color_map_roadtype(Graph);
 
-    elseif strcmpi(node_feat,'vehspeed') || strcmpi(node_feat,'vehspd') || strcmpi(node_feat,'speed')
+    elseif strcmpi(node_feat,'vehspeed') || strcmpi(node_feat,'vehspd') || strcmpi(node_feat,'speed') || strcmpi(node_feat,'spd')
         nodeColors = params.graph.vis.color_map_vehspd(Graph);
     elseif strcmpi(node_feat,'vehocc') || strcmpi(node_feat,'occ')
         nodeColors = params.graph.vis.color_map_vehocc(Graph);
@@ -35,6 +35,9 @@ function plotGraph(Graph,node_feat,edge_feat,figureID)
         nodeColors = params.graph.vis.color_map_vehacc(Graph);
     elseif strcmpi(node_feat,'vehego') || strcmpi(node_feat,'ego')
         nodeColors = params.graph.vis.color_map_vehego(Graph);
+    elseif strcmpi(node_feat,'vehroute') || strcmpi(node_feat,'route') || strncmpi(node_feat,'int',3) 
+        nodeColors = params.graph.vis.color_map_vehroute(Graph);
+
     end
     
     if strcmp(edge_feat,'edgeside')

@@ -1,5 +1,5 @@
 % 连云港到盐城的仿真中获取仿真名称等信息
-function [sumo_file_name, rou_file_name, DepartTime, InitTime, EndPosX, EndPosY, ...
+function [sumo_file_name, rou_file_name, DepartTime, InitTime, EndPos, ...
     S_main, S_exit, S_merge, Avg_Stream, If_Finish, Case_Name] = get_testCaseName_Highway(case_number)
     tb = readtable(".\data\test_cases\COMPASS_TestCase_LianYG_YanC.xlsx");
     DepartTime  = tb.DepartTime(case_number);
@@ -16,5 +16,6 @@ function [sumo_file_name, rou_file_name, DepartTime, InitTime, EndPosX, EndPosY,
         num2str(Avg_Stream) '_' Case_Name];
     sumo_file_name = [file_name '.sumocfg'];
     rou_file_name = [file_name '.rou.xml'];
+    EndPos = [EndPosX,EndPosY];
     
 end

@@ -66,7 +66,7 @@ for i = 1:s.vehNum
     % 设置车头车尾位置
     if compare_database
         theVehID = s.vehicles{i}.id;
-        theVehData = db.getVehicleDataAtTime(theVehID,sim_start_time - db.getDatabaseInitTime);
+        theVehData = cloud_db.getVehicleDataAtTime(theVehID,sim_start_time - cloud_db.getDatabaseInitTime);
         if ~isempty(fieldnames(theVehData))
             playback_veh_handles{i} = plot(theVehData.pos(1)+[0,-cos(theVehData.heading)*s.vehicles{i}.L],...
             theVehData.pos(2)+[0,-sin(theVehData.heading)*s.vehicles{i}.L], ...

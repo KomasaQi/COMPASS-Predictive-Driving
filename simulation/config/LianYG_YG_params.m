@@ -2,7 +2,7 @@
 function params = LianYG_YG_params()
     %% 仿真案例设置
     % 案例基本信息
-    params.case_number = 2;      % 仿真案例代号（1~28）
+    params.case_number = 1;      % 仿真案例代号（1~28）
     params.sampleTime = 0.1;     % DrivingScenario采样时间与SUMO同默认0.1s
     params.if_start_sim  = true; % 是否进行仿真 
     params.mat_data_name = 'ProcessedMap_lianyg_yanc_w_type.mat'; % 路网预处理文件名称
@@ -13,20 +13,20 @@ function params = LianYG_YG_params()
      params.rou_file_name, ...  % sumo路线文件名称
      params.DepartTime, ...     % 自车发车标称时间
      params.InitTime, ...       % COMPASS仿真开始时间
-     params.EndPosX, ...        % 案例结束X位置
-     params.EndPosY, ...        % 案例结束Y位置
+     params.EndPos, ...        % 案例结束位置
      params.S_main, ...         % 主路线交通流量 辆/h
      params.S_exit, ...         % 下匝道交通流量 辆/h
      params.S_merge, ...        % 汇入车交通流量 辆/h
      params.Avg_Stream, ...     % 平均交通流量（和）辆/h
      params.If_Finish, ...      % 案例是否已经搭建完成
      params.Case_Name...        % 案例基础名称
-     ] = get_testCaseName_Highway(params.case_number);
-     if ~params.If_Finish && params.if_start_sim
-        error('仿真场景案例未设置，无法进行仿真哒，请检查一下是否做了这个场景的sumo文件并配置了xlsx表格！')
-     end
-     params.sumo_vehicle_lib = readSumoRouFile_getSumoVehLib(['./data/test_cases/' params.rou_file_name]);
-     
+    ] = get_testCaseName_Highway(params.case_number);
+    if ~params.If_Finish && params.if_start_sim
+       error('仿真场景案例未设置，无法进行仿真哒，请检查一下是否做了这个场景的sumo文件并配置了xlsx表格！')
+    end
+    params.sumo_vehicle_lib = readSumoRouFile_getSumoVehLib(['./data/test_cases/' params.rou_file_name]);
+    params.simulation.endThresholdRange = 30; % 接近案例结束位置这个距离就算作仿真结束
+    
     %% 仿真界面设置
     % SUMO界面设置
     params.sumoBinary = 'sumo-gui'; % 或者使用'sumo'进行无GUI仿真 
@@ -143,8 +143,10 @@ function params = LianYG_YG_params()
     params.graph.vis.color_map_vehocc = @(Graph) genColorMap_vehOcc (Graph); % 车辆占据概率特征
     params.graph.vis.color_map_vehhead = @(Graph) genColorMap_vehHead (Graph); % 车辆相对航向角特征
     params.graph.vis.color_map_vehego = @(Graph) genColorMap_vehEgo (Graph); % 车辆相对航向角特征
+    params.graph.vis.color_map_vehroute = @(Graph) genColorMap_vehRoute (Graph); % 车辆相对航向角特征
 
     params.graph.vis.color_map_edgeside = @(Graph) genColorMap_edgeSide(Graph); % 边的方向特征
+
 
 
     % 用于计算车辆位置的高度增益系数
@@ -155,16 +157,32 @@ function params = LianYG_YG_params()
     params.graph.submap.range.back = 300;     % 主车后方截取的长度
 
     % 车辆投影在子图上的情况
-    params.graph.occ.longitudinalRadius = 10.8; % 纵向辐射半径更大，用于平滑车辆框外侧的节点赋予0~1的权重
+    params.graph.occ.longitudinalRadius = 5.8; % 纵向辐射半径更大，用于平滑车辆框外侧的节点赋予0~1的权重
     params.graph.occ.lateralRadius = 1.0;       % 横向辐射半径更小
-    params.graph.occ.longitudinalSigma = 1.8;   % 纵向标准差
+    params.graph.occ.longitudinalSigma = 0.5;   % 纵向标准差
     params.graph.occ.lateralSigma = 0.3;        % 横向标准差
     params.graph.occ.searchPt = 100;         % 最多找到多少个点候选为某车
     params.graph.occ.searchRange = 35;       % 最多找到附近多少米的点（半径）
 
+    % 车辆的意图
+    params.graph.intention.cruise = 1;      % 车辆意图为巡航
+    params.graph.intention.exit   = 2;      % 车辆意图为下匝道
+    params.graph.intention.merge  = 3;      % 车辆意图为汇入
+
 end
 
 %% 辅助函数
+function colorMat = genColorMap_vehRoute(Graph)
+    vehRoute = Graph.Nodes.vehRouteMask;
+    max_Intent = max(vehRoute);
+    cmap = jet(256);
+    colorMat = round(vehRoute/max_Intent*255)+1;
+    colorMat(colorMat < 1) = 1;
+    colorMat(colorMat > 256) = 256;
+    colorMat = cmap(colorMat,:);
+end
+
+
 function colorMat = genColorMap_vehSpeed(Graph)
     vehSpd = Graph.Nodes.vehSpdMask;
     max_speed = max(vehSpd);

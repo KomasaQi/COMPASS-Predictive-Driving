@@ -5,6 +5,7 @@
 % 3. 车辆速度： 实际速度值 m/s
 % 4. 车辆加速度：实际加速度值 m/s2
 % 5. 车辆相对航向角：相对于当前车道航向的角度偏差，右手定则 rad
+% 6. 车辆的意图：分别对应cruise exit merge 
 
 function G_emb = embbedVehicles(G_local,ego,vehicleDummies)
     vehDummies = [{ego},vehicleDummies];
@@ -17,6 +18,7 @@ function G_emb = embbedVehicles(G_local,ego,vehicleDummies)
     vehAccMask = zeros(size(nodes_pos,1),1);
     vehHeadMask = zeros(size(nodes_pos,1),1);
     vehEgoMask = zeros(size(nodes_pos,1),1);
+    vehRouteMask = zeros(size(nodes_pos,1),1);
 
     for i = 1:length(vehDummies)
         shape_square = getVehicleShape(vehDummies{i});
@@ -36,11 +38,13 @@ function G_emb = embbedVehicles(G_local,ego,vehicleDummies)
             vehEgoMask(idxs) = vehEgoMask(idxs) + vehMask_2d;
         else
             vehMask(idxs) = vehMask(idxs) + vehMask_2d;
+
         end
         vehTypeMask(idxs) = vehTypeMask(idxs) + (vehMask_2d > 0.2)*vType;
         vehSpdMask(idxs) = vehSpdMask(idxs) + (vehMask_2d > 0.2)*vehDummies{i}.speed;
         vehAccMask(idxs) = vehAccMask(idxs) + (vehMask_2d > 0.2)*vehDummies{i}.acc;
         vehHeadMask(idxs) = vehHeadMask(idxs) + (vehMask_2d > 0.2)*calcVehicleRelativeHeading(vehDummies{i});
+        vehRouteMask(idxs) = vehRouteMask(idxs) + (vehMask_2d > 0.2)*getRouteFeature(vehDummies{i});
         
         
     end
@@ -54,7 +58,30 @@ function G_emb = embbedVehicles(G_local,ego,vehicleDummies)
     nodesTable.vehAccMask = vehAccMask;
     nodesTable.vehHeadMask = vehHeadMask;
     nodesTable.vehEgoMask = vehEgoMask;
+    nodesTable.vehRouteMask = vehRouteMask;
     G_emb = digraph(G_local.Edges,nodesTable);
+end
+
+function routeFeat = getRouteFeature(dummy)
+    global params %#ok
+    if strcmpi(dummy.vehID,params.vehicleID) % 是主车，从仿真文件名字判断
+        if contains(params.sumo_file_name,'exit') 
+            routeFeat = params.graph.intention.exit;
+        elseif contains(params.sumo_file_name,'merge') 
+            routeFeat = params.graph.intention.merge;
+        else
+            routeFeat = params.graph.intention.cruise;
+        end
+    else % 是其他车，从车辆名字判断
+        if contains(dummy.vehID,'exit')
+            routeFeat = params.graph.intention.exit;
+        elseif contains(dummy.vehID,'merge')
+            routeFeat = params.graph.intention.merge;
+        else
+            routeFeat = params.graph.intention.cruise;
+        end
+    end
+
 end
 
 
