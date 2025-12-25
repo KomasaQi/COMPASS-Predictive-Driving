@@ -18,7 +18,8 @@ function G_edge = genEdgeGraph(edgeID,avg_node_dist,min_lane_long_node_num, lane
     global entity_dict connection_dict type_dict lane_to_connection_dict lane_from_connection_dict to_connection_dict %#ok
     global params %#ok
     if nargin < 2 || isempty(avg_node_dist)
-        avg_node_dist = 5.0; % 期望的平均节点距离
+        % avg_node_dist = 5.0; % 期望的平均节点距离
+        avg_node_dist = params.graph.avg_node_dist;
     end
     if nargin < 3 || isempty(min_lane_long_node_num)
         min_lane_long_node_num = 3; % 一条lane上纵向最少的节点数量
@@ -106,8 +107,13 @@ function G_edge = genEdgeGraph(edgeID,avg_node_dist,min_lane_long_node_num, lane
                 (2:long_node_num)+i*(long_node_num*3);...
                 (long_node_num*2)+(2:long_node_num)+(i-1)*(long_node_num*3)...
                 ];
+            weights((laneNum*inner_con_per_lane)+(1:(long_node_num-1)*2)+(i-1)*(long_node_num-1)*2) = ...
+                [...
+                params.graph.link_wight.side_left*ones(1,(long_node_num - 1));...
+                params.graph.link_wight.side_right*ones(1,(long_node_num - 1))...
+                ];
         end
-        weights((laneNum*inner_con_per_lane+1):end) = params.graph.link_wight.side;
+        % weights((laneNum*inner_con_per_lane+1):end) = params.graph.link_wight.side;
         % nodetable = table(nodes_pos,nodes_type_feat,free_ends_feat);
         nodetable = vertcat(nodeTables{:});
     
@@ -130,7 +136,7 @@ function G_lane = genLaneGraph(laneID,long_node_num,offset_dist,verbose,lane_typ
     if nargin < 4 || isempty(verbose)
         verbose = false;
     end
-    global entity_dict type_dict params %#ok
+    global entity_dict type_dict params connection_dict %#ok
     % STEP2: 生成一个车道的子有向图
     % 首先统计该车道的长度
     distance = xy2dist(entity_dict{laneID}.shape); 
@@ -196,10 +202,32 @@ function G_lane = genLaneGraph(laneID,long_node_num,offset_dist,verbose,lane_typ
 
     if strcmpi(roadTypeID,'highway.motorway')
         road_type_feat = params.graph.road_type_feat.highway_motorway;
+        road_type = road_type_feat*ones(long_node_num*3,1);
+
+    elseif strcmpi(roadTypeID,'highway.motorway_link')
+        % 判断link是否是连接主路的
+        link_mainRoad = false;
+        if isKey(connection_dict,edgeID)
+            connections = connection_dict{edgeID};
+            for i = 1:connections.connection_num
+                conn = connections.connections{i};
+                if strcmpi(entity_dict{conn.to}.type,'highway.motorway')
+                    link_mainRoad = true;
+                    break
+                end
+            end
+        end
+        if link_mainRoad
+            road_type = repmat(interp1(distance,distance/distance(end),interp_dist),[3,1]);
+        else
+            road_type = repmat(interp1(distance,1-distance/distance(end),interp_dist),[3,1]);
+        end
+        
     else
         road_type_feat = params.graph.road_type_feat.others;
+        road_type = road_type_feat*ones(long_node_num*3,1);
     end
-    road_type = road_type_feat*ones(long_node_num*3,1);
+    
     
     % 创建限速特征
     lane_spd_lim = entity_dict{laneID}.speed;
@@ -250,7 +278,8 @@ function G_lane = genLaneGraph(laneID,long_node_num,offset_dist,verbose,lane_typ
 
     % 直接用给定特征编码
     weights = [params.graph.link_wight.next*ones(1,(long_node_num - 1)*3), ...
-              params.graph.link_wight.side*ones(1,(long_node_num - 1)*4)];
+              params.graph.link_wight.side_right*ones(1,(long_node_num - 1)*2), ...
+              params.graph.link_wight.side_left*ones(1,(long_node_num - 1)*2)];
 
     % 2.创建NodeTable并创建图
     nodetable = table(nodes_pos,nodes_type_feat,free_ends_feat,lane_number,road_type,speed_lim);

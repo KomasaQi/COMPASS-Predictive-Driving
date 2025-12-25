@@ -110,7 +110,7 @@ function [src, tgt, weights,insertNodesTable] = genJunctionGraph(...
                 end
             end
 
-        elseif starter_idxs < ender_idxs % 起始节点数量小于终止节点
+        else % 起始节点数量小于终止节点
             % ●--->●--->● 1
             %  ↘   ↘   
             %    ↘   ↘  

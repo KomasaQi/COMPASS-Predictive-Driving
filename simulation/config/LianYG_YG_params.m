@@ -2,7 +2,7 @@
 function params = LianYG_YG_params()
     %% 仿真案例设置
     % 案例基本信息
-    params.case_number = 1;      % 仿真案例代号（1~28）
+    params.case_number = 2;      % 仿真案例代号（1~28）
     params.sampleTime = 0.1;     % DrivingScenario采样时间与SUMO同默认0.1s
     params.if_start_sim  = true; % 是否进行仿真 
     params.mat_data_name = 'ProcessedMap_lianyg_yanc_w_type.mat'; % 路网预处理文件名称
@@ -97,7 +97,7 @@ function params = LianYG_YG_params()
  
     %% 生成路网图模型参数
     % 车道纵向的平均节点距离
-    params.graph.avg_node_dist = 5.0;    % 车道纵向的平均节点距离
+    params.graph.avg_node_dist = 2.5;    % 车道纵向的平均节点距离
 
     % 车道属性特征
     params.graph.lane_feat.center = 0;   % 车道级的3条纵向节点集，车道中心线的特征
@@ -112,8 +112,9 @@ function params = LianYG_YG_params()
     params.graph.junction_speedlim = 33.33;             % 交叉口处的限速
 
     % 边的特征
-    params.graph.link_wight.next = -0.5; % 顺着道路连接方向的边的特征
-    params.graph.link_wight.side = 0.5;  % 包含横向移动的边的特征（可以修改成向左向右不同）
+    params.graph.link_wight.next = -1.0; % 顺着道路连接方向的边的特征
+    params.graph.link_wight.side_left = 2.0;  % 包含横向移动的边的特征向左
+    params.graph.link_wight.side_right = 1.0; % 包含横向移动的边的特征向右
     params.graph.link_wight.junction = 0.0; % 路口连接的网状结构
 
     % 标记edge/lane/edge组合的起点终点
@@ -135,12 +136,91 @@ function params = LianYG_YG_params()
     params.graph.vis.color_map_freeends = @(Graph) genColorMap_freeEnds(Graph); % 自由端点特征
     params.graph.vis.color_map_laneno = @(Graph) genColorMap_laneNo(Graph);     % 车道编号特征
     params.graph.vis.color_map_speedlim = @(Graph) genColorMap_speedlim(Graph); % 速度限制特征
-    params.graph.vis.color_map_roadtype = @(Graph) genColorMap_roadType(Graph); % 速度限制特征
+    params.graph.vis.color_map_roadtype = @(Graph) genColorMap_roadType(Graph); % 道路类型特征
 
+    params.graph.vis.color_map_vehspd = @(Graph) genColorMap_vehSpeed(Graph); % 车辆速度特征
+    params.graph.vis.color_map_vehacc = @(Graph) genColorMap_vehAcc (Graph); % 车辆加速度特征
+    params.graph.vis.color_map_vehocc = @(Graph) genColorMap_vehOcc (Graph); % 车辆占据概率特征
+    params.graph.vis.color_map_vehhead = @(Graph) genColorMap_vehHead (Graph); % 车辆相对航向角特征
+    params.graph.vis.color_map_vehego = @(Graph) genColorMap_vehEgo (Graph); % 车辆相对航向角特征
+
+    params.graph.vis.color_map_edgeside = @(Graph) genColorMap_edgeSide(Graph); % 边的方向特征
+
+
+    % 用于计算车辆位置的高度增益系数
+    params.graph.geometry.highway_height = 100; % m 高架桥的高度（用于在投影的时候过滤高架桥）
+
+    % 子图地图大小
+    params.graph.submap.range.front = 700;    % 主车前方截取的长度
+    params.graph.submap.range.back = 300;     % 主车后方截取的长度
+
+    % 车辆投影在子图上的情况
+    params.graph.occ.longitudinalRadius = 10.8; % 纵向辐射半径更大，用于平滑车辆框外侧的节点赋予0~1的权重
+    params.graph.occ.lateralRadius = 1.0;       % 横向辐射半径更小
+    params.graph.occ.longitudinalSigma = 1.8;   % 纵向标准差
+    params.graph.occ.lateralSigma = 0.3;        % 横向标准差
+    params.graph.occ.searchPt = 100;         % 最多找到多少个点候选为某车
+    params.graph.occ.searchRange = 35;       % 最多找到附近多少米的点（半径）
 
 end
 
 %% 辅助函数
+function colorMat = genColorMap_vehSpeed(Graph)
+    vehSpd = Graph.Nodes.vehSpdMask;
+    max_speed = max(vehSpd);
+    cmap = jet(256);
+    colorMat = round(vehSpd/max_speed*255)+1;
+    colorMat(colorMat < 1) = 1;
+    colorMat(colorMat > 256) = 256;
+    colorMat = cmap(colorMat,:);
+end
+
+function colorMat = genColorMap_vehOcc(Graph)
+    vehOcc = Graph.Nodes.vehMask;
+    cmap = jet(256);
+    colorMat = round(vehOcc*255)+1;
+    colorMat(colorMat < 1) = 1;
+    colorMat(colorMat > 256) = 256;
+    colorMat = cmap(colorMat,:);
+end
+
+function colorMat = genColorMap_vehEgo(Graph)
+    vehOcc = Graph.Nodes.vehEgoMask;
+    cmap = jet(256);
+    colorMat = round(vehOcc*255)+1;
+    colorMat(colorMat < 1) = 1;
+    colorMat(colorMat > 256) = 256;
+    colorMat = cmap(colorMat,:);
+end
+
+function colorMat = genColorMap_vehHead(Graph)
+    vehHead = Graph.Nodes.vehHeadMask;
+    max_head = max(vehHead);
+    min_head = min(vehHead);
+    cmap = jet(256);
+    colorMat = round((vehHead - min_head)/(max_head - min_head + 1e-3)*255)+1;
+    colorMat(colorMat < 1) = 1;
+    colorMat(colorMat > 256) = 256;
+    colorMat = cmap(colorMat,:);
+end
+
+function colorMat = genColorMap_vehAcc(Graph)
+    vehAcc = Graph.Nodes.vehAccMask;
+    max_acc = max(vehAcc);
+    min_acc = min(vehAcc);
+    cmap = jet(256);
+    colorMat = round((vehAcc - min_acc)/(max_acc - min_acc + 1e-4)*255)+1;
+    colorMat(colorMat < 1) = 1;
+    colorMat(colorMat > 256) = 256;
+    colorMat = cmap(colorMat,:);
+end
+
+function colorMat = genColorMap_edgeSide(Graph)
+       color_map= dictionary(-1,{[0 0 0]},0,{[1 0 1]},1,{[0 1 0]},2,{[1 0 0]}); % 用于可视化的colormap
+    edges_colors = arrayfun(@(c) color_map{c}, round(Graph.Edges.Weight),'UniformOutput',false);
+    colorMat = reshape([edges_colors{:}],3,[])';
+end
+
 function colorMat = genColorMap_laneFeat(Graph)
 
        color_map= dictionary(20,{[1 0 0]},0,{[1 1 0]},5,{[0 0 1]},10,{[0 1 0]},1,{[1,0,1]}); % 用于可视化的colormap
@@ -166,7 +246,9 @@ function colorMat = genColorMap_speedlim(Graph)
     colorMat = cmap(colorMat,:);
 end
 function colorMat = genColorMap_roadType(Graph)
-    color_map= dictionary(0,{[0 0 1]},1,{[1 0 0]}); % 用于可视化的colormap
-    nodes_colors = arrayfun(@(c) color_map{c}, round(Graph.Nodes.road_type),'UniformOutput',false);
-    colorMat = reshape([nodes_colors{:}],3,[])';
+    cmap = jet(256);
+    colorMat = round(Graph.Nodes.road_type*255)+1;
+    colorMat(colorMat < 1) = 1;
+    colorMat(colorMat > 256) = 256;
+    colorMat = cmap(colorMat,:);
 end

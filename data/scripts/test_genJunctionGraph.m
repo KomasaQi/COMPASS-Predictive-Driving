@@ -15,6 +15,8 @@ G_comb2 = seamSubGraphs({G_comb1,G4},{G5},proxy_dist);
 G6 = genEdgeGraph(idset{6});
 G_comb = seamSubGraphs({G6},{G_comb2},proxy_dist);
 
+G_comb = seamSubGraphs({graph_dict{'E0'}},{G_comb},proxy_dist);
+G_comb = seamSubGraphs({G_comb},{graph_dict{'96615334#2'}},proxy_dist);
 
 % 画图可视化
 % figure,plot(G_comb,'XData',G_comb.Nodes.nodes_pos(:,1),'YData',G_comb.Nodes.nodes_pos(:,2),'NodeColor',params.graph.vis.color_map_lanefeat(G_comb))
@@ -25,3 +27,5 @@ figure,plot(G_comb,'XData',G_comb.Nodes.nodes_pos(:,1),'YData',G_comb.Nodes.node
 
 
 % figure,plot(G_comb,'Layout','force','NodeColor',reshape([nodes_colors{:}],3,[])')
+
+axis equal

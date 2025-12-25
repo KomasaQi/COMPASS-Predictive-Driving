@@ -233,7 +233,11 @@ allDict = struct('entity_dict',new_entity_dict,'connection_from_dict',connection
     'lane_from_connection_dict',lane_from_connection_dict,'lane_to_connection_dict',lane_to_connection_dict);
 
 resolution = 100; % 100m的精度
+global simRoadNetwork_dict  graph_dict %#ok
 simRoadNetwork_dict = genSimRoadNetworkDict(allDict,vehicleID);
+graph_dict = createGraphDict();
+
+genMainGraphManully % 手动生成全程的大地图并赋值给全局变量G_main
 
 edgeID_dist = genEdgeID_dist(ego.edgeID,ego.lanePosition,resolution);
 
@@ -278,6 +282,8 @@ traci.vehicle.setLaneChangeMode(ego.vehID, 0b000100010010); % bit11 10 ... 2 1 0
 
 traci.vehicle.setSpeedMode(ego.vehID,0b0011111); % bit6 bit5 bit4 ... bit0. bit0是考虑安全速度
 ctrlMode = 'COMPASS';
+
+
 
 
 %% 仿真时间后处理
