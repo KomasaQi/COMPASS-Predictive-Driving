@@ -201,14 +201,14 @@ function [src, tgt, weights,insertNodesTable] = genJunctionGraph(...
         % 判断收敛与早停
         if max(abs(d_node_pos),[],"all") < tol 
             early_stop = true;
-            disp(['因收敛条件满足，迭代停止于第'  num2str(iter) '步']);
+            % disp(['因收敛条件满足，迭代停止于第'  num2str(iter) '步']);
             break
         end
         
         
     end
     if ~early_stop
-        disp(['达到最大迭代次数'  num2str(iter) '步未收敛，迭代停止，当前位置误差为'  num2str(max(abs(d_node_pos),[],"all"))]);
+        % disp(['达到最大迭代次数'  num2str(iter) '步未收敛，迭代停止，当前位置误差为'  num2str(max(abs(d_node_pos),[],"all"))]);
     end
     nodes_pos = insert_nodes_pos(1:insert_nodes_num,:);
     weights = params.graph.link_wight.junction*ones(size(src,1),1);
