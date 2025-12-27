@@ -56,9 +56,9 @@
   
     <!-- Vehicles, persons and containers (sorted by depart) -->
     <flow id="flow_merge" type="highway_traffic" begin="0.00" departLane="0" departPos="50.00" departSpeed="10" route="route_merge" end="3600.00" vehsPerHour="1000"/>
-    <flow id="flow_exit" type="highway_traffic" begin="0.00" departLane="3" departPos="0.00" departSpeed="22.22" route="route_exit" end="3600.00" vehsPerHour="500"/>
-    <flow id="flow_main" type="highway_traffic" begin="0.00" departLane="0" departPos="0.00" departSpeed="22.22" route="route_main" end="3600.00" vehsPerHour="3600"/>
-    <vehicle id="t_0" type="tank_truck" depart="120.00" departLane="0" departSpeed="10" route="route_ego"/>
+    <flow id="flow_exit" type="highway_traffic" begin="0.00" departLane="3" departPos="50.00" departSpeed="22.22" route="route_exit" end="3600.00" vehsPerHour="500"/>
+    <flow id="flow_main" type="highway_traffic" begin="0.00" departLane="0" departPos="50.00" departSpeed="22.22" route="route_main" end="3600.00" vehsPerHour="3600"/>
+    <vehicle id="t_0" type="tank_truck" depart="120.00" departLane="0" departPos="0.00" departSpeed="10" route="route_ego"/>
 
 
 </routes>

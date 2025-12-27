@@ -46,6 +46,7 @@ function G_emb = embbedVehicles(G_local,ego,vehicleDummies)
         vehRouteMask(idxs) = vehRouteMask(idxs) + (vehMask_2d > 0.2)*getRouteFeature(vehDummies{i});
         
         
+        
     end
     vehTypeMask(vehTypeMask > length(params.sumo_vehicle_lib.keys)) = 0; % 如果多车在一个位置存在重叠，就归零
 
@@ -58,7 +59,13 @@ function G_emb = embbedVehicles(G_local,ego,vehicleDummies)
     nodesTable.vehHeadMask = vehHeadMask;
     nodesTable.vehEgoMask = vehEgoMask;
     nodesTable.vehRouteMask = vehRouteMask;
+    nodesTable.nodes_pos = centralize2DPoints(nodesTable.nodes_pos,ego.pos([1 2]),ego.heading);
     G_emb = digraph(G_local.Edges,nodesTable);
+end
+
+function pts_rot = centralize2DPoints(pts,pos,heading)
+    pts_rot = (pts - pos)*[cos(heading) -sin(heading);sin(heading) cos(heading)];
+
 end
 
 function routeFeat = getRouteFeature(dummy)

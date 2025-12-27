@@ -53,10 +53,8 @@
     <route id="route_main" edges="96615334#2 1264142694#1-AddedOffRampEdge 48963655#1 225202305#1 96614679 96614679-AddedOffRampEdge" color="yellow"/>
     <route id="route_merge" edges="216048993 225202305#1 96614679 96614679-AddedOffRampEdge" color="red"/> 
     <!-- Vehicles, persons and containers (sorted by depart) -->
-    <flow id="flow_merge" type="highway_traffic" begin="0.00" departLane="0" departPos="0.00" departSpeed="10" route="route_merge" end="3600.00" vehsPerHour="1000"/>
+    <flow id="flow_merge" type="highway_traffic" begin="0.00" departLane="0" departPos="50.00" departSpeed="10" route="route_merge" end="3600.00" vehsPerHour="1000"/>
     <flow id="flow_exit" type="highway_traffic" begin="0.00" departLane="1" departPos="6000.00" departSpeed="22.22" route="route_exit" end="3600.00" vehsPerHour="1000"/>
     <flow id="flow_main" type="highway_traffic" begin="0.00" departLane="0" departPos="6000.00" departSpeed="22.22" route="route_main" end="3600.00" vehsPerHour="2000"/>
     <vehicle id="t_0" type="tank_truck" depart="120.00" departLane="0" departPos="0" departSpeed="10" route="route_merge"/>
-
- 
 </routes>

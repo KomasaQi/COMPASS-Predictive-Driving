@@ -57,7 +57,7 @@
     <flow id="flow_merge" type="highway_traffic" begin="0.00" departLane="0" departPos="0.00" departSpeed="10" route="route_merge" end="3600.00" vehsPerHour="875"/>
     <flow id="flow_exit" type="highway_traffic" begin="0.00" departLane="1" departPos="5000.00" departSpeed="22.22" route="route_exit" end="3600.00" vehsPerHour="8750"/>
     <flow id="flow_main" type="highway_traffic" begin="0.00" departLane="0" departPos="5000.00" departSpeed="22.22" route="route_main" end="3600.00" vehsPerHour="1750"/>
-    <vehicle id="t_0" type="tank_truck" depart="200.00" departLane="2" departPos="5000.00" departSpeed="22.22" route="route_main"/>
+    <vehicle id="t_0" type="tank_truck" depart="200.00" departLane="2" departPos="4950.00" departSpeed="22.22" route="route_main"/>
 
  
 </routes>

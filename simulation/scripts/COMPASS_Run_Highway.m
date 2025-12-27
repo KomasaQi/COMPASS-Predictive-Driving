@@ -4,9 +4,9 @@ clc
 % 从参数服务器获取参数
 global params %#ok
 if exist('simCaseNumber','var')
-    params = LianYG_YG_params(simCaseNumber);
+    params = LianYG_YC_params(simCaseNumber);
 else
-    params = LianYG_YG_params();
+    params = LianYG_YC_params();
 end
 % 求解步数
 plan_steps = 0;
@@ -21,7 +21,7 @@ if ~exist('entity_dict','var')
 end
 vehicleID = params.vehicleID;
 if params.if_start_sim
-    sumoCmd = [params.sumoBinary ' -c "data\test_cases\' params.sumo_file_name '"' ' --start'];
+    sumoCmd = [params.sumoBinary ' -c "data\test_cases\' params.sumo_file_name '"' ' --start --quit-on-end' params.seed];
     traci.start(sumoCmd);
     % 设置SUMO GUI的视角和跟踪车辆
     traci.gui.setSchema(params.viewID, params.schema);
