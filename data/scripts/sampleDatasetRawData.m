@@ -1,6 +1,6 @@
 %% 采样各种场景，为数据集增加数据量
-sampleTrajectoryNumber = 1;
-simCaseNumber = -1;
+sampleTrajectoryNumber = 1000;
+simCaseNumber = 1;
 for sampleNumber = 1:sampleTrajectoryNumber
     COMPASS_Run_Highway
     init_time = traci.simulation.getTime;

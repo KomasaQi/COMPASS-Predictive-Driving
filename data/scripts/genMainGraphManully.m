@@ -3,18 +3,18 @@
 idset = {'96615334#0-AddedOffRampEdge','135267565','96615334#1','135267593','96615334#2-AddedOnRampEdge','96615334#0'}; % 1连2
 proxy_dist = 25;
 % Junction1
-G1 = genEdgeGraph(idset{1});
-G2 = genEdgeGraph(idset{2});
-G3 = genEdgeGraph(idset{3});
+G1 = graph_dict{idset{1}};
+G2 = graph_dict{idset{2}};
+G3 = graph_dict{idset{3}};
 G_comb1 = seamSubGraphs({G1},{G2,G3},proxy_dist);
 
 % Junction2
-G4 = genEdgeGraph(idset{4});
-G5 = genEdgeGraph(idset{5});
+G4 = graph_dict{idset{4}};
+G5 = graph_dict{idset{5}};
 G_comb2 = seamSubGraphs({G_comb1,G4},{G5},proxy_dist);
 
 % Junction0
-G6 = genEdgeGraph(idset{6});
+G6 = graph_dict{idset{6}};
 G_comb = seamSubGraphs({G6},{G_comb2},proxy_dist);
 
 G_comb = seamSubGraphs(graph_dict('E0'),{G_comb},proxy_dist);
