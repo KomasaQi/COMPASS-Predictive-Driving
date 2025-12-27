@@ -3,6 +3,7 @@ addpath("data\maps\")
 addpath("data\test_cases\")
 addpath("data\models\")
 addpath("data\dataset\")
+addpath("data\dataset\raw\")
 addpath("data\scripts\")
 addpath("data\utils\")
 

@@ -217,5 +217,6 @@ function [src, tgt, weights,insertNodesTable] = genJunctionGraph(...
     lane_number = zeros(insert_nodes_num,1);
     road_type = params.graph.road_type_feat.highway_motorway*ones(insert_nodes_num,1);
     speed_lim = params.graph.junction_speedlim*ones(insert_nodes_num,1);
-    insertNodesTable = table(nodes_pos,nodes_type_feat,free_ends_feat,lane_number,road_type,speed_lim);
+    drivable = ones(insert_nodes_num,1);
+    insertNodesTable = table(nodes_pos,nodes_type_feat,free_ends_feat,lane_number,road_type,speed_lim,drivable);
 end

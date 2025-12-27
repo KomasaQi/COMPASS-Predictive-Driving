@@ -26,6 +26,11 @@ classdef CloudDatabase < handle
         G_main             % digraph: 全局路网的有向图
     end
 
+    properties (Dependent)
+        len
+        max_time
+    end
+
     % 构造函数设为私有
     methods %(Access = private)
         function obj = CloudDatabase(params,G_main,initTime)
@@ -46,14 +51,21 @@ classdef CloudDatabase < handle
             obj.params = params;
             obj.database_init_time = initTime;
             obj.G_main = G_main;
+     
+        end
+        function max_time = get.max_time(obj)
+            max_time = max(double(obj.timeVehicleMap.keys));
+        end
+        function len = get.len(obj)
+            len = length(obj.timeVehicleMap.keys);
         end
     end
 
     % 核心方法（新增clearInstance静态方法）
     methods
-        function G_embs = getEmbGraphsAndLabels(obj,time)
+        function G_emb = getEmbGraphsAndLabels(obj,time)
             [ego_dummy,veh_dummies] = obj.getAllDummiesAtTime(time);
-            G_local = trimGraphAccordDist(ego_dummy);
+            G_local = trimGraphAccordDist(ego_dummy,obj.G_main);
             G_emb = embbedVehicles(G_local,ego_dummy,veh_dummies);
         end
                 
@@ -83,7 +95,7 @@ classdef CloudDatabase < handle
             end
         end
 
-
+       
 
         function route = getRouteByID(obj, vehID)
             if contains(vehID,'exit')

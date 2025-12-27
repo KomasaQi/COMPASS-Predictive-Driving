@@ -14,7 +14,7 @@
 % *_1/i+1/1，然后*_1/i/1就也需要对称地连接*_0/i+1/3。最后我们返回一张有向的大图G_dir
 % （上述所有连接都是从i向车道前进方向i+1的有向链接）
 
-function G_edge = genEdgeGraph(edgeID,avg_node_dist,min_lane_long_node_num, lane_width_node_num, verbose)
+function G_edge = genEdgeGraph(edgeID,avg_node_dist,min_lane_long_node_num, lane_width_node_num, verbose, ego_dummy)
     global entity_dict connection_dict type_dict lane_to_connection_dict lane_from_connection_dict to_connection_dict %#ok
     global params %#ok
     if nargin < 2 || isempty(avg_node_dist)
@@ -29,6 +29,11 @@ function G_edge = genEdgeGraph(edgeID,avg_node_dist,min_lane_long_node_num, lane
     end
     if nargin < 5 || isempty(verbose)
         verbose = false;
+    end
+    if nargin < 6 || isempty(ego_dummy)
+        addRouteFeat = false;
+    else
+        addRouteFeat = true;
     end
     
 
@@ -116,7 +121,11 @@ function G_edge = genEdgeGraph(edgeID,avg_node_dist,min_lane_long_node_num, lane
         % weights((laneNum*inner_con_per_lane+1):end) = params.graph.link_wight.side;
         % nodetable = table(nodes_pos,nodes_type_feat,free_ends_feat);
         nodetable = vertcat(nodeTables{:});
-    
+        if addRouteFeat && ismember(edgeID,ego_dummy.route)
+            nodetable.drivable = ones(size(nodetable.nodes_pos,1),1);
+        else
+            nodetable.drivable = zeros(size(nodetable.nodes_pos,1),1);
+        end
         G_edge = digraph(src,tgt,weights,nodetable);
 
         if verbose

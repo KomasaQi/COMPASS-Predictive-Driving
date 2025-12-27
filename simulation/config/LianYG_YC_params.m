@@ -145,6 +145,8 @@ function params = LianYG_YC_params(simCaseNumber)
     params.graph.vis.color_map_laneno = @(Graph) genColorMap_laneNo(Graph);     % 车道编号特征
     params.graph.vis.color_map_speedlim = @(Graph) genColorMap_speedlim(Graph); % 速度限制特征
     params.graph.vis.color_map_roadtype = @(Graph) genColorMap_roadType(Graph); % 道路类型特征
+    params.graph.vis.color_map_drivable = @(Graph) genColorMap_drivable(Graph); % 是否可行驶（是否是主车必经路径）
+
 
     params.graph.vis.color_map_vehspd = @(Graph) genColorMap_vehSpeed(Graph); % 车辆速度特征
     params.graph.vis.color_map_vehacc = @(Graph) genColorMap_vehAcc (Graph); % 车辆加速度特征
@@ -183,6 +185,15 @@ function params = LianYG_YC_params(simCaseNumber)
 end
 
 %% 辅助函数
+function colorMat = genColorMap_drivable(Graph)
+    vehFeas = Graph.Nodes.drivable;
+    cmap = jet(256);
+    colorMat = round(vehFeas*255)+1;
+    colorMat(colorMat < 1) = 1;
+    colorMat(colorMat > 256) = 256;
+    colorMat = cmap(colorMat,:);
+end
+
 function colorMat = genColorMap_vehRoute(Graph)
     vehRoute = Graph.Nodes.vehRouteMask;
     max_Intent = max(vehRoute);

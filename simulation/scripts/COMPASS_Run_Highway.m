@@ -240,7 +240,7 @@ allDict = struct('entity_dict',new_entity_dict,'connection_from_dict',connection
 resolution = 100; % 100m的精度
 global simRoadNetwork_dict  graph_dict %#ok
 simRoadNetwork_dict = genSimRoadNetworkDict(allDict,vehicleID);
-graph_dict = createGraphDict();
+graph_dict = createGraphDict(ego);
 
 genMainGraphManully % 手动生成全程的大地图并赋值给全局变量G_main
 

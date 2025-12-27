@@ -1,6 +1,9 @@
 % 生成单个edge的graph的字典，只包含非路口内的edge
-function graph_dict = createGraphDict(verbose)
-    if nargin < 1
+function graph_dict = createGraphDict(ego_dummy,verbose)
+    if nargin < 1 
+        ego_dummy = [];
+    end
+    if nargin < 2 || isempty(verbose)
         verbose = false;
     end
     global entity_dict params %#ok
@@ -16,7 +19,7 @@ function graph_dict = createGraphDict(verbose)
                 if verbose
                     fprintf('正在处理第%d条edge %s\n',processed_num,key);
                 end
-                graph_dict{key} = genEdgeGraph(key);
+                graph_dict{key} = genEdgeGraph(key,[],[],[],verbose,ego_dummy);
             end
         end
         

@@ -37,6 +37,8 @@ function plotGraph(Graph,node_feat,edge_feat,figureID)
         nodeColors = params.graph.vis.color_map_vehego(Graph);
     elseif strcmpi(node_feat,'vehroute') || strcmpi(node_feat,'route') || strncmpi(node_feat,'int',3) 
         nodeColors = params.graph.vis.color_map_vehroute(Graph);
+    elseif strcmpi(node_feat,'feasible') || strcmpi(node_feat,'drivable') || strncmpi(node_feat,'feas',4) 
+        nodeColors = params.graph.vis.color_map_drivable(Graph);
 
     end
     
