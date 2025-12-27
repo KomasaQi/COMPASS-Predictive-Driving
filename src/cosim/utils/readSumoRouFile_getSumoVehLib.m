@@ -1,6 +1,9 @@
-function vehicle_library = readSumoRouFile_getSumoVehLib(file_path)
+function [vehicle_library,route_dict] = readSumoRouFile_getSumoVehLib(file_path)
     theStruct = parseXML(file_path); % e.g. './data/test_cases/no1_4500_pass_1.rou.xml'
     vehicle_library = dictionary();
+    route_info_dict = dictionary(string([]),{});
+    route_dict = dictionary(string([]),{});
+
     for i = 1:length(theStruct.Children)
         if strcmpi(theStruct.Children(i).Name,'vType')
             theChild = theStruct.Children(i);
@@ -29,7 +32,24 @@ function vehicle_library = readSumoRouFile_getSumoVehLib(file_path)
             end
             vehicle_library(id) = Vehicle4SUMO(theProps{:});
         end
+        if strcmpi(theStruct.Children(i).Name,'route')
+            theChild = theStruct.Children(i);
+            id = getAttribute(theChild,'id');
+            edges_str = getAttribute(theChild,'edges');
+            edges = strsplit(edges_str, ' ', 'CollapseDelimiters', true);
+            route_info_dict{id} = edges;
+            
+            
+        end
+
     
+    end
+    for i = 1:length(theStruct.Children)
+        if strcmpi(theStruct.Children(i).Name,'flow') || strcmpi(theStruct.Children(i).Name,'vehicle')
+            theChild = theStruct.Children(i);
+            id = getAttribute(theChild,'id');
+            route_dict{id} = route_info_dict{getAttribute(theChild,'route')};
+        end
     end
 end
 

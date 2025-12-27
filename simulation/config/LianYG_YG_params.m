@@ -1,10 +1,13 @@
 %连云港-盐城仿真参数配置
-function params = LianYG_YG_params()
+function params = LianYG_YG_params(simCaseNumber)
+    if nargin < 1 || isempty(simCaseNumber)
+        simCaseNumber = 1;
+    end
     %% 仿真案例设置
     % 案例基本信息
-    params.case_number = 1;      % 仿真案例代号（1~28）
-    params.sampleTime = 0.1;     % DrivingScenario采样时间与SUMO同默认0.1s
-    params.if_start_sim  = true; % 是否进行仿真 
+    params.case_number = simCaseNumber; % 仿真案例代号（1~28）
+    params.sampleTime = 0.1;            % DrivingScenario采样时间与SUMO同默认0.1s
+    params.if_start_sim  = true;        % 是否进行仿真 
     params.mat_data_name = 'ProcessedMap_lianyg_yanc_w_type.mat'; % 路网预处理文件名称
     params.vehicleID = 't_0';
 
@@ -24,7 +27,7 @@ function params = LianYG_YG_params()
     if ~params.If_Finish && params.if_start_sim
        error('仿真场景案例未设置，无法进行仿真哒，请检查一下是否做了这个场景的sumo文件并配置了xlsx表格！')
     end
-    params.sumo_vehicle_lib = readSumoRouFile_getSumoVehLib(['./data/test_cases/' params.rou_file_name]);
+    [params.sumo_vehicle_lib,params.route_dict] = readSumoRouFile_getSumoVehLib(['./data/test_cases/' params.rou_file_name]);
     params.simulation.endThresholdRange = 30; % 接近案例结束位置这个距离就算作仿真结束
     
     %% 仿真界面设置
@@ -270,3 +273,4 @@ function colorMat = genColorMap_roadType(Graph)
     colorMat(colorMat > 256) = 256;
     colorMat = cmap(colorMat,:);
 end
+

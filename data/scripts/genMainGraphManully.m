@@ -85,6 +85,28 @@ G_comb = seamSubGraphs({G1},{G2,G3},proxy_dist);
 G_comb = seamSubGraphs({G_comb,G4},{G5},proxy_dist);
 G_scene7 = seamSubGraphs({G_comb},{G6},proxy_dist);
 
+%% 场景8
+G1 = graph_dict{'761727441#2-AddedOffRampEdge'};
+G2 = graph_dict{'318520109'};
+G3 = graph_dict{'48963325#1'};
+G4 = graph_dict{'318520106'};
+G5 = graph_dict{'48963325#2-AddedOnRampEdge'};
+G6 = graph_dict{'48963325#2'};
+G_comb = seamSubGraphs({G1},{G2,G3},proxy_dist);
+G_comb = seamSubGraphs({G_comb,G4},{G5},proxy_dist);
+G_scene8 = seamSubGraphs({G_comb},{G6},proxy_dist);
+
+%% 场景9
+G1 = graph_dict{'48963325#2-AddedOffRampEdge'};
+G2 = graph_dict{'147152107'};
+G3 = graph_dict{'516746342#2'};
+G4 = graph_dict{'147152115#1'};
+G5 = graph_dict{'147152105#1-AddedOnRampEdge'};
+G6 = graph_dict{'147152105#1'};
+G_comb = seamSubGraphs({G1},{G2,G3},proxy_dist);
+G_comb = seamSubGraphs({G_comb,G4},{G5},proxy_dist);
+G_scene9 = seamSubGraphs({G_comb},{G6},proxy_dist);
+
 
 %% 合并场景
 G_comb = seamSubGraphs({G_scene1},{G_scene2},proxy_dist);
@@ -93,6 +115,8 @@ G_comb = seamSubGraphs({G_comb},{G_scene4},proxy_dist);
 G_comb = seamSubGraphs({G_comb},{G_scene5},proxy_dist);
 G_comb = seamSubGraphs({G_comb},{G_scene6},proxy_dist);
 G_comb = seamSubGraphs({G_comb},{G_scene7},proxy_dist);
+G_comb = seamSubGraphs({G_comb},{G_scene8},proxy_dist);
+G_comb = seamSubGraphs({G_comb},{G_scene9},proxy_dist);
 
 ENs_main = G_comb.Edges.EndNodes;
 NPs_main = G_comb.Nodes.nodes_pos;

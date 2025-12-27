@@ -22,11 +22,16 @@ classdef CloudDatabase < handle
         nextDBLID          % double: 下一个lane DBID（初始1）
         edgeIDMap          % dictionary: edgeStr(string) → double（DBEID）→ ()索引
         nextDBEID          % double: 下一个edge DBID（初始1）
+        params             % struct：仿真过程中所有的参数
+        G_main             % digraph: 全局路网的有向图
     end
 
     % 构造函数设为私有
     methods %(Access = private)
-        function obj = CloudDatabase()
+        function obj = CloudDatabase(params,G_main,initTime)
+            if nargin < 3 || isempty(initTime)
+                initTime = 0;
+            end
             % 初始化所有字典（匹配你的规则）
             obj.vehicleDBIDMap = dictionary(string([]), []);     
             obj.nextVehicleDBID = 1;
@@ -38,11 +43,62 @@ classdef CloudDatabase < handle
             obj.nextDBLID = 1;
             obj.edgeIDMap = dictionary(string([]), []);          
             obj.nextDBEID = 1;
+            obj.params = params;
+            obj.database_init_time = initTime;
+            obj.G_main = G_main;
         end
     end
 
     % 核心方法（新增clearInstance静态方法）
     methods
+        function G_embs = getEmbGraphsAndLabels(obj,time)
+            [ego_dummy,veh_dummies] = obj.getAllDummiesAtTime(time);
+            G_local = trimGraphAccordDist(ego_dummy);
+            G_emb = embbedVehicles(G_local,ego_dummy,veh_dummies);
+        end
+                
+
+
+
+        function [ego_dummy,veh_dummies] = getAllDummiesAtTime(obj, time)
+            data = obj.getAllVehicleDataAtTime(time);
+            veh_dummies = cell(1,length(data)-1);
+            counter = 0;
+            for i = 1:length(data)
+                vdata = data(i);
+                stat_info = obj.getVehicleStaticInfo(vdata.vehID);
+
+                theDummy = VehicleDummy('vehID',vdata.vehID,'laneID',vdata.data.laneID,'edgeID',vdata.data.edgeID,...
+                    'lanePosition',vdata.data.lanePosition,'speed',vdata.data.speed,'acc',vdata.data.acc,...
+                    'heading', vdata.data.heading,'heading_cos_sin',vdata.data.heading_cos_sin,...
+                    'length',stat_info.length,'width',stat_info.width,'route',stat_info.route,...
+        'pos',vdata.data.pos,'vClass',stat_info.vClass,'vType',stat_info.vType,'routeIdx',vdata.data.routeIdx);
+                if strcmp(obj.params.vehicleID,vdata.vehID)
+                    ego_dummy = theDummy;
+                else
+                    counter = counter + 1;
+                    veh_dummies{counter} = theDummy;
+                end
+
+            end
+        end
+
+
+
+        function route = getRouteByID(obj, vehID)
+            if contains(vehID,'exit')
+                route = obj.params.route_dict{'flow_exit'};
+            elseif contains(vehID,'merge')
+                route = obj.params.route_dict{'flow_merge'};
+            elseif contains(vehID,'main')
+                route = obj.params.route_dict{'flow_main'};
+            elseif contains(vehID,obj.params.vehicleID)
+                route = obj.params.route_dict{obj.params.vehicleID};
+            else
+                error('Unrecognized Vehicle ID! Please check again!')
+            end
+        end
+
         % ===================== 设置数据库开始的时间 ==============================
         function setDatabaseInitTime(obj,init_time)
             obj.database_init_time = init_time;
@@ -212,7 +268,7 @@ classdef CloudDatabase < handle
                     staticInfo = struct(...
                         'vClass', dummy.vClass, ...
                         'vType', dummy.vType, ...
-                        'route', dummy.route, ...
+                        'route', {dummy.route}, ...
                         'length', dummy.length, ...
                         'width', dummy.width, ...
                         'dbID', obj.vehicleDBIDMap(vehID));

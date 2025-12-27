@@ -3,7 +3,11 @@ clc
 %% 启动SUMO仿真
 % 从参数服务器获取参数
 global params %#ok
-params = LianYG_YG_params();
+if exist('simCaseNumber','var')
+    params = LianYG_YG_params(simCaseNumber);
+else
+    params = LianYG_YG_params();
+end
 % 求解步数
 plan_steps = 0;
 lastDecisionTimeGap = 0;
@@ -53,7 +57,7 @@ plotReq_targetLane = PlotReq('color',2*[0,0.05,0.08],'faceAlpha',0.55,'height',0
 plotReq_edge = PlotReq('color','k','faceAlpha',0.6,'height',0,'lineWidth',0.5,'edgeColor',[1 1 1]);
 plotReq_junction = PlotReq('color',[0 0.1 0.1],'faceAlpha',0.7,'height',-0.001);
 plotReq_dirArrow = PlotReq('color','w','faceAlpha',0.9,'height',0.001,'lineWidth',0.5,'edgeColor',[1 1 1]);
-
+GoalSphere = translate(scale(extendedObjectMesh("sphere",30),[15 15 15]),[params.EndPos 25]); % 初始化标志终点的圆球
 %% 构建道路场景
 %场景初始化
 scenario = drivingScenario; %初始化场景
@@ -158,6 +162,7 @@ vehTrajDummies{1} = plot3(1:2,1:2,1:2,LineWidth=params.veh_traj_width,Color=[1 0
 for idx = 2:maxVehNum+1
     vehTrajDummies{idx} = plot3(1:2,1:2,1:2,LineWidth=params.veh_traj_width,Color=[1 1 0]);
 end
+customShowExtendedMesh(GoalSphere,'Parent',mainAxes,'Color',[1 0 0]); % 绘制终点
 hold off
 
 
@@ -268,7 +273,8 @@ hold off
 % 11 = 变道时尊重其他车辆的速度/制动间距，不进行速度调整
 % bit11、bit10：00 = 不进行子车道变更；01 = 若与TraCI请求不冲突，则进行子车道变更；10 = 即使要覆盖TraCI请求，也要进行子车道变更
 
-traci.vehicle.setLaneChangeMode(ego.vehID, 0b000100010010); % bit11 10 ... 2 1 0 
+traci.vehicle.setLaneChangeMode(ego.vehID, 0b011001010110); % bit11 10 ... 2 1 0  % 自己采集数据的时候的模式
+% traci.vehicle.setLaneChangeMode(ego.vehID, 0b000100010010); % bit11 10 ... 2 1 0  % 我们控制的到时候的模式
 % traci.vehicle.setLaneChangeMode(ego.vehID, 256); % 限制不让车辆自主换道，但是可以sublanechange
 
 % setSpeedMode 说明

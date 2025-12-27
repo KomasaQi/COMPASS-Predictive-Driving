@@ -19,7 +19,6 @@ function G_emb = embbedVehicles(G_local,ego,vehicleDummies)
     vehHeadMask = zeros(size(nodes_pos,1),1);
     vehEgoMask = zeros(size(nodes_pos,1),1);
     vehRouteMask = zeros(size(nodes_pos,1),1);
-
     for i = 1:length(vehDummies)
         shape_square = getVehicleShape(vehDummies{i});
         veh_pos = [mean(shape_square) calcVehicleHeight(vehDummies{i})];
