@@ -1,0 +1,69 @@
+# CompilerName=mingw64
+# Mode=optim
+ninja_required_version = 1.3
+
+# Basic folders
+root = .
+builddir = $root/build/win64
+matlabdir = D:/Program Files/MATLAB/R2023a
+startdir = E:/我的文件/大学学习/_硕士学习/毕设硕士/车辆控制算法开发/EI Emergency Index评价指标/trailer-MEI
+
+# Toolchain information
+cc = C:\ProgramData\MATLAB\SupportPackages\R2023a\3P.instrset\mingw_w64.instrset\bin\gcc
+cxx = C:\ProgramData\MATLAB\SupportPackages\R2023a\3P.instrset\mingw_w64.instrset\bin\g++
+linker = C:\ProgramData\MATLAB\SupportPackages\R2023a\3P.instrset\mingw_w64.instrset\bin\gcc
+linkerxx = C:\ProgramData\MATLAB\SupportPackages\R2023a\3P.instrset\mingw_w64.instrset\bin\g++
+
+cflags =  -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I "E:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\EI Emergency Index评价指标\trailer-MEI\codegen\mex\trailer2_mei" -I "E:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\EI Emergency Index评价指标\trailer-MEI" -I "E:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\EI Emergency Index评价指标\trailer-MEI\codegen\mex\trailer2_mei\interface" -I "D:\Program Files\MATLAB\R2023a\extern\include" -I "." -DMODEL=trailer2_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2 
+
+cxxflags =  -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c++11 -I "E:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\EI Emergency Index评价指标\trailer-MEI\codegen\mex\trailer2_mei" -I "E:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\EI Emergency Index评价指标\trailer-MEI" -I "E:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\EI Emergency Index评价指标\trailer-MEI\codegen\mex\trailer2_mei\interface" -I "D:\Program Files\MATLAB\R2023a\extern\include" -I "." -DMODEL=trailer2_mei_mex -D__USE_MINGW_ANSI_STDIO=1 -msse2 
+
+ldflags =  -m64 -Wl,--no-undefined -shared -static -L"D:\Program Files\MATLAB\R2023a\extern\lib\win64\mingw64" -llibmx -llibmex -llibmat -lm -llibmwlapack -llibmwblas -o "trailer2_mei_mex.mexw64" -llibemlrt -llibcovrt -llibut -llibmwmathutil  trailer2_mei_mex.def
+
+linkobjs = 
+
+# Build Rules
+rule cc
+    command = $cc $cflags $in -o $out
+
+rule cxx
+    command = $cxx $cxxflags $in -o $out
+
+rule link
+    command = $linker @$out.rsp $linkobjs $ldflags
+    rspfile = $out.rsp
+    rspfile_content = $in
+
+rule linkxx
+    command = $linkerxx $in $linkobjs $ldflags
+
+# Build
+build $builddir/trailer2_mei_data.o : cc $root/trailer2_mei_data.c
+build $builddir/rt_nonfinite.o : cc $root/rt_nonfinite.c
+build $builddir/trailer2_mei_initialize.o : cc $root/trailer2_mei_initialize.c
+build $builddir/trailer2_mei_terminate.o : cc $root/trailer2_mei_terminate.c
+build $builddir/trailer2_mei.o : cc $root/trailer2_mei.c
+build $builddir/colon.o : cc $root/colon.c
+build $builddir/atan2.o : cc $root/atan2.c
+build $builddir/ixfun.o : cc $root/ixfun.c
+build $builddir/assertCompatibleDims.o : cc $root/assertCompatibleDims.c
+build $builddir/get_rect_poly_corners.o : cc $root/get_rect_poly_corners.c
+build $builddir/intersect_polypoly.o : cc $root/intersect_polypoly.c
+build $builddir/intersect_lineline.o : cc $root/intersect_lineline.c
+build $builddir/_coder_trailer2_mei_api.o : cc $root/interface/_coder_trailer2_mei_api.c
+build $builddir/_coder_trailer2_mei_mex.o : cc $root/interface/_coder_trailer2_mei_mex.c
+build $builddir/eml_int_forloop_overflow_check.o : cc $root/eml_int_forloop_overflow_check.c
+build $builddir/exp.o : cc $root/exp.c
+build $builddir/atan.o : cc $root/atan.c
+build $builddir/tan.o : cc $root/tan.c
+build $builddir/log.o : cc $root/log.c
+build $builddir/cos.o : cc $root/cos.c
+build $builddir/sin.o : cc $root/sin.c
+build $builddir/sqrt.o : cc $root/sqrt.c
+build $builddir/div.o : cc $root/div.c
+build $builddir/trailer2_mei_emxutil.o : cc $root/trailer2_mei_emxutil.c
+build $builddir/_coder_trailer2_mei_info.o : cc $root/interface/_coder_trailer2_mei_info.c
+build $builddir/c_mexapi_version.o : cc $matlabdir/extern/version/c_mexapi_version.c
+
+# Link
+build $root\trailer2_mei_mex.mexw64 : link $builddir/trailer2_mei_data.o $builddir/rt_nonfinite.o $builddir/trailer2_mei_initialize.o $builddir/trailer2_mei_terminate.o $builddir/trailer2_mei.o $builddir/colon.o $builddir/atan2.o $builddir/ixfun.o $builddir/assertCompatibleDims.o $builddir/get_rect_poly_corners.o $builddir/intersect_polypoly.o $builddir/intersect_lineline.o $builddir/_coder_trailer2_mei_api.o $builddir/_coder_trailer2_mei_mex.o $builddir/eml_int_forloop_overflow_check.o $builddir/exp.o $builddir/atan.o $builddir/tan.o $builddir/log.o $builddir/cos.o $builddir/sin.o $builddir/sqrt.o $builddir/div.o $builddir/trailer2_mei_emxutil.o $builddir/_coder_trailer2_mei_info.o $builddir/c_mexapi_version.o 

@@ -1,0 +1,14 @@
+*.asv
+*.rar
+*.zip
+*.pcd
+
+output/
+data/dataset/
+data/dataset/raw/
+data/dataset/raw_shortdist/
+data/dataset/CompassGraphDataset/
+data/dataset/rawmat/
+data/dataset/processed/
+.vscode/
+

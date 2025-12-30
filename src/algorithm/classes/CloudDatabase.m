@@ -1,0 +1,629 @@
+classdef CloudDatabase < handle
+    % CLOUDDATABASE 单例模式存储交通流仿真数据（新增单例清除功能）
+    % 核心规则：
+    % 1. 字典初始化：double值→dictionary(string([]), [])；cell值→dictionary(string([]), {})
+    % 2. 索引规则：double值字典→()；cell值字典→{}
+    % 3. 新增clearInstance方法：彻底清除单例+重置所有数据
+
+    % 私有实例属性
+    properties %(Access = private)
+        % 数据库开始记录的时间
+        database_init_time % 开始记录数据库时存入第一个数据对应的仿真时间
+
+        % 车辆相关字典
+        vehicleDBIDMap     % dictionary: vehID(string) → double（DBID）→ ()索引
+        nextVehicleDBID    % double: 下一个车辆DBID（初始1）
+        vehicleStaticInfo  % dictionary: vehID(string) → cell{struct} → {}索引
+        vehicleDynamicData % dictionary: vehID(string) → cell{table} → {}索引
+        timeVehicleMap     % dictionary: time(double) → cell{cell} → {}索引
+
+        % Lane/Edge ID映射字典
+        laneIDMap          % dictionary: laneStr(string) → double（DBLID）→ ()索引
+        nextDBLID          % double: 下一个lane DBID（初始1）
+        edgeIDMap          % dictionary: edgeStr(string) → double（DBEID）→ ()索引
+        nextDBEID          % double: 下一个edge DBID（初始1）
+        params             % struct：仿真过程中所有的参数
+        G_main             % digraph: 全局路网的有向图
+    end
+
+    properties (Dependent)
+        len
+        max_time
+    end
+
+    % 构造函数设为私有
+    methods %(Access = private)
+        function obj = CloudDatabase(params,G_main,initTime)
+            if nargin < 3 || isempty(initTime)
+                initTime = 0;
+            end
+            % 初始化所有字典（匹配你的规则）
+            obj.vehicleDBIDMap = dictionary(string([]), []);     
+            obj.nextVehicleDBID = 1;
+            obj.vehicleStaticInfo = dictionary(string([]), {});  
+            obj.vehicleDynamicData = dictionary(string([]), {}); 
+            obj.timeVehicleMap = dictionary(string([]), {});     
+
+            obj.laneIDMap = dictionary(string([]), []);          
+            obj.nextDBLID = 1;
+            obj.edgeIDMap = dictionary(string([]), []);          
+            obj.nextDBEID = 1;
+            obj.params = params;
+            obj.database_init_time = initTime;
+            obj.G_main = G_main;
+     
+        end
+        function max_time = get.max_time(obj)
+            max_time = max(double(obj.timeVehicleMap.keys));
+        end
+        function len = get.len(obj)
+            len = length(obj.timeVehicleMap.keys);
+        end
+    end
+
+    % 核心方法（新增clearInstance静态方法）
+    methods
+        % 返回一个矩阵构造的训练样本
+        function [endNodes,nodeStatFeats,nodeDynFeats,edgeFeats,times,nodes_idx_list,edges_num] = ...
+                genSampleForTraining(obj,time,hist_secs,skip,future_secs)
+            if nargin < 3 || isempty(hist_secs)
+                hist_secs = 20;
+            end
+            if nargin < 4 || isempty(skip)
+                skip = 1;
+            end
+            if nargin < 5 || isempty(future_secs)
+                future_secs = 20;
+            end
+            [G_embs,times] = getPastFutureCurrentGraph(obj,time,hist_secs,skip,future_secs,skip);
+
+            % 先统计一下节点数和边数
+            nodes_num_list = ones(1,length(G_embs))*G_embs{1}.numnodes;
+            edges_num = G_embs{1}.numedges;
+            
+            nodes_idx_list = [0, cumsum(nodes_num_list)];
+
+            % 初始化容器特征数
+            node_stat_feat_idxs = 1:8; % 这里已经写好了, nodes_pos(1x 2y) 3nodetype 4free_end 5laneno 6roadtype(height) 7spdlim 8drivable 
+            node_dyn_feat_idxs = 9:15; % 也是提前写好了, 9occ 10vType 11spd 12acc 13head 14ego 15route
+            % 初始化容器们
+     
+            nodeDynFeats = zeros(nodes_idx_list(end),length(node_dyn_feat_idxs));
+            % 现在开始装入
+            for i = 1:length(G_embs)
+                nodeVariables = G_embs{i}.Nodes.Variables;
+                if i == 1
+                    endNodes = G_embs{i}.Edges.EndNodes;
+                    edgeFeats = G_embs{i}.Edges.Variables;
+                    nodeStatFeats = nodeVariables(:,node_stat_feat_idxs);
+                end
+                node_idxs = (nodes_idx_list(i)+1):nodes_idx_list(i+1);
+                nodeDynFeats(node_idxs,:) = nodeVariables(:,node_dyn_feat_idxs);
+            end
+        end
+
+        function ego_manouver = getEgoManouver(obj)
+            ego_hist = obj.getVehicleAllHistory(obj.params.vehicleID);
+            edgeID_list = ego_hist.edgeID;
+            laneID_list = ego_hist.laneID;
+            lane_diff_point = zeros(length(edgeID_list),1);
+            edge_diff_point = lane_diff_point;
+            laneNo_list = zeros(length(edgeID_list),1);
+            for i = 1:length(laneNo_list)
+                laneID = char(laneID_list{i});
+                laneNo_list(i) = laneID(end) - 48;
+            end
+            for i = 2:length(lane_diff_point)
+                if ~strcmp(edgeID_list{i-1},edgeID_list{i})
+                    edge_diff_point(i) = 1;
+                end
+                lane_diff_point(i) = laneNo_list(i) - laneNo_list(i-1);
+            end
+            lane_diff_point(edge_diff_point>0) = 0;
+            % 换道动作 -->进行了一下叠加，这样1s间隔采样就都能采到数据了，不会漏掉或者重复采样换道动作
+            ego_manouver.lc = [lane_diff_point(5:end);zeros(4,1)]+[lane_diff_point(6:end);zeros(5,1)];
+            d = diff(ego_hist.speed);
+            dt = 0.5;
+            % 加速度动作
+            ego_manouver.acc =  ([0;d/dt] + [d/dt;0])/2;
+        end
+
+        function egoRelativeHead = getEgoRelativeHeading(obj)
+            egoRelativeHead = zeros(obj.len,1);
+            ego_dummys = getEgoDummiesAtAllTimes(obj);
+            for i = 1:length(egoRelativeHead)
+                egoRelativeHead(i) = calcVehicleRelativeHeading(ego_dummys{i});
+            end
+        end
+
+        function [G_embs,times] = getPastFutureCurrentGraph(obj,time,hist_secs,hist_skip,future_secs,future_skip)
+            if nargin < 3 || isempty(hist_secs)
+                hist_secs = 20;
+            end
+            if nargin < 4 || isempty(hist_skip)
+                hist_skip = 1;
+            end
+            if nargin < 5 || isempty(future_secs)
+                future_secs = 20;
+            end
+            if nargin < 6 || isempty(future_skip)
+                future_skip = 1;
+            end
+            [G_now,G_local,ref_ego] = getCurrentGraphs(obj,time);
+            [G_hist,time_h] = getPastGivenTimeGraphs(obj,time,hist_secs,hist_skip,G_local,ref_ego);
+            [G_future,time_f] = getFutureGivenTimeGraphs(obj,time,future_secs,future_skip,G_local,ref_ego);
+            G_embs = [G_hist(end:-1:2) {G_now} G_future]; 
+            times = [time_h(end:-1:1) time_f] - time;
+        end
+
+        function [G_emb,G_local,ego_dummy] = getCurrentGraphs(obj,time)
+            % 只获取当前位置一帧的嵌入图
+            [ego_dummy,veh_dummies] = obj.getAllDummiesAtTime(time);
+            G_local = trimGraphAccordDist(ego_dummy,obj.G_main);
+            G_emb = embbedVehicles(G_local,ego_dummy,veh_dummies);
+        end
+                
+        function [G_embs,times] = getPastGivenTimeGraphs(obj,time,hist_secs,skip_frame,G_local,ref_ego)
+            if nargin < 3 || isempty(hist_secs)
+                hist_secs = 20;
+            end
+            if nargin < 4 || isempty(skip_frame)
+                skip_frame = 1;
+            end
+ 
+            % 看一下之前是否有足够多的历史支撑
+            available_frame_num = sum(double(obj.timeVehicleMap.keys) <= time);
+            frames_to_be_collect = round(hist_secs/0.5) + 1;
+            if available_frame_num < frames_to_be_collect 
+                G_embs = [];
+                times = [];
+                warning(['数据库内在指定的第' num2str(time) 's前最多剩余' ...
+                    num2str(available_frame_num) '帧（' num2str(available_frame_num*0.5) 's）,'...
+                    '不满足所要求的至少' num2str(hist_secs) 's'])
+            else
+                if nargin < 5 || isempty(G_local) 
+                    % 获取当前位置截取地图上给定历史的所有嵌入图
+                    [ego_dummy,~] = obj.getAllDummiesAtTime(time);
+                    G_local = trimGraphAccordDist(ego_dummy,obj.G_main);
+                    ref_ego = ego_dummy;
+                end
+                G_embs = cell(1,frames_to_be_collect);
+                times = zeros(1,frames_to_be_collect);
+                skip_counter = skip_frame + 1;
+                record_counter = 0;
+                for i = 0: frames_to_be_collect-1 
+                    skip_counter = skip_counter + 1;
+                    if skip_counter <= skip_frame
+                      
+                        continue
+                    else
+                        skip_counter = 0;
+                        record_counter = record_counter + 1;
+                        [ego_dummy,veh_dummies] = obj.getAllDummiesAtTime(time - i*0.5);
+                        G_embs{record_counter} = embbedVehicles(G_local,ego_dummy,veh_dummies,ref_ego);
+                        times(record_counter) = time - i*0.5;
+                    end
+                end
+                G_embs(record_counter+1:end) = [];
+                times(record_counter+1:end) = [];
+            end
+        end
+
+        function [G_lbs,times] = getFutureGivenTimeGraphs(obj,time,future_secs,skip_frame,G_local,ref_ego)
+            if nargin < 3 || isempty(future_secs)
+                future_secs = 20;
+            end
+            if nargin < 4 || isempty(skip_frame)
+                skip_frame = 1;
+            end
+            
+            % 看一下之前是否有足够多的未来支撑
+            available_frame_num = sum(double(obj.timeVehicleMap.keys) > time);
+            frames_to_be_collect = round(future_secs/0.5);
+            if available_frame_num < frames_to_be_collect 
+                G_lbs = [];
+                times = [];
+                warning(['数据库内在指定的第' num2str(time) 's后最多剩余' ...
+                    num2str(available_frame_num) '帧（' num2str(available_frame_num*0.5) 's）,'...
+                    '不满足所要求的至少' num2str(future_secs) 's'])
+            else
+                if nargin < 5 || isempty(G_local)
+                    % 获取当前位置截取地图上给定未来的所有嵌入图
+                    [ego_dummy,~] = obj.getAllDummiesAtTime(time);
+                    G_local = trimGraphAccordDist(ego_dummy,obj.G_main);
+                    ref_ego = ego_dummy;
+                end
+                G_lbs = cell(1,frames_to_be_collect);
+                times = zeros(1,frames_to_be_collect);
+                skip_counter = 0;
+                record_counter = 0;
+                for i = 1: frames_to_be_collect
+                    skip_counter = skip_counter + 1;
+                    if skip_counter <= skip_frame
+                      
+                        continue
+                    else
+                        skip_counter = 0;
+                        record_counter = record_counter + 1;
+                        [ego_dummy,veh_dummies] = obj.getAllDummiesAtTime(time + i*0.5);
+                        G_lbs{record_counter} = embbedVehicles(G_local,ego_dummy,veh_dummies,ref_ego);
+                        times(record_counter) = time + i*0.5;
+                    end
+                end
+                G_lbs(record_counter+1:end) = [];
+                times(record_counter+1:end) = [];
+            end
+        end
+
+
+        function ego_dummys = getEgoDummiesAtAllTimes(obj)
+            data = obj.getVehicleAllHistory(obj.params.vehicleID);
+            ego_dummys = cell(1,obj.len);
+            stat_info = obj.getVehicleStaticInfo(obj.params.vehicleID);
+            for i = 1:obj.len
+                vdata = data(i,:);
+                theDummy = VehicleDummy('vehID',obj.params.vehicleID,'laneID',vdata.laneID{:},'edgeID',vdata.edgeID{:},...
+                    'lanePosition',vdata.lanePosition,'speed',vdata.speed,'acc',vdata.acc,...
+                    'heading', vdata.heading,'heading_cos_sin',vdata.heading_cos_sin,...
+                    'length',stat_info.length,'width',stat_info.width,'route',stat_info.route,...
+        'pos',vdata.pos,'vClass',stat_info.vClass,'vType',stat_info.vType,'routeIdx',vdata.routeIdx);
+                    ego_dummys{i} = theDummy;
+            end
+        end
+
+        function [ego_dummy,veh_dummies] = getAllDummiesAtTime(obj, time)
+            data = obj.getAllVehicleDataAtTime(time);
+            veh_dummies = cell(1,length(data)-1);
+            counter = 0;
+            for i = 1:length(data)
+                vdata = data(i);
+                stat_info = obj.getVehicleStaticInfo(vdata.vehID);
+
+                theDummy = VehicleDummy('vehID',vdata.vehID,'laneID',vdata.data.laneID,'edgeID',vdata.data.edgeID,...
+                    'lanePosition',vdata.data.lanePosition,'speed',vdata.data.speed,'acc',vdata.data.acc,...
+                    'heading', vdata.data.heading,'heading_cos_sin',vdata.data.heading_cos_sin,...
+                    'length',stat_info.length,'width',stat_info.width,'route',stat_info.route,...
+        'pos',vdata.data.pos,'vClass',stat_info.vClass,'vType',stat_info.vType,'routeIdx',vdata.data.routeIdx);
+                if strcmp(obj.params.vehicleID,vdata.vehID)
+                    ego_dummy = theDummy;
+                else
+                    counter = counter + 1;
+                    veh_dummies{counter} = theDummy;
+                end
+
+            end
+        end
+
+       
+
+        function route = getRouteByID(obj, vehID)
+            if contains(vehID,'exit')
+                route = obj.params.route_dict{'flow_exit'};
+            elseif contains(vehID,'merge')
+                route = obj.params.route_dict{'flow_merge'};
+            elseif contains(vehID,'main')
+                route = obj.params.route_dict{'flow_main'};
+            elseif contains(vehID,obj.params.vehicleID)
+                route = obj.params.route_dict{obj.params.vehicleID};
+            else
+                error('Unrecognized Vehicle ID! Please check again!')
+            end
+        end
+
+        % ===================== 设置数据库开始的时间 ==============================
+        function setDatabaseInitTime(obj,init_time)
+            obj.database_init_time = init_time;
+        end
+        function init_time = getDatabaseInitTime(obj)
+            init_time = obj.database_init_time;
+        end
+
+        % ===================== 判断数据库是否可用 ================================
+        function flag = isusable(obj,start_time,duration)
+            if nargin < 2 || isempty(start_time)
+                start_time = 0;
+            end
+            if nargin < 3 || isempty(duration)
+                duration = 20;
+            end
+            flag = true;
+            if isempty(obj.getVehicleIDsAtTime(start_time)) || isempty(obj.getVehicleIDsAtTime(start_time + duration))
+                flag = false;
+            end
+        end
+        % ===================== 数据持久化：保存数据到.mat文件 =====================
+        function saveData(obj, filePath)
+            % 保存所有私有属性数据到指定路径（.mat文件）
+            % 输入：filePath - 保存路径，如'cloud_db_data.mat'
+            dataToSave = struct();
+            % 存储所有需要持久化的属性
+            dataToSave.vehicleDBIDMap = obj.vehicleDBIDMap;
+            dataToSave.nextVehicleDBID = obj.nextVehicleDBID;
+            dataToSave.vehicleStaticInfo = obj.vehicleStaticInfo;
+            dataToSave.vehicleDynamicData = obj.vehicleDynamicData;
+            dataToSave.timeVehicleMap = obj.timeVehicleMap;
+            dataToSave.laneIDMap = obj.laneIDMap;
+            dataToSave.nextDBLID = obj.nextDBLID;
+            dataToSave.edgeIDMap = obj.edgeIDMap;
+            dataToSave.nextDBEID = obj.nextDBEID;
+            dataToSave.database_init_time = obj.database_init_time;
+            % 保存到文件
+            save(filePath, '-struct', 'dataToSave');
+            fprintf('数据已保存到：%s\n', filePath);
+        end
+
+        % ===================== 数据持久化：从.mat文件加载数据 =====================
+        function loadData(obj, filePath)
+            % 从指定.mat文件加载数据并恢复到当前实例
+            % 输入：filePath - 数据文件路径
+            if ~exist(filePath, 'file')
+                error('文件不存在：%s', filePath);
+            end
+            % 加载数据
+            loadedData = load(filePath);
+            % 恢复所有属性（严格对应保存的字段）
+            obj.vehicleDBIDMap = loadedData.vehicleDBIDMap;
+            obj.nextVehicleDBID = loadedData.nextVehicleDBID;
+            obj.vehicleStaticInfo = loadedData.vehicleStaticInfo;
+            obj.vehicleDynamicData = loadedData.vehicleDynamicData;
+            obj.timeVehicleMap = loadedData.timeVehicleMap;
+            obj.laneIDMap = loadedData.laneIDMap;
+            obj.nextDBLID = loadedData.nextDBLID;
+            obj.edgeIDMap = loadedData.edgeIDMap;
+            obj.nextDBEID = loadedData.nextDBEID;
+            obj.database_init_time = loadedData.database_init_time;
+            fprintf('数据已从%s恢复\n', filePath);
+        end
+
+
+        % ===================== 内部工具方法 =====================
+        function dblid = getDBLID(obj, laneStr)
+            laneStr = string(laneStr);
+            % dblid = NaN;
+            if ~isempty(obj.laneIDMap.keys) && isKey(obj.laneIDMap, laneStr)
+                dblid = obj.laneIDMap(laneStr);
+            else
+                dblid = obj.nextDBLID;
+                obj.laneIDMap(laneStr) = dblid;
+                obj.nextDBLID = obj.nextDBLID + 1;
+            end
+        end
+
+        function dbeid = getDBEID(obj, edgeStr)
+            edgeStr = string(edgeStr);
+            % dbeid = NaN;
+            if ~isempty(obj.edgeIDMap.keys) && isKey(obj.edgeIDMap, edgeStr)
+                dbeid = obj.edgeIDMap(edgeStr);
+            else
+                dbeid = obj.nextDBEID;
+                obj.edgeIDMap(edgeStr) = dbeid;
+                obj.nextDBEID = obj.nextDBEID + 1;
+            end
+        end
+
+        % ===================== 对外反查方法 =====================
+        function laneStr = getLaneIDByDBLID(obj, dblid)
+            laneStr = "";
+            if ~isempty(obj.laneIDMap.keys)
+                allLaneStr = obj.laneIDMap.keys;
+                allDBLID = values(obj.laneIDMap);
+                idx = find(allDBLID == dblid, 1);
+                if ~isempty(idx)
+                    laneStr = allLaneStr(idx);
+                end
+            end
+        end
+
+        function edgeStr = getEdgeIDByDBEID(obj, dbeid)
+            edgeStr = "";
+            if ~isempty(obj.edgeIDMap.keys)
+                allEdgeStr = obj.edgeIDMap.keys;
+                allDBEID = values(obj.edgeIDMap);
+                idx = find(allDBEID == dbeid, 1);
+                if ~isempty(idx)
+                    edgeStr = allEdgeStr(idx);
+                end
+            end
+        end
+
+        % ===================== 核心存储方法 =====================
+        function addVehicleData(obj, time, varargin)
+            objTracking_dict = [];
+            vehicleDummies = [];
+            ego = [];
+            if nargin >= 3
+                objTracking_dict = varargin{1};
+            end
+            if nargin >= 4
+                vehicleDummies = varargin{2};
+            end
+            if nargin >= 5
+                ego = varargin{3};
+            end
+
+            currentVehicles = dictionary(string([]), {});
+            
+            if ~isempty(objTracking_dict) && ~isempty(vehicleDummies)
+                vehIDs = objTracking_dict.keys;
+                for i = 1:length(vehIDs)
+                    vehID = vehIDs{i};
+                    dummyIdx = objTracking_dict(vehID);
+                    if dummyIdx <= length(vehicleDummies)
+                        currentVehicles{vehID} = vehicleDummies{dummyIdx};
+                    end
+                end
+            end
+            
+            if ~isempty(ego)
+                egoID = ego.vehID;
+                currentVehicles{egoID} = ego;
+            end
+
+            if ~isempty(currentVehicles.keys)
+                obj.timeVehicleMap{time} = {currentVehicles.keys};
+            end
+
+            vehIDs = currentVehicles.keys;
+            for i = 1:length(vehIDs)
+                vehID = vehIDs{i};
+                dummy = currentVehicles{vehID};
+
+                isNewVeh = true;
+                if ~isempty(obj.vehicleDBIDMap.keys)
+                    isNewVeh = ~isKey(obj.vehicleDBIDMap, vehID);
+                end
+                if isNewVeh
+                    obj.vehicleDBIDMap(vehID) = obj.nextVehicleDBID;
+                    obj.nextVehicleDBID = obj.nextVehicleDBID + 1;
+
+                    staticInfo = struct(...
+                        'vClass', dummy.vClass, ...
+                        'vType', dummy.vType, ...
+                        'route', {dummy.route}, ...
+                        'length', dummy.length, ...
+                        'width', dummy.width, ...
+                        'dbID', obj.vehicleDBIDMap(vehID));
+                    obj.vehicleStaticInfo{vehID} = staticInfo;
+                end
+
+                dynamicData = struct(...
+                    'time', time, ...
+                    'acc', dummy.acc, ...
+                    'speed', dummy.speed, ...
+                    'heading', dummy.heading, ...
+                    'heading_cos_sin', dummy.heading_cos_sin, ...
+                    'pos', dummy.pos, ...
+                    'DBLID', obj.getDBLID(dummy.laneID), ...
+                    'DBEID', obj.getDBEID(dummy.edgeID), ...
+                    'lanePosition', dummy.lanePosition, ...
+                    'routeIdx', dummy.routeIdx, ...
+                    'dev', dummy.dev);
+
+                isNewDynamic = true;
+                if ~isempty(obj.vehicleDynamicData.keys)
+                    isNewDynamic = ~isKey(obj.vehicleDynamicData, vehID);
+                end
+                if isNewDynamic
+                    obj.vehicleDynamicData{vehID} = struct2table(dynamicData);
+                else
+                    tbl = obj.vehicleDynamicData{vehID};
+                    tbl = [tbl; struct2table(dynamicData)]; %#ok<AGROW>
+                    obj.vehicleDynamicData{vehID} = tbl;
+                end
+            end
+        end
+
+        % ===================== 数据查询方法 =====================
+        function allHistory = getVehicleAllHistory(obj, vehID)
+            allHistory = table();
+            if ~isempty(obj.vehicleDynamicData.keys) && isKey(obj.vehicleDynamicData, vehID)
+                tbl = obj.vehicleDynamicData{vehID};
+                tbl.laneID = arrayfun(@(x)obj.getLaneIDByDBLID(x), tbl.DBLID, 'UniformOutput', false);
+                tbl.edgeID = arrayfun(@(x)obj.getEdgeIDByDBEID(x), tbl.DBEID, 'UniformOutput', false);
+                colOrder = {'time','acc','speed','heading','heading_cos_sin','pos',...
+                    'laneID','edgeID','lanePosition','routeIdx','dev'};
+                allHistory = tbl(:, colOrder);
+            end
+        end
+
+        function data = getVehicleDataAtTime(obj, vehID, time)
+            data = struct();
+            if ~isempty(obj.vehicleDynamicData.keys) && isKey(obj.vehicleDynamicData, vehID)
+                tbl = obj.vehicleDynamicData{vehID};
+                timeIdx = tbl.time == time;
+                if any(timeIdx)
+                    tempData = table2struct(tbl(timeIdx, :), 'ToScalar', true);
+                    data.time = tempData.time;
+                    data.acc = tempData.acc;
+                    data.speed = tempData.speed;
+                    data.heading = tempData.heading;
+                    data.heading_cos_sin = tempData.heading_cos_sin;
+                    data.pos = tempData.pos;
+                    data.laneID = obj.getLaneIDByDBLID(tempData.DBLID);
+                    data.edgeID = obj.getEdgeIDByDBEID(tempData.DBEID);
+                    data.lanePosition = tempData.lanePosition;
+                    data.routeIdx = tempData.routeIdx;
+                    data.dev = tempData.dev;
+                end
+            end
+        end
+
+        function vehIDs = getVehicleIDsAtTime(obj, time)
+            vehIDs = {};
+            if ~isempty(obj.timeVehicleMap.keys) && isKey(obj.timeVehicleMap, time)
+                vehIDs = obj.timeVehicleMap{time}{1};
+            end
+        end
+
+        function allData = getAllVehicleDataAtTime(obj, time)
+            allData = struct([]);
+            vehIDs = obj.getVehicleIDsAtTime(time);
+            if isempty(vehIDs)
+                return;
+            end
+            allData = struct('vehID', {}, 'data', {});
+            for i = 1:length(vehIDs)
+                vehID = vehIDs{i};
+                data = obj.getVehicleDataAtTime(vehID, time);
+                if ~isempty(data)
+                    allData(i).vehID = vehID;
+                    allData(i).data = data;
+                end
+            end
+        end
+
+        % ===================== 辅助查询方法 =====================
+        function dbID = getVehicleDBID(obj, vehID)
+            dbID = NaN;
+            if ~isempty(obj.vehicleDBIDMap.keys) && isKey(obj.vehicleDBIDMap, vehID)
+                dbID = obj.vehicleDBIDMap(vehID);
+            end
+        end
+
+        function staticInfo = getVehicleStaticInfo(obj, vehID)
+            staticInfo = struct();
+            if ~isempty(obj.vehicleStaticInfo.keys) && isKey(obj.vehicleStaticInfo, vehID)
+                staticInfo = obj.vehicleStaticInfo{vehID};
+            end
+        end
+
+        % ===================== 实例内数据重置方法（私有） =====================
+        function resetData(obj)
+            % 重置所有字典和计数器，清空实例内数据
+            obj.vehicleDBIDMap = dictionary(string([]), []);     
+            obj.nextVehicleDBID = 1;
+            obj.vehicleStaticInfo = dictionary(string([]), {});  
+            obj.vehicleDynamicData = dictionary(string([]), {}); 
+            obj.timeVehicleMap = dictionary(string([]), {});     
+
+            obj.laneIDMap = dictionary(string([]), []);          
+            obj.nextDBLID = 1;
+            obj.edgeIDMap = dictionary(string([]), []);          
+            obj.nextDBEID = 1;
+        end
+    end
+
+    % 静态方法：单例实现+清除单例
+    methods (Static)
+        function obj = getInstance()
+            % persistent localInstance
+            % if isempty(localInstance)
+                localInstance = CloudDatabase();
+            % end
+            obj = localInstance;
+        end
+
+        function clearInstance()
+            % 对外暴露的清除单例方法：清空persistent变量+重置数据
+            % persistent localInstance
+            % if ~isempty(localInstance)
+                % localInstance.resetData(); % 先重置实例内所有数据
+                % localInstance = []; % 清空persistent变量
+            % end
+            % 清除工作区可能存在的db变量（可选，增强清空效果）
+            if exist('cloud_db', 'var')
+                clear cloud_db;
+            end
+        end
+    end
+end

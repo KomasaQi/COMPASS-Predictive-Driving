@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2025-01-19 11:32:55 by Eclipse SUMO sumo Version 1.19.0
+-->
+
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="../maps/lianyg_yanc.net.xml"/>
+        <route-files value="no28_1500_cruise_7.rou.xml"/>
+        <additional-files value="../maps/LianYG_YanC.poly.xml"/>
+    </input>
+
+    <time>
+        <step-length value="0.1"/>
+    </time>
+
+    <processing>
+        <lateral-resolution value="0.2"/>
+    </processing>
+
+</configuration>
