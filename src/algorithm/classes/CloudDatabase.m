@@ -85,7 +85,7 @@ classdef CloudDatabase < handle
 
             % 初始化容器特征数
             node_stat_feat_idxs = 1:8; % 这里已经写好了, nodes_pos(1x 2y) 3nodetype 4free_end 5laneno 6roadtype(height) 7spdlim 8drivable 
-            node_dyn_feat_idxs = 9:15; % 也是提前写好了, 9occ 10vType 11spd 12acc 13head 14ego 15route
+            node_dyn_feat_idxs = 9:16; % 也是提前写好了, 9occ 10vType 11spd 12acc 13head 14ego 15route 16risk
             % 初始化容器们
      
             nodeDynFeats = zeros(nodes_idx_list(end),length(node_dyn_feat_idxs));

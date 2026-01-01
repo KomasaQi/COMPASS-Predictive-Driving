@@ -4,7 +4,7 @@ hist_secs = 20;
 skip = 1;
 future_secs = 20;
 skip_time = 2.5;
-jumpto = 74;  % 上次没处理完，现在从第几个文件开始处理
+jumpto = 1;  % 上次没处理完，现在从第几个文件开始处理
 % 首先自定义一个文件进行加载
 matFiles = dir([params.sample.savedir, '*.mat']);
 

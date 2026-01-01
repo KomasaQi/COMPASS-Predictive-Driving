@@ -4,7 +4,7 @@ import h5py
 import numpy as np
 import torch
 from torch_geometric.data import Data
-from torch_geometric.data import Dataset
+from torch_geometric.data import InMemoryDataset
 import gc # 新增：内存回收
 
 class TemporalData(Data):
@@ -12,10 +12,11 @@ class TemporalData(Data):
         super().__init__(x=x, edge_index=edge_index, edge_attr=edge_attr, y=y, **kwargs)
         self.timestamp = timestamp
 
-class COMPASSGraphDataset(Dataset):
+class COMPASSGraphDataset(InMemoryDataset):
     
     def __init__(self, root, transform=None, pre_transform=None, pre_filter=None):
         super().__init__(root, transform, pre_transform, pre_filter) # pre_filter可根据需求筛选数据
+        self.load(self.processed_paths[0]) # 新版的PyG数据集加载方式
         
     @property
     def raw_file_names(self):
@@ -25,26 +26,29 @@ class COMPASSGraphDataset(Dataset):
 
     @property
     def processed_file_names(self):
-        # ✅ 每个原始文件对应一个处理后的.pt文件，实现按需加载
-        return [f'processed_{i}.pt' for i in range(len(self.raw_file_names))]
+        return [f'compass_graphs.pt']
 
     def download(self):
         pass
     
     def process(self):
-        # ✅ 逐个处理、逐个保存，绝不堆积数据列表，内存占用恒定
-        for idx, raw_path in enumerate(self.raw_file_paths):
-            try:
-                graph_data = self.read_graph_sample(raw_path, verbose=False)
-                self.save([graph_data], self.processed_paths[idx])
-                print(f"✅ 成功处理：{os.path.basename(raw_path)}")
-            except Exception as e:
-                print(f"❌ 处理失败 {os.path.basename(raw_path)}: {str(e)}")
-            finally:
-                if idx % 50 == 0:
-                    # ✅ 强制释放内存，解决Windows内存碎片核心问题
-                    gc.collect()
+        data_list = []
+        raw_file_names = self.raw_file_names
 
+        for idx, raw_filename in enumerate(raw_file_names):
+   
+            raw_path = os.path.join(self.raw_dir, raw_filename) # 获取数据路径
+            print(raw_path)
+            
+            graph_series = self.read_graph_sample(raw_path)
+
+            data_list.append(graph_series)
+            if idx % 50 == 0:
+                print(f"已处理 {idx}/{len(raw_file_names)} 文件")
+            # ✅ 优化：每读取1个文件就回收一次内存，避免堆积
+                gc.collect()
+            
+        self.save(data_list, self.processed_paths[0])
 
     def read_graph_sample(self,file_rel_path,verbose=True):
         # ====================== 2. 读取数值矩阵 ======================
@@ -77,14 +81,7 @@ class COMPASSGraphDataset(Dataset):
         x = torch.tensor(nodeStatFeat, dtype=torch.float32)
         y = torch.tensor(nodeDynFeat, dtype=torch.float32)          # 节点特征 (N, 特征数)
         edge_attr = torch.tensor(edgeFeat, dtype=torch.float32)  # 边特征 (11645, M)
-        nodes_number = x.shape[0]
-        hist_graph = 20  # 历史时间步数
-        for i in range(hist_graph + 1):
-            nodes_idx = torch.arange(0, nodes_number) + nodes_number*i
-            x = torch.cat([x, y[nodes_idx,:]], dim=1) # 拼接历史动态特征
-
-        y = y[nodes_number*(hist_graph+1):,:] # 取未来时刻所有特征暂时标签
-
+        # timestamp = torch.randn(1, dtype=torch.float32)
         # 构建PyG有向图（天然支持有向，核心是edge_index的方向）
         graph_pyg = TemporalData(
             x=x,                     # 节点特征矩阵（目前只包含静态特征，需要在transform中处理添加历史和当前动态特征）
@@ -112,16 +109,5 @@ class COMPASSGraphDataset(Dataset):
         # gc.collect()
         
         return graph_pyg
-    
-    
-    # ✅ 必须实现：返回数据集总长度
-    def len(self):
-        return len(self.raw_file_paths)
-    
-    
-    # ✅ 必须实现：按索引按需加载单个数据（核心！内存不爆炸的关键）
-    def get(self, idx):
-        # 仅加载当前索引的.pt文件，其他数据仍在硬盘
-        data = self.load(self.processed_paths[idx])[0]
-        return data
-
+            
+# graph_series = read_graph_sample(file_rel_path)
