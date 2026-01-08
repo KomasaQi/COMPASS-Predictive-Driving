@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-@Author: Komasa Qi
-@Contact: komasaqi@foxmail.com
-"""
 import os
 import re
 import pandas as pd
@@ -13,8 +8,6 @@ import gc  # 内存回收
 from torch_geometric.data import Data
 from torch_geometric.data import Dataset
 from torch import serialization
-from sklearn.model_selection import train_test_split
-from torch_geometric.loader import DataLoader
 
 
 class TemporalData(Data):
@@ -25,13 +18,14 @@ class TemporalData(Data):
         self.action_lc = action_lc
     
         
+        
 class COMPASSGraphDataset(Dataset):
     def __init__(self, root, transform=None, pre_transform=None, pre_filter=None):
         # ====================== 修复核心1：先初始化自定义属性，再调用父类构造函数 ======================
         self.root = root
         self.raw_file_names_list = [f for f in os.listdir(self.raw_dir) if f.endswith('.mat')]
         # 仅在测试时启用，截取前256个样本，正式训练时注释掉
-        # self.raw_file_names_list = self.raw_file_names_list[:128]
+        self.raw_file_names_list = self.raw_file_names_list[:256]
         self.raw_file_paths = [os.path.join(self.raw_dir, f) for f in self.raw_file_names_list]
         self.raw_file_paths = [p for p in self.raw_file_paths if os.path.exists(p)]
         
@@ -80,28 +74,20 @@ class COMPASSGraphDataset(Dataset):
                 if idx % 50 == 0:
                     gc.collect()
 
+    def unzip_one_graph(self, data: TemporalData):
+        """将时间序列图变换为用于可视化的情况
+            包括相关特征的反归一化，以及特征顺序的调整（按照如下顺序）
+            feat_trans_name_dict = {
+                'x': 1, 'y': 2,'node_type': 3, 'free_end': 4,
+                'laneno': 5,'roadtype': 6, 'spdlim': 7, 'drivable': 8,
+                'occ': 9, 'vtype': 10, 'spd': 11, 'acc': 12,
+                'head': 13, 'ego': 14, 'route': 15, 'risk': 16
+            }
+        """
+        pass #TODO: 后续可实现此函数，用于可视化时的特征还原和顺序调整
         
 
     def read_graph_sample(self,file_rel_path,verbose=True):
-        """
-        
-        # ==== 将动态特征和边特征首先进行拓展化处理，将车辆类型、道路类型和车道类型都转换为one-hot编码 ==============
-        # feat_trans_name_dict = {
-        #     'x': 1, 'y': 2,'node_type': 3, 'free_end': 4,
-        #     'laneno': 5,'roadtype': 6, 'spdlim': 7, 'drivable': 8,
-        #     'occ': 9, 'vtype': 10, 'spd': 11, 'acc': 12,
-        #     'head': 13, 'ego': 14, 'route': 15, 'risk': 16
-        # } # 静态特征为前8维，动态特征为后8维，共16维，动态特征中，我们需要将vtype（0~14）和route(0~3)转换为one-hot编码
-        # 边特征处理前为2维，分别是：weight和distance，其中weight表示了不同的边类型，也需要转换为one-hot编码
-        # next = -1.0;      % 顺着道路连接方向的边的特征
-        # side_left = 2.0;  % 包含横向移动的边的特征向左
-        # side_right = 1.0; % 包含横向移动的边的特征向右
-        # junction = 0.0;   % 路口连接的网状结构的边的特征
-        # 转换后的动态特征y维度(25维) = {
-        #     'occ': 0, 'spd': 1, 'acc': 2,
-        #     'head': 3, 'ego': 4, 'risk': 5, 'vtype': 6-20(one-hot,15分类), 'route': 21-24(one-hot,4分类)
-        # } 
-        """
         with h5py.File(file_rel_path, 'r') as f:
             # MATLAB列优先 → Python行优先，转置+降维
             edge_index = np.squeeze(np.array(f['endNodes'],dtype=np.int32)) - 1  # 0-based索引
@@ -112,7 +98,12 @@ class COMPASSGraphDataset(Dataset):
             action_lc = np.squeeze(np.array(f['action_lc'],dtype=np.int32))
 
         # ==== 将动态特征和边特征首先进行拓展化处理，将车辆类型、道路类型和车道类型都转换为one-hot编码 ==============
-        #  # 静态特征为前8维，动态特征为后8维，共16维，动态特征中，我们需要将vtype（0~14）和route(0~3)转换为one-hot编码
+        # feat_trans_name_dict = {
+        #     'x': 1, 'y': 2,'node_type': 3, 'free_end': 4,
+        #     'laneno': 5,'roadtype': 6, 'spdlim': 7, 'drivable': 8,
+        #     'occ': 9, 'vtype': 10, 'spd': 11, 'acc': 12,
+        #     'head': 13, 'ego': 14, 'route': 15, 'risk': 16
+        # } # 静态特征为前8维，动态特征为后8维，共16维，动态特征中，我们需要将vtype（0~14）和route(0~3)转换为one-hot编码
         nodeDynFeat_vType = nodeDynFeat[:,1]
         nodeDynFeat_vType[nodeDynFeat_vType > 14] = 14  # 限制车辆类型在[0,14]
         nodeDynFeat_route = nodeDynFeat[:,6]
@@ -122,6 +113,12 @@ class COMPASSGraphDataset(Dataset):
         # 转换one-hot编码
         nodeDynFeat_route_onehot = torch.nn.functional.one_hot(torch.tensor(nodeDynFeat_route, dtype=torch.long), num_classes=4).float()
         nodeDynFeat_vType_onehot = torch.nn.functional.one_hot(torch.tensor(nodeDynFeat_vType, dtype=torch.long), num_classes=15).float()
+        
+        # 边特征处理前为2维，分别是：weight和distance，其中weight表示了不同的边类型，也需要转换为one-hot编码
+        # next = -1.0;      % 顺着道路连接方向的边的特征
+        # side_left = 2.0;  % 包含横向移动的边的特征向左
+        # side_right = 1.0; % 包含横向移动的边的特征向右
+        # junction = 0.0;   % 路口连接的网状结构的边的特征
         edgeFeat_type = edgeFeat[:,0] + 1  # 将类型从[-1,2]映射到[0,3]
         edgeFeat_no_convert = torch.tensor(edgeFeat[:,1:], dtype=torch.float32)  # 不需要转换的边特征
         
@@ -133,12 +130,18 @@ class COMPASSGraphDataset(Dataset):
         # ====================== edge_index维度+类型合规化（PyG强制要求）======================
         # 1. 转为 (2, E) 二维张量（PyG必须格式）、2. 转为torch.long类型（PyG强制）
         edge_index = torch.tensor(edge_index, dtype=torch.long).reshape(2, -1)
-        # edge_index = torch.cat([edge_index, edge_index[[1,0],:]], dim=1)  # 无向图，添加反向边
+        edge_index = torch.cat([edge_index, edge_index[[1,0],:]], dim=1)  # 无向图，添加反向边
         x = torch.tensor(nodeStatFeat, dtype=torch.float32)
         x[:,6] = (x[:,6] - 20.0) / 20.0  # 归一化静态特征中的限速spdlim
         y = torch.cat([nodeDynFeat_no_convert, nodeDynFeat_vType_onehot, nodeDynFeat_route_onehot], dim=1)
+        # dyn_feat_after_trans = {
+        #     'occ': 0, 'spd': 1, 'acc': 2,
+        #     'head': 3, 'ego': 4, 'risk': 5, 'vtype': 6-20(one-hot,15分类), 'route': 21-24(one-hot,4分类)
+        
+        
+        # } 
         edge_attr = torch.cat([edgeFeat_type_onehot, edgeFeat_no_convert], dim=1)
-        # edge_attr = torch.cat([edge_attr, torch.cat([-edge_attr[:,:-1],edge_attr[:,-1:]],dim=1)], dim=0)  # 无向图，添加反向边的边特征
+        edge_attr = torch.cat([edge_attr, -edge_attr], dim=0)  # 无向图，添加反向边的边特征
         action_acc = torch.tensor(action_acc, dtype=torch.float32).reshape(1,-1)
         action_lc = torch.tensor(action_lc, dtype=torch.long).reshape(1,-1)
         nodes_number = x.shape[0]
@@ -179,33 +182,3 @@ class COMPASSGraphDataset(Dataset):
         # ======================使用torch.load ======================
         data = torch.load(self.processed_paths[idx],weights_only=False)[0]
         return data
-    
-
-
-    
-
-def randomChooseTimeAndSlice(data: TemporalData):
-    """
-    从时间序列数据中随机选择一个20s内的未来时间点，然后将选择的未来特征切片赋值给y,并设置timestamp为未来时间点
-    """
-    # timestamp = torch.randint(1,21,(1,)).long()
-    timestamp = torch.randint(1,2,(1,)).long()
-    nodes_number = data.x.shape[0]
-    y_nodes_idx = torch.arange(0, nodes_number) + nodes_number*(timestamp - 1)
-    data.y = data.y[y_nodes_idx,:] # 取未来时刻标签
-    data.timestamp = timestamp.clone().detach().float()  # 若timestamp是张量时用这个
-    return data
-
-
-def load_compass_data(args):
-    dataset = COMPASSGraphDataset(root="data/dataset/CompassGraphDataset", transform=randomChooseTimeAndSlice)
-
-    # 80%的样本用于训练，20%用于验证和测试
-    # train_dataset, test_dataset = train_test_split(dataset, test_size=0.2, random_state=args.seed)
-    # train_loader = DataLoader(train_dataset, batch_size=args.train_batch_size, shuffle=True, num_workers=4)
-    # test_loader = DataLoader(test_dataset, batch_size=args.train_batch_size, shuffle=False, num_workers=4)
-    
-    train_loader = DataLoader(dataset, batch_size=args.train_batch_size, shuffle=True, num_workers=0)
-    
-
-    return train_loader, train_loader, dataset.num_node_features, dataset.num_edge_features

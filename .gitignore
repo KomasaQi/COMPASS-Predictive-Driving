@@ -4,6 +4,7 @@
 *.pcd
 
 output/
+outputs/
 data/dataset/
 data/dataset/raw/
 data/dataset/raw_shortdist/
