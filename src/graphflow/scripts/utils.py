@@ -10,13 +10,17 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-def dice_loss(pred, target, smooth=1e-6):
-    pred = pred.contiguous().view(-1)
-    target = target.contiguous().view(-1)
-    intersection = (pred * target).sum()
-    dice = (2. * intersection + smooth) / (pred.sum() + target.sum() + smooth)
-    return 1 - dice
 
+
+def compute_sampling_threshold(args, batches_seen):
+    """
+    计算课程学习的采样阈值ε_i（对应论文中的scheduled sampling）
+    功能：随着训练迭代次数增加，逐渐降低使用真实标签的概率，提升模型鲁棒性
+    :param batches_seen: 已训练的批次数量（全局步数）
+    :return: 采样阈值ε_i（float，范围(0,1)，随batches_seen增大而减小）
+    """
+    # 阈值公式：ε_i = τ / (τ + exp(batches_seen/τ))，τ=cl_decay_steps, batches_seen：0 → cl_decay_steps, ε_i：1 → 0
+    return args.cl_decay_steps / (args.cl_decay_steps + np.exp(batches_seen / args.cl_decay_steps))
 
 # 修正版Focal Loss（适配已sigmoid的0~1输出）
 class FocalLoss(nn.Module):
@@ -55,7 +59,7 @@ class FocalLoss(nn.Module):
             return focal_loss.sum()
         return focal_loss
 
-def plot_graph(graph_pyg, feature=None, graph_type='raw', cmap="viridis", node_display_size=3, plot_alpha=0.9):
+def plot_graph(graph_pyg, feature=None, graph_type='raw', cmap="viridis", node_display_size=3, plot_alpha=0.9, timestamp=None, extra_info=None):
     """
         # feature                    # 可以自行选择可视化的特征
         # graph_type                 # 配置输入的图是原始数据集当中的图还是经过网络计算过以后的输出重组的图
@@ -131,7 +135,8 @@ def plot_graph(graph_pyg, feature=None, graph_type='raw', cmap="viridis", node_d
     cbar.set_label(feat_name_dict.get(color_map_matlab_idx, f"feature-MATLAB index{color_map_matlab_idx}"), fontsize=12)
 
     # 图形标题（自动显示当前可视化的特征）
-    plt.title(f"Node Scatter Visualization | Color mapped to: {feat_name_dict.get(color_map_matlab_idx, 'Custom Feature')}", 
+    plt.title(f"{extra_info} Graph Vis | Color mapped to: {feat_name_dict.get(color_map_matlab_idx, 'Custom Feature')}" + 
+              f" | Timestamp: {timestamp} sec", 
             fontsize=14, pad=20)
 
     # 关闭坐标轴（路网可视化无需坐标刻度，更简洁）

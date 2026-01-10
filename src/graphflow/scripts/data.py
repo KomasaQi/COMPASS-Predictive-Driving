@@ -31,7 +31,7 @@ class COMPASSGraphDataset(Dataset):
         self.root = root
         self.raw_file_names_list = [f for f in os.listdir(self.raw_dir) if f.endswith('.mat')]
         # 仅在测试时启用，截取前256个样本，正式训练时注释掉
-        # self.raw_file_names_list = self.raw_file_names_list[:128]
+        self.raw_file_names_list = self.raw_file_names_list[:256]
         self.raw_file_paths = [os.path.join(self.raw_dir, f) for f in self.raw_file_names_list]
         self.raw_file_paths = [p for p in self.raw_file_paths if os.path.exists(p)]
         
@@ -149,8 +149,10 @@ class COMPASSGraphDataset(Dataset):
             nodes_idx = torch.arange(0, nodes_number) + nodes_number*i
             x = torch.cat([x, y[nodes_idx,:]], dim=1)
 
-        # 取未来时刻标签
-        y = y[nodes_number*(hist_graph+1):,:]
+        # 取未来时刻标签，未来20s内的动态特征
+        y = y[nodes_number*(hist_graph+1):,:].reshape(20,-1,25).permute(1,2,0)
+        
+    
 
         # 构建时序图数据
         graph_pyg = TemporalData(
@@ -198,7 +200,8 @@ def randomChooseTimeAndSlice(data: TemporalData):
 
 
 def load_compass_data(args):
-    dataset = COMPASSGraphDataset(root="data/dataset/CompassGraphDataset", transform=randomChooseTimeAndSlice)
+    # dataset = COMPASSGraphDataset(root="data/dataset/CompassGraphDataset", transform=randomChooseTimeAndSlice)
+    dataset = COMPASSGraphDataset(root="data/dataset/CompassGraphDataset") # 不适用tranform，没有timestamp,y为未来20s的标签
 
     # 80%的样本用于训练，20%用于验证和测试
     # train_dataset, test_dataset = train_test_split(dataset, test_size=0.2, random_state=args.seed)
