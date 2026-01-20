@@ -1,0 +1,29 @@
+
+================================================================================
+[2026-01-20 15:02:17] step() crashed, rank=0
+Traceback (most recent call last):
+  File "e:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\Compass-Predictive-Driving\test_subproc.py", line 29, in step
+    return self.env.step(action)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\wrappers\common.py", line 125, in step
+    observation, reward, terminated, truncated, info = self.env.step(action)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\wrappers\common.py", line 393, in step
+    return super().step(action)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\core.py", line 327, in step
+    return self.env.step(action)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\wrappers\common.py", line 285, in step
+    return self.env.step(action)
+  File "e:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\Compass-Predictive-Driving\compass_env\envs\compass_fast_parallel_env.py", line 251, in step
+    reward = self._reward(observation)
+  File "e:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\Compass-Predictive-Driving\compass_env\envs\compass_fast_parallel_env.py", line 636, in _reward
+    lane_num = self.conn.edge.getLaneNumber(self.ego_vars[tc.VAR_ROAD_ID])
+  File "D:\Program Files (x86)\Eclipse\Sumo\tools\traci\_edge.py", line 145, in getLaneNumber
+    return self._getUniversal(tc.VAR_LANE_INDEX, edgeID)
+  File "D:\Program Files (x86)\Eclipse\Sumo\tools\traci\domain.py", line 152, in _getUniversal
+    return _parse(self._retValFunc, varID, self._getCmd(varID, objectID, format, *values))
+  File "D:\Program Files (x86)\Eclipse\Sumo\tools\traci\domain.py", line 157, in _getCmd
+    r = self._connection._sendCmd(self._cmdGetID, varID, objID, format, *values)
+  File "D:\Program Files (x86)\Eclipse\Sumo\tools\traci\connection.py", line 232, in _sendCmd
+    return self._sendExact()
+  File "D:\Program Files (x86)\Eclipse\Sumo\tools\traci\connection.py", line 144, in _sendExact
+    raise TraCIException(err, prefix[1], _RESULTS[prefix[2]])
+traci.exceptions.TraCIException: Edge '' is not known

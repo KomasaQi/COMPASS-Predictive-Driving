@@ -1,0 +1,156 @@
+
+================================================================================
+[2026-01-20 14:31:05] step() crashed, rank=2
+Traceback (most recent call last):
+  File "e:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\Compass-Predictive-Driving\test_subproc.py", line 29, in step
+    return self.env.step(action)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\wrappers\common.py", line 125, in step
+    observation, reward, terminated, truncated, info = self.env.step(action)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\wrappers\common.py", line 393, in step
+    return super().step(action)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\core.py", line 327, in step
+    return self.env.step(action)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\wrappers\common.py", line 285, in step
+    return self.env.step(action)
+  File "e:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\Compass-Predictive-Driving\compass_env\envs\compass_fast_parallel_env.py", line 248, in step
+    self._update_vehicle_state()
+  File "e:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\Compass-Predictive-Driving\compass_env\envs\compass_fast_parallel_env.py", line 489, in _update_vehicle_state
+    self._calc_ego_state()
+  File "e:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\Compass-Predictive-Driving\compass_env\envs\compass_fast_parallel_env.py", line 525, in _calc_ego_state
+    laneLength = self.conn.lane.getLength(ego_vars[tc.VAR_LANE_ID])
+  File "D:\Program Files (x86)\Eclipse\Sumo\tools\traci\_lane.py", line 68, in getLength
+    return self._getUniversal(tc.VAR_LENGTH, laneID)
+  File "D:\Program Files (x86)\Eclipse\Sumo\tools\traci\domain.py", line 152, in _getUniversal
+    return _parse(self._retValFunc, varID, self._getCmd(varID, objectID, format, *values))
+  File "D:\Program Files (x86)\Eclipse\Sumo\tools\traci\domain.py", line 157, in _getCmd
+    r = self._connection._sendCmd(self._cmdGetID, varID, objID, format, *values)
+  File "D:\Program Files (x86)\Eclipse\Sumo\tools\traci\connection.py", line 232, in _sendCmd
+    return self._sendExact()
+  File "D:\Program Files (x86)\Eclipse\Sumo\tools\traci\connection.py", line 144, in _sendExact
+    raise TraCIException(err, prefix[1], _RESULTS[prefix[2]])
+traci.exceptions.TraCIException: Lane '' is not known
+
+================================================================================
+[2026-01-20 14:34:54] step() crashed, rank=2
+Traceback (most recent call last):
+  File "e:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\Compass-Predictive-Driving\test_subproc.py", line 29, in step
+    return self.env.step(action)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\wrappers\common.py", line 125, in step
+    observation, reward, terminated, truncated, info = self.env.step(action)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\wrappers\common.py", line 393, in step
+    return super().step(action)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\core.py", line 327, in step
+    return self.env.step(action)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\wrappers\common.py", line 285, in step
+    return self.env.step(action)
+  File "e:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\Compass-Predictive-Driving\compass_env\envs\compass_fast_parallel_env.py", line 247, in step
+    self._update_vehicle_state()
+  File "e:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\Compass-Predictive-Driving\compass_env\envs\compass_fast_parallel_env.py", line 488, in _update_vehicle_state
+    self._calc_ego_state()
+  File "e:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\Compass-Predictive-Driving\compass_env\envs\compass_fast_parallel_env.py", line 524, in _calc_ego_state
+    laneLength = self.conn.lane.getLength(ego_vars[tc.VAR_LANE_ID])
+  File "D:\Program Files (x86)\Eclipse\Sumo\tools\traci\_lane.py", line 68, in getLength
+    return self._getUniversal(tc.VAR_LENGTH, laneID)
+  File "D:\Program Files (x86)\Eclipse\Sumo\tools\traci\domain.py", line 152, in _getUniversal
+    return _parse(self._retValFunc, varID, self._getCmd(varID, objectID, format, *values))
+  File "D:\Program Files (x86)\Eclipse\Sumo\tools\traci\domain.py", line 157, in _getCmd
+    r = self._connection._sendCmd(self._cmdGetID, varID, objID, format, *values)
+  File "D:\Program Files (x86)\Eclipse\Sumo\tools\traci\connection.py", line 232, in _sendCmd
+    return self._sendExact()
+  File "D:\Program Files (x86)\Eclipse\Sumo\tools\traci\connection.py", line 144, in _sendExact
+    raise TraCIException(err, prefix[1], _RESULTS[prefix[2]])
+traci.exceptions.TraCIException: Lane '' is not known
+
+================================================================================
+[2026-01-20 14:38:16] step() crashed, rank=2
+Traceback (most recent call last):
+  File "e:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\Compass-Predictive-Driving\test_subproc.py", line 29, in step
+    return self.env.step(action)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\wrappers\common.py", line 125, in step
+    observation, reward, terminated, truncated, info = self.env.step(action)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\wrappers\common.py", line 393, in step
+    return super().step(action)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\core.py", line 327, in step
+    return self.env.step(action)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\wrappers\common.py", line 285, in step
+    return self.env.step(action)
+  File "e:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\Compass-Predictive-Driving\compass_env\envs\compass_fast_parallel_env.py", line 240, in step
+    self._update_vehicle_state()
+  File "e:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\Compass-Predictive-Driving\compass_env\envs\compass_fast_parallel_env.py", line 489, in _update_vehicle_state
+    self._calc_ego_state()
+  File "e:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\Compass-Predictive-Driving\compass_env\envs\compass_fast_parallel_env.py", line 525, in _calc_ego_state
+    laneLength = self.conn.lane.getLength(ego_vars[tc.VAR_LANE_ID])
+  File "D:\Program Files (x86)\Eclipse\Sumo\tools\traci\_lane.py", line 68, in getLength
+    return self._getUniversal(tc.VAR_LENGTH, laneID)
+  File "D:\Program Files (x86)\Eclipse\Sumo\tools\traci\domain.py", line 152, in _getUniversal
+    return _parse(self._retValFunc, varID, self._getCmd(varID, objectID, format, *values))
+  File "D:\Program Files (x86)\Eclipse\Sumo\tools\traci\domain.py", line 157, in _getCmd
+    r = self._connection._sendCmd(self._cmdGetID, varID, objID, format, *values)
+  File "D:\Program Files (x86)\Eclipse\Sumo\tools\traci\connection.py", line 232, in _sendCmd
+    return self._sendExact()
+  File "D:\Program Files (x86)\Eclipse\Sumo\tools\traci\connection.py", line 144, in _sendExact
+    raise TraCIException(err, prefix[1], _RESULTS[prefix[2]])
+traci.exceptions.TraCIException: Lane '' is not known
+
+================================================================================
+[2026-01-20 15:05:12] step() crashed, rank=2
+Traceback (most recent call last):
+  File "e:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\Compass-Predictive-Driving\test_subproc.py", line 29, in step
+    return self.env.step(action)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\wrappers\common.py", line 125, in step
+    observation, reward, terminated, truncated, info = self.env.step(action)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\wrappers\common.py", line 393, in step
+    return super().step(action)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\core.py", line 327, in step
+    return self.env.step(action)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\wrappers\common.py", line 285, in step
+    return self.env.step(action)
+  File "e:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\Compass-Predictive-Driving\compass_env\envs\compass_fast_parallel_env.py", line 251, in step
+    reward = self._reward(observation)
+  File "e:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\Compass-Predictive-Driving\compass_env\envs\compass_fast_parallel_env.py", line 668, in _reward
+    mei = max(max(meis[observation["veh"][:,-1, on_main_road_index] == ego_on_main_road]),0.0) # 取最后一个时刻所有车同一个路段的MEI的最大值
+ValueError: max() arg is an empty sequence
+
+================================================================================
+[2026-01-20 15:09:47] reset() crashed, rank=2
+Traceback (most recent call last):
+  File "e:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\Compass-Predictive-Driving\test_subproc.py", line 19, in reset
+    return self.env.reset(**kwargs)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\wrappers\common.py", line 146, in reset
+    return super().reset(seed=seed, options=options)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\core.py", line 333, in reset
+    return self.env.reset(seed=seed, options=options)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\wrappers\common.py", line 400, in reset
+    return super().reset(seed=seed, options=options)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\core.py", line 333, in reset
+    return self.env.reset(seed=seed, options=options)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\wrappers\common.py", line 295, in reset
+    return self.env.reset(seed=seed, options=options)
+  File "e:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\Compass-Predictive-Driving\compass_env\envs\compass_fast_parallel_env.py", line 372, in reset
+    self.conn.simulationStep(self.time_bias)
+  File "D:\Program Files (x86)\Eclipse\Sumo\tools\traci\connection.py", line 370, in simulationStep
+    result = self._sendCmd(tc.CMD_SIMSTEP, None, None, "D", step)
+  File "D:\Program Files (x86)\Eclipse\Sumo\tools\traci\connection.py", line 232, in _sendCmd
+    return self._sendExact()
+  File "D:\Program Files (x86)\Eclipse\Sumo\tools\traci\connection.py", line 137, in _sendExact
+    raise FatalTraCIError("Connection closed by SUMO.")
+traci.exceptions.FatalTraCIError: Connection closed by SUMO.
+
+================================================================================
+[2026-01-20 15:23:43] reset() crashed, rank=2
+Traceback (most recent call last):
+  File "e:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\Compass-Predictive-Driving\test_subproc.py", line 19, in reset
+    return self.env.reset(**kwargs)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\wrappers\common.py", line 146, in reset
+    return super().reset(seed=seed, options=options)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\core.py", line 333, in reset
+    return self.env.reset(seed=seed, options=options)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\wrappers\common.py", line 400, in reset
+    return super().reset(seed=seed, options=options)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\core.py", line 333, in reset
+    return self.env.reset(seed=seed, options=options)
+  File "d:\Anaconda\envs\graphflow\lib\site-packages\gymnasium\wrappers\common.py", line 295, in reset
+    return self.env.reset(seed=seed, options=options)
+  File "e:\我的文件\大学学习\_硕士学习\毕设硕士\车辆控制算法开发\Compass-Predictive-Driving\compass_env\envs\compass_fast_parallel_env.py", line 414, in reset
+    return observation, info
+UnboundLocalError: local variable 'observation' referenced before assignment

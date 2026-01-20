@@ -12,7 +12,7 @@
     </input>
 
     <time>
-        <step-length value="1.0"/>
+        <step-length value="0.5"/>
     </time>
 
     <processing>

@@ -1,7 +1,1390 @@
-Warning: Value of tau=0.80 in vehicle type 'car_sport' lower than simulation step size may cause collisions.
-Warning: Choosing new speed factor 1.22 for vehicle 'flow_exit.171' to match departure speed 22.22 (max 21.73).
-Warning: Choosing new speed factor 1.21 for vehicle 'flow_exit.206' to match departure speed 22.22 (max 19.66).
-Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
-Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
-Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
-Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
+Warning: Vehicle 'flow_main.20' performs emergency braking on lane '96614679_2' with decel=9.00, wished=6.00, severity=1.00, time=57.50.
+Warning: Vehicle 'flow_exit.11' performs emergency braking on lane '96614679-AddedOffRampEdge_0' with decel=9.00, wished=3.50, severity=1.00, time=78.50.
+Warning: Vehicle 'flow_main.20' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=147.50.
+Warning: Vehicle 'flow_main.62' performs emergency braking on lane '96614679_1' with decel=9.00, wished=3.80, severity=1.00, time=179.50.
+Warning: Choosing new speed factor 1.21 for vehicle 'flow_main.109' to match departure speed 22.22 (max 19.42).
+Warning: Vehicle 'flow_main.73' performs emergency braking on lane '224832138#1-AddedOnRampEdge_3' with decel=9.00, wished=4.00, severity=1.00, time=251.00.
+Warning: Vehicle 'flow_merge.22' performs emergency braking on lane '224832138#1_2' with decel=9.00, wished=6.00, severity=1.00, time=263.00.
+Warning: Vehicle 'flow_main.63' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=265.50.
+Warning: Choosing new speed factor 1.20 for vehicle 'flow_exit.697' to match departure speed 22.22 (max 20.01).
+Warning: Vehicle 'flow_merge.37' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=306.50.
+Warning: Vehicle 'flow_merge.37' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=308.50.
+Warning: Vehicle 'flow_merge.29' performs emergency braking on lane '224832138#1_2' with decel=9.00, wished=6.00, severity=1.00, time=331.00.
+Warning: Vehicle 'flow_merge.39' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=361.50.
+Warning: Choosing new speed factor 1.25 for vehicle 'flow_merge.89' to match departure speed 10.00 (max 9.98).
+Warning: Vehicle 'flow_main.60' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=367.50.
+Warning: Vehicle 'flow_main.112' performs emergency braking on lane '224832136#1_0' with decel=9.00, wished=6.00, severity=1.00, time=383.00.
+Warning: Vehicle 'flow_main.70' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=405.00.
+Warning: Vehicle 'flow_merge.25' performs emergency braking on lane '224832138#1_0' with decel=9.00, wished=4.00, severity=1.00, time=423.50.
+Warning: Vehicle 'flow_main.117' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=487.50.
+Warning: Vehicle 'flow_main.92' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=498.00.
+Warning: Vehicle 'flow_main.92' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=499.50.
+Warning: Vehicle 'flow_exit.176' performs emergency braking on lane '96614679_2' with decel=9.00, wished=3.50, severity=1.00, time=504.50.
+Warning: Vehicle 'flow_main.163' performs emergency braking on lane '96614679_2' with decel=9.00, wished=6.00, severity=1.00, time=518.00.
+Warning: Vehicle 'flow_merge.48' performs emergency braking on lane '224832138#1_0' with decel=9.00, wished=6.00, severity=1.00, time=545.50.
+Warning: Vehicle 'flow_main.117' performs emergency braking on lane '224832138#1_2' with decel=9.00, wished=6.00, severity=1.00, time=557.00.
+Warning: Vehicle 'flow_main.163' performs emergency braking on lane '224832138#1_2' with decel=9.00, wished=6.00, severity=1.00, time=574.50.
+Warning: Vehicle 'flow_merge.31' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=593.00.
+Warning: Vehicle 'flow_main.70' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=601.50.
+Warning: Vehicle 'flow_main.70' performs emergency braking on lane '224832138#1_0' with decel=9.00, wished=6.00, severity=1.00, time=610.00.
+Warning: Vehicle 'flow_main.60' performs emergency braking on lane '224832138#1_0' with decel=9.00, wished=6.00, severity=1.00, time=613.00.
+Warning: Choosing new speed factor 1.17 for vehicle 'flow_merge.149' to match departure speed 10.00 (max 9.84).
+Warning: Vehicle 'flow_merge.68' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=631.50.
+Warning: Choosing new speed factor 1.20 for vehicle 'flow_main.314' to match departure speed 22.22 (max 21.47).
+Warning: Vehicle 'flow_main.192' performs emergency braking on lane '224832138#1_0' with decel=9.00, wished=6.00, severity=1.00, time=649.50.
+Warning: Vehicle 'flow_merge.62' performs emergency braking on lane '224832138#1_2' with decel=9.00, wished=6.00, severity=1.00, time=650.50.
+Warning: Vehicle 'flow_main.117' performs emergency braking on lane '224832138#1_2' with decel=9.00, wished=6.00, severity=1.00, time=722.50.
+Warning: Vehicle 'flow_main.165' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=741.50.
+Warning: Vehicle 'flow_merge.48' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=747.50.
+Warning: Vehicle 'flow_main.163' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=777.50.
+Warning: Vehicle 'flow_merge.136' performs emergency braking on lane '224832138#1_0' with decel=9.00, wished=6.00, severity=1.00, time=801.50.
+Warning: Vehicle 'flow_merge.122' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=4.00, severity=1.00, time=808.00.
+Warning: Vehicle 'flow_exit.295' performs emergency braking on lane '96614679_1' with decel=9.00, wished=6.00, severity=1.00, time=823.50.
+Warning: Choosing new speed factor 1.21 for vehicle 'flow_exit.2064' to match departure speed 22.22 (max 19.75).
+Warning: Vehicle 'flow_main.185' performs emergency braking on lane '224832138#1_2' with decel=9.00, wished=6.00, severity=1.00, time=861.50.
+Warning: Vehicle 'flow_main.19' performs emergency braking on lane '96614679_1' with decel=9.00, wished=6.00, severity=1.00, time=208.00.
+Warning: Teleporting vehicle 'flow_merge.8'; junction collision with vehicle 'flow_main.1', lane=':96614679-AddedOffRampNode_0_0', gap=-1.33, latGap=-2.00, time=287.00, stage=move.
+Warning: Teleporting vehicle 'flow_merge.3'; junction collision with vehicle 'flow_main.1', lane=':96614679-AddedOffRampNode_0_0', gap=-6.96, latGap=-1.85, time=287.00, stage=move.
+Warning: Vehicle 'flow_merge.3' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=287.00.
+Warning: Vehicle 'flow_merge.8' ends teleporting on edge '96614679-AddedOffRampEdge', time=287.00.
+Warning: Vehicle 'flow_exit.82' performs emergency braking on lane '96615334#2_1' with decel=9.00, wished=6.00, severity=1.00, time=298.00.
+Warning: Teleporting vehicle 'flow_merge.7'; junction collision with vehicle 'flow_main.4', lane=':96614679-AddedOffRampNode_0_0', gap=-5.74, latGap=-1.05, time=318.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.4'; junction collision with vehicle 'flow_main.1', lane=':96614679-AddedOffRampNode_0_0', gap=-4.24, latGap=-1.85, time=318.00, stage=move.
+Warning: Vehicle 'flow_main.4' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=318.00.
+Warning: Vehicle 'flow_merge.7' ends teleporting on edge '96614679-AddedOffRampEdge', time=318.00.
+Warning: Teleporting vehicle 'flow_merge.10'; junction collision with vehicle 'flow_main.1', lane=':96614679-AddedOffRampNode_0_0', gap=-0.90, latGap=-1.95, time=331.50, stage=move.
+Warning: Vehicle 'flow_merge.10' ends teleporting on edge '96614679-AddedOffRampEdge', time=331.50.
+Warning: Teleporting vehicle 'flow_main.10'; junction collision with vehicle 'flow_main.6', lane=':96614679-AddedOffRampNode_0_0', gap=-6.25, latGap=-0.85, time=342.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.6'; junction collision with vehicle 'flow_main.1', lane=':96614679-AddedOffRampNode_0_0', gap=-8.69, latGap=-2.25, time=342.50, stage=move.
+Warning: Vehicle 'flow_main.6' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=342.50.
+Warning: Vehicle 'flow_main.10' ends teleporting on edge '96614679-AddedOffRampEdge', time=342.50.
+Warning: Teleporting vehicle 'flow_merge.0'; junction collision with vehicle 'flow_main.1', lane=':96614679-AddedOffRampNode_0_0', gap=-2.66, latGap=-2.05, time=373.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.1'; junction collision with vehicle 'flow_main.13', lane=':96614679-AddedOffRampNode_0_0', gap=-7.24, latGap=-1.85, time=373.50, stage=move.
+Warning: Vehicle 'flow_main.1' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=373.50.
+Warning: Vehicle 'flow_merge.0' ends teleporting on edge '96614679-AddedOffRampEdge', time=373.50.
+Warning: Teleporting vehicle 'flow_main.26'; collision with vehicle 'flow_main.30', lane='224832136#1_1', gap=-9.08, latGap=-1.80, time=163.00, stage=move.
+Warning: Vehicle 'flow_main.26' ends teleporting on edge '224832138#1', time=163.00.
+Warning: Teleporting vehicle 'flow_main.24'; collision with vehicle 'flow_main.30', lane='224832136#1_1', gap=-10.00, latGap=-1.65, time=171.50, stage=move.
+Warning: Vehicle 'flow_main.24' ends teleporting on edge '224832138#1', time=171.50.
+Warning: Teleporting vehicle 'flow_exit.2'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.50, latGap=-2.30, time=173.00, stage=move.
+Warning: Vehicle 'flow_exit.2' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=173.00.
+Warning: Teleporting vehicle 'flow_main.32'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-10.80, latGap=-2.10, time=174.00, stage=move.
+Warning: Vehicle 'flow_main.32' ends teleporting on edge '224832138#1', time=174.00.
+Warning: Teleporting vehicle 'flow_main.33'; collision with vehicle 'flow_main.30', lane='224832136#1_1', gap=-0.02, latGap=-1.75, time=176.00, stage=move.
+Warning: Vehicle 'flow_main.33' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=176.00.
+Warning: Teleporting vehicle 'flow_exit.4'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-0.13, latGap=-2.55, time=177.00, stage=move.
+Warning: Vehicle 'flow_exit.4' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=177.00.
+Warning: Teleporting vehicle 'flow_exit.6'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-2.00, latGap=-2.20, time=181.50, stage=move.
+Warning: Vehicle 'flow_exit.6' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=181.50.
+Warning: Teleporting vehicle 'flow_main.37'; junction collision with vehicle 'flow_main.30', lane=':2336854558_1_1', gap=-6.87, latGap=-1.85, time=182.00, stage=move.
+Warning: Vehicle 'flow_main.37' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=182.00.
+Warning: Teleporting vehicle 'flow_exit.10'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-0.59, latGap=-2.15, time=184.00, stage=move.
+Warning: Vehicle 'flow_exit.10' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=184.00.
+Warning: Teleporting vehicle 'flow_main.22'; junction collision with vehicle 'flow_main.30', lane=':2336854558_1_1', gap=-8.93, latGap=-1.10, time=185.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.5'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.51, latGap=-2.30, time=186.50, stage=move.
+Warning: Vehicle 'flow_exit.5' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=186.50.
+Warning: Teleporting vehicle 'flow_main.25'; junction collision with vehicle 'flow_main.31', lane=':2336854558_1_2', gap=-7.46, latGap=-1.20, time=187.00, stage=move.
+Warning: Vehicle 'flow_main.22' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=187.50.
+Warning: Vehicle 'flow_main.25' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=188.50.
+Warning: Teleporting vehicle 'flow_main.23'; collision with vehicle 'flow_main.30', lane='224832136#1_1', gap=-4.56, latGap=-2.10, time=189.50, stage=move.
+Warning: Teleporting vehicle 'flow_exit.8'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-0.69, latGap=-2.50, time=189.50, stage=move.
+Warning: Vehicle 'flow_exit.8' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=189.50.
+Warning: Teleporting vehicle 'flow_exit.9'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-0.99, latGap=-2.20, time=192.50, stage=move.
+Warning: Vehicle 'flow_exit.9' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=192.50.
+Warning: Vehicle 'flow_main.23' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=193.00.
+Warning: Teleporting vehicle 'flow_exit.7'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-0.97, latGap=-2.30, time=195.00, stage=move.
+Warning: Vehicle 'flow_exit.7' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=195.00.
+Warning: Teleporting vehicle 'flow_exit.11'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.26, latGap=-2.30, time=197.50, stage=move.
+Warning: Vehicle 'flow_exit.11' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=197.50.
+Warning: Teleporting vehicle 'flow_exit.12'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-2.58, latGap=-2.25, time=200.50, stage=move.
+Warning: Vehicle 'flow_exit.12' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=200.50.
+Warning: Teleporting vehicle 'flow_main.42'; collision with vehicle 'flow_main.30', lane='224832136#1_1', gap=-0.11, latGap=-2.05, time=202.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.13'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-0.22, latGap=-2.45, time=203.00, stage=move.
+Warning: Vehicle 'flow_exit.13' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=203.00.
+Warning: Vehicle 'flow_main.42' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=204.00.
+Warning: Teleporting vehicle 'flow_exit.14'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-2.46, latGap=-2.20, time=206.00, stage=move.
+Warning: Vehicle 'flow_exit.14' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=206.00.
+Warning: Teleporting vehicle 'flow_exit.17'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-0.77, latGap=-2.20, time=208.00, stage=move.
+Warning: Vehicle 'flow_exit.17' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=208.00.
+Warning: Teleporting vehicle 'flow_main.39'; collision with vehicle 'flow_main.30', lane='224832136#1_1', gap=-0.45, latGap=-1.45, time=209.00, stage=move.
+Warning: Vehicle 'flow_main.39' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=210.00.
+Warning: Teleporting vehicle 'flow_exit.19'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-2.27, latGap=-2.20, time=210.50, stage=move.
+Warning: Vehicle 'flow_exit.19' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=210.50.
+Warning: Teleporting vehicle 'flow_exit.20'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.12, latGap=-2.15, time=213.00, stage=move.
+Warning: Vehicle 'flow_exit.20' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=213.00.
+Warning: Teleporting vehicle 'flow_main.38'; collision with vehicle 'flow_main.30', lane='224832136#1_1', gap=-2.45, latGap=-2.05, time=215.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.16'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.20, latGap=-2.25, time=215.50, stage=move.
+Warning: Vehicle 'flow_exit.16' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=215.50.
+Warning: Vehicle 'flow_main.38' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=215.50.
+Warning: Teleporting vehicle 'flow_main.35'; collision with vehicle 'flow_main.30', lane='224832136#1_1', gap=-7.56, latGap=-2.25, time=217.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.21'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.76, latGap=-2.45, time=218.50, stage=move.
+Warning: Vehicle 'flow_exit.21' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=218.50.
+Warning: Teleporting vehicle 'flow_main.44'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-0.55, latGap=-2.10, time=220.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.15'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.13, latGap=-2.25, time=221.50, stage=move.
+Warning: Vehicle 'flow_exit.15' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=221.50.
+Warning: Teleporting vehicle 'flow_main.40'; junction collision with vehicle 'flow_main.30', lane=':2336854558_1_1', gap=-6.86, latGap=-2.15, time=223.00, stage=move.
+Warning: Vehicle 'flow_main.35' ends teleporting on edge '224832138#1', time=223.00.
+Warning: Teleporting vehicle 'flow_exit.18'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-2.00, latGap=-2.25, time=223.50, stage=move.
+Warning: Vehicle 'flow_exit.18' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=223.50.
+Warning: Vehicle 'flow_main.40' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=224.00.
+Warning: Teleporting vehicle 'flow_main.41'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-4.70, latGap=-0.50, time=226.50, stage=move.
+Warning: Vehicle 'flow_main.44' ends teleporting on edge '224832138#1', time=226.50.
+Warning: Teleporting vehicle 'flow_exit.22'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-2.49, latGap=-2.50, time=227.00, stage=move.
+Warning: Vehicle 'flow_exit.22' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=227.00.
+Warning: Teleporting vehicle 'flow_main.43'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-5.08, latGap=-2.10, time=230.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.26'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.27, latGap=-2.20, time=230.00, stage=move.
+Warning: Vehicle 'flow_exit.26' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=230.00.
+Warning: Vehicle 'flow_main.41' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=230.00.
+Warning: Vehicle 'flow_merge.18' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=230.50.
+Warning: Teleporting vehicle 'flow_exit.23'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-0.46, latGap=-2.25, time=231.50, stage=move.
+Warning: Vehicle 'flow_exit.23' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=231.50.
+Warning: Teleporting vehicle 'flow_main.47'; junction collision with vehicle 'flow_main.30', lane=':2336854558_1_1', gap=-8.45, latGap=-1.90, time=234.50, stage=move.
+Warning: Teleporting vehicle 'flow_exit.27'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.40, latGap=-2.15, time=234.50, stage=move.
+Warning: Vehicle 'flow_exit.27' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=234.50.
+Warning: Teleporting vehicle 'flow_main.34'; collision with vehicle 'flow_main.30', lane='224832136#1_1', gap=-2.45, latGap=-2.10, time=236.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.25'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.21, latGap=-2.25, time=236.00, stage=move.
+Warning: Vehicle 'flow_exit.25' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=236.00.
+Warning: Vehicle 'flow_main.43' ends teleporting on edge '224832138#1', time=237.50.
+Warning: Teleporting vehicle 'flow_exit.24'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-0.35, latGap=-2.30, time=238.50, stage=move.
+Warning: Vehicle 'flow_exit.24' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=238.50.
+Warning: Teleporting vehicle 'flow_exit.29'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-0.28, latGap=-2.55, time=242.00, stage=move.
+Warning: Vehicle 'flow_exit.29' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=242.00.
+Warning: Vehicle 'flow_main.47' ends teleporting on edge '224832138#1', time=242.50.
+Warning: Vehicle 'flow_main.34' ends teleporting on edge '224832138#1', time=243.50.
+Warning: Teleporting vehicle 'flow_main.55'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-10.08, latGap=-2.20, time=246.00, stage=move.
+Warning: Vehicle 'flow_main.55' ends teleporting on edge '224832138#1', time=246.00.
+Warning: Teleporting vehicle 'flow_exit.28'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.16, latGap=-1.50, time=246.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.50'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-5.10, latGap=-2.20, time=249.50, stage=move.
+Warning: Vehicle 'flow_exit.28' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=250.00.
+Warning: Vehicle 'flow_main.50' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=250.50.
+Warning: Teleporting vehicle 'flow_exit.30'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.28, latGap=-2.35, time=251.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.49'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-10.40, latGap=-1.45, time=253.00, stage=move.
+Warning: Vehicle 'flow_main.49' ends teleporting on edge '224832138#1', time=253.00.
+Warning: Vehicle 'flow_main.64' performs emergency braking on lane '224832136#1_1' with decel=9.00, wished=6.00, severity=1.00, time=254.00.
+Warning: Teleporting vehicle 'flow_exit.31'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-2.16, latGap=-0.70, time=256.00, stage=move.
+Warning: Vehicle 'flow_exit.30' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=257.50.
+Warning: Vehicle 'flow_exit.31' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=259.00.
+Warning: Vehicle 'flow_exit.35' performs emergency braking on lane '1019694875_0' with decel=7.00, wished=3.00, severity=1.00, time=261.50.
+Warning: Teleporting vehicle 'flow_main.30'; collision with vehicle 'flow_main.60', lane='224832136#1_1', gap=-8.65, latGap=-2.05, time=264.50, stage=move.
+Warning: Vehicle 'flow_main.30' ends teleporting on edge '224832138#1', time=264.50.
+Warning: Teleporting vehicle 'flow_main.51'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-3.50, latGap=-0.75, time=269.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.64'; junction collision with vehicle 'flow_main.31', lane=':2336854558_1_2', gap=-7.20, latGap=-1.85, time=270.50, stage=move.
+Warning: Vehicle 'flow_main.64' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=270.50.
+Warning: Vehicle 'flow_main.51' ends teleporting on edge '224832138#1', time=274.00.
+Warning: Teleporting vehicle 'flow_main.46'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-0.31, latGap=-1.00, time=281.50, stage=move.
+Warning: Vehicle 'flow_main.46' ends teleporting on edge '224832138#1', time=287.00.
+Warning: Teleporting vehicle 'flow_main.61'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-7.47, latGap=-1.40, time=298.00, stage=move.
+Warning: Vehicle 'flow_main.61' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=299.50.
+Warning: Teleporting vehicle 'flow_main.67'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-5.83, latGap=-2.20, time=304.00, stage=move.
+Warning: Vehicle 'flow_main.67' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=304.00.
+Warning: Teleporting vehicle 'flow_main.54'; junction collision with vehicle 'flow_main.31', lane=':2336854558_1_2', gap=-7.30, latGap=-2.20, time=309.50, stage=move.
+Warning: Vehicle 'flow_main.54' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=309.50.
+Warning: Choosing new speed factor 1.20 for vehicle 'flow_merge.76' to match departure speed 10.00 (max 8.92).
+Warning: Teleporting vehicle 'flow_main.62'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-3.76, latGap=-2.45, time=315.00, stage=move.
+Warning: Vehicle 'flow_main.62' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=315.50.
+Warning: Teleporting vehicle 'flow_main.71'; collision with vehicle 'flow_main.65', lane='224832136#1_1', gap=-2.99, latGap=-0.25, time=317.00, stage=move.
+Warning: Vehicle 'flow_main.71' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=317.00.
+Warning: Teleporting vehicle 'flow_main.53'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-6.39, latGap=-2.15, time=325.00, stage=move.
+Warning: Vehicle 'flow_main.53' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=325.00.
+Warning: Teleporting vehicle 'flow_main.58'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-7.22, latGap=-2.45, time=332.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.52'; collision with vehicle 'flow_main.65', lane='224832136#1_1', gap=-0.57, latGap=-2.10, time=335.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.70'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-4.94, latGap=-2.50, time=337.00, stage=move.
+Warning: Vehicle 'flow_main.58' ends teleporting on edge '224832138#1', time=338.50.
+Warning: Choosing new speed factor 1.26 for vehicle 'flow_exit.823' to match departure speed 22.22 (max 20.38).
+Warning: Teleporting vehicle 'flow_main.72'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-5.09, latGap=-2.15, time=340.00, stage=move.
+Warning: Vehicle 'flow_main.52' ends teleporting on edge '224832138#1', time=341.00.
+Warning: Vehicle 'flow_main.72' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=341.50.
+Warning: Vehicle 'flow_main.70' ends teleporting on edge '224832138#1', time=342.00.
+Warning: Teleporting vehicle 'flow_main.68'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-5.58, latGap=-2.45, time=344.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.69'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-4.27, latGap=-2.45, time=348.00, stage=move.
+Warning: Vehicle 'flow_main.68' ends teleporting on edge '224832138#1', time=349.00.
+Warning: Vehicle 'flow_main.83' performs emergency braking on lane '96614679-AddedOffRampEdge_2' with decel=9.00, wished=3.80, severity=1.00, time=349.50.
+Warning: Teleporting vehicle 'flow_main.56'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-7.19, latGap=-2.45, time=353.00, stage=move.
+Warning: Vehicle 'flow_main.56' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=353.00.
+Warning: Vehicle 'flow_main.69' ends teleporting on edge '224832138#1', time=353.00.
+Warning: Teleporting vehicle 'flow_main.74'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-5.56, latGap=-2.35, time=357.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.76'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-1.59, latGap=-2.35, time=359.50, stage=move.
+Warning: Vehicle 'flow_main.74' ends teleporting on edge '224832138#1', time=362.50.
+Warning: Vehicle 'flow_main.76' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=363.50.
+Warning: Teleporting vehicle 'flow_main.75'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-4.35, latGap=-2.45, time=364.00, stage=move.
+Warning: Vehicle 'flow_main.75' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=365.00.
+Warning: Vehicle 'flow_main.89' performs emergency braking on lane '224832136#1_2' with decel=9.00, wished=6.00, severity=1.00, time=371.00.
+Warning: Teleporting vehicle 'flow_main.80'; junction collision with vehicle 'flow_main.31', lane=':2336854558_1_2', gap=-9.86, latGap=-2.15, time=378.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.83'; collision with vehicle 'flow_main.65', lane='224832136#1_1', gap=-0.54, latGap=-1.80, time=378.00, stage=move.
+Warning: Vehicle 'flow_main.80' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=378.50.
+Warning: Vehicle 'flow_main.83' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=382.50.
+Warning: Teleporting vehicle 'flow_main.86'; junction collision with vehicle 'flow_main.31', lane=':2336854558_1_2', gap=-8.52, latGap=-2.20, time=388.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.87'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-0.16, latGap=-2.10, time=390.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.89'; collision with vehicle 'flow_main.65', lane='224832136#1_1', gap=-2.68, latGap=-1.45, time=390.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.85'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-5.97, latGap=-2.20, time=393.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.84'; junction collision with vehicle 'flow_main.31', lane=':2336854558_1_2', gap=-7.17, latGap=-2.20, time=395.00, stage=move.
+Warning: Vehicle 'flow_main.86' ends teleporting on edge '224832138#1', time=395.00.
+Warning: Teleporting vehicle 'flow_main.78'; collision with vehicle 'flow_main.65', lane='224832136#1_1', gap=-2.30, latGap=-2.40, time=395.50, stage=move.
+Warning: Vehicle 'flow_main.89' ends teleporting on edge '224832138#1', time=396.50.
+Warning: Vehicle 'flow_main.87' ends teleporting on edge '224832138#1', time=397.00.
+Warning: Vehicle 'flow_main.84' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=400.00.
+Warning: Vehicle 'flow_main.85' ends teleporting on edge '224832138#1', time=400.00.
+Warning: Teleporting vehicle 'flow_main.88'; junction collision with vehicle 'flow_main.31', lane=':2336854558_1_2', gap=-7.88, latGap=-2.15, time=401.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.81'; collision with vehicle 'flow_main.65', lane='224832136#1_1', gap=-1.32, latGap=-2.20, time=402.00, stage=move.
+Warning: Vehicle 'flow_main.78' ends teleporting on edge '224832138#1', time=402.50.
+Warning: Teleporting vehicle 'flow_main.92'; junction collision with vehicle 'flow_main.31', lane=':2336854558_1_2', gap=-8.87, latGap=-2.20, time=404.00, stage=move.
+Warning: Vehicle 'flow_main.88' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=404.00.
+Warning: Teleporting vehicle 'flow_main.79'; collision with vehicle 'flow_main.65', lane='224832136#1_1', gap=-1.56, latGap=-2.00, time=406.00, stage=move.
+Warning: Vehicle 'flow_main.79' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=407.00.
+Warning: Vehicle 'flow_main.89' performs emergency braking on lane '224832138#1_0' with decel=9.00, wished=6.00, severity=1.00, time=408.00.
+Warning: Teleporting vehicle 'flow_main.95'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-0.92, latGap=-2.20, time=408.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.93'; collision with vehicle 'flow_main.65', lane='224832136#1_1', gap=-1.67, latGap=-2.00, time=408.50, stage=move.
+Warning: Vehicle 'flow_main.81' ends teleporting on edge '224832138#1', time=409.50.
+Warning: Teleporting vehicle 'flow_main.96'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-1.65, latGap=-2.10, time=410.00, stage=move.
+Warning: Vehicle 'flow_main.92' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=410.00.
+Warning: Vehicle 'flow_main.93' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=410.00.
+Warning: Teleporting vehicle 'flow_main.90'; collision with vehicle 'flow_main.65', lane='224832136#1_1', gap=-0.68, latGap=-2.10, time=412.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.94'; junction collision with vehicle 'flow_main.31', lane=':2336854558_1_2', gap=-7.73, latGap=-2.20, time=414.00, stage=move.
+Warning: Vehicle 'flow_main.94' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=414.50.
+Warning: Teleporting vehicle 'flow_main.97'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-10.29, latGap=-2.10, time=415.50, stage=move.
+Warning: Vehicle 'flow_main.95' ends teleporting on edge '224832138#1', time=415.50.
+Warning: Vehicle 'flow_main.97' ends teleporting on edge '224832138#1', time=415.50.
+Warning: Teleporting vehicle 'flow_main.99'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-0.07, latGap=-2.20, time=418.00, stage=move.
+Warning: Vehicle 'flow_main.96' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=418.00.
+Warning: Teleporting vehicle 'flow_main.102'; collision with vehicle 'flow_main.65', lane='224832136#1_1', gap=-1.69, latGap=-1.85, time=418.50, stage=move.
+Warning: Vehicle 'flow_main.90' ends teleporting on edge '224832138#1', time=421.00.
+Warning: Teleporting vehicle 'flow_main.101'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-1.43, latGap=-2.20, time=421.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.100'; collision with vehicle 'flow_main.65', lane='224832136#1_1', gap=-1.65, latGap=-1.40, time=422.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.103'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-5.98, latGap=-2.05, time=426.00, stage=move.
+Warning: Vehicle 'flow_main.99' ends teleporting on edge '224832138#1', time=426.00.
+Warning: Vehicle 'flow_main.102' ends teleporting on edge '224832138#1', time=426.50.
+Warning: Teleporting vehicle 'flow_main.77'; collision with vehicle 'flow_main.65', lane='224832136#1_1', gap=-1.30, latGap=-0.75, time=427.50, stage=move.
+Warning: Vehicle 'flow_main.101' ends teleporting on edge '224832138#1', time=429.50.
+Warning: Vehicle 'flow_main.100' ends teleporting on edge '224832138#1', time=430.00.
+Warning: Teleporting vehicle 'flow_main.91'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-1.28, latGap=-2.40, time=432.50, stage=move.
+Warning: Vehicle 'flow_main.103' ends teleporting on edge '224832138#1', time=432.50.
+Warning: Vehicle 'flow_main.77' ends teleporting on edge '224832138#1', time=434.00.
+Warning: Vehicle 'flow_main.91' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=434.50.
+Warning: Teleporting vehicle 'flow_main.98'; junction collision with vehicle 'flow_main.31', lane=':2336854558_1_2', gap=-6.52, latGap=-2.20, time=437.00, stage=move.
+Warning: Vehicle 'flow_main.98' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=437.00.
+Warning: Teleporting vehicle 'flow_main.104'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-0.52, latGap=-2.45, time=443.00, stage=move.
+Warning: Vehicle 'flow_exit.159' performs emergency braking on lane '96614679_1' with decel=9.00, wished=6.00, severity=1.00, time=445.00.
+Warning: Teleporting vehicle 'flow_main.106'; junction collision with vehicle 'flow_main.31', lane=':2336854558_1_2', gap=-6.72, latGap=-2.05, time=446.50, stage=move.
+Warning: Vehicle 'flow_main.104' ends teleporting on edge '224832138#1', time=448.50.
+Warning: Teleporting vehicle 'flow_main.105'; collision with vehicle 'flow_main.31', lane='224832136#1_2', gap=-2.39, latGap=-2.15, time=450.00, stage=move.
+Warning: Teleporting vehicle 'flow_merge.18'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-0.43, latGap=-1.90, time=159.50, stage=move.
+Warning: Teleporting vehicle 'flow_merge.19'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-1.10, latGap=-1.95, time=162.50, stage=move.
+Warning: Vehicle 'flow_merge.18' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=162.50.
+Warning: Vehicle 'flow_merge.19' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=162.50.
+Warning: Teleporting vehicle 'flow_main.30'; junction collision with vehicle 'flow_main.26', lane=':2336854558_1_1', gap=-5.14, latGap=-1.55, time=163.00, stage=move.
+Warning: Vehicle 'flow_main.30' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=163.50.
+Warning: Teleporting vehicle 'flow_merge.20'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-0.80, latGap=-1.95, time=165.50, stage=move.
+Warning: Vehicle 'flow_merge.20' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=165.50.
+Warning: Teleporting vehicle 'flow_merge.21'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-1.71, latGap=-1.95, time=168.50, stage=move.
+Warning: Vehicle 'flow_merge.21' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=168.50.
+Warning: Teleporting vehicle 'flow_main.21'; collision with vehicle 'flow_main.26', lane='224832136#1_1', gap=-1.43, latGap=-1.30, time=169.50, stage=move.
+Warning: Vehicle 'flow_main.21' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=170.50.
+Warning: Teleporting vehicle 'flow_main.24'; collision with vehicle 'flow_main.26', lane='224832136#1_1', gap=-1.41, latGap=-1.85, time=171.50, stage=move.
+Warning: Vehicle 'flow_main.24' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=171.50.
+Warning: Teleporting vehicle 'flow_merge.22'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-1.10, latGap=-2.20, time=172.50, stage=move.
+Warning: Teleporting vehicle 'flow_exit.2'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.52, latGap=-2.30, time=173.00, stage=move.
+Warning: Vehicle 'flow_exit.2' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=173.00.
+Warning: Vehicle 'flow_merge.22' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=173.00.
+Warning: Teleporting vehicle 'flow_main.31'; collision with vehicle 'flow_main.32', lane='224832136#1_2', gap=-0.66, latGap=-2.15, time=173.50, stage=move.
+Warning: Vehicle 'flow_main.31' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=175.50.
+Warning: Teleporting vehicle 'flow_main.33'; collision with vehicle 'flow_main.26', lane='224832136#1_1', gap=-6.40, latGap=-1.70, time=176.00, stage=move.
+Warning: Vehicle 'flow_main.33' ends teleporting on edge '224832138#1', time=176.00.
+Warning: Teleporting vehicle 'flow_exit.4'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-0.87, latGap=-2.55, time=177.00, stage=move.
+Warning: Vehicle 'flow_exit.4' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=177.00.
+Warning: Teleporting vehicle 'flow_merge.23'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-0.73, latGap=-1.95, time=180.50, stage=move.
+Warning: Vehicle 'flow_merge.23' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=180.50.
+Warning: Teleporting vehicle 'flow_exit.6'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-2.21, latGap=-2.20, time=181.50, stage=move.
+Warning: Vehicle 'flow_exit.6' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=181.50.
+Warning: Teleporting vehicle 'flow_merge.24'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-0.33, latGap=-1.80, time=183.50, stage=move.
+Warning: Vehicle 'flow_merge.24' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=183.50.
+Warning: Teleporting vehicle 'flow_main.22'; collision with vehicle 'flow_main.26', lane='224832136#1_1', gap=-0.75, latGap=-1.80, time=184.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.10'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-0.99, latGap=-2.15, time=184.00, stage=move.
+Warning: Vehicle 'flow_exit.10' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=184.00.
+Warning: Vehicle 'flow_main.22' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=184.50.
+Warning: Teleporting vehicle 'flow_main.25'; collision with vehicle 'flow_main.26', lane='224832136#1_1', gap=-3.03, latGap=-1.80, time=186.00, stage=move.
+Warning: Vehicle 'flow_main.25' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=186.00.
+Warning: Teleporting vehicle 'flow_exit.5'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-2.12, latGap=-2.30, time=186.50, stage=move.
+Warning: Vehicle 'flow_exit.5' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=186.50.
+Warning: Teleporting vehicle 'flow_merge.25'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-0.91, latGap=-2.20, time=187.50, stage=move.
+Warning: Teleporting vehicle 'flow_exit.8'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.34, latGap=-2.50, time=189.50, stage=move.
+Warning: Vehicle 'flow_exit.8' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=189.50.
+Warning: Teleporting vehicle 'flow_merge.26'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-1.71, latGap=-1.90, time=190.50, stage=move.
+Warning: Vehicle 'flow_merge.26' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=190.50.
+Warning: Teleporting vehicle 'flow_main.23'; junction collision with vehicle 'flow_main.26', lane=':2336854558_1_1', gap=-7.98, latGap=-2.05, time=191.50, stage=move.
+Warning: Teleporting vehicle 'flow_exit.9'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.59, latGap=-2.20, time=192.50, stage=move.
+Warning: Vehicle 'flow_exit.9' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=192.50.
+Warning: Vehicle 'flow_main.23' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=192.50.
+Warning: Vehicle 'flow_merge.25' ends teleporting on edge '224832138#1', time=193.00.
+Warning: Teleporting vehicle 'flow_merge.27'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-1.63, latGap=-1.90, time=193.50, stage=move.
+Warning: Teleporting vehicle 'flow_merge.26'; collision with vehicle 'flow_main.37', lane='224832138#1-AddedOnRampEdge_1', gap=-3.22, latGap=-1.15, time=195.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.7'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.46, latGap=-2.30, time=195.00, stage=move.
+Warning: Vehicle 'flow_exit.7' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=195.00.
+Warning: Vehicle 'flow_merge.26' ends teleporting on edge '224832138#1', time=195.00.
+Warning: Vehicle 'flow_merge.27' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=195.00.
+Warning: Teleporting vehicle 'flow_exit.11'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.20, latGap=-2.30, time=197.50, stage=move.
+Warning: Vehicle 'flow_exit.11' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=197.50.
+Warning: Teleporting vehicle 'flow_merge.28'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-0.25, latGap=-2.15, time=199.50, stage=move.
+Warning: Vehicle 'flow_merge.28' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=199.50.
+Warning: Teleporting vehicle 'flow_exit.12'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-0.15, latGap=-2.25, time=200.00, stage=move.
+Warning: Vehicle 'flow_exit.12' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=200.00.
+Warning: Teleporting vehicle 'flow_exit.13'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.37, latGap=-2.45, time=203.00, stage=move.
+Warning: Teleporting vehicle 'flow_merge.29'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-1.26, latGap=-1.95, time=203.00, stage=move.
+Warning: Vehicle 'flow_exit.13' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=203.00.
+Warning: Vehicle 'flow_merge.29' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=203.00.
+Warning: Teleporting vehicle 'flow_exit.14'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-0.59, latGap=-2.20, time=205.50, stage=move.
+Warning: Teleporting vehicle 'flow_merge.30'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-0.60, latGap=-1.85, time=205.50, stage=move.
+Warning: Vehicle 'flow_exit.14' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=205.50.
+Warning: Teleporting vehicle 'flow_exit.17'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-2.37, latGap=-2.20, time=208.00, stage=move.
+Warning: Teleporting vehicle 'flow_merge.31'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-0.09, latGap=-1.95, time=208.00, stage=move.
+Warning: Vehicle 'flow_exit.17' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=208.00.
+Warning: Teleporting vehicle 'flow_exit.19'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-0.56, latGap=-2.20, time=210.00, stage=move.
+Warning: Vehicle 'flow_exit.19' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=210.00.
+Warning: Vehicle 'flow_merge.30' ends teleporting on edge '224832138#1', time=210.00.
+Warning: Vehicle 'flow_merge.31' ends teleporting on edge '224832138#1', time=212.00.
+Warning: Teleporting vehicle 'flow_exit.20'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-0.10, latGap=-2.15, time=212.50, stage=move.
+Warning: Vehicle 'flow_exit.20' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=212.50.
+Warning: Teleporting vehicle 'flow_main.35'; junction collision with vehicle 'flow_main.26', lane=':2336854558_1_1', gap=-6.12, latGap=-1.35, time=213.00, stage=move.
+Warning: Vehicle 'flow_main.35' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=213.00.
+Warning: Teleporting vehicle 'flow_exit.16'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-0.49, latGap=-2.25, time=215.00, stage=move.
+Warning: Vehicle 'flow_exit.16' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=215.00.
+Warning: Teleporting vehicle 'flow_merge.32'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-1.81, latGap=-2.20, time=216.50, stage=move.
+Warning: Vehicle 'flow_merge.32' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=216.50.
+Warning: Teleporting vehicle 'flow_exit.21'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.96, latGap=-2.45, time=218.00, stage=move.
+Warning: Vehicle 'flow_exit.21' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=218.00.
+Warning: Teleporting vehicle 'flow_merge.33'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-2.17, latGap=-1.95, time=220.50, stage=move.
+Warning: Vehicle 'flow_merge.33' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=220.50.
+Warning: Teleporting vehicle 'flow_exit.15'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-0.78, latGap=-2.25, time=221.00, stage=move.
+Warning: Vehicle 'flow_exit.15' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=221.00.
+Warning: Teleporting vehicle 'flow_exit.18'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-2.06, latGap=-2.25, time=223.00, stage=move.
+Warning: Teleporting vehicle 'flow_merge.34'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-0.98, latGap=-1.95, time=223.00, stage=move.
+Warning: Vehicle 'flow_exit.18' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=223.00.
+Warning: Teleporting vehicle 'flow_main.43'; junction collision with vehicle 'flow_main.32', lane=':2336854558_1_2', gap=-5.76, latGap=-1.90, time=225.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.32'; junction collision with vehicle 'flow_main.42', lane=':2336854558_1_2', gap=-5.45, latGap=-0.90, time=225.00, stage=move.
+Warning: Vehicle 'flow_main.32' ends teleporting on edge '224832138#1', time=225.00.
+Warning: Teleporting vehicle 'flow_main.41'; collision with vehicle 'flow_main.26', lane='224832136#1_1', gap=-3.26, latGap=-0.05, time=226.00, stage=move.
+Warning: Vehicle 'flow_main.41' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=226.00.
+Warning: Teleporting vehicle 'flow_exit.22'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-2.33, latGap=-2.50, time=226.50, stage=move.
+Warning: Vehicle 'flow_exit.22' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=226.50.
+Warning: Teleporting vehicle 'flow_main.40'; junction collision with vehicle 'flow_main.42', lane=':2336854558_1_2', gap=-2.14, latGap=-1.80, time=227.00, stage=move.
+Warning: Vehicle 'flow_merge.34' ends teleporting on edge '224832138#1', time=227.50.
+Warning: Vehicle 'flow_main.64' performs emergency braking on lane '96614679_0' with decel=9.00, wished=6.00, severity=1.00, time=228.00.
+Warning: Teleporting vehicle 'flow_main.38'; collision with vehicle 'flow_main.26', lane='224832136#1_1', gap=-0.22, latGap=-1.05, time=228.00, stage=move.
+Warning: Teleporting vehicle 'flow_merge.35'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-0.32, latGap=-2.20, time=228.50, stage=move.
+Warning: Teleporting vehicle 'flow_exit.26'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.11, latGap=-2.20, time=229.50, stage=move.
+Warning: Vehicle 'flow_exit.26' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=229.50.
+Warning: Vehicle 'flow_main.43' ends teleporting on edge '224832138#1', time=229.50.
+Warning: Teleporting vehicle 'flow_exit.23'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-0.73, latGap=-2.25, time=231.00, stage=move.
+Warning: Vehicle 'flow_exit.23' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=231.00.
+Warning: Vehicle 'flow_main.40' ends teleporting on edge '224832138#1', time=231.50.
+Warning: Vehicle 'flow_main.38' ends teleporting on edge '224832138#1', time=232.50.
+Warning: Vehicle 'flow_merge.35' ends teleporting on edge '224832138#1', time=233.00.
+Warning: Teleporting vehicle 'flow_merge.36'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-0.25, latGap=-2.15, time=233.50, stage=move.
+Warning: Teleporting vehicle 'flow_exit.27'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.49, latGap=-2.15, time=234.00, stage=move.
+Warning: Vehicle 'flow_exit.27' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=234.00.
+Warning: Teleporting vehicle 'flow_main.47'; collision with vehicle 'flow_main.26', lane='224832136#1_1', gap=-0.81, latGap=-1.55, time=234.50, stage=move.
+Warning: Vehicle 'flow_main.47' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=234.50.
+Warning: Teleporting vehicle 'flow_exit.25'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.10, latGap=-2.25, time=235.50, stage=move.
+Warning: Vehicle 'flow_exit.25' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=235.50.
+Warning: Vehicle 'flow_merge.36' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=236.50.
+Warning: Teleporting vehicle 'flow_merge.37'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-1.61, latGap=-1.85, time=237.00, stage=move.
+Warning: Vehicle 'flow_merge.37' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=237.00.
+Warning: Teleporting vehicle 'flow_exit.24'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-0.70, latGap=-2.30, time=238.00, stage=move.
+Warning: Vehicle 'flow_exit.24' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=238.00.
+Warning: Teleporting vehicle 'flow_merge.38'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-0.47, latGap=-1.95, time=239.50, stage=move.
+Warning: Vehicle 'flow_merge.38' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=239.50.
+Warning: Teleporting vehicle 'flow_exit.29'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-0.07, latGap=-2.55, time=241.50, stage=move.
+Warning: Vehicle 'flow_exit.29' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=241.50.
+Warning: Teleporting vehicle 'flow_merge.39'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-0.34, latGap=-2.20, time=243.50, stage=move.
+Warning: Vehicle 'flow_merge.39' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=243.50.
+Warning: Teleporting vehicle 'flow_exit.28'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-2.12, latGap=-2.25, time=246.00, stage=move.
+Warning: Vehicle 'flow_exit.28' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=246.00.
+Warning: Teleporting vehicle 'flow_merge.40'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-0.75, latGap=-1.80, time=248.00, stage=move.
+Warning: Vehicle 'flow_merge.40' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=248.00.
+Warning: Teleporting vehicle 'flow_main.46'; collision with vehicle 'flow_main.26', lane='224832136#1_1', gap=-8.99, latGap=-1.75, time=250.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.30'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-2.37, latGap=-2.60, time=250.50, stage=move.
+Warning: Teleporting vehicle 'flow_merge.41'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-1.88, latGap=-1.85, time=250.50, stage=move.
+Warning: Vehicle 'flow_exit.30' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=250.50.
+Warning: Vehicle 'flow_merge.41' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=250.50.
+Warning: Teleporting vehicle 'flow_merge.42'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-1.35, latGap=-1.85, time=253.00, stage=move.
+Warning: Vehicle 'flow_merge.42' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=253.00.
+Warning: Vehicle 'flow_main.46' ends teleporting on edge '224832138#1', time=254.50.
+Warning: Teleporting vehicle 'flow_main.55'; collision with vehicle 'flow_main.26', lane='224832136#1_1', gap=-0.11, latGap=-1.30, time=255.00, stage=move.
+Warning: Vehicle 'flow_main.55' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=255.00.
+Warning: Teleporting vehicle 'flow_exit.31'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-2.35, latGap=-2.20, time=255.50, stage=move.
+Warning: Vehicle 'flow_exit.31' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=255.50.
+Warning: Teleporting vehicle 'flow_exit.35'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.11, latGap=-2.50, time=258.50, stage=move.
+Warning: Vehicle 'flow_exit.35' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=258.50.
+Warning: Teleporting vehicle 'flow_exit.34'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.18, latGap=-2.45, time=262.00, stage=move.
+Warning: Vehicle 'flow_exit.34' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=262.00.
+Warning: Teleporting vehicle 'flow_merge.43'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-1.22, latGap=-1.85, time=262.50, stage=move.
+Warning: Vehicle 'flow_merge.43' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=262.50.
+Warning: Teleporting vehicle 'flow_main.49'; junction collision with vehicle 'flow_main.26', lane=':2336854558_1_1', gap=-5.23, latGap=-0.85, time=264.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.45'; junction collision with vehicle 'flow_main.42', lane=':2336854558_1_1', gap=-5.99, latGap=-1.70, time=264.00, stage=move.
+Warning: Vehicle 'flow_main.45' ends teleporting on edge '224832138#1', time=264.00.
+Warning: Vehicle 'flow_main.49' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=264.50.
+Warning: Teleporting vehicle 'flow_exit.32'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.69, latGap=-2.55, time=265.50, stage=move.
+Warning: Vehicle 'flow_exit.32' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=265.50.
+Warning: Choosing new speed factor 1.20 for vehicle 'flow_exit.641' to match departure speed 22.22 (max 21.44).
+Warning: Teleporting vehicle 'flow_exit.33'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.73, latGap=-2.25, time=268.00, stage=move.
+Warning: Vehicle 'flow_exit.33' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=268.00.
+Warning: Teleporting vehicle 'flow_merge.44'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-0.73, latGap=-1.80, time=269.00, stage=move.
+Warning: Vehicle 'flow_merge.44' ends teleporting on edge '224832138#1-AddedOnRampEdge', time=269.00.
+Warning: Teleporting vehicle 'flow_exit.37'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.31, latGap=-2.25, time=269.50, stage=move.
+Warning: Vehicle 'flow_exit.37' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=269.50.
+Warning: Vehicle 'flow_main.64' performs emergency braking on lane '224832136#1_0' with decel=9.00, wished=6.00, severity=1.00, time=272.00.
+Warning: Teleporting vehicle 'flow_exit.46'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-2.01, latGap=-2.15, time=272.50, stage=move.
+Warning: Vehicle 'flow_exit.46' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=272.50.
+Warning: Teleporting vehicle 'flow_merge.45'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-0.84, latGap=-2.20, time=273.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.36'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-2.17, latGap=-2.60, time=276.50, stage=move.
+Warning: Vehicle 'flow_exit.36' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=276.50.
+Warning: Teleporting vehicle 'flow_merge.46'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-1.21, latGap=-2.10, time=277.00, stage=move.
+Warning: Vehicle 'flow_merge.45' ends teleporting on edge '224832138#1', time=277.50.
+Warning: Teleporting vehicle 'flow_exit.37'; collision with vehicle 'flow_exit.33', lane='224832142#1-AddedOnRampEdge_0', gap=-1.56, latGap=-0.90, time=279.00, stage=move.
+Warning: Vehicle 'flow_exit.37' teleports beyond arrival edge '224832142#1-AddedOnRampEdge', time=279.00.
+Warning: Teleporting vehicle 'flow_exit.39'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.57, latGap=-2.20, time=280.00, stage=move.
+Warning: Vehicle 'flow_exit.39' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=280.00.
+Warning: Teleporting vehicle 'flow_merge.47'; collision with vehicle 'flow_merge.17', lane='224832140_0', gap=-0.51, latGap=-2.20, time=280.50, stage=move.
+Warning: Vehicle 'flow_merge.46' ends teleporting on edge '224832138#1', time=281.50.
+Warning: Teleporting vehicle 't_0'; collision with vehicle 'flow_main.26', lane='224832136#1_1', gap=-2.19, latGap=-2.10, time=282.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.38'; collision with vehicle 'flow_exit.0', lane='1019694875_0', gap=-1.42, latGap=-2.30, time=282.50, stage=move.
+Warning: Vehicle 'flow_exit.38' ends teleporting on edge '224832142#1-AddedOnRampEdge', time=282.50.
+Warning: Vehicle 'flow_main.21' performs emergency braking on lane '48963325#2_2' with decel=9.00, wished=6.00, severity=1.00, time=199.00.
+Warning: Vehicle 'flow_main.17' performs emergency braking on lane '761727441#2_1' with decel=9.00, wished=6.00, severity=1.00, time=173.50.
+Warning: Vehicle 'flow_main.17' performs emergency braking on lane '761727441#2_1' with decel=9.00, wished=6.00, severity=1.00, time=201.50.
+Warning: Vehicle 'flow_main.30' performs emergency braking on lane '761727441#2-AddedOnRampEdge_2' with decel=9.00, wished=4.00, severity=1.00, time=203.00.
+Warning: Vehicle 'flow_main.46' performs emergency braking on lane '413494440#2_1' with decel=9.00, wished=6.00, severity=1.00, time=197.00.
+Warning: Vehicle 'flow_merge.18' performs emergency braking on lane '413494440#2_1' with decel=9.00, wished=6.00, severity=1.00, time=257.50.
+Warning: Vehicle 'flow_merge.44' performs emergency braking on lane '225202305#1_1' with decel=7.00, wished=3.50, severity=1.00, time=232.00.
+Warning: Teleporting vehicle 'flow_exit.22'; junction collision with vehicle 'flow_exit.27', lane=':2254297750_2_0', gap=-0.12, latGap=-2.05, time=232.50, stage=move.
+Warning: Vehicle 'flow_exit.22' ends teleporting on edge '96614676#1-AddedOnRampEdge', time=232.50.
+Warning: Teleporting vehicle 'flow_merge.46'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.14, latGap=-1.95, time=235.00, stage=move.
+Warning: Vehicle 'flow_merge.46' ends teleporting on edge '96614679', time=235.00.
+Warning: Teleporting vehicle 'flow_exit.23'; junction collision with vehicle 'flow_exit.27', lane=':2254297750_2_0', gap=-0.15, latGap=-2.05, time=237.00, stage=move.
+Warning: Vehicle 'flow_exit.23' ends teleporting on edge '96614676#1-AddedOnRampEdge', time=237.00.
+Warning: Teleporting vehicle 'flow_main.47'; collision with vehicle 'flow_main.43', lane='48963655#1_1', gap=-1.18, latGap=-1.75, time=238.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.24'; junction collision with vehicle 'flow_exit.27', lane=':2254297750_2_0', gap=-0.52, latGap=-1.90, time=241.00, stage=move.
+Warning: Teleporting vehicle 'flow_merge.47'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.28, latGap=-2.00, time=241.00, stage=move.
+Warning: Vehicle 'flow_exit.24' ends teleporting on edge '96614676#1-AddedOnRampEdge', time=241.00.
+Warning: Vehicle 'flow_main.47' ends teleporting on edge '96614679', time=241.00.
+Warning: Vehicle 'flow_merge.47' ends teleporting on edge '96614679', time=241.00.
+Warning: Teleporting vehicle 'flow_exit.48'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-2.48, latGap=-1.95, time=242.50, stage=move.
+Warning: Vehicle 'flow_exit.48' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=242.50.
+Warning: Teleporting vehicle 'flow_exit.53'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-0.11, latGap=-1.85, time=244.00, stage=move.
+Warning: Vehicle 'flow_exit.53' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=244.00.
+Warning: Teleporting vehicle 'flow_exit.26'; junction collision with vehicle 'flow_exit.27', lane=':2254297750_2_0', gap=-0.44, latGap=-1.90, time=244.50, stage=move.
+Warning: Vehicle 'flow_exit.26' ends teleporting on edge '96614676#1-AddedOnRampEdge', time=244.50.
+Warning: Teleporting vehicle 'flow_merge.48'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.10, latGap=-1.85, time=245.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.43'; collision with vehicle 'flow_main.49', lane='48963655#1_1', gap=-4.68, latGap=-1.70, time=245.00, stage=move.
+Warning: Vehicle 'flow_merge.48' ends teleporting on edge '96614679', time=245.00.
+Warning: Vehicle 'flow_main.43' ends teleporting on edge '225202305#1', time=246.50.
+Warning: Teleporting vehicle 'flow_main.58'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-3.83, latGap=-2.15, time=248.50, stage=move.
+Warning: Vehicle 'flow_main.66' performs emergency braking on lane '1264142694#1-AddedOffRampEdge_2' with decel=9.00, wished=6.00, severity=1.00, time=249.50.
+Warning: Teleporting vehicle 'flow_merge.49'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.29, latGap=-1.95, time=250.00, stage=move.
+Warning: Vehicle 'flow_merge.49' ends teleporting on edge '96614679', time=250.00.
+Warning: Teleporting vehicle 'flow_main.59'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-0.12, latGap=-2.15, time=251.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.60'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-4.17, latGap=-1.80, time=254.00, stage=move.
+Warning: Vehicle 'flow_main.58' ends teleporting on edge '48963655#1', time=254.00.
+Warning: Teleporting vehicle 'flow_main.65'; collision with vehicle 'flow_main.67', lane='1264142694#1-AddedOffRampEdge_2', gap=-5.70, latGap=-0.50, time=255.50, stage=move.
+Warning: Vehicle 'flow_main.65' ends teleporting on edge '48963655#1', time=255.50.
+Warning: Teleporting vehicle 'flow_exit.51'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-3.85, latGap=-1.95, time=256.00, stage=move.
+Warning: Vehicle 'flow_exit.51' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=256.00.
+Warning: Vehicle 'flow_main.59' ends teleporting on edge '48963655#1', time=256.50.
+Warning: Vehicle 'flow_merge.1' performs emergency braking on lane ':96614679-AddedOffRampNode_0_0' with decel=9.00, wished=3.80, severity=1.00, time=258.50.
+Warning: Teleporting vehicle 'flow_main.68'; collision with vehicle 'flow_main.67', lane='1264142694#1-AddedOffRampEdge_2', gap=-4.37, latGap=-0.45, time=258.50, stage=move.
+Warning: Teleporting vehicle 'flow_merge.52'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.35, latGap=-2.30, time=258.50, stage=move.
+Warning: Teleporting vehicle 'flow_exit.52'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-4.97, latGap=-1.90, time=258.50, stage=move.
+Warning: Vehicle 'flow_exit.52' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=258.50.
+Warning: Vehicle 'flow_merge.52' ends teleporting on edge '96614679', time=258.50.
+Warning: Teleporting vehicle 'flow_exit.54'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-2.37, latGap=-1.90, time=260.50, stage=move.
+Warning: Vehicle 'flow_exit.54' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=260.50.
+Warning: Teleporting vehicle 'flow_exit.55'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-4.81, latGap=-1.90, time=263.00, stage=move.
+Warning: Vehicle 'flow_exit.55' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=263.00.
+Warning: Teleporting vehicle 'flow_merge.53'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.13, latGap=-2.25, time=263.50, stage=move.
+Warning: Vehicle 'flow_merge.53' ends teleporting on edge '96614679', time=263.50.
+Warning: Vehicle 'flow_main.60' ends teleporting on edge '225202305#1', time=264.50.
+Warning: Teleporting vehicle 'flow_exit.56'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-3.20, latGap=-1.95, time=265.00, stage=move.
+Warning: Vehicle 'flow_exit.56' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=265.00.
+Warning: Teleporting vehicle 'flow_exit.57'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-3.95, latGap=-2.15, time=268.00, stage=move.
+Warning: Vehicle 'flow_exit.57' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=268.00.
+Warning: Teleporting vehicle 'flow_merge.54'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.01, latGap=-1.65, time=268.50, stage=move.
+Warning: Vehicle 'flow_merge.54' ends teleporting on edge '96614679', time=268.50.
+Warning: Vehicle 'flow_main.68' ends teleporting on edge '48963655#1', time=270.50.
+Warning: Teleporting vehicle 'flow_exit.58'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-2.82, latGap=-2.15, time=271.00, stage=move.
+Warning: Vehicle 'flow_exit.58' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=271.00.
+Warning: Teleporting vehicle 'flow_merge.55'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.42, latGap=-1.75, time=272.00, stage=move.
+Warning: Vehicle 'flow_merge.55' ends teleporting on edge '96614679', time=272.00.
+Warning: Teleporting vehicle 'flow_main.70'; collision with vehicle 'flow_main.67', lane='1264142694#1-AddedOffRampEdge_2', gap=-1.51, latGap=-0.55, time=272.50, stage=move.
+Warning: Teleporting vehicle 'flow_merge.56'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.11, latGap=-1.75, time=275.50, stage=move.
+Warning: Teleporting vehicle 'flow_exit.59'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-3.65, latGap=-2.15, time=275.50, stage=move.
+Warning: Vehicle 'flow_exit.59' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=275.50.
+Warning: Vehicle 'flow_merge.56' ends teleporting on edge '96614679', time=275.50.
+Warning: Teleporting vehicle 'flow_exit.60'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-2.80, latGap=-1.85, time=278.00, stage=move.
+Warning: Vehicle 'flow_exit.60' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=278.00.
+Warning: Teleporting vehicle 'flow_merge.57'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.29, latGap=-1.55, time=279.00, stage=move.
+Warning: Vehicle 'flow_merge.57' ends teleporting on edge '96614679', time=279.00.
+Warning: Teleporting vehicle 'flow_main.64'; collision with vehicle 'flow_main.55', lane='48963655#1_1', gap=-5.95, latGap=-2.00, time=279.50, stage=move.
+Warning: Teleporting vehicle 'flow_exit.61'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-2.51, latGap=-1.80, time=280.50, stage=move.
+Warning: Vehicle 'flow_exit.61' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=280.50.
+Warning: Vehicle 'flow_main.64' ends teleporting on edge '225202305#1', time=280.50.
+Warning: Vehicle 'flow_main.70' ends teleporting on edge '48963655#1', time=280.50.
+Warning: Vehicle 'flow_main.3' performs emergency braking on lane ':96614679-AddedOffRampNode_0_0' with decel=9.00, wished=3.80, severity=1.00, time=281.00.
+Warning: Teleporting vehicle 'flow_exit.62'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-2.53, latGap=-1.60, time=282.50, stage=move.
+Warning: Vehicle 'flow_exit.62' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=282.50.
+Warning: Teleporting vehicle 'flow_main.76'; collision with vehicle 'flow_main.67', lane='1264142694#1-AddedOffRampEdge_2', gap=-1.71, latGap=-0.40, time=283.00, stage=move.
+Warning: Teleporting vehicle 'flow_merge.58'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.25, latGap=-1.50, time=283.00, stage=move.
+Warning: Vehicle 'flow_merge.58' ends teleporting on edge '96614679', time=283.00.
+Warning: Vehicle 'flow_main.76' ends teleporting on edge '48963655#1', time=284.50.
+Warning: Teleporting vehicle 'flow_exit.63'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-1.42, latGap=-2.10, time=285.50, stage=move.
+Warning: Vehicle 'flow_exit.63' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=285.50.
+Warning: Teleporting vehicle 'flow_merge.59'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.16, latGap=-2.25, time=287.00, stage=move.
+Warning: Vehicle 'flow_merge.59' ends teleporting on edge '96614679', time=287.00.
+Warning: Vehicle 'flow_main.53' performs emergency braking on lane '96614679_2' with decel=9.00, wished=6.00, severity=1.00, time=288.00.
+Warning: Teleporting vehicle 'flow_exit.64'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-3.94, latGap=-2.15, time=288.50, stage=move.
+Warning: Vehicle 'flow_exit.64' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=288.50.
+Warning: Teleporting vehicle 'flow_main.72'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-1.69, latGap=-2.20, time=292.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.66'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-3.59, latGap=-2.10, time=297.00, stage=move.
+Warning: Vehicle 'flow_exit.66' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=297.00.
+Warning: Vehicle 'flow_main.72' ends teleporting on edge '48963655#1', time=298.00.
+Warning: Teleporting vehicle 'flow_merge.62'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.04, latGap=-1.20, time=298.50, stage=move.
+Warning: Vehicle 'flow_merge.62' ends teleporting on edge '96614679', time=298.50.
+Warning: Teleporting vehicle 'flow_main.75'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-0.75, latGap=-1.95, time=299.50, stage=move.
+Warning: Teleporting vehicle 'flow_exit.65'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-0.63, latGap=-1.95, time=302.00, stage=move.
+Warning: Vehicle 'flow_exit.65' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=302.00.
+Warning: Vehicle 'flow_main.75' ends teleporting on edge '48963655#1', time=304.50.
+Warning: Teleporting vehicle 'flow_main.4'; junction collision with vehicle 'flow_merge.9', lane=':96614679-AddedOffRampNode_0_2', gap=-2.60, latGap=-1.60, time=305.00, stage=move.
+Warning: Vehicle 'flow_main.4' ends teleporting on edge '96614679-AddedOffRampEdge', time=305.00.
+Warning: Teleporting vehicle 'flow_exit.67'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-3.11, latGap=-2.20, time=307.00, stage=move.
+Warning: Vehicle 'flow_exit.67' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=307.00.
+Warning: Teleporting vehicle 'flow_main.82'; collision with vehicle 'flow_main.67', lane='1264142694#1-AddedOffRampEdge_2', gap=-3.23, latGap=-0.50, time=307.50, stage=move.
+Warning: Teleporting vehicle 'flow_merge.66'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.22, latGap=-1.65, time=311.00, stage=move.
+Warning: Vehicle 'flow_main.82' ends teleporting on edge '48963655#1', time=311.00.
+Warning: Vehicle 'flow_merge.66' ends teleporting on edge '96614679', time=311.00.
+Warning: Teleporting vehicle 'flow_main.81'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-0.85, latGap=-2.25, time=312.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.62'; collision with vehicle 'flow_main.87', lane='1264142694#1-AddedOffRampEdge_2', gap=-7.73, latGap=-0.55, time=313.00, stage=move.
+Warning: Vehicle 'flow_main.62' ends teleporting on edge '48963655#1', time=314.00.
+Warning: Teleporting vehicle 'flow_merge.5'; junction collision with vehicle 'flow_main.0', lane=':96614679-AddedOffRampNode_0_0', gap=-0.20, latGap=-1.80, time=315.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.88'; collision with vehicle 'flow_main.67', lane='1264142694#1-AddedOffRampEdge_2', gap=-3.72, latGap=-1.10, time=315.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.68'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-1.37, latGap=-1.85, time=315.00, stage=move.
+Warning: Vehicle 'flow_main.88' ends teleporting on edge '48963655#1', time=315.00.
+Warning: Vehicle 'flow_merge.5' ends teleporting on edge '96614679-AddedOffRampEdge', time=315.00.
+Warning: Vehicle 'flow_exit.68' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=315.00.
+Warning: Vehicle 'flow_main.81' ends teleporting on edge '48963655#1', time=317.00.
+Warning: Teleporting vehicle 'flow_exit.70'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-4.01, latGap=-1.80, time=317.50, stage=move.
+Warning: Vehicle 'flow_exit.70' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=317.50.
+Warning: Vehicle 'flow_merge.50' performs emergency braking on lane '96614679_2' with decel=9.00, wished=6.00, severity=1.00, time=319.00.
+Warning: Vehicle 'flow_main.53' performs emergency braking on lane '96614679_1' with decel=9.00, wished=6.00, severity=1.00, time=319.00.
+Warning: Teleporting vehicle 'flow_merge.69'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.32, latGap=-2.15, time=319.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.71'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-1.07, latGap=-1.85, time=319.00, stage=move.
+Warning: Vehicle 'flow_merge.69' ends teleporting on edge '96614679', time=319.00.
+Warning: Vehicle 'flow_exit.71' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=319.00.
+Warning: Teleporting vehicle 'flow_main.89'; collision with vehicle 'flow_main.67', lane='1264142694#1-AddedOffRampEdge_2', gap=-6.15, latGap=-0.50, time=322.00, stage=move.
+Warning: Vehicle 'flow_main.89' ends teleporting on edge '48963655#1', time=322.00.
+Warning: Teleporting vehicle 'flow_main.83'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-1.56, latGap=-1.95, time=322.50, stage=move.
+Warning: Vehicle 'flow_main.106' performs emergency braking on lane '96615334#2_1' with decel=9.00, wished=3.80, severity=1.00, time=323.50.
+Warning: Teleporting vehicle 'flow_exit.69'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-1.09, latGap=-1.40, time=326.00, stage=move.
+Warning: Vehicle 'flow_exit.69' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=326.00.
+Warning: Vehicle 'flow_main.83' ends teleporting on edge '48963655#1', time=327.50.
+Warning: Teleporting vehicle 'flow_exit.72'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-0.31, latGap=-1.70, time=330.50, stage=move.
+Warning: Vehicle 'flow_exit.72' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=330.50.
+Warning: Teleporting vehicle 'flow_exit.75'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-0.66, latGap=-1.35, time=334.00, stage=move.
+Warning: Vehicle 'flow_exit.75' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=334.00.
+Warning: Teleporting vehicle 'flow_exit.77'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-0.55, latGap=-1.45, time=336.00, stage=move.
+Warning: Vehicle 'flow_exit.77' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=336.00.
+Warning: Teleporting vehicle 'flow_main.80'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-1.60, latGap=-1.95, time=337.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.16'; junction collision with vehicle 'flow_merge.9', lane=':96614679-AddedOffRampNode_0_2', gap=-6.29, latGap=-1.70, time=338.00, stage=move.
+Warning: Vehicle 'flow_main.16' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=338.00.
+Warning: Teleporting vehicle 'flow_exit.74'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-1.79, latGap=-1.35, time=338.00, stage=move.
+Warning: Vehicle 'flow_exit.74' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=338.00.
+Warning: Teleporting vehicle 'flow_merge.15'; junction collision with vehicle 'flow_main.0', lane=':96614679-AddedOffRampNode_0_0', gap=-1.79, latGap=-1.70, time=338.50, stage=move.
+Warning: Vehicle 'flow_merge.50' performs emergency braking on lane '96614679_0' with decel=9.00, wished=6.00, severity=1.00, time=339.00.
+Warning: Teleporting vehicle 'flow_merge.75'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.56, latGap=-2.05, time=339.50, stage=move.
+Warning: Vehicle 'flow_merge.75' ends teleporting on edge '96614679', time=339.50.
+Warning: Teleporting vehicle 'flow_main.79'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-3.84, latGap=-2.00, time=340.00, stage=move.
+Warning: Vehicle 'flow_main.79' ends teleporting on edge '225202305#1', time=340.00.
+Warning: Vehicle 'flow_main.80' ends teleporting on edge '225202305#1', time=340.50.
+Warning: Teleporting vehicle 'flow_exit.73'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-3.23, latGap=-0.75, time=341.50, stage=move.
+Warning: Vehicle 'flow_exit.73' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=341.50.
+Warning: Teleporting vehicle 'flow_main.78'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-3.91, latGap=-2.00, time=342.50, stage=move.
+Warning: Vehicle 'flow_merge.15' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=342.50.
+Warning: Teleporting vehicle 'flow_main.77'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-1.66, latGap=-0.05, time=343.50, stage=move.
+Warning: Teleporting vehicle 'flow_merge.77'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.18, latGap=-1.85, time=344.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.91'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-4.46, latGap=-1.30, time=344.50, stage=move.
+Warning: Vehicle 'flow_merge.77' ends teleporting on edge '96614679', time=344.50.
+Warning: Teleporting vehicle 'flow_main.87'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-2.75, latGap=-1.95, time=345.00, stage=move.
+Warning: Vehicle 'flow_main.105' performs emergency braking on lane '96615334#2_1' with decel=9.00, wished=6.00, severity=1.00, time=345.50.
+Warning: Vehicle 'flow_main.78' ends teleporting on edge '96614679', time=346.00.
+Warning: Teleporting vehicle 'flow_exit.76'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-0.59, latGap=-1.30, time=346.50, stage=move.
+Warning: Vehicle 'flow_exit.76' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=346.50.
+Warning: Vehicle 'flow_main.77' ends teleporting on edge '96614679', time=347.50.
+Warning: Teleporting vehicle 'flow_main.92'; collision with vehicle 'flow_main.67', lane='1264142694#1-AddedOffRampEdge_2', gap=-5.55, latGap=-0.50, time=348.00, stage=move.
+Warning: Teleporting vehicle 'flow_merge.78'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.05, latGap=-1.10, time=348.00, stage=move.
+Warning: Vehicle 'flow_main.91' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=348.00.
+Warning: Vehicle 'flow_main.92' ends teleporting on edge '48963655#1', time=348.00.
+Warning: Vehicle 'flow_merge.78' ends teleporting on edge '96614679', time=348.00.
+Warning: Teleporting vehicle 'flow_main.62'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-2.42, latGap=-2.00, time=348.50, stage=move.
+Warning: Vehicle 'flow_main.87' ends teleporting on edge '96614679', time=348.50.
+Warning: Teleporting vehicle 'flow_main.91'; collision with vehicle 'flow_main.67', lane='1264142694#1-AddedOffRampEdge_2', gap=-0.02, latGap=-0.10, time=350.00, stage=move.
+Warning: Vehicle 'flow_main.91' ends teleporting on edge '48963655#1', time=350.00.
+Warning: Teleporting vehicle 'flow_exit.78'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-2.69, latGap=-1.55, time=351.00, stage=move.
+Warning: Vehicle 'flow_main.62' ends teleporting on edge '96614679', time=351.00.
+Warning: Vehicle 'flow_exit.78' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=351.00.
+Warning: Teleporting vehicle 'flow_merge.79'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.15, latGap=-1.85, time=352.00, stage=move.
+Warning: Vehicle 'flow_merge.79' ends teleporting on edge '96614679', time=352.00.
+Warning: Teleporting vehicle 'flow_exit.79'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-0.37, latGap=-1.20, time=354.00, stage=move.
+Warning: Vehicle 'flow_exit.79' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=354.00.
+Warning: Teleporting vehicle 'flow_main.11'; junction collision with vehicle 'flow_merge.9', lane=':96614679-AddedOffRampNode_0_2', gap=-4.58, latGap=-1.45, time=355.50, stage=move.
+Warning: Vehicle 'flow_main.11' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=355.50.
+Warning: Teleporting vehicle 'flow_main.10'; junction collision with vehicle 'flow_merge.9', lane=':96614679-AddedOffRampNode_0_2', gap=-1.10, latGap=-1.50, time=356.00, stage=move.
+Warning: Vehicle 'flow_main.10' ends teleporting on edge '96614679-AddedOffRampEdge', time=356.00.
+Warning: Teleporting vehicle 'flow_exit.80'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-0.71, latGap=-1.45, time=356.50, stage=move.
+Warning: Vehicle 'flow_exit.80' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=356.50.
+Warning: Teleporting vehicle 'flow_merge.80'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.06, latGap=-2.05, time=357.00, stage=move.
+Warning: Vehicle 'flow_merge.80' ends teleporting on edge '96614679', time=357.00.
+Warning: Teleporting vehicle 'flow_main.12'; junction collision with vehicle 'flow_merge.9', lane=':96614679-AddedOffRampNode_0_2', gap=-1.67, latGap=-1.40, time=358.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.5'; junction collision with vehicle 'flow_main.0', lane=':96614679-AddedOffRampNode_0_0', gap=-4.80, latGap=-2.05, time=359.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.13'; junction collision with vehicle 'flow_merge.9', lane=':96614679-AddedOffRampNode_0_2', gap=-0.73, latGap=-1.40, time=360.50, stage=move.
+Warning: Teleporting vehicle 'flow_exit.81'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-3.51, latGap=-1.30, time=361.00, stage=move.
+Warning: Vehicle 'flow_exit.81' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=361.00.
+Warning: Teleporting vehicle 'flow_merge.16'; junction collision with vehicle 'flow_main.0', lane=':96614679-AddedOffRampNode_0_0', gap=-4.05, latGap=-1.85, time=362.00, stage=move.
+Warning: Vehicle 'flow_merge.16' ends teleporting on edge '96614679-AddedOffRampEdge', time=362.00.
+Warning: Vehicle 'flow_main.108' performs emergency braking on lane '1264142694#1-AddedOffRampEdge_2' with decel=9.00, wished=6.00, severity=1.00, time=362.50.
+Warning: Teleporting vehicle 'flow_merge.19'; junction collision with vehicle 'flow_merge.9', lane=':96614679-AddedOffRampNode_0_2', gap=-3.13, latGap=-0.90, time=362.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.93'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-6.41, latGap=-1.95, time=362.50, stage=move.
+Warning: Vehicle 'flow_main.12' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=362.50.
+Warning: Teleporting vehicle 'flow_main.108'; collision with vehicle 'flow_main.67', lane='1264142694#1-AddedOffRampEdge_2', gap=-5.38, latGap=-0.40, time=363.00, stage=move.
+Warning: Vehicle 'flow_main.108' ends teleporting on edge '48963655#1', time=363.00.
+Warning: Vehicle 'flow_main.5' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=363.50.
+Warning: Teleporting vehicle 'flow_exit.83'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-3.60, latGap=-0.90, time=364.50, stage=move.
+Warning: Vehicle 'flow_main.13' ends teleporting on edge '96614679-AddedOffRampEdge', time=364.50.
+Warning: Vehicle 'flow_exit.83' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=364.50.
+Warning: Vehicle 'flow_main.93' ends teleporting on edge '96614679', time=365.00.
+Warning: Vehicle 'flow_merge.19' ends teleporting on edge '96614679-AddedOffRampEdge', time=365.00.
+Warning: Teleporting vehicle 'flow_main.67'; collision with vehicle 'flow_main.105', lane='1264142694#1-AddedOffRampEdge_2', gap=-6.65, latGap=-0.15, time=365.50, stage=move.
+Warning: Vehicle 'flow_main.67' ends teleporting on edge '48963655#1', time=365.50.
+Warning: Teleporting vehicle 'flow_main.100'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-3.44, latGap=-1.20, time=366.50, stage=move.
+Warning: Teleporting vehicle 'flow_merge.81'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.32, latGap=-2.15, time=367.00, stage=move.
+Warning: Vehicle 'flow_merge.81' ends teleporting on edge '96614679', time=367.00.
+Warning: Teleporting vehicle 'flow_main.95'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-2.90, latGap=-2.00, time=368.00, stage=move.
+Warning: Vehicle 'flow_main.95' ends teleporting on edge '225202305#1', time=368.00.
+Warning: Teleporting vehicle 'flow_exit.82'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-3.54, latGap=-1.10, time=368.50, stage=move.
+Warning: Vehicle 'flow_exit.82' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=368.50.
+Warning: Vehicle 'flow_main.101' performs emergency braking on lane '96615334#2_1' with decel=7.00, wished=3.00, severity=1.00, time=371.00.
+Warning: Vehicle 'flow_main.100' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=371.00.
+Warning: Teleporting vehicle 'flow_main.96'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-6.00, latGap=-2.15, time=372.50, stage=move.
+Warning: Teleporting vehicle 'flow_exit.88'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-3.23, latGap=-1.05, time=373.00, stage=move.
+Warning: Vehicle 'flow_exit.88' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=373.00.
+Warning: Teleporting vehicle 'flow_main.95'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.34, latGap=-1.75, time=373.50, stage=move.
+Warning: Vehicle 'flow_main.95' ends teleporting on edge '96614679', time=373.50.
+Warning: Teleporting vehicle 'flow_exit.89'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-0.85, latGap=-1.10, time=375.00, stage=move.
+Warning: Vehicle 'flow_exit.89' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=375.00.
+Warning: Vehicle 'flow_main.96' ends teleporting on edge '96614679', time=375.50.
+Warning: Teleporting vehicle 'flow_main.2'; junction collision with vehicle 'flow_main.0', lane=':96614679-AddedOffRampNode_0_0', gap=-3.42, latGap=-1.75, time=376.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.97'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-5.04, latGap=-2.00, time=377.00, stage=move.
+Warning: Teleporting vehicle 'flow_merge.82'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.07, latGap=-2.35, time=378.00, stage=move.
+Warning: Vehicle 'flow_merge.82' ends teleporting on edge '96614679', time=378.00.
+Warning: Teleporting vehicle 'flow_main.108'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-2.78, latGap=-1.10, time=378.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.102'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-0.20, latGap=-1.45, time=379.50, stage=move.
+Warning: Vehicle 'flow_main.97' ends teleporting on edge '96614679', time=380.00.
+Warning: Vehicle 'flow_main.2' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=380.50.
+Warning: Teleporting vehicle 'flow_main.32'; junction collision with vehicle 'flow_merge.14', lane=':96614679-AddedOffRampNode_0_2', gap=-4.36, latGap=-0.70, time=381.00, stage=move.
+Warning: Teleporting vehicle 'flow_merge.14'; junction collision with vehicle 'flow_merge.9', lane=':96614679-AddedOffRampNode_0_2', gap=-2.99, latGap=-0.25, time=381.00, stage=move.
+Warning: Vehicle 'flow_merge.14' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=381.00.
+Warning: Vehicle 'flow_main.108' ends teleporting on edge '96614679', time=381.50.
+Warning: Vehicle 'flow_main.32' ends teleporting on edge '96614679-AddedOffRampEdge', time=382.00.
+Warning: Teleporting vehicle 'flow_merge.83'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.17, latGap=-1.50, time=382.50, stage=move.
+Warning: Vehicle 'flow_merge.83' ends teleporting on edge '96614679', time=382.50.
+Warning: Vehicle 'flow_merge.50' performs emergency braking on lane '96614679_1' with decel=9.00, wished=6.00, severity=1.00, time=383.50.
+Warning: Teleporting vehicle 'flow_exit.84'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-3.64, latGap=-1.45, time=384.00, stage=move.
+Warning: Vehicle 'flow_exit.84' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=384.00.
+Warning: Teleporting vehicle 'flow_merge.10'; junction collision with vehicle 'flow_merge.9', lane=':96614679-AddedOffRampNode_0_2', gap=-1.72, latGap=-1.20, time=385.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.113'; collision with vehicle 'flow_main.112', lane='1264142694#1-AddedOffRampEdge_2', gap=-2.00, latGap=-0.40, time=385.50, stage=move.
+Warning: Vehicle 'flow_main.113' ends teleporting on edge '48963655#1', time=385.50.
+Warning: Teleporting vehicle 'flow_merge.84'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.50, latGap=-1.25, time=386.50, stage=move.
+Warning: Teleporting vehicle 'flow_exit.92'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-0.14, latGap=-1.05, time=386.50, stage=move.
+Warning: Vehicle 'flow_merge.84' ends teleporting on edge '96614679', time=386.50.
+Warning: Vehicle 'flow_exit.92' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=386.50.
+Warning: Vehicle 'flow_merge.10' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=389.00.
+Warning: Teleporting vehicle 'flow_main.99'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-4.89, latGap=-2.15, time=389.50, stage=move.
+Warning: Teleporting vehicle 'flow_exit.85'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-2.76, latGap=-1.45, time=390.00, stage=move.
+Warning: Vehicle 'flow_exit.85' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=390.00.
+Warning: Teleporting vehicle 'flow_main.8'; junction collision with vehicle 'flow_main.0', lane=':96614679-AddedOffRampNode_0_0', gap=-0.73, latGap=-2.00, time=392.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.92'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-5.51, latGap=-2.40, time=392.50, stage=move.
+Warning: Teleporting vehicle 'flow_exit.87'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-1.81, latGap=-1.10, time=393.00, stage=move.
+Warning: Vehicle 'flow_exit.87' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=393.00.
+Warning: Vehicle 'flow_main.99' ends teleporting on edge '96614679', time=393.50.
+Warning: Teleporting vehicle 'flow_main.109'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-1.87, latGap=-1.20, time=395.00, stage=move.
+Warning: Vehicle 'flow_main.108' performs emergency braking on lane '96614679_1' with decel=9.00, wished=6.00, severity=1.00, time=395.50.
+Warning: Teleporting vehicle 'flow_merge.88'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.05, latGap=-2.15, time=396.00, stage=move.
+Warning: Vehicle 'flow_main.8' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=396.00.
+Warning: Vehicle 'flow_main.92' ends teleporting on edge '96614679', time=396.00.
+Warning: Vehicle 'flow_merge.88' ends teleporting on edge '96614679', time=396.00.
+Warning: Teleporting vehicle 'flow_exit.86'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-1.43, latGap=-1.20, time=397.00, stage=move.
+Warning: Vehicle 'flow_exit.86' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=397.00.
+Warning: Teleporting vehicle 'flow_main.115'; collision with vehicle 'flow_main.112', lane='1264142694#1-AddedOffRampEdge_2', gap=-1.18, latGap=-0.45, time=398.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.106'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-0.97, latGap=-2.15, time=398.00, stage=move.
+Warning: Vehicle 'flow_main.115' ends teleporting on edge '48963655#1', time=398.00.
+Warning: Teleporting vehicle 'flow_merge.21'; junction collision with vehicle 'flow_main.0', lane=':96614679-AddedOffRampNode_0_0', gap=-4.28, latGap=-2.05, time=400.50, stage=move.
+Warning: Vehicle 'flow_main.106' ends teleporting on edge '96614679', time=401.00.
+Warning: Teleporting vehicle 'flow_main.21'; junction collision with vehicle 'flow_merge.24', lane=':96614679-AddedOffRampNode_0_3', gap=-2.54, latGap=-0.50, time=402.00, stage=move.
+Warning: Teleporting vehicle 'flow_merge.89'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.19, latGap=-2.25, time=402.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.111'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-3.33, latGap=-1.50, time=402.00, stage=move.
+Warning: Vehicle 'flow_main.109' ends teleporting on edge '48963655#1', time=402.00.
+Warning: Vehicle 'flow_merge.89' ends teleporting on edge '96614679', time=402.00.
+Warning: Teleporting vehicle 'flow_main.119'; collision with vehicle 'flow_main.117', lane='1264142694#1-AddedOffRampEdge_2', gap=-1.02, latGap=-1.40, time=403.00, stage=move.
+Warning: Vehicle 'flow_main.119' ends teleporting on edge '48963655#1', time=403.00.
+Warning: Teleporting vehicle 'flow_main.104'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-3.11, latGap=-2.05, time=403.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.23'; junction collision with vehicle 'flow_merge.24', lane=':96614679-AddedOffRampNode_0_2', gap=-1.99, latGap=-0.70, time=404.50, stage=move.
+Warning: Teleporting vehicle 'flow_merge.24'; junction collision with vehicle 'flow_merge.9', lane=':96614679-AddedOffRampNode_0_2', gap=-6.35, latGap=-0.70, time=404.50, stage=move.
+Warning: Vehicle 'flow_merge.24' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=404.50.
+Warning: Vehicle 'flow_main.21' ends teleporting on edge '96614679-AddedOffRampEdge', time=404.50.
+Warning: Vehicle 'flow_merge.21' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=404.50.
+Warning: Teleporting vehicle 'flow_exit.90'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-4.58, latGap=-1.20, time=405.50, stage=move.
+Warning: Vehicle 'flow_exit.90' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=405.50.
+Warning: Teleporting vehicle 'flow_merge.12'; junction collision with vehicle 'flow_main.0', lane=':96614679-AddedOffRampNode_0_0', gap=-4.79, latGap=-2.15, time=406.00, stage=move.
+Warning: Vehicle 'flow_main.104' ends teleporting on edge '96614679', time=406.50.
+Warning: Vehicle 'flow_main.23' ends teleporting on edge '96614679-AddedOffRampEdge', time=406.50.
+Warning: Teleporting vehicle 'flow_exit.91'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-4.13, latGap=-1.20, time=407.50, stage=move.
+Warning: Vehicle 'flow_exit.91' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=407.50.
+Warning: Teleporting vehicle 'flow_merge.90'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.50, latGap=-0.15, time=408.00, stage=move.
+Warning: Vehicle 'flow_main.102' ends teleporting on edge '225202305#1', time=408.00.
+Warning: Vehicle 'flow_merge.90' ends teleporting on edge '96614679', time=408.00.
+Warning: Vehicle 'flow_main.111' ends teleporting on edge '48963655#1', time=408.50.
+Warning: Vehicle 'flow_merge.12' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=410.00.
+Warning: Teleporting vehicle 'flow_main.7'; junction collision with vehicle 'flow_main.0', lane=':96614679-AddedOffRampNode_0_0', gap=-2.55, latGap=-2.10, time=410.50, stage=move.
+Warning: Teleporting vehicle 'flow_exit.93'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-2.32, latGap=-1.50, time=412.00, stage=move.
+Warning: Vehicle 'flow_main.7' ends teleporting on edge '96614679-AddedOffRampEdge', time=412.00.
+Warning: Vehicle 'flow_exit.93' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=412.00.
+Warning: Vehicle 'flow_exit.110' performs emergency braking on lane '96615334#2_0' with decel=9.00, wished=6.00, severity=1.00, time=412.50.
+Warning: Teleporting vehicle 'flow_merge.91'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.31, latGap=-1.85, time=412.50, stage=move.
+Warning: Vehicle 'flow_merge.91' ends teleporting on edge '96614679', time=412.50.
+Warning: Teleporting vehicle 'flow_exit.95'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-2.34, latGap=-1.10, time=415.00, stage=move.
+Warning: Vehicle 'flow_exit.95' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=415.00.
+Warning: Teleporting vehicle 'flow_exit.94'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-2.14, latGap=-1.20, time=417.00, stage=move.
+Warning: Vehicle 'flow_exit.94' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=417.00.
+Warning: Vehicle 'flow_main.109' performs emergency braking on lane '48963655#1_0' with decel=9.00, wished=3.80, severity=1.00, time=418.50.
+Warning: Teleporting vehicle 'flow_main.111'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-3.67, latGap=-2.25, time=418.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.121'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-2.59, latGap=-1.15, time=418.50, stage=move.
+Warning: Vehicle 'flow_merge.76' performs emergency braking on lane '96614679_1' with decel=9.00, wished=6.00, severity=1.00, time=419.50.
+Warning: Choosing new speed factor 1.21 for vehicle 'flow_main.233' to match departure speed 22.22 (max 21.30).
+Warning: Teleporting vehicle 'flow_main.22'; junction collision with vehicle 'flow_main.0', lane=':96614679-AddedOffRampNode_0_0', gap=-3.36, latGap=-1.55, time=421.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.118'; collision with vehicle 'flow_main.117', lane='1264142694#1-AddedOffRampEdge_2', gap=-0.67, latGap=-0.40, time=421.00, stage=move.
+Warning: Vehicle 'flow_main.22' ends teleporting on edge '96614679-AddedOffRampEdge', time=421.00.
+Warning: Vehicle 'flow_main.111' ends teleporting on edge '96614679', time=422.00.
+Warning: Teleporting vehicle 'flow_main.109'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-1.40, latGap=-0.75, time=423.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.96'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-1.91, latGap=-1.50, time=423.00, stage=move.
+Warning: Vehicle 'flow_exit.96' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=423.00.
+Warning: Vehicle 'flow_main.109' ends teleporting on edge '225202305#1', time=425.00.
+Warning: Vehicle 'flow_main.53' performs emergency braking on lane '96614679_2' with decel=9.00, wished=6.00, severity=1.00, time=427.00.
+Warning: Teleporting vehicle 'flow_exit.97'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-3.05, latGap=-1.10, time=427.00, stage=move.
+Warning: Vehicle 'flow_exit.97' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=427.00.
+Warning: Teleporting vehicle 'flow_main.120'; collision with vehicle 'flow_main.117', lane='1264142694#1-AddedOffRampEdge_2', gap=-0.77, latGap=-0.40, time=428.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.98'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-3.99, latGap=-1.15, time=429.50, stage=move.
+Warning: Vehicle 'flow_exit.98' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=429.50.
+Warning: Vehicle 'flow_merge.23' performs emergency braking on lane '96614679_0' with decel=7.00, wished=2.20, severity=1.00, time=431.50.
+Warning: Teleporting vehicle 'flow_merge.23'; junction collision with vehicle 'flow_main.0', lane=':96614679-AddedOffRampNode_0_0', gap=-4.54, latGap=-1.35, time=431.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.115'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-1.09, latGap=-2.20, time=431.50, stage=move.
+Warning: Teleporting vehicle 'flow_merge.96'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.00, latGap=-2.15, time=432.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.102'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-2.53, latGap=-1.40, time=432.00, stage=move.
+Warning: Vehicle 'flow_merge.96' ends teleporting on edge '96614679', time=432.00.
+Warning: Vehicle 'flow_exit.102' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=432.00.
+Warning: Teleporting vehicle 'flow_main.114'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-0.46, latGap=-1.90, time=434.50, stage=move.
+Warning: Vehicle 'flow_merge.23' ends teleporting on edge '96614679-AddedOffRampEdge', time=434.50.
+Warning: Teleporting vehicle 'flow_exit.99'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-2.74, latGap=-1.45, time=435.00, stage=move.
+Warning: Vehicle 'flow_main.120' ends teleporting on edge '48963655#1', time=435.00.
+Warning: Vehicle 'flow_exit.99' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=435.00.
+Warning: Vehicle 'flow_main.115' ends teleporting on edge '96614679', time=435.50.
+Warning: Vehicle 'flow_main.114' ends teleporting on edge '96614679', time=437.50.
+Warning: Teleporting vehicle 'flow_main.18'; junction collision with vehicle 'flow_main.0', lane=':96614679-AddedOffRampNode_0_0', gap=-3.32, latGap=-2.10, time=438.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.100'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-1.40, latGap=-1.05, time=438.00, stage=move.
+Warning: Vehicle 'flow_exit.100' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=438.00.
+Warning: Vehicle 'flow_main.18' ends teleporting on edge '96614679-AddedOffRampEdge', time=439.00.
+Warning: Teleporting vehicle 'flow_exit.101'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-1.15, latGap=-1.10, time=440.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.122'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-0.95, latGap=-1.20, time=442.00, stage=move.
+Warning: Vehicle 'flow_exit.101' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=442.00.
+Warning: Teleporting vehicle 'flow_merge.99'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.02, latGap=-1.90, time=443.00, stage=move.
+Warning: Vehicle 'flow_merge.99' ends teleporting on edge '96614679', time=443.00.
+Warning: Teleporting vehicle 'flow_main.116'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-6.03, latGap=-1.80, time=443.50, stage=move.
+Warning: Teleporting vehicle 'flow_merge.42'; junction collision with vehicle 'flow_merge.9', lane=':96614679-AddedOffRampNode_0_2', gap=-2.38, latGap=-1.70, time=444.00, stage=move.
+Warning: Vehicle 'flow_merge.42' ends teleporting on edge '96614679-AddedOffRampEdge', time=444.00.
+Warning: Teleporting vehicle 'flow_main.129'; collision with vehicle 'flow_main.117', lane='1264142694#1-AddedOffRampEdge_2', gap=-0.26, latGap=-0.40, time=445.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.39'; junction collision with vehicle 'flow_merge.9', lane=':96614679-AddedOffRampNode_0_2', gap=-0.17, latGap=-1.50, time=446.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.103'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-0.10, latGap=-1.45, time=446.00, stage=move.
+Warning: Vehicle 'flow_main.39' ends teleporting on edge '96614679-AddedOffRampEdge', time=446.00.
+Warning: Teleporting vehicle 'flow_merge.50'; junction collision with vehicle 'flow_main.0', lane=':96614679-AddedOffRampNode_0_0', gap=-3.93, latGap=-1.55, time=446.50, stage=move.
+Warning: Vehicle 'flow_main.118' ends teleporting on edge '48963655#1', time=446.50.
+Warning: Vehicle 'flow_main.129' ends teleporting on edge '48963655#1', time=446.50.
+Warning: Teleporting vehicle 'flow_merge.100'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.49, latGap=-2.15, time=447.00, stage=move.
+Warning: Vehicle 'flow_main.116' ends teleporting on edge '96614679', time=447.00.
+Warning: Vehicle 'flow_merge.100' ends teleporting on edge '96614679', time=447.00.
+Warning: Vehicle 'flow_main.121' ends teleporting on edge '225202305#1', time=447.50.
+Warning: Teleporting vehicle 'flow_main.46'; junction collision with vehicle 'flow_merge.9', lane=':96614679-AddedOffRampNode_0_2', gap=-0.93, latGap=-1.55, time=449.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.125'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-4.25, latGap=-1.35, time=449.50, stage=move.
+Warning: Vehicle 'flow_merge.50' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=450.50.
+Warning: Teleporting vehicle 'flow_exit.104'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-2.37, latGap=-1.10, time=451.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.133'; collision with vehicle 'flow_main.54', lane='96615334#2_1', gap=-1.64, latGap=-0.25, time=452.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.50'; junction collision with vehicle 'flow_main.0', lane=':96614679-AddedOffRampNode_0_0', gap=-3.05, latGap=-0.80, time=452.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.121'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.42, latGap=-1.85, time=452.50, stage=move.
+Warning: Vehicle 'flow_main.121' ends teleporting on edge '96614679', time=452.50.
+Warning: Vehicle 'flow_main.46' ends teleporting on edge '96614679-AddedOffRampEdge', time=452.50.
+Warning: Vehicle 'flow_main.122' ends teleporting on edge '48963655#1', time=454.50.
+Warning: Teleporting vehicle 'flow_main.126'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-1.85, latGap=-1.45, time=455.50, stage=move.
+Warning: Vehicle 'flow_main.50' ends teleporting on edge '96614679-AddedOffRampEdge', time=455.50.
+Warning: Vehicle 'flow_exit.103' ends teleporting on edge '1264142694#1-AddedOffRampEdge', time=455.50.
+Warning: Vehicle 'flow_main.53' performs emergency braking on lane '96614679_2' with decel=9.00, wished=6.00, severity=1.00, time=458.00.
+Warning: Teleporting vehicle 'flow_main.27'; junction collision with vehicle 'flow_main.0', lane=':96614679-AddedOffRampNode_0_0', gap=-5.67, latGap=-1.85, time=459.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.105'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-2.17, latGap=-1.20, time=460.00, stage=move.
+Warning: Vehicle 'flow_main.27' ends teleporting on edge '96614679-AddedOffRampEdge', time=460.00.
+Warning: Teleporting vehicle 'flow_merge.104'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.07, latGap=-2.40, time=461.00, stage=move.
+Warning: Vehicle 'flow_merge.104' ends teleporting on edge '96614679', time=461.00.
+Warning: Teleporting vehicle 'flow_main.122'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-5.97, latGap=-1.95, time=462.50, stage=move.
+Warning: Teleporting vehicle 'flow_exit.106'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-1.93, latGap=-1.10, time=462.50, stage=move.
+Warning: Vehicle 'flow_main.125' ends teleporting on edge '48963655#1', time=462.50.
+Warning: Teleporting vehicle 'flow_merge.35'; junction collision with vehicle 'flow_main.0', lane=':96614679-AddedOffRampNode_0_0', gap=-5.30, latGap=-2.00, time=463.00, stage=move.
+Warning: Vehicle 'flow_merge.35' ends teleporting on edge '96614679-AddedOffRampEdge', time=463.50.
+Warning: Vehicle 'flow_main.133' ends teleporting on edge '48963655#1', time=464.50.
+Warning: Teleporting vehicle 'flow_exit.107'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-1.46, latGap=-1.15, time=465.50, stage=move.
+Warning: Vehicle 'flow_main.122' ends teleporting on edge '96614679', time=465.50.
+Warning: Teleporting vehicle 'flow_exit.116'; collision with vehicle 'flow_main.117', lane='1264142694#1-AddedOffRampEdge_2', gap=-1.43, latGap=-0.00, time=467.00, stage=move.
+Warning: Teleporting vehicle 'flow_merge.51'; junction collision with vehicle 'flow_merge.9', lane=':96614679-AddedOffRampNode_0_2', gap=-6.82, latGap=-1.45, time=468.50, stage=move.
+Warning: Vehicle 'flow_merge.51' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=468.50.
+Warning: Teleporting vehicle 'flow_exit.109'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-2.02, latGap=-1.15, time=468.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.36'; junction collision with vehicle 'flow_merge.9', lane=':96614679-AddedOffRampNode_0_2', gap=-3.39, latGap=-1.55, time=469.00, stage=move.
+Warning: Vehicle 'flow_main.126' ends teleporting on edge '48963655#1', time=469.50.
+Warning: Teleporting vehicle 'flow_main.123'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-0.39, latGap=-1.95, time=470.50, stage=move.
+Warning: Teleporting vehicle 'flow_merge.18'; junction collision with vehicle 'flow_main.0', lane=':96614679-AddedOffRampNode_0_0', gap=-5.57, latGap=-2.10, time=471.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.111'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-0.35, latGap=-1.05, time=471.00, stage=move.
+Warning: Vehicle 'flow_merge.55' performs emergency braking on lane '96614679_2' with decel=9.00, wished=3.80, severity=1.00, time=471.50.
+Warning: Teleporting vehicle 'flow_merge.107'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.49, latGap=-2.35, time=473.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.113'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-0.80, latGap=-1.10, time=473.00, stage=move.
+Warning: Vehicle 'flow_main.36' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=473.00.
+Warning: Vehicle 'flow_merge.107' ends teleporting on edge '96614679', time=473.00.
+Warning: Teleporting vehicle 'flow_main.128'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-1.55, latGap=-1.80, time=474.00, stage=move.
+Warning: Vehicle 'flow_main.123' ends teleporting on edge '96614679', time=474.00.
+Warning: Teleporting vehicle 'flow_merge.31'; junction collision with vehicle 'flow_main.0', lane=':96614679-AddedOffRampNode_0_0', gap=-5.21, latGap=-2.05, time=474.50, stage=move.
+Warning: Vehicle 'flow_merge.18' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=475.00.
+Warning: Vehicle 'flow_main.137' performs emergency braking on lane '96615334#2_1' with decel=7.00, wished=2.50, severity=1.00, time=476.00.
+Warning: Teleporting vehicle 'flow_merge.32'; junction collision with vehicle 'flow_merge.9', lane=':96614679-AddedOffRampNode_0_2', gap=-3.17, latGap=-2.15, time=476.00, stage=move.
+Warning: Vehicle 'flow_exit.104' ends teleporting on edge '96614676#1-AddedOnRampEdge', time=476.50.
+Warning: Teleporting vehicle 'flow_merge.33'; junction collision with vehicle 'flow_main.0', lane=':96614679-AddedOffRampNode_0_0', gap=-3.63, latGap=-1.75, time=477.00, stage=move.
+Warning: Vehicle 'flow_main.128' ends teleporting on edge '96614679', time=477.50.
+Warning: Teleporting vehicle 'flow_merge.108'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.22, latGap=-1.75, time=478.00, stage=move.
+Warning: Vehicle 'flow_merge.108' ends teleporting on edge '96614679', time=478.00.
+Warning: Vehicle 'flow_merge.31' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=478.50.
+Warning: Teleporting vehicle 'flow_exit.108'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-1.00, latGap=-1.50, time=479.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.51'; junction collision with vehicle 'flow_main.0', lane=':96614679-AddedOffRampNode_0_0', gap=-1.59, latGap=-1.70, time=480.00, stage=move.
+Warning: Vehicle 'flow_merge.32' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=480.00.
+Warning: Teleporting vehicle 'flow_main.127'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-1.44, latGap=-1.90, time=481.00, stage=move.
+Warning: Vehicle 'flow_merge.33' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=481.00.
+Warning: Teleporting vehicle 'flow_merge.56'; junction collision with vehicle 'flow_merge.9', lane=':96614679-AddedOffRampNode_0_2', gap=-0.16, latGap=-1.80, time=481.50, stage=move.
+Warning: Teleporting vehicle 'flow_exit.110'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-3.93, latGap=-1.15, time=483.00, stage=move.
+Warning: Vehicle 'flow_main.51' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=484.00.
+Warning: Vehicle 'flow_main.127' ends teleporting on edge '96614679', time=484.00.
+Warning: Vehicle 'flow_exit.105' ends teleporting on edge '96614676#1-AddedOnRampEdge', time=484.50.
+Warning: Teleporting vehicle 'flow_exit.112'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-0.62, latGap=-1.20, time=485.50, stage=move.
+Warning: Vehicle 'flow_merge.56' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=485.50.
+Warning: Vehicle 'flow_merge.36' performs emergency braking on lane '96614679_0' with decel=7.00, wished=2.20, severity=1.00, time=486.00.
+Warning: Teleporting vehicle 'flow_merge.36'; junction collision with vehicle 'flow_main.0', lane=':96614679-AddedOffRampNode_0_0', gap=-4.92, latGap=-2.10, time=486.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.132'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-2.57, latGap=-1.90, time=486.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.137'; collision with vehicle 'flow_main.117', lane='1264142694#1-AddedOffRampEdge_2', gap=-1.29, latGap=-0.40, time=487.00, stage=move.
+Warning: Teleporting vehicle 'flow_merge.110'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.05, latGap=-1.90, time=487.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.114'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-1.29, latGap=-1.15, time=487.00, stage=move.
+Warning: Vehicle 'flow_main.137' ends teleporting on edge '48963655#1', time=487.00.
+Warning: Vehicle 'flow_merge.110' ends teleporting on edge '96614679', time=487.00.
+Warning: Teleporting vehicle 'flow_main.49'; junction collision with vehicle 'flow_merge.47', lane=':96614679-AddedOffRampNode_0_2', gap=-0.16, latGap=-1.70, time=488.00, stage=move.
+Warning: Teleporting vehicle 'flow_merge.47'; junction collision with vehicle 'flow_merge.9', lane=':96614679-AddedOffRampNode_0_2', gap=-5.12, latGap=-1.40, time=488.00, stage=move.
+Warning: Vehicle 'flow_merge.47' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=488.00.
+Warning: Vehicle 'flow_main.49' ends teleporting on edge '96614679-AddedOffRampEdge', time=488.00.
+Warning: Vehicle 'flow_exit.106' ends teleporting on edge '96614676#1-AddedOnRampEdge', time=488.00.
+Warning: Teleporting vehicle 'flow_main.130'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-3.84, latGap=-1.90, time=489.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.47'; junction collision with vehicle 'flow_merge.9', lane=':96614679-AddedOffRampNode_0_2', gap=-0.78, latGap=-1.45, time=490.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.35'; junction collision with vehicle 'flow_main.0', lane=':96614679-AddedOffRampNode_0_0', gap=-4.81, latGap=-1.65, time=490.00, stage=move.
+Warning: Vehicle 'flow_merge.36' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=490.00.
+Warning: Vehicle 'flow_main.132' ends teleporting on edge '96614679', time=490.00.
+Warning: Teleporting vehicle 'flow_exit.115'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-1.78, latGap=-1.40, time=491.00, stage=move.
+Warning: Vehicle 'flow_main.130' ends teleporting on edge '96614679', time=492.00.
+Warning: Vehicle 'flow_exit.109' ends teleporting on edge '96614676#1-AddedOnRampEdge', time=492.00.
+Warning: Teleporting vehicle 'flow_merge.111'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.17, latGap=-1.65, time=492.50, stage=move.
+Warning: Vehicle 'flow_merge.111' ends teleporting on edge '96614679', time=492.50.
+Warning: Teleporting vehicle 'flow_main.34'; junction collision with vehicle 'flow_main.0', lane=':96614679-AddedOffRampNode_0_0', gap=-6.07, latGap=-1.65, time=493.00, stage=move.
+Warning: Vehicle 'flow_main.35' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=494.00.
+Warning: Vehicle 'flow_main.47' ends teleporting on edge '96614679-AddedOffRampEdge', time=494.00.
+Warning: Teleporting vehicle 'flow_merge.40'; junction collision with vehicle 'flow_main.0', lane=':96614679-AddedOffRampNode_0_0', gap=-5.10, latGap=-1.85, time=495.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.137'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-2.46, latGap=-2.25, time=495.50, stage=move.
+Warning: Teleporting vehicle 'flow_exit.117'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-0.80, latGap=-1.45, time=495.50, stage=move.
+Warning: Teleporting vehicle 'flow_merge.112'; collision with vehicle 'flow_merge.44', lane='225202305#1_1', gap=-0.18, latGap=-1.05, time=496.00, stage=move.
+Warning: Vehicle 'flow_merge.112' ends teleporting on edge '96614679', time=496.00.
+Warning: Vehicle 'flow_main.34' teleports beyond arrival edge '96614679-AddedOffRampEdge', time=497.00.
+Warning: Vehicle 'flow_merge.40' ends teleporting on edge '96614679-AddedOffRampEdge', time=497.00.
+Warning: Teleporting vehicle 'flow_exit.118'; collision with vehicle 'flow_main.54', lane='96615334#2_1', gap=-1.91, latGap=-1.35, time=498.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.138'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-3.28, latGap=-1.20, time=499.00, stage=move.
+Warning: Vehicle 'flow_main.137' ends teleporting on edge '96614679', time=499.00.
+Warning: Teleporting vehicle 'flow_main.136'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-3.37, latGap=-1.90, time=500.00, stage=move.
+Warning: Vehicle 'flow_exit.107' ends teleporting on edge '96614676#1-AddedOnRampEdge', time=500.50.
+Warning: Vehicle 'flow_exit.111' ends teleporting on edge '96614676#1-AddedOnRampEdge', time=501.00.
+Warning: Teleporting vehicle 'flow_exit.120'; collision with vehicle 'flow_main.54', lane='96615334#2_0', gap=-0.49, latGap=-1.05, time=501.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.135'; collision with vehicle 'flow_main.76', lane='48963655#1_1', gap=-6.80, latGap=-1.90, time=502.50, stage=move.
+Warning: Vehicle 'flow_main.136' ends teleporting on edge '96614679', time=502.50.
+Warning: Vehicle 'flow_exit.113' ends teleporting on edge '96614676#1-AddedOnRampEdge', time=502.50.
+Warning: Vehicle 'flow_main.135' ends teleporting on edge '225202305#1', time=503.50.
+Warning: Teleporting vehicle 'flow_exit.17'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-1.92, latGap=-2.50, time=323.50, stage=move.
+Warning: Vehicle 'flow_exit.17' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=323.50.
+Warning: Vehicle 'flow_main.46' performs emergency braking on lane '48963325#2_2' with decel=9.00, wished=6.00, severity=1.00, time=326.50.
+Warning: Teleporting vehicle 'flow_exit.19'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-1.16, latGap=-2.20, time=326.50, stage=move.
+Warning: Vehicle 'flow_exit.19' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=326.50.
+Warning: Teleporting vehicle 'flow_exit.16'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-2.00, latGap=-2.25, time=329.50, stage=move.
+Warning: Vehicle 'flow_exit.16' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=329.50.
+Warning: Teleporting vehicle 'flow_exit.20'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-1.62, latGap=-2.15, time=332.50, stage=move.
+Warning: Vehicle 'flow_exit.20' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=332.50.
+Warning: Teleporting vehicle 'flow_exit.21'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-0.99, latGap=-2.25, time=334.00, stage=move.
+Warning: Vehicle 'flow_exit.21' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=334.00.
+Warning: Vehicle 'flow_main.49' performs emergency braking on lane ':3249288544_1_0' with decel=7.00, wished=2.20, severity=1.00, time=344.50.
+Warning: Vehicle 'flow_main.52' performs emergency braking on lane '48963325#1_1' with decel=7.00, wished=2.20, severity=1.00, time=358.00.
+Warning: Teleporting vehicle 'flow_exit.22'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-0.39, latGap=-2.25, time=362.50, stage=move.
+Warning: Vehicle 'flow_exit.22' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=362.50.
+Warning: Teleporting vehicle 'flow_exit.23'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-2.25, latGap=-2.30, time=365.50, stage=move.
+Warning: Vehicle 'flow_exit.23' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=365.50.
+Warning: Teleporting vehicle 'flow_exit.24'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-0.23, latGap=-2.15, time=368.00, stage=move.
+Warning: Vehicle 'flow_exit.24' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=368.00.
+Warning: Teleporting vehicle 'flow_main.48'; collision with vehicle 'flow_main.56', lane='48963325#1_1', gap=-6.86, latGap=-2.05, time=368.50, stage=move.
+Warning: Vehicle 'flow_main.48' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=368.50.
+Warning: Vehicle 'flow_main.55' performs emergency braking on lane '48963325#1_1' with decel=7.00, wished=2.50, severity=1.00, time=370.00.
+Warning: Vehicle 'flow_main.46' performs emergency braking on lane '48963325#2_1' with decel=9.00, wished=6.00, severity=1.00, time=377.50.
+Warning: Teleporting vehicle 'flow_main.58'; collision with vehicle 'flow_main.56', lane='48963325#1_1', gap=-4.70, latGap=-1.55, time=380.50, stage=move.
+Warning: Vehicle 'flow_main.58' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=380.50.
+Warning: Teleporting vehicle 'flow_exit.25'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-1.77, latGap=-2.30, time=385.50, stage=move.
+Warning: Vehicle 'flow_exit.25' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=385.50.
+Warning: Teleporting vehicle 'flow_main.59'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_2', gap=-2.89, latGap=-0.85, time=387.50, stage=move.
+Warning: Vehicle 'flow_main.59' ends teleporting on edge '48963325#1', time=391.00.
+Warning: Teleporting vehicle 'flow_exit.26'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-2.04, latGap=-2.15, time=391.50, stage=move.
+Warning: Vehicle 'flow_exit.26' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=391.50.
+Warning: Teleporting vehicle 'flow_main.59'; collision with vehicle 'flow_main.52', lane='48963325#1_1', gap=-7.43, latGap=-0.45, time=392.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.55'; collision with vehicle 'flow_main.56', lane='48963325#1_1', gap=-10.68, latGap=-2.15, time=393.50, stage=move.
+Warning: Vehicle 'flow_main.55' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=393.50.
+Warning: Teleporting vehicle 'flow_exit.27'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-1.43, latGap=-2.25, time=394.00, stage=move.
+Warning: Vehicle 'flow_exit.27' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=394.00.
+Warning: Vehicle 'flow_main.59' ends teleporting on edge '48963325#2', time=396.00.
+Warning: Vehicle 'flow_main.63' performs emergency braking on lane '761727441#2-AddedOffRampEdge_2' with decel=7.00, wished=3.50, severity=1.00, time=402.50.
+Warning: Teleporting vehicle 'flow_main.65'; collision with vehicle 'flow_main.63', lane='761727441#2-AddedOffRampEdge_3', gap=-7.63, latGap=-0.35, time=403.00, stage=move.
+Warning: Vehicle 'flow_main.65' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=403.00.
+Warning: Teleporting vehicle 'flow_main.60'; collision with vehicle 'flow_main.56', lane='48963325#1_1', gap=-7.26, latGap=-1.85, time=405.00, stage=move.
+Warning: Vehicle 'flow_main.60' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=405.50.
+Warning: Teleporting vehicle 'flow_main.61'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-0.04, latGap=-1.05, time=406.00, stage=move.
+Warning: Vehicle 'flow_main.61' ends teleporting on edge '48963325#1', time=406.00.
+Warning: Teleporting vehicle 'flow_main.62'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_2', gap=-3.57, latGap=-0.55, time=407.00, stage=move.
+Warning: Vehicle 'flow_main.62' ends teleporting on edge '48963325#1', time=407.00.
+Warning: Teleporting vehicle 'flow_main.66'; collision with vehicle 'flow_main.56', lane='48963325#1_1', gap=-2.63, latGap=-1.55, time=410.50, stage=move.
+Warning: Vehicle 'flow_main.66' ends teleporting on edge '48963325#2', time=414.00.
+Warning: Teleporting vehicle 'flow_main.62'; collision with vehicle 'flow_main.56', lane='48963325#1_1', gap=-8.03, latGap=-2.15, time=416.50, stage=move.
+Warning: Vehicle 'flow_main.62' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=416.50.
+Warning: Teleporting vehicle 'flow_main.52'; collision with vehicle 'flow_main.56', lane='48963325#1_1', gap=-7.10, latGap=-0.65, time=421.50, stage=move.
+Warning: Teleporting vehicle 'flow_exit.28'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-1.26, latGap=-2.50, time=422.50, stage=move.
+Warning: Vehicle 'flow_exit.28' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=422.50.
+Warning: Vehicle 'flow_main.52' ends teleporting on edge '48963325#2', time=425.00.
+Warning: Teleporting vehicle 'flow_exit.29'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-0.82, latGap=-2.50, time=429.00, stage=move.
+Warning: Vehicle 'flow_exit.29' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=429.00.
+Warning: Teleporting vehicle 'flow_exit.30'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-1.09, latGap=-2.55, time=433.00, stage=move.
+Warning: Vehicle 'flow_exit.30' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=433.00.
+Warning: Teleporting vehicle 'flow_exit.33'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-2.34, latGap=-2.20, time=436.50, stage=move.
+Warning: Vehicle 'flow_exit.33' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=436.50.
+Warning: Teleporting vehicle 'flow_main.56'; collision with vehicle 'flow_main.72', lane='48963325#1_1', gap=-6.39, latGap=-1.10, time=439.00, stage=move.
+Warning: Vehicle 'flow_main.71' performs emergency braking on lane '48963325#1_1' with decel=7.00, wished=3.00, severity=1.00, time=441.50.
+Warning: Vehicle 'flow_main.56' ends teleporting on edge '48963325#2', time=442.00.
+Warning: Vehicle 'flow_main.71' performs emergency braking on lane '48963325#1_1' with decel=7.00, wished=3.00, severity=1.00, time=443.50.
+Warning: Teleporting vehicle 'flow_main.61'; collision with vehicle 'flow_main.72', lane='48963325#1_1', gap=-7.43, latGap=-1.35, time=444.50, stage=move.
+Warning: Vehicle 'flow_main.61' ends teleporting on edge '48963325#2', time=447.50.
+Warning: Teleporting vehicle 'flow_main.67'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_2', gap=-0.99, latGap=-2.35, time=449.50, stage=move.
+Warning: Vehicle 'flow_main.67' ends teleporting on edge '48963325#1', time=452.00.
+Warning: Teleporting vehicle 'flow_main.70'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-2.39, latGap=-2.30, time=453.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.73'; collision with vehicle 'flow_main.72', lane='48963325#1_1', gap=-0.14, latGap=-1.05, time=453.50, stage=move.
+Warning: Vehicle 'flow_main.70' ends teleporting on edge '48963325#1', time=453.50.
+Warning: Vehicle 'flow_main.73' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=455.00.
+Warning: Vehicle 'flow_main.79' performs emergency braking on lane ':3249288544_1_2' with decel=9.00, wished=4.00, severity=1.00, time=458.00.
+Warning: Teleporting vehicle 'flow_main.63'; collision with vehicle 'flow_main.72', lane='48963325#1_1', gap=-8.79, latGap=-1.35, time=459.00, stage=move.
+Warning: Vehicle 'flow_main.63' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=459.00.
+Warning: Teleporting vehicle 'flow_main.75'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_2', gap=-0.35, latGap=-0.60, time=459.50, stage=move.
+Warning: Vehicle 'flow_main.75' ends teleporting on edge '48963325#1', time=459.50.
+Warning: Teleporting vehicle 'flow_main.74'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-1.75, latGap=-0.80, time=460.00, stage=move.
+Warning: Vehicle 'flow_main.74' ends teleporting on edge '48963325#1', time=460.00.
+Warning: Vehicle 'flow_main.76' performs emergency braking on lane ':3249288544_1_2' with decel=9.00, wished=3.50, severity=1.00, time=462.50.
+Warning: Teleporting vehicle 'flow_exit.31'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-0.70, latGap=-2.25, time=464.50, stage=move.
+Warning: Vehicle 'flow_exit.31' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=464.50.
+Warning: Teleporting vehicle 'flow_exit.32'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-0.01, latGap=-2.55, time=467.50, stage=move.
+Warning: Vehicle 'flow_exit.32' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=467.50.
+Warning: Teleporting vehicle 'flow_main.77'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-2.82, latGap=-0.60, time=469.50, stage=move.
+Warning: Vehicle 'flow_main.77' ends teleporting on edge '48963325#1', time=469.50.
+Warning: Teleporting vehicle 'flow_exit.35'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-0.19, latGap=-2.20, time=470.50, stage=move.
+Warning: Vehicle 'flow_exit.35' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=470.50.
+Warning: Teleporting vehicle 'flow_main.74'; collision with vehicle 'flow_main.72', lane='48963325#1_1', gap=-4.40, latGap=-1.35, time=474.00, stage=move.
+Warning: Vehicle 'flow_main.74' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=474.00.
+Warning: Teleporting vehicle 'flow_main.70'; collision with vehicle 'flow_main.72', lane='48963325#1_1', gap=-0.52, latGap=-1.40, time=475.50, stage=move.
+Warning: Vehicle 'flow_main.70' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=475.50.
+Warning: Teleporting vehicle 'flow_main.75'; collision with vehicle 'flow_main.72', lane='48963325#1_1', gap=-3.37, latGap=-0.90, time=478.50, stage=move.
+Warning: Vehicle 'flow_main.75' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=478.50.
+Warning: Teleporting vehicle 'flow_main.81'; junction collision with vehicle 'flow_main.69', lane=':3249288544_1_0', gap=-2.10, latGap=-1.70, time=479.00, stage=move.
+Warning: Vehicle 'flow_main.81' ends teleporting on edge '48963325#1', time=479.00.
+Warning: Teleporting vehicle 'flow_exit.41'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-2.42, latGap=-0.45, time=487.00, stage=move.
+Warning: Vehicle 'flow_exit.41' ends teleporting on edge '318520109', time=487.00.
+Warning: Teleporting vehicle 'flow_main.77'; collision with vehicle 'flow_main.72', lane='48963325#1_1', gap=-5.74, latGap=-0.90, time=489.00, stage=move.
+Warning: Vehicle 'flow_main.77' ends teleporting on edge '48963325#2', time=492.00.
+Warning: Teleporting vehicle 'flow_main.78'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-3.15, latGap=-0.90, time=494.00, stage=move.
+Warning: Vehicle 'flow_main.78' ends teleporting on edge '48963325#1', time=494.00.
+Warning: Teleporting vehicle 'flow_main.80'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-1.86, latGap=-1.80, time=498.50, stage=move.
+Warning: Vehicle 'flow_main.80' ends teleporting on edge '48963325#1', time=498.50.
+Warning: Teleporting vehicle 'flow_main.67'; collision with vehicle 'flow_main.72', lane='48963325#1_1', gap=-9.51, latGap=-1.45, time=500.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.34'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-1.38, latGap=-2.25, time=500.50, stage=move.
+Warning: Vehicle 'flow_exit.34' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=500.50.
+Warning: Teleporting vehicle 'flow_exit.36'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-1.94, latGap=-2.25, time=502.50, stage=move.
+Warning: Vehicle 'flow_exit.36' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=502.50.
+Warning: Vehicle 'flow_main.67' ends teleporting on edge '48963325#2', time=503.00.
+Warning: Teleporting vehicle 'flow_main.82'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_2', gap=-2.11, latGap=-1.85, time=504.50, stage=move.
+Warning: Vehicle 'flow_main.82' ends teleporting on edge '48963325#1', time=504.50.
+Warning: Teleporting vehicle 'flow_exit.39'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-1.81, latGap=-2.20, time=505.00, stage=move.
+Warning: Vehicle 'flow_exit.39' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=505.00.
+Warning: Teleporting vehicle 'flow_exit.37'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-1.34, latGap=-2.30, time=507.50, stage=move.
+Warning: Vehicle 'flow_exit.37' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=507.50.
+Warning: Teleporting vehicle 'flow_main.89'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-1.13, latGap=-0.70, time=508.00, stage=move.
+Warning: Vehicle 'flow_main.89' ends teleporting on edge '48963325#1', time=508.00.
+Warning: Teleporting vehicle 'flow_main.85'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-0.92, latGap=-0.90, time=516.00, stage=move.
+Warning: Vehicle 'flow_main.85' ends teleporting on edge '48963325#1', time=516.00.
+Warning: Teleporting vehicle 'flow_main.80'; collision with vehicle 'flow_main.72', lane='48963325#1_1', gap=-4.36, latGap=-0.20, time=521.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.87'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_2', gap=-0.10, latGap=-0.90, time=523.50, stage=move.
+Warning: Vehicle 'flow_main.87' ends teleporting on edge '48963325#1', time=523.50.
+Warning: Vehicle 'flow_main.80' ends teleporting on edge '48963325#2', time=524.00.
+Warning: Teleporting vehicle 'flow_main.88'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-3.33, latGap=-0.90, time=525.00, stage=move.
+Warning: Vehicle 'flow_main.88' ends teleporting on edge '48963325#1', time=526.00.
+Warning: Teleporting vehicle 'flow_main.95'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_2', gap=-0.24, latGap=-0.15, time=527.50, stage=move.
+Warning: Vehicle 'flow_main.95' ends teleporting on edge '48963325#1', time=527.50.
+Warning: Vehicle 'flow_main.97' performs emergency braking on lane '761727441#2-AddedOffRampEdge_2' with decel=9.00, wished=6.00, severity=1.00, time=528.50.
+Warning: Teleporting vehicle 'flow_main.82'; collision with vehicle 'flow_main.72', lane='48963325#1_1', gap=-8.65, latGap=-1.40, time=530.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.96'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-2.14, latGap=-1.65, time=530.50, stage=move.
+Warning: Vehicle 'flow_main.96' ends teleporting on edge '48963325#1', time=530.50.
+Warning: Teleporting vehicle 'flow_main.86'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-3.85, latGap=-0.65, time=532.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.97'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_2', gap=-1.64, latGap=-1.50, time=532.50, stage=move.
+Warning: Vehicle 'flow_main.97' ends teleporting on edge '48963325#1', time=532.50.
+Warning: Vehicle 'flow_main.82' ends teleporting on edge '48963325#2', time=533.00.
+Warning: Teleporting vehicle 'flow_exit.38'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-0.10, latGap=-2.55, time=535.00, stage=move.
+Warning: Vehicle 'flow_exit.38' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=535.00.
+Warning: Vehicle 'flow_main.86' ends teleporting on edge '48963325#1', time=535.00.
+Warning: Teleporting vehicle 'flow_exit.41'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-0.91, latGap=-2.15, time=539.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.88'; side collision with vehicle 'flow_main.87', lane='48963325#1_1', gap=-10.57, latGap=-0.50, time=539.00, stage=laneChange.
+Warning: Vehicle 'flow_exit.41' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=539.00.
+Warning: Teleporting vehicle 'flow_main.90'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-0.19, latGap=-0.80, time=539.50, stage=move.
+Warning: Vehicle 'flow_main.90' ends teleporting on edge '48963325#1', time=539.50.
+Warning: Teleporting vehicle 'flow_main.78'; collision with vehicle 'flow_main.72', lane='48963325#1_1', gap=-1.02, latGap=-1.40, time=540.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.64'; collision with vehicle 'flow_main.96', lane='48963325#1_1', gap=-1.85, latGap=-1.70, time=540.50, stage=move.
+Warning: Teleporting vehicle 'flow_exit.40'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-0.78, latGap=-2.25, time=541.50, stage=move.
+Warning: Vehicle 'flow_exit.40' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=541.50.
+Warning: Vehicle 'flow_main.88' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=541.50.
+Warning: Vehicle 'flow_main.64' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=542.00.
+Warning: Vehicle 'flow_main.78' ends teleporting on edge '48963325#2', time=544.00.
+Warning: Teleporting vehicle 'flow_exit.42'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-1.49, latGap=-2.15, time=544.50, stage=move.
+Warning: Vehicle 'flow_exit.42' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=544.50.
+Warning: Vehicle 'flow_main.46' performs emergency braking on lane '48963325#2_1' with decel=9.00, wished=6.00, severity=1.00, time=545.00.
+Warning: Teleporting vehicle 'flow_main.95'; collision with vehicle 'flow_main.86', lane='48963325#1_1', gap=-7.88, latGap=-1.00, time=545.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.43'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-0.36, latGap=-2.20, time=546.50, stage=move.
+Warning: Vehicle 'flow_exit.43' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=546.50.
+Warning: Teleporting vehicle 'flow_main.87'; collision with vehicle 'flow_main.72', lane='48963325#1_1', gap=-5.81, latGap=-1.45, time=547.50, stage=move.
+Warning: Vehicle 'flow_main.87' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=547.50.
+Warning: Vehicle 'flow_main.95' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=547.50.
+Warning: Vehicle 'flow_main.96' performs emergency braking on lane '48963325#1_1' with decel=9.00, wished=6.00, severity=1.00, time=548.00.
+Warning: Teleporting vehicle 'flow_main.91'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-0.03, latGap=-0.90, time=548.50, stage=move.
+Warning: Vehicle 'flow_main.91' ends teleporting on edge '48963325#1', time=548.50.
+Warning: Vehicle 'flow_main.97' performs emergency braking on lane '48963325#1_1' with decel=9.00, wished=6.00, severity=1.00, time=549.00.
+Warning: Vehicle 'flow_main.54' performs emergency braking on lane '48963325#1_1' with decel=9.00, wished=6.00, severity=1.00, time=551.00.
+Warning: Teleporting vehicle 'flow_main.72'; collision with vehicle 'flow_main.97', lane='48963325#1_1', gap=-6.96, latGap=-1.20, time=552.50, stage=move.
+Warning: Vehicle 'flow_main.72' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=552.50.
+Warning: Teleporting vehicle 'flow_main.93'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-2.73, latGap=-0.85, time=554.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.99'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_2', gap=-0.54, latGap=-0.65, time=554.50, stage=move.
+Warning: Vehicle 'flow_main.99' ends teleporting on edge '48963325#1', time=554.50.
+Warning: Teleporting vehicle 'flow_main.94'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-2.98, latGap=-0.45, time=559.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.100'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_2', gap=-3.08, latGap=-1.30, time=560.00, stage=move.
+Warning: Vehicle 'flow_main.100' ends teleporting on edge '48963325#1', time=560.00.
+Warning: Teleporting vehicle 'flow_main.91'; collision with vehicle 'flow_main.97', lane='48963325#1_1', gap=-2.98, latGap=-2.15, time=567.50, stage=move.
+Warning: Vehicle 'flow_main.91' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=567.50.
+Warning: Teleporting vehicle 'flow_exit.44'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-2.02, latGap=-2.25, time=569.50, stage=move.
+Warning: Vehicle 'flow_exit.44' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=569.50.
+Warning: Vehicle 'flow_main.93' ends teleporting on edge '48963325#1', time=571.00.
+Warning: Teleporting vehicle 'flow_main.93'; collision with vehicle 'flow_main.100', lane='48963325#1_1', gap=-6.54, latGap=-0.35, time=571.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.86'; collision with vehicle 'flow_main.97', lane='48963325#1_1', gap=-3.55, latGap=-1.21, time=571.50, stage=move.
+Warning: Vehicle 'flow_main.86' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=571.50.
+Warning: Teleporting vehicle 'flow_main.71'; side collision with vehicle 'flow_main.90', lane='48963325#1_1', gap=-7.53, latGap=-0.25, time=573.50, stage=laneChange.
+Warning: Vehicle 'flow_main.93' ends teleporting on edge '48963325#2', time=575.00.
+Warning: Vehicle 'flow_main.71' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=575.50.
+Warning: Teleporting vehicle 'flow_main.101'; junction collision with vehicle 'flow_main.84', lane=':3249288544_1_0', gap=-5.41, latGap=-1.70, time=576.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.84'; junction collision with vehicle 'flow_main.69', lane=':3249288544_1_0', gap=-3.17, latGap=-1.70, time=576.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.100'; side collision with vehicle 'flow_main.90', lane='48963325#1_1', gap=-7.25, latGap=-0.20, time=576.50, stage=laneChange.
+Warning: Teleporting vehicle 'flow_exit.45'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-1.97, latGap=-2.25, time=577.50, stage=move.
+Warning: Vehicle 'flow_exit.45' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=577.50.
+Warning: Vehicle 'flow_main.84' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=578.50.
+Warning: Vehicle 'flow_main.101' ends teleporting on edge '48963325#1', time=579.00.
+Warning: Teleporting vehicle 'flow_main.90'; collision with vehicle 'flow_main.97', lane='48963325#1_1', gap=-3.32, latGap=-2.05, time=579.50, stage=move.
+Warning: Vehicle 'flow_main.100' ends teleporting on edge '48963325#2', time=580.50.
+Warning: Teleporting vehicle 'flow_main.101'; collision with vehicle 'flow_main.97', lane='48963325#1_1', gap=-5.79, latGap=-1.75, time=582.50, stage=move.
+Warning: Vehicle 'flow_main.90' ends teleporting on edge '48963325#2', time=584.00.
+Warning: Vehicle 'flow_main.101' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=584.50.
+Warning: Vehicle 'flow_main.94' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=588.00.
+Warning: Teleporting vehicle 'flow_main.98'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-3.35, latGap=-0.85, time=594.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.102'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_2', gap=-0.13, latGap=-1.05, time=595.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.54'; collision with vehicle 'flow_main.97', lane='48963325#1_1', gap=-1.16, latGap=-1.20, time=595.50, stage=move.
+Warning: Vehicle 'flow_main.54' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=595.50.
+Warning: Teleporting vehicle 'flow_main.107'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_2', gap=-0.18, latGap=-1.00, time=600.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.103'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-1.73, latGap=-0.90, time=602.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.106'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_2', gap=-1.48, latGap=-1.35, time=608.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.108'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_2', gap=-3.05, latGap=-1.90, time=612.50, stage=move.
+Warning: Vehicle 'flow_main.96' performs emergency braking on lane '48963325#2_1' with decel=9.00, wished=6.00, severity=1.00, time=615.50.
+Warning: Teleporting vehicle 'flow_exit.46'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-1.37, latGap=-2.55, time=617.00, stage=move.
+Warning: Vehicle 'flow_exit.46' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=617.00.
+Warning: Vehicle 'flow_main.98' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=623.00.
+Warning: Teleporting vehicle 'flow_main.109'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-2.43, latGap=-0.60, time=624.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.47'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-0.20, latGap=-2.25, time=625.00, stage=move.
+Warning: Vehicle 'flow_exit.47' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=625.00.
+Warning: Vehicle 'flow_main.102' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=627.50.
+Warning: Teleporting vehicle 'flow_exit.48'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-1.95, latGap=-2.30, time=628.00, stage=move.
+Warning: Vehicle 'flow_exit.48' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=628.00.
+Warning: Teleporting vehicle 'flow_exit.51'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-1.84, latGap=-2.20, time=630.50, stage=move.
+Warning: Vehicle 'flow_exit.51' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=630.50.
+Warning: Vehicle 'flow_main.103' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=631.00.
+Warning: Teleporting vehicle 'flow_exit.49'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-2.04, latGap=-2.45, time=633.50, stage=move.
+Warning: Vehicle 'flow_exit.49' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=633.50.
+Warning: Teleporting vehicle 'flow_main.116'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-0.07, latGap=-0.60, time=638.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.118'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-0.90, latGap=-0.60, time=640.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.50'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-2.21, latGap=-2.50, time=643.00, stage=move.
+Warning: Vehicle 'flow_exit.50' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=643.00.
+Warning: Teleporting vehicle 'flow_main.105'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-0.93, latGap=-0.85, time=643.50, stage=move.
+Warning: Vehicle 'flow_main.106' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=643.50.
+Warning: Vehicle 'flow_main.107' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=643.50.
+Warning: Teleporting vehicle 'flow_main.111'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-2.86, latGap=-0.85, time=649.50, stage=move.
+Warning: Vehicle 'flow_main.108' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=651.00.
+Warning: Vehicle 'flow_main.109' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=651.00.
+Warning: Teleporting vehicle 'flow_main.113'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_2', gap=-0.53, latGap=-1.95, time=652.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.112'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-2.48, latGap=-1.00, time=655.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.115'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-1.55, latGap=-2.05, time=659.50, stage=move.
+Warning: Teleporting vehicle 'flow_exit.53'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-1.64, latGap=-2.50, time=663.50, stage=move.
+Warning: Vehicle 'flow_exit.53' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=663.50.
+Warning: Teleporting vehicle 'flow_main.114'; junction collision with vehicle 'flow_main.69', lane=':3249288544_1_0', gap=-2.27, latGap=-1.70, time=664.00, stage=move.
+Warning: Vehicle 'flow_main.116' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=664.00.
+Warning: Teleporting vehicle 'flow_main.117'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-1.17, latGap=-0.60, time=664.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.120'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-0.28, latGap=-1.25, time=666.50, stage=move.
+Warning: Vehicle 'flow_main.118' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=666.50.
+Warning: Vehicle 'flow_main.105' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=669.00.
+Warning: Teleporting vehicle 'flow_main.123'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-0.05, latGap=-0.95, time=672.50, stage=move.
+Warning: Vehicle 'flow_main.111' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=675.00.
+Warning: Vehicle 'flow_main.113' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=678.50.
+Warning: Teleporting vehicle 'flow_main.121'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-3.44, latGap=-0.90, time=681.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.119'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-3.78, latGap=-0.85, time=685.00, stage=move.
+Warning: Vehicle 'flow_main.112' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=686.00.
+Warning: Teleporting vehicle 'flow_main.122'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-0.13, latGap=-0.90, time=688.00, stage=move.
+Warning: Vehicle 'flow_main.114' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=689.50.
+Warning: Teleporting vehicle 'flow_exit.52'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-0.43, latGap=-2.55, time=690.50, stage=move.
+Warning: Vehicle 'flow_exit.52' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=690.50.
+Warning: Teleporting vehicle 'flow_main.127'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_2', gap=-0.95, latGap=-1.85, time=692.50, stage=move.
+Warning: Vehicle 'flow_main.115' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=693.00.
+Warning: Teleporting vehicle 'flow_exit.54'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-1.69, latGap=-2.25, time=695.50, stage=move.
+Warning: Vehicle 'flow_exit.54' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=695.50.
+Warning: Teleporting vehicle 'flow_exit.55'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-0.81, latGap=-2.30, time=698.00, stage=move.
+Warning: Vehicle 'flow_exit.55' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=698.00.
+Warning: Teleporting vehicle 'flow_exit.56'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-1.85, latGap=-2.45, time=701.00, stage=move.
+Warning: Vehicle 'flow_exit.56' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=701.00.
+Warning: Teleporting vehicle 'flow_exit.58'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-0.30, latGap=-2.20, time=703.50, stage=move.
+Warning: Vehicle 'flow_exit.58' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=703.50.
+Warning: Vehicle 'flow_main.117' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=705.00.
+Warning: Teleporting vehicle 'flow_exit.57'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-0.27, latGap=-2.30, time=706.00, stage=move.
+Warning: Vehicle 'flow_exit.57' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=706.00.
+Warning: Vehicle 'flow_main.116' performs emergency braking on lane '48963325#2_2' with decel=9.00, wished=6.00, severity=1.00, time=707.50.
+Warning: Teleporting vehicle 'flow_exit.60'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-1.23, latGap=-2.20, time=708.50, stage=move.
+Warning: Vehicle 'flow_exit.60' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=708.50.
+Warning: Vehicle 'flow_main.120' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=708.50.
+Warning: Teleporting vehicle 'flow_exit.59'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-1.86, latGap=-2.25, time=711.50, stage=move.
+Warning: Vehicle 'flow_exit.59' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=711.50.
+Warning: Vehicle 'flow_main.119' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=713.50.
+Warning: Teleporting vehicle 'flow_main.124'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-0.60, latGap=-0.90, time=715.50, stage=move.
+Warning: Vehicle 'flow_main.123' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=717.50.
+Warning: Vehicle 'flow_main.121' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=720.00.
+Warning: Vehicle 'flow_main.122' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=723.00.
+Warning: Teleporting vehicle 'flow_main.130'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-0.21, latGap=-0.25, time=726.50, stage=move.
+Warning: Vehicle 'flow_main.127' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=730.00.
+Warning: Teleporting vehicle 'flow_exit.62'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-0.94, latGap=-2.20, time=734.50, stage=move.
+Warning: Vehicle 'flow_exit.62' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=734.50.
+Warning: Teleporting vehicle 'flow_main.128'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-1.97, latGap=-0.45, time=736.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.125'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-1.22, latGap=-1.60, time=742.00, stage=move.
+Warning: Vehicle 'flow_main.124' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=742.50.
+Warning: Teleporting vehicle 'flow_exit.61'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-2.33, latGap=-2.45, time=748.00, stage=move.
+Warning: Vehicle 'flow_exit.61' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=748.00.
+Warning: Teleporting vehicle 'flow_main.132'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-2.74, latGap=-0.90, time=748.50, stage=move.
+Warning: Teleporting vehicle 'flow_exit.65'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-0.54, latGap=-2.20, time=750.50, stage=move.
+Warning: Vehicle 'flow_exit.65' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=750.50.
+Warning: Teleporting vehicle 'flow_main.126'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-1.76, latGap=-1.95, time=752.50, stage=move.
+Warning: Teleporting vehicle 'flow_exit.63'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-2.11, latGap=-2.55, time=754.00, stage=move.
+Warning: Vehicle 'flow_exit.63' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=754.00.
+Warning: Vehicle 'flow_main.130' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=756.50.
+Warning: Teleporting vehicle 'flow_main.134'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-1.48, latGap=-0.90, time=757.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.131'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-1.32, latGap=-1.49, time=761.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.137'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-0.68, latGap=-0.60, time=761.50, stage=move.
+Warning: Vehicle 'flow_main.128' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=762.50.
+Warning: Teleporting vehicle 'flow_main.76'; waited too long (jam), lane=':3249288544_1_2', time=763.00.
+Warning: Teleporting vehicle 'flow_exit.64'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-1.44, latGap=-2.30, time=763.00, stage=move.
+Warning: Vehicle 'flow_exit.64' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=763.00.
+Warning: Teleporting vehicle 'flow_main.135'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-0.99, latGap=-2.45, time=765.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.66'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-1.69, latGap=-2.20, time=765.50, stage=move.
+Warning: Vehicle 'flow_exit.66' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=765.50.
+Warning: Vehicle 'flow_main.76' ends teleporting on edge '48963325#1', time=766.50.
+Warning: Vehicle 'flow_main.125' ends teleporting on edge '48963325#1', time=766.50.
+Warning: Vehicle 'flow_main.126' ends teleporting on edge '48963325#1', time=768.50.
+Warning: Vehicle 'flow_main.131' ends teleporting on edge '48963325#1', time=769.50.
+Warning: Vehicle 'flow_main.132' ends teleporting on edge '48963325#1', time=769.50.
+Warning: Teleporting vehicle 'flow_main.142'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_2', gap=-2.64, latGap=-1.00, time=771.00, stage=move.
+Warning: Vehicle 'flow_main.142' ends teleporting on edge '48963325#1', time=772.00.
+Warning: Teleporting vehicle 'flow_main.133'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-3.99, latGap=-0.90, time=774.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.140'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_2', gap=-1.91, latGap=-0.45, time=775.50, stage=move.
+Warning: Vehicle 'flow_main.133' ends teleporting on edge '48963325#1', time=775.50.
+Warning: Vehicle 'flow_main.134' ends teleporting on edge '48963325#1', time=776.50.
+Warning: Teleporting vehicle 'flow_main.141'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_2', gap=-1.97, latGap=-0.65, time=778.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.125'; collision with vehicle 'flow_main.97', lane='48963325#1_1', gap=-3.43, latGap=-2.15, time=779.00, stage=move.
+Warning: Vehicle 'flow_main.125' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=779.00.
+Warning: Teleporting vehicle 'flow_main.138'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-3.83, latGap=-0.90, time=782.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.139'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_2', gap=-1.72, latGap=-0.90, time=783.50, stage=move.
+Warning: Vehicle 'flow_main.142' performs emergency braking on lane '48963325#1_1' with decel=9.00, wished=3.80, severity=1.00, time=784.50.
+Warning: Teleporting vehicle 'flow_main.142'; collision with vehicle 'flow_main.76', lane='48963325#1_1', gap=-5.90, latGap=-0.25, time=784.50, stage=move.
+Warning: Vehicle 'flow_main.142' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=784.50.
+Warning: Vehicle 'flow_main.140' ends teleporting on edge '48963325#1', time=786.00.
+Warning: Teleporting vehicle 'flow_main.140'; collision with vehicle 'flow_main.110', lane='48963325#1_1', gap=-7.63, latGap=-0.20, time=786.50, stage=move.
+Warning: Vehicle 'flow_main.140' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=786.50.
+Warning: Vehicle 'flow_main.141' ends teleporting on edge '48963325#1', time=786.50.
+Warning: Teleporting vehicle 'flow_main.134'; collision with vehicle 'flow_main.132', lane='48963325#1_1', gap=-8.31, latGap=-1.40, time=787.00, stage=move.
+Warning: Vehicle 'flow_main.134' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=787.00.
+Warning: Teleporting vehicle 'flow_main.126'; collision with vehicle 'flow_main.97', lane='48963325#1_1', gap=-0.91, latGap=-1.85, time=787.50, stage=move.
+Warning: Teleporting vehicle 'flow_exit.68'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-2.26, latGap=-2.15, time=787.50, stage=move.
+Warning: Vehicle 'flow_exit.68' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=787.50.
+Warning: Vehicle 'flow_main.126' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=788.50.
+Warning: Teleporting vehicle 'flow_main.76'; collision with vehicle 'flow_main.97', lane='48963325#1_1', gap=-6.55, latGap=-1.75, time=790.50, stage=move.
+Warning: Vehicle 'flow_main.76' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=791.00.
+Warning: Vehicle 'flow_main.135' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=791.00.
+Warning: Vehicle 'flow_main.138' ends teleporting on edge '48963325#1', time=791.00.
+Warning: Teleporting vehicle 'flow_main.144'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-2.28, latGap=-0.90, time=791.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.83'; collision with vehicle 'flow_main.97', lane='48963325#1_1', gap=-4.80, latGap=-1.90, time=793.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.147'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_2', gap=-0.60, latGap=-0.65, time=795.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.67'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-0.26, latGap=-2.50, time=797.00, stage=move.
+Warning: Vehicle 'flow_exit.67' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=797.00.
+Warning: Vehicle 'flow_main.139' ends teleporting on edge '48963325#1', time=798.50.
+Warning: Teleporting vehicle 'flow_main.143'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_1', gap=-0.48, latGap=-0.80, time=799.00, stage=move.
+Warning: Vehicle 'flow_main.83' ends teleporting on edge '48963325#2', time=799.00.
+Warning: Vehicle 'flow_main.118' performs emergency braking on lane '48963325#2_1' with decel=9.00, wished=6.00, severity=1.00, time=800.00.
+Warning: Teleporting vehicle 'flow_main.132'; collision with vehicle 'flow_main.97', lane='48963325#1_1', gap=-1.82, latGap=-2.15, time=800.00, stage=move.
+Warning: Vehicle 'flow_main.132' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=801.50.
+Warning: Vehicle 'flow_main.137' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=801.50.
+Warning: Vehicle 'flow_main.143' ends teleporting on edge '48963325#1', time=802.50.
+Warning: Vehicle 'flow_main.144' ends teleporting on edge '48963325#1', time=802.50.
+Warning: Vehicle 'flow_main.147' ends teleporting on edge '48963325#1', time=802.50.
+Warning: Teleporting vehicle 'flow_main.146'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_2', gap=-2.33, latGap=-0.80, time=803.00, stage=move.
+Warning: Teleporting vehicle 'flow_exit.69'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-0.29, latGap=-2.15, time=805.00, stage=move.
+Warning: Vehicle 'flow_exit.69' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=805.00.
+Warning: Teleporting vehicle 'flow_main.151'; collision with vehicle 'flow_main.49', lane='761727441#2-AddedOffRampEdge_2', gap=-3.43, latGap=-1.95, time=806.00, stage=move.
+Warning: Vehicle 'flow_main.146' ends teleporting on edge '48963325#1', time=806.00.
+Warning: Vehicle 'flow_main.151' ends teleporting on edge '48963325#1', time=807.00.
+Warning: Teleporting vehicle 'flow_main.139'; collision with vehicle 'flow_main.97', lane='48963325#1_1', gap=-5.41, latGap=-2.20, time=807.50, stage=move.
+Warning: Vehicle 'flow_main.139' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=807.50.
+Warning: Teleporting vehicle 'flow_exit.70'; collision with vehicle 'flow_exit.14', lane='318520109_0', gap=-0.08, latGap=-2.20, time=810.50, stage=move.
+Warning: Vehicle 'flow_exit.70' ends teleporting on edge '318520104#1-AddedOnRampEdge', time=810.50.
+Warning: Teleporting vehicle 'flow_main.16'; collision with vehicle 'flow_main.11', lane='48963325#1_1', gap=-5.29, latGap=-1.05, time=172.00, stage=move.
+Warning: Vehicle 'flow_main.16' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=172.00.
+Warning: Teleporting vehicle 'flow_main.13'; collision with vehicle 'flow_main.11', lane='48963325#1_1', gap=-7.00, latGap=-2.05, time=202.00, stage=move.
+Warning: Vehicle 'flow_main.13' ends teleporting on edge '48963325#2-AddedOnRampEdge', time=205.00.
+Warning: Teleporting vehicle 'flow_main.29'; junction collision with vehicle 'flow_main.23', lane=':761727441#2-AddedOffRampNode_0_2', gap=-3.13, latGap=-1.90, time=215.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.23'; junction collision with vehicle 'flow_main.24', lane=':761727441#2-AddedOffRampNode_0_2', gap=-7.16, latGap=-1.95, time=215.50, stage=move.
+Warning: Vehicle 'flow_main.23' ends teleporting on edge '48963325#1', time=215.50.
+Warning: Vehicle 'flow_main.29' ends teleporting on edge '761727441#2-AddedOffRampEdge', time=215.50.
+Warning: Teleporting vehicle 'flow_main.27'; junction collision with vehicle 'flow_main.26', lane=':761727441#2-AddedOffRampNode_0_2', gap=-2.72, latGap=-1.55, time=229.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.26'; junction collision with vehicle 'flow_main.24', lane=':761727441#2-AddedOffRampNode_0_2', gap=-6.77, latGap=-2.10, time=229.50, stage=move.
+Warning: Vehicle 'flow_main.26' ends teleporting on edge '48963325#1', time=229.50.
+Warning: Vehicle 'flow_main.27' ends teleporting on edge '761727441#2-AddedOffRampEdge', time=229.50.
+Warning: Vehicle 'flow_merge.16' performs emergency braking on lane '761727441#2_1' with decel=9.00, wished=6.00, severity=1.00, time=230.00.
+Warning: Teleporting vehicle 'flow_exit.8'; junction collision with vehicle 'flow_exit.15', lane=':4907013352_0_0', gap=-0.94, latGap=-1.85, time=234.00, stage=move.
+Warning: Vehicle 'flow_exit.8' ends teleporting on edge '1107993215#1-AddedOnRampEdge', time=234.00.
+Warning: Vehicle 'flow_exit.16' performs emergency braking on lane '499422417_0' with decel=9.00, wished=4.00, severity=1.00, time=245.00.
+Warning: Teleporting vehicle 'flow_exit.16'; junction collision with vehicle 'flow_exit.15', lane=':4907013352_0_0', gap=-3.29, latGap=-1.80, time=245.00, stage=move.
+Warning: Vehicle 'flow_exit.16' ends teleporting on edge '1107993215#1-AddedOnRampEdge', time=245.00.
+Warning: Teleporting vehicle 'flow_exit.9'; junction collision with vehicle 'flow_exit.15', lane=':4907013352_0_0', gap=-2.24, latGap=-1.90, time=247.00, stage=move.
+Warning: Vehicle 'flow_exit.9' ends teleporting on edge '1107993215#1-AddedOnRampEdge', time=247.00.
+Warning: Vehicle 'flow_main.33' performs emergency braking on lane '761727441#1_0' with decel=7.00, wished=3.50, severity=1.00, time=264.50.
+Warning: Vehicle 'flow_exit.12' performs emergency braking on lane '499422417_0' with decel=7.00, wished=3.00, severity=1.00, time=265.50.
+Warning: Vehicle 'flow_merge.28' performs emergency braking on lane '761727441#2_2' with decel=9.00, wished=6.00, severity=1.00, time=415.50.
+Warning: Vehicle 'flow_merge.28' performs emergency braking on lane '761727441#2_1' with decel=9.00, wished=6.00, severity=1.00, time=442.00.
+Warning: Vehicle 'flow_merge.44' performs emergency braking on lane '761727441#2_2' with decel=9.00, wished=4.00, severity=1.00, time=455.00.
+Warning: Vehicle 'flow_main.42' performs emergency braking on lane '761727441#2_2' with decel=9.00, wished=3.80, severity=1.00, time=481.00.
+Warning: Vehicle 'flow_main.122' performs emergency braking on lane '761727432#2_1' with decel=9.00, wished=6.00, severity=1.00, time=488.00.
+Warning: Vehicle 'flow_main.122' performs emergency braking on lane '761727441#1_2' with decel=9.00, wished=6.00, severity=1.00, time=514.00.
+Warning: Vehicle 'flow_merge.46' performs emergency braking on lane '761727441#2_2' with decel=9.00, wished=6.00, severity=1.00, time=515.00.
+Warning: Teleporting vehicle 'flow_main.5'; junction collision with vehicle 'flow_main.23', lane=':761727441#2-AddedOffRampNode_0_2', gap=-4.52, latGap=-1.75, time=546.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.23'; junction collision with vehicle 'flow_merge.7', lane=':761727441#2-AddedOffRampNode_0_2', gap=-7.02, latGap=-1.20, time=546.00, stage=move.
+Warning: Vehicle 'flow_main.23' teleports beyond arrival edge '761727441#2-AddedOffRampEdge', time=546.00.
+Warning: Vehicle 'flow_main.5' ends teleporting on edge '761727441#2-AddedOffRampEdge', time=546.00.
+Warning: Vehicle 'flow_merge.31' performs emergency braking on lane '761727441#2_1' with decel=9.00, wished=6.00, severity=1.00, time=548.50.
+Warning: Vehicle 'flow_merge.46' performs emergency braking on lane '761727441#2_2' with decel=9.00, wished=6.00, severity=1.00, time=565.00.
+Warning: Teleporting vehicle 'flow_exit.12'; waited too long (jam), lane='499422417_0', time=566.50.
+Warning: Vehicle 'flow_exit.12' ends teleporting on edge '1107993215#1-AddedOnRampEdge', time=566.50.
+Warning: Vehicle 'flow_exit.14' performs emergency braking on lane '499422417_0' with decel=9.00, wished=3.20, severity=1.00, time=571.50.
+Warning: Teleporting vehicle 'flow_exit.14'; junction collision with vehicle 'flow_exit.15', lane=':4907013352_0_0', gap=-2.40, latGap=-1.85, time=571.50, stage=move.
+Warning: Vehicle 'flow_exit.14' ends teleporting on edge '1107993215#1-AddedOnRampEdge', time=571.50.
+Warning: Teleporting vehicle 'flow_exit.17'; junction collision with vehicle 'flow_exit.15', lane=':4907013352_0_0', gap=-1.56, latGap=-1.75, time=573.50, stage=move.
+Warning: Vehicle 'flow_exit.17' ends teleporting on edge '1107993215#1-AddedOnRampEdge', time=573.50.
+Warning: Teleporting vehicle 'flow_exit.18'; junction collision with vehicle 'flow_exit.15', lane=':4907013352_0_0', gap=-2.35, latGap=-1.90, time=575.50, stage=move.
+Warning: Vehicle 'flow_exit.18' ends teleporting on edge '1107993215#1-AddedOnRampEdge', time=575.50.
+Warning: Vehicle 'flow_exit.20' performs emergency braking on lane '499422417_0' with decel=7.00, wished=3.50, severity=1.00, time=578.50.
+Warning: Teleporting vehicle 'flow_exit.20'; junction collision with vehicle 'flow_exit.15', lane=':4907013352_0_0', gap=-3.93, latGap=-2.05, time=578.50, stage=move.
+Warning: Vehicle 'flow_exit.20' ends teleporting on edge '1107993215#1-AddedOnRampEdge', time=578.50.
+Warning: Teleporting vehicle 'flow_main.28'; junction collision with vehicle 'flow_main.21', lane=':761727441#2-AddedOffRampNode_0_2', gap=-0.64, latGap=-1.25, time=580.00, stage=move.
+Warning: Vehicle 'flow_main.28' ends teleporting on edge '761727441#2-AddedOffRampEdge', time=580.00.
+Warning: Teleporting vehicle 'flow_exit.24'; junction collision with vehicle 'flow_exit.15', lane=':4907013352_0_0', gap=-2.54, latGap=-1.80, time=580.50, stage=move.
+Warning: Vehicle 'flow_exit.24' ends teleporting on edge '1107993215#1-AddedOnRampEdge', time=580.50.
+Warning: Vehicle 'flow_exit.19' performs emergency braking on lane '499422417_0' with decel=9.00, wished=3.80, severity=1.00, time=583.00.
+Warning: Teleporting vehicle 'flow_exit.19'; junction collision with vehicle 'flow_exit.15', lane=':4907013352_0_0', gap=-3.22, latGap=-1.90, time=583.00, stage=move.
+Warning: Vehicle 'flow_exit.19' ends teleporting on edge '1107993215#1-AddedOnRampEdge', time=583.00.
+Warning: Teleporting vehicle 'flow_exit.21'; junction collision with vehicle 'flow_exit.15', lane=':4907013352_0_0', gap=-3.84, latGap=-1.90, time=585.00, stage=move.
+Warning: Vehicle 'flow_exit.21' ends teleporting on edge '1107993215#1-AddedOnRampEdge', time=585.00.
+Warning: Vehicle 'flow_exit.25' performs emergency braking on lane '499422417_0' with decel=9.00, wished=4.00, severity=1.00, time=587.00.
+Warning: Teleporting vehicle 'flow_exit.25'; junction collision with vehicle 'flow_exit.15', lane=':4907013352_0_0', gap=-2.95, latGap=-1.80, time=587.00, stage=move.
+Warning: Vehicle 'flow_exit.25' ends teleporting on edge '1107993215#1-AddedOnRampEdge', time=587.00.
+Warning: Vehicle 'flow_exit.22' performs emergency braking on lane '499422417_0' with decel=9.00, wished=3.20, severity=1.00, time=589.50.
+Warning: Teleporting vehicle 'flow_exit.22'; junction collision with vehicle 'flow_exit.15', lane=':4907013352_0_0', gap=-2.53, latGap=-1.85, time=589.50, stage=move.
+Warning: Vehicle 'flow_exit.22' ends teleporting on edge '1107993215#1-AddedOnRampEdge', time=589.50.
+Warning: Vehicle 'flow_exit.23' performs emergency braking on lane '499422417_0' with decel=7.00, wished=3.00, severity=1.00, time=592.50.
+Warning: Vehicle 'flow_merge.46' performs emergency braking on lane '761727441#2_1' with decel=9.00, wished=6.00, severity=1.00, time=604.00.
+Warning: Teleporting vehicle 'flow_main.31'; junction collision with vehicle 'flow_main.38', lane=':761727441#2-AddedOffRampNode_0_3', gap=-0.18, latGap=-1.80, time=608.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.38'; junction collision with vehicle 'flow_merge.6', lane=':761727441#2-AddedOffRampNode_0_3', gap=-5.98, latGap=-1.80, time=608.00, stage=move.
+Warning: Vehicle 'flow_main.38' teleports beyond arrival edge '761727441#2-AddedOffRampEdge', time=608.00.
+Warning: Teleporting vehicle 'flow_main.34'; junction collision with vehicle 'flow_main.21', lane=':761727441#2-AddedOffRampNode_0_2', gap=-3.11, latGap=-1.90, time=611.00, stage=move.
+Warning: Vehicle 'flow_main.31' teleports beyond arrival edge '761727441#2-AddedOffRampEdge', time=611.00.
+Warning: Vehicle 'flow_main.34' teleports beyond arrival edge '761727441#2-AddedOffRampEdge', time=614.00.
+Warning: Teleporting vehicle 'flow_main.11'; junction collision with vehicle 'flow_main.21', lane=':761727441#2-AddedOffRampNode_0_2', gap=-6.63, latGap=-0.85, time=629.50, stage=move.
+Warning: Vehicle 'flow_main.11' ends teleporting on edge '761727441#2-AddedOffRampEdge', time=629.50.
+Warning: Teleporting vehicle 'flow_main.16'; junction collision with vehicle 'flow_main.21', lane=':761727441#2-AddedOffRampNode_0_2', gap=-0.27, latGap=-1.35, time=645.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.29'; junction collision with vehicle 'flow_merge.7', lane=':761727441#2-AddedOffRampNode_0_2', gap=-6.08, latGap=-1.65, time=645.50, stage=move.
+Warning: Vehicle 'flow_main.29' teleports beyond arrival edge '761727441#2-AddedOffRampEdge', time=645.50.
+Warning: Vehicle 'flow_main.16' ends teleporting on edge '761727441#2-AddedOffRampEdge', time=645.50.
+Warning: Teleporting vehicle 'flow_main.41'; junction collision with vehicle 'flow_merge.28', lane=':761727441#2-AddedOffRampNode_0_3', gap=-5.45, latGap=-1.80, time=650.00, stage=move.
+Warning: Teleporting vehicle 'flow_merge.28'; junction collision with vehicle 'flow_merge.6', lane=':761727441#2-AddedOffRampNode_0_3', gap=-4.14, latGap=-1.80, time=650.00, stage=move.
+Warning: Teleporting vehicle 'flow_merge.6'; junction collision with vehicle 'flow_merge.31', lane=':761727441#2-AddedOffRampNode_0_3', gap=-6.71, latGap=-1.80, time=650.00, stage=move.
+Warning: Vehicle 'flow_merge.28' teleports beyond arrival edge '761727441#2-AddedOffRampEdge', time=650.00.
+Warning: Vehicle 'flow_merge.6' teleports beyond arrival edge '761727441#2-AddedOffRampEdge', time=650.00.
+Warning: Vehicle 'flow_main.41' ends teleporting on edge '761727441#2-AddedOffRampEdge', time=650.00.
+Warning: Teleporting vehicle 'flow_merge.17'; junction collision with vehicle 'flow_main.21', lane=':761727441#2-AddedOffRampNode_0_2', gap=-6.44, latGap=-0.60, time=653.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.21'; junction collision with vehicle 'flow_main.39', lane=':761727441#2-AddedOffRampNode_0_2', gap=-7.36, latGap=-0.90, time=653.00, stage=move.
+Warning: Teleporting vehicle 'flow_main.39'; junction collision with vehicle 'flow_merge.7', lane=':761727441#2-AddedOffRampNode_0_2', gap=-6.90, latGap=-0.80, time=653.00, stage=move.
+Warning: Vehicle 'flow_main.21' teleports beyond arrival edge '761727441#2-AddedOffRampEdge', time=653.00.
+Warning: Vehicle 'flow_main.39' teleports beyond arrival edge '761727441#2-AddedOffRampEdge', time=653.00.
+Warning: Vehicle 'flow_merge.17' ends teleporting on edge '761727441#2-AddedOffRampEdge', time=653.00.
+Warning: Vehicle 'flow_main.174' performs emergency braking on lane '761727432#2_1' with decel=9.00, wished=6.00, severity=1.00, time=662.00.
+Warning: Teleporting vehicle 'flow_merge.24'; junction collision with vehicle 'flow_main.44', lane=':761727441#2-AddedOffRampNode_0_2', gap=-4.78, latGap=-2.00, time=666.50, stage=move.
+Warning: Teleporting vehicle 'flow_main.44'; junction collision with vehicle 'flow_merge.7', lane=':761727441#2-AddedOffRampNode_0_2', gap=-7.35, latGap=-1.05, time=666.50, stage=move.
+Warning: Vehicle 'flow_main.44' teleports beyond arrival edge '761727441#2-AddedOffRampEdge', time=666.50.
+Warning: Teleporting vehicle 'flow_main.42'; junction collision with vehicle 'flow_merge.7', lane=':761727441#2-AddedOffRampNode_0_2', gap=-0.38, latGap=-1.05, time=669.50, stage=move.
+Warning: Vehicle 'flow_merge.24' teleports beyond arrival edge '761727441#2-AddedOffRampEdge', time=669.50.
+Warning: Vehicle 'flow_main.42' teleports beyond arrival edge '761727441#2-AddedOffRampEdge', time=672.50.
+Warning: Teleporting vehicle 'flow_merge.22'; junction collision with vehicle 'flow_merge.7', lane=':761727441#2-AddedOffRampNode_0_2', gap=-0.60, latGap=-1.65, time=683.50, stage=move.
+Warning: Vehicle 'flow_merge.22' ends teleporting on edge '761727441#2-AddedOffRampEdge', time=685.50.
+Warning: Teleporting vehicle 'flow_main.59'; junction collision with vehicle 'flow_merge.7', lane=':761727441#2-AddedOffRampNode_0_2', gap=-3.31, latGap=-1.50, time=695.50, stage=move.
+Warning: Teleporting vehicle 'flow_merge.7'; junction collision with vehicle 'flow_main.56', lane=':761727441#2-AddedOffRampNode_0_2', gap=-7.50, latGap=-1.70, time=695.50, stage=move.
+Warning: Vehicle 'flow_merge.7' teleports beyond arrival edge '761727441#2-AddedOffRampEdge', time=695.50.
+Warning: Vehicle 'flow_main.59' ends teleporting on edge '761727441#2-AddedOffRampEdge', time=695.50.
+Warning: Teleporting vehicle 'flow_merge.29'; junction collision with vehicle 'flow_main.56', lane=':761727441#2-AddedOffRampNode_0_2', gap=-3.27, latGap=-0.85, time=697.50, stage=move.
+Warning: Vehicle 'flow_merge.29' ends teleporting on edge '761727441#2-AddedOffRampEdge', time=698.50.

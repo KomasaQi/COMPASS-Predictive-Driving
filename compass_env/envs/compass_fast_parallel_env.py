@@ -5,12 +5,13 @@ from traci import constants as tc
 import os, copy
 import sys
 import numpy as np
+import random
 import gymnasium as gym
 from gymnasium import spaces
 from typing import Optional, Dict, Any, Tuple, List, Union, TypeVar
 import pandas as pd 
 import math
-
+import traceback
 from compass_env import utils
 from compass_env.utils import NeighborHistoryObs
 
@@ -116,6 +117,8 @@ class CompassFastParallelEnv(gym.Env):
         # Level files and Reloading
         self.level_files = utils.get_state_files(self.config["level_file_path"])
         self.already_start_sumo = False
+        self.stored_obs = None
+        self.stored_reward = None
         
         
         # Vehicle State Variables to Subscribe
@@ -231,10 +234,18 @@ class CompassFastParallelEnv(gym.Env):
         self.steps += 1
         self.time += self.config["simulation"]["time_step"]
         # Step the simulation
-        self.conn.simulationStep(self.time + self.time_bias)
+        try:
+            self.conn.simulationStep(self.time + self.time_bias)
+
+        except Exception as e:
+            info = {"fatal_sumo": True, "fatal_msg": str(e)}
+            print(info["fatal_msg"])
+            self.already_start_sumo = False
+            return self.stored_obs, self.stored_reward, True, False, info
         
         # Update vehicle state
         self._update_vehicle_state()
+ 
                 
         observation = self._get_observation() 
         reward = self._reward(observation)
@@ -244,7 +255,8 @@ class CompassFastParallelEnv(gym.Env):
             self.done = True
         # Optionally we can pass additional info, we are not using that for now
         info = {}
-        
+        self.stored_obs = observation
+        self.stored_reward = reward
         return observation, reward, terminated, truncated, info
 
     def _start_sumo(self, seed: int):
@@ -283,6 +295,7 @@ class CompassFastParallelEnv(gym.Env):
             "--log", sumo_log,
             "--error-log", sumo_err,
             "--no-step-log",  # 可选：减少输出干扰
+            "--collision.action", "teleport",
         ]
 
         port = int(self.traci_port)
@@ -325,61 +338,93 @@ class CompassFastParallelEnv(gym.Env):
         if seed is None:
             seed = np.random.randint(0, 10000)
         
-        # 启动SUMO仿真
-        self._start_sumo(seed)
+        # 首先进行一次探测保证SUMO启动成功
+        try:
+            self.conn.getVersion()
+        except Exception as e:
+            print(f"Failed to connect to SUMO: {e}")
+            self.already_start_sumo = False
+            
+        try:
+            if not self.already_start_sumo:
+                # 启动SUMO仿真
+                self._start_sumo(seed)
+            else:
+                # 选取当前测试用例对应的level文件
+                case_level_files = [f for f in self.level_files if f"level_{self.current_case}_" in str(f)]
+                self.conn.simulation.loadState(str(random.choice(case_level_files)))
+            
+            ego_id = self.config["egoID"]
+            
+            # 设置可视化界面
+            if self.render_mode == 'human':
+                ViewID = self.config["gui"]["view"]
+                self.conn.simulation.getTime()
+                self.conn.gui.setSchema(ViewID, self.config["gui"]["schema"])
+                self.conn.gui.setZoom(ViewID, self.config["gui"]["zoom"])
+                self.conn.gui.trackVehicle(ViewID, ego_id)
 
+            # 仿真到指定开始时间，确保自车出现
+            if not self.already_start_sumo:
+                self.time_bias = self.case_info["init_time"]
+                self.conn.simulationStep(self.time_bias)
+                revised_counter = 0
+                while self.conn.vehicle.getRouteIndex(ego_id) < 0: # 确保自车出现（可能由于随机性，导致自车出现被阻塞）
+                    self.time_bias += 1
+                    revised_counter += 1
+                    self.conn.simulationStep(self.time_bias)
+                    if revised_counter > 1000:
+                        print("Ego vehicle doesn't show up in {} steps, automatically reset the environment".format(revised_counter))
+                        # self.reset(seed=seed, options=options) # 递归调用reset，重新启动环境
+            else:
+                self.time_bias = self.conn.simulation.getTime() + 1.0
+                try:
+                    self.conn.getVersion()
+                except Exception as e:
+                    print(f"Failed to connect to SUMO after loading state: {e}")
+                    self.already_start_sumo = False
+                    observation, info = self.reset(seed=seed, options=options)
+                
+                self.conn.simulationStep(self.time_bias)
+            
+            
+            # 订阅自车和周车相关变量
+            self.conn.vehicle.subscribe(ego_id, self.veh_state_vars)
+            self.conn.vehicle.subscribeContext(
+                ego_id,
+                tc.CMD_GET_VEHICLE_VARIABLE,
+                self.config["observation"]["obs_radius"],
+                varIDs=self.veh_state_vars,
+            )
+            self.ego_route = self.conn.vehicle.getRoute(ego_id)
+            
+            self.nh_obs = NeighborHistoryObs(
+                obs_radius=self.config["observation"]["obs_radius"],
+                history_length=self.config["observation"]["history_length"],
+                vehicle_counts=self.config["observation"]["vehicles_count"],
+                tracking_dict_len=self.config["observation"]["tracking_dict_len"],
+                relative_pos= self.config["observation"]["relative_pos"],
+                ttl = self.config["observation"]["obsolate_time"],
+                ttc_inv_lim = self.config["observation"]["ttc_inv_lim"]
+            )
+            
+            
+            # Update vehicle state
+            self._update_vehicle_state()
+            
+            
+            observation = self._get_observation()
+            # Optionally we can pass additional info, we are not using that for now
+            info = {}
+            if not self.already_start_sumo:
+                self.already_start_sumo = True
+        except Exception as e:
+            print("Error in reset: ", e)
+            # traceback.print_exc()
+            self.already_start_sumo = False
+            observation, info = self.reset(seed=seed, options=options)
         
-        ego_id = self.config["egoID"]
         
-        # 设置可视化界面
-        if self.render_mode == 'human':
-            ViewID = self.config["gui"]["view"]
-            self.conn.simulation.getTime()
-            self.conn.gui.setSchema(ViewID, self.config["gui"]["schema"])
-            self.conn.gui.setZoom(ViewID, self.config["gui"]["zoom"])
-            self.conn.gui.trackVehicle(ViewID, ego_id)
-
-        # 仿真到指定开始时间，确保自车出现
-        self.time_bias = self.case_info["init_time"]
-        self.conn.simulationStep(self.time_bias)
-        revised_counter = 0
-        while self.conn.vehicle.getRouteIndex(ego_id) < 0: # 确保自车出现（可能由于随机性，导致自车出现被阻塞）
-            self.time_bias += 1
-            revised_counter += 1
-            self.conn.simulationStep(self.time_bias)
-            if revised_counter > 1000:
-                print("Ego vehicle doesn't show up in {} steps, automatically reset the environment".format(revised_counter))
-                # self.reset(seed=seed, options=options) # 递归调用reset，重新启动环境
-        
-        # 订阅自车和周车相关变量
-        self.conn.vehicle.subscribe(ego_id, self.veh_state_vars)
-        self.conn.vehicle.subscribeContext(
-            ego_id,
-            tc.CMD_GET_VEHICLE_VARIABLE,
-            self.config["observation"]["obs_radius"],
-            varIDs=self.veh_state_vars,
-        )
-        self.ego_route = self.conn.vehicle.getRoute(ego_id)
-        
-        self.nh_obs = NeighborHistoryObs(
-            obs_radius=self.config["observation"]["obs_radius"],
-            history_length=self.config["observation"]["history_length"],
-            vehicle_counts=self.config["observation"]["vehicles_count"],
-            tracking_dict_len=self.config["observation"]["tracking_dict_len"],
-            relative_pos= self.config["observation"]["relative_pos"],
-            ttl = self.config["observation"]["obsolate_time"],
-            ttc_inv_lim = self.config["observation"]["ttc_inv_lim"]
-        )
-        
-        
-        # Update vehicle state
-        self._update_vehicle_state()
-        
-        
-        observation = self._get_observation()
-        # Optionally we can pass additional info, we are not using that for now
-        info = {}
-
         return observation, info
 
     def _apply_action(self, action):
@@ -394,6 +439,8 @@ class CompassFastParallelEnv(gym.Env):
             action_acc = action[1]
             
             # 处理车道变化指令
+            lane_idx = self.ego_vars[tc.VAR_LANE_INDEX]
+            lane_num = self.conn.edge.getLaneNumber(self.ego_vars[tc.VAR_ROAD_ID])
             repeat_lc_cmd = False
             if action_lc < -settings['lc_thred']:
                 lc_cmd = -1
@@ -407,6 +454,7 @@ class CompassFastParallelEnv(gym.Env):
                     repeat_lc_cmd = True
             else:
                 lc_cmd = None
+            target = lane_idx + lc_cmd if lc_cmd is not None else lane_idx
             
             # 处理加速度指令
             dt = self.config['simulation']['time_step']
@@ -418,8 +466,10 @@ class CompassFastParallelEnv(gym.Env):
             speed_des_cmd = self.ego_vars[tc.VAR_SPEED] + acc_cmd * dt
             
             self.conn.vehicle.setSpeed(egoID, speed_des_cmd)
-            if lc_cmd is not None:
-                self.conn.vehicle.changeLaneRelative(egoID, lc_cmd, settings['lc_time']) # 1: 相对车道变化，0: 绝对车道变化
+            if 0 <= target < lane_num:
+                if lc_cmd is not None:
+                    self.conn.vehicle.changeLaneRelative(egoID, lc_cmd, settings['lc_time']) # 1: 相对车道变化，0: 绝对车道变化
+            # TODO:添加非法换道惩罚
                 
             # 处理重复车道变化指令惩罚
             repeat_lc_penalty = self.config["reward"]["repeat_move_penalty"] if repeat_lc_cmd else 0.0
@@ -443,6 +493,14 @@ class CompassFastParallelEnv(gym.Env):
         self.veh_vars = veh_vars # 存储周车状态
         self.ego_vars = ego_vars # 存储自车状态
 
+        # 关键：lane_id 无效 -> 直接终止，不要 raise
+        lane_id = ego_vars.get(tc.VAR_LANE_ID, "")
+        edge_id = ego_vars.get(tc.VAR_ROAD_ID, "")
+        if (not isinstance(lane_id, str)) or (lane_id == "") or (not isinstance(edge_id, str)) or (edge_id == ""):
+            self.collision_state = True
+            print("Ego Collision detected at time {} (expression: lane_id or edge_id is empty)".format(self.time))
+            return
+
         # 筛选在观测范围内的周车
         ego_x, ego_y = ego_vars[tc.VAR_POSITION]
         neighbors = []
@@ -463,6 +521,7 @@ class CompassFastParallelEnv(gym.Env):
         collision_id_list = self.conn.simulation.getStartingTeleportIDList()
         if collision_id_list and self.config["egoID"] in collision_id_list:
             self.collision_state = True
+            print(f"Ego collision detected at time {self.time}(expression: Teleport)")
         else:
             self.collision_state = False
         
@@ -534,11 +593,14 @@ class CompassFastParallelEnv(gym.Env):
             utils.encode_vehicle_class(ego_vars[tc.VAR_VEHICLECLASS]),                 # 16: v_class
             utils.normalize_speed(ego_vars[tc.VAR_MAXSPEED]),                          # 17: max_speed (normalize)
             mission[0], mission[1], mission[2],                                        # 18: pass/cruise 19: merge 20: exit
-            np.clip(1/front_ttc, -til, til), np.clip(1/back_ttc, -til, til),           # 21: front_ttc 22: back_ttc
-            np.clip(1/left_f_ttc, -til, til), np.clip(1/left_r_ttc, -til, til),        # 23: left_f_ttc 24: left_r_ttc
-            np.clip(1/right_f_ttc, -til, til), np.clip(1/right_r_ttc, -til, til),      # 25: right_f_ttc 26: right_r_ttc
+            np.clip(self._safe_inv(front_ttc), -til, til),                             # 21: front_ttc
+            np.clip(self._safe_inv(back_ttc), -til, til),                              # 22: back_ttc
+            np.clip(self._safe_inv(left_f_ttc), -til, til),                            # 23: left_f_ttc
+            np.clip(self._safe_inv(left_r_ttc), -til, til),                            # 24: left_r_ttc
+            np.clip(self._safe_inv(right_f_ttc), -til, til),                           # 25: right_f_ttc
+            np.clip(self._safe_inv(right_r_ttc), -til, til),                           # 26: right_r_ttc
             1.0 /(self.time - self.last_lc_time),                                      # 27: last_lc_time_inv
-            utils.normalize_speed(next_lane_speedlim),                                # 28: next_lane_speedlim (normalize)
+            utils.normalize_speed(next_lane_speedlim),                                 # 28: next_lane_speedlim (normalize)
             ])  
         ego_state = np.concatenate([ego_state, can_reach_multi.astype(float), lc_state])
         
@@ -566,10 +628,27 @@ class CompassFastParallelEnv(gym.Env):
         # 获取当前环境的观测
         :return: Dict, 包含自车和他车的观测
         """
-        ego_obs = self.ego_state
-        veh_obs, self.selected_vehs = self.nh_obs.step_build_obs(self.steps, self.ego_vars, self.veh_vars)  
+        # ego_state 兜底
+        if self.ego_state is None:
+            ego_obs = np.zeros((self.EGO_FEATURE_DIM,), dtype=np.float32)
+            print('Warning: ego_state is None')
+        else:
+            ego_obs = self.ego_state.astype(np.float32)
         
-        return {"ego": ego_obs.astype(np.float32), "veh": veh_obs.astype(np.float32)}
+        # nh_obs 或 veh_vars 兜底
+        if (self.nh_obs is None) or (self.ego_vars is None) or (self.veh_vars is None):
+            veh_obs = np.zeros(
+                (self.config["observation"]["vehicles_count"],
+                self.config["observation"]["history_length"],
+                self.VEH_FEATURE_DIM),
+                dtype=np.float32
+            )
+            self.selected_vehs = []
+        else:
+            veh_obs, self.selected_vehs = self.nh_obs.step_build_obs(self.steps, self.ego_vars, self.veh_vars)
+            veh_obs = veh_obs.astype(np.float32)
+        
+        return {"ego": ego_obs, "veh": veh_obs}
 
     def _reward(self, observation:Dict):
         """
@@ -599,7 +678,10 @@ class CompassFastParallelEnv(gym.Env):
         """
         # 基本状态获取
         ego_speed = self.ego_vars[tc.VAR_SPEED]
-        lane_num = self.conn.edge.getLaneNumber(self.ego_vars[tc.VAR_ROAD_ID])
+        if self.collision_state:
+            lane_num = None
+        else:
+            lane_num = self.conn.edge.getLaneNumber(self.ego_vars[tc.VAR_ROAD_ID])
         need_to_keep_right = False
         last_mission_state = self.completed_mission
         mission = self.case_info["mission"]
@@ -621,74 +703,143 @@ class CompassFastParallelEnv(gym.Env):
         
         # 安全奖励：TTC、MEI、THW、HW
         # (1) 1/TTC惩罚:前车和后车的TTC都参与计算 
-        ttc_inv_penalty = self.cached_rewards["ttc_inv_reward"]
+        try:
+            ttc_inv_penalty = self.cached_rewards["ttc_inv_reward"]
+        except Exception as e:
+            print("ttc_inv_penalty error:{}".format(e))
+            ttc_inv_penalty = 0.0
         
         # (2) MEI惩罚: 和所有车的MEI
-        mei_index = self.nh_obs.veh_feat_var["mei"]
-        meis = observation["veh"][:,-1, mei_index]
-        ego_on_main_road = self.ego_vars[tc.VAR_ALLOWED_SPEED] > 15
-        on_main_road_index = self.nh_obs.veh_feat_var["on_main_road"]
-        mei = max(max(meis[observation["veh"][:,-1, on_main_road_index] == ego_on_main_road]),0.0) # 取最后一个时刻所有车同一个路段的MEI的最大值
-        mei_reward = self.config["reward"]["mei_reward"] * mei
+        try:
+            mei_index = self.nh_obs.veh_feat_var.get("mei", None)
+            on_main_road_index = self.nh_obs.veh_feat_var.get("on_main_road", None)
 
+            mei_reward = 0.0
+            if mei_index is not None:
+                meis = observation["veh"][:, -1, mei_index]
+                if on_main_road_index is not None:
+                    ego_on_main_road = bool(self.ego_vars[tc.VAR_ALLOWED_SPEED] > 15)
+                    mask = (observation["veh"][:, -1, on_main_road_index] == ego_on_main_road)
+                    cand = meis[mask]
+                else:
+                    cand = meis
+
+                if cand.size > 0:
+                    mei = float(np.max(cand))
+                    mei_reward = self.config["reward"]["mei_reward"] * max(mei, 0.0)
+        except Exception as e:
+            print("mei_reward error:{}".format(e))
+            mei_reward = 0.0
+            
         # (3) 1/RTTC惩罚:和所有车的RTTC
-        rttc_inv_index = self.nh_obs.veh_feat_var["rttc_1"]
-        rttc_1 = max(max(observation["veh"][:,-1, rttc_inv_index]),0.0)
-        rttc_inv_reward = self.config["reward"]["ttc_2d_inv_reward"] * rttc_1
+        try:
+            rttc_inv_reward = 0.0
+            rttc_inv_index = self.nh_obs.veh_feat_var.get("rttc_1", None)
+            if rttc_inv_index is not None:
+                rttc = observation["veh"][:, -1, rttc_inv_index]
+                if rttc.size > 0:
+                    rttc_1 = float(np.max(rttc))
+                    rttc_inv_reward = self.config["reward"]["ttc_2d_inv_reward"] * max(rttc_1, 0.0)
+        except Exception as e:
+            print("rttc_inv_reward error:{}".format(e))
+            rttc_inv_reward = 0.0
         
         # (4) 1/HW惩罚：和周边所有车的HW最小值
-        hw_penalty = self.cached_rewards["hw_inv_reward"]
-        
+        try:
+            hw_penalty = self.cached_rewards["hw_inv_reward"]
+        except Exception as e:
+            print("hw_penalty error:{}".format(e))
+            hw_penalty = 0.0
         # (5) 碰撞惩罚：发生碰撞时，给予惩罚
-        collision_penalty = self.config["reward"]["collision_penalty"] if self.collision_state else 0.0
+        try:
+            collision_penalty = self.config["reward"]["collision_penalty"] if self.collision_state else 0.0
+        except Exception as e:
+            print("collision_penalty error:{}".format(e))
+            collision_penalty = 0.0
         
         safe_reward = ttc_inv_penalty + mei_reward + rttc_inv_reward + hw_penalty + collision_penalty
         
         
         # 效率奖励：
         # (1) 高速行驶奖励: 从限速最低阈值开始线性增加到限速
-        max_rew_spd_ratio = self.ego_vars[tc.VAR_ALLOWED_SPEED]
-        min_rew_spd_ratio = max_rew_spd_ratio * self.config["reward"]["min_reward_speed_ratio"]
-        speed_reward = self.config["reward"]["speed_reward"] * (ego_speed - min_rew_spd_ratio) / (max_rew_spd_ratio - min_rew_spd_ratio)
+        try:
+            max_rew_spd_ratio = self.ego_vars[tc.VAR_ALLOWED_SPEED]
+            min_rew_spd_ratio = max_rew_spd_ratio * self.config["reward"]["min_reward_speed_ratio"]
+            speed_reward = self.config["reward"]["speed_reward"] * (ego_speed - min_rew_spd_ratio) / (max_rew_spd_ratio - min_rew_spd_ratio)
+        except Exception as e:
+            print("speed_reward error:{}".format(e))
+            speed_reward = 0.0
         
         effi_reward = speed_reward
         
         # 导航奖励：
         # (1) 可通行车道奖励
-        allowed_lane_reward = self.cached_rewards["allowed_lane_reward"]
+        try:
+            allowed_lane_reward = self.cached_rewards["allowed_lane_reward"]
+        except Exception as e:
+            print("allowed_lane_reward error:{}".format(e))
+            allowed_lane_reward = 0.0
         
         # (2) 完成导航任务奖励
-        mission_reward = self.config["reward"]["mission_reward"] * (self.completed_mission - last_mission_state)
+        try:
+            mission_reward = self.config["reward"]["mission_reward"] * (self.completed_mission - last_mission_state)
+        except Exception as e:
+            print("mission_reward error:{}".format(e))
+            mission_reward = 0.0
         
         navi_reward = allowed_lane_reward + mission_reward
         
         # 规则奖励：
         # (1) 保持右侧车道奖励
-        if need_to_keep_right and lane_num > 1:
-            keep_right_reward = self.config["reward"]["keep_right_reward"] * (lane_num - 1 - self.ego_vars[tc.VAR_LANE_INDEX]) / (lane_num - 1)
-        else:
+        try:
+            if need_to_keep_right and lane_num is not None and lane_num > 1:
+                keep_right_reward = self.config["reward"]["keep_right_reward"] * (lane_num - 1 - self.ego_vars[tc.VAR_LANE_INDEX]) / (lane_num - 1)
+            else:
+                keep_right_reward = 0.0
+        except Exception as e:
+            print("keep_right_reward error:{}".format(e))
             keep_right_reward = 0.0
         
         # (2) 限速奖励
-        speed_limit_reward = self.config["reward"]["speed_limit_reward"] * max(ego_speed - 1.1*max_rew_spd_ratio, 0.0) / max_rew_spd_ratio
-        
+        try:
+            speed_limit_reward = self.config["reward"]["speed_limit_reward"] * max(ego_speed - 1.1*max_rew_spd_ratio, 0.0) / max_rew_spd_ratio
+        except Exception as e:
+            print("speed_limit_reward error:{}".format(e))
+            speed_limit_reward = 0.0
+            
+            
         rule_reward = keep_right_reward + speed_limit_reward
         
         # 舒适/节能奖励：
         # (1) 加速度惩罚
-        acc_reward =  self.ego_vars[tc.VAR_ACCEL]**2 * self.config["reward"]["acc_reward"]
+        try:
+            acc_reward =  self.ego_vars[tc.VAR_ACCEL]**2 * self.config["reward"]["acc_reward"]
+        except Exception as e:
+            print("acc_reward error:{}".format(e))
+            acc_reward = 0.0
         
         comf_reward = acc_reward
         
         # 操作合规奖励：
         # (1) 换道代价惩罚
-        lane_change_reward = self.config["reward"]["lane_change_reward"] if (self.time - self.last_lc_time) <= self.config["simulation"]["time_step"] else 0.0
-        
+        try:
+            lane_change_reward = self.config["reward"]["lane_change_reward"] if (self.time - self.last_lc_time) <= self.config["simulation"]["time_step"] else 0.0
+        except Exception as e:
+            print("lane_change_reward error:{}".format(e))
+            lane_change_reward = 0.0
         # (2) 换道阻塞惩罚
-        lc_block_penalty = self.cached_rewards["lc_block_penalty"]
+        try:
+            lc_block_penalty = self.cached_rewards["lc_block_penalty"]
+        except Exception as e:
+            print("lc_block_penalty error:{}".format(e))
+            lc_block_penalty = 0.0
         
         # (3) 重复换道惩罚
-        repeat_lc_penalty = self.cached_rewards["repeat_lc_penalty"]
+        try:
+            repeat_lc_penalty = self.cached_rewards["repeat_lc_penalty"]
+        except Exception as e:
+            print("repeat_lc_penalty error:{}".format(e))
+            repeat_lc_penalty = 0.0
         
         opt_reward = lane_change_reward + lc_block_penalty + repeat_lc_penalty
            
@@ -779,8 +930,9 @@ class CompassFastParallelEnv(gym.Env):
         try:
             if self.conn is not None:
                 self.conn.close()
-        except Exception:
-            pass
+        except Exception as e:
+            print("Error in close: ", e)
+            # traceback.print_exc()
         self.conn = None
 
     
@@ -798,14 +950,15 @@ class CompassFastParallelEnv(gym.Env):
             (dist_to_goal <= goal_tolerance*1.5) and (dist_to_goal > self.last_dist_to_goal)
         ) # 加入一个安全系数保证两个仿真步之间不会冲过去
         self.last_dist_to_goal = dist_to_goal
+        if self.collision_state:
+            print("Collision terminated at time {}".format(self.time))
         if self.verbose:
             print("dist_to_goal: ", dist_to_goal)
             if speed_terminated:
                 print("Speed terminated at time {}".format(self.time))
             if goal_terminated:
                 print("Goal terminated at time {}".format(self.time))
-            if self.collision_state:
-                print("Collision terminated at time {}".format(self.time))
+
         return bool(speed_terminated or goal_terminated or self.collision_state)
     
     def _is_truncated(self) -> bool:
@@ -1147,3 +1300,14 @@ class CompassFastParallelEnv(gym.Env):
 
     def _valid_veh_id(self, vid):
         return isinstance(vid, str) and len(vid) > 0 
+
+
+
+    @staticmethod
+    def _safe_inv(x: float, eps: float = 1e-6):
+        # 保留符号的倒数，避免除零
+        if x is None:
+            return 0.0
+        if abs(x) < eps:
+            return 0.0
+        return 1.0 / x
