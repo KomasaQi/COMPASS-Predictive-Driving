@@ -1,5 +1,5 @@
 %连云港-盐城仿真参数配置
-function params = LianYG_YC_params(simCaseNumber)
+function params = LianYG_YC_params(simCaseNumber,manual_control)
     params.seed = '';
     if nargin < 1 || isempty(simCaseNumber)
         simCaseNumber = 1;
@@ -8,6 +8,9 @@ function params = LianYG_YC_params(simCaseNumber)
         params.seed = [' --seed=' num2str(randi(9999999))];
         simCaseNumber = randi(28);
     end
+    if nargin < 2 || isempty(manual_control)
+        manual_control = false;
+    end
     %% 仿真案例设置
     % 案例基本信息
     params.case_number = simCaseNumber; % 仿真案例代号（1~28）
@@ -15,6 +18,7 @@ function params = LianYG_YC_params(simCaseNumber)
     params.if_start_sim  = true;        % 是否进行仿真 
     params.mat_data_name = 'ProcessedMap_lianyg_yanc_w_type.mat'; % 路网预处理文件名称
     params.vehicleID = 't_0';
+    params.manual_control = manual_control;       % 是否切换自控模式，如果不切换，就会自动进行速度增益、右侧和协作换道
 
     % 案例相关参数读取
     [params.sumo_file_name, ... % sumo仿真文件名称
@@ -37,7 +41,7 @@ function params = LianYG_YC_params(simCaseNumber)
     
     %% 仿真界面设置
     % SUMO界面设置
-    params.sumoBinary = 'sumo-gui'; % 或者使用'sumo'进行无GUI仿真 
+    params.sumoBinary = 'sumo-gui'; % 'sumo-gui'或者使用'sumo'进行无GUI仿真 
     params.viewID = 'View #0'; % 默认视角ID
     params.schema = 'real world';  % 设置SUMO GUI的显式模式为'real world'
     params.zoomLevel = 50000; % 根据需要调整放大倍数
@@ -47,7 +51,7 @@ function params = LianYG_YC_params(simCaseNumber)
     params.resultFigID = 2;             % 用于展示运行时间结果
     params.tau_heading = 0.1;           % 定义用于画面显示的虚拟动力学
     params.sensingFront = 5;            % 假如感知范围是一个圆形，那么我关注的是自车前方sensingFront为中心的一个圆形
-    params.display_radius = 1000;       % 显示半径，配合center中心偏移，显示本车前方以center为中心radius半径的圆形区域
+    params.display_radius = 200;       % 显示半径，配合center中心偏移，显示本车前方以center为中心radius半径的圆形区域
     params.enlightening_factor = 0.4;   % GUI界面车辆颜色提亮系数（加上阴影以后比sumo暗淡了，需要提亮才能看上去和sumo一样）
     params.radius_range = 250;          % 查找周车的范围再+的范围用于可视化
     params.update_interval = 5;         % 云端隔多少个时间周期步能获得一次全局信息（单位0.1s）
@@ -70,7 +74,7 @@ function params = LianYG_YC_params(simCaseNumber)
 
 
     %% 云端周车跟踪设置
-    params.maxVehNum = 150;           %最多追踪多少辆周车
+    params.maxVehNum = 15;           %最多追踪多少辆周车
     params.egoClass = 2;              % 1 Car 2 Truck
     params.egoLength = 18;            % m 自车总长度
     params.egoWidth = 2.55;           % m 自车宽度

@@ -1,0 +1,3 @@
+Warning: Value of tau=0.80 in vehicle type 'car_sport' lower than simulation step size may cause collisions.
+Error: tcpip::Socket::recvAndCheck @ recv: peer shutdown
+Quitting (on error).

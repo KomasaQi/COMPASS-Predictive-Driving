@@ -1,0 +1,19 @@
+***Starting server on port 8813 ***
+Loading net-file from '../maps/lianyg_yanc.net.xml' ... done (75ms).
+Loading additional-files from '../maps/LianYG_YanC.poly.xml' ... done (18ms).
+Loading route-files incrementally from 'no22_2000_merge_6.rou.xml'
+Loading done.
+Warning: Value of tau=0.80 in vehicle type 'car_sport' lower than simulation step size may cause collisions.
+Simulation started with time: 0.00.
+Error: tcpip::Socket::recvAndCheck @ recv: peer shutdown
+Quitting (on error).
+Simulation ended at time: 155.00.
+Performance:
+ Duration: 74.60s
+ TraCI-Duration: 0.00s
+ Real time factor: 2.07772
+ UPS: 91.017547
+Vehicles:
+ Inserted: 87 (Loaded: 88)
+ Running: 83
+ Waiting: 1

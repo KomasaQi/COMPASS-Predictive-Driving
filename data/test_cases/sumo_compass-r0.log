@@ -1,0 +1,26 @@
+***Starting server on port 12000 ***
+Loading net-file from '../maps/lianyg_yanc.net.xml' ... done (119ms).
+Loading additional-files from '../maps/LianYG_YanC.poly.xml' ... done (33ms).
+Loading route-files incrementally from 'no13_3000_pass_4.rou.xml'
+Loading done.
+Warning: Value of tau=0.80 in vehicle type 'car_sport' lower than simulation step size may cause collisions.
+Simulation version 1.23.1 started with time: 0.00.
+Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
+Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
+Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
+Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
+Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
+Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
+Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
+Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
+Simulation ended at time: 220.00.
+Reason: TraCI requested termination.
+Performance:
+ Duration: 5.97s
+ TraCI-Duration: 5.35s
+ Real time factor: 36.8447
+ UPS: 3177.692179
+Vehicles:
+ Inserted: 177 (Loaded: 185)
+ Running: 164
+ Waiting: 8

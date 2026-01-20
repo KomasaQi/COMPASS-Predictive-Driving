@@ -31,6 +31,13 @@ addpath("src\dependencies\utils\mex\")
 addpath("src\dependencies\classes\")
 addpath("src\dependencies\scripts\")
 
+addpath("src\graphflow\")
+addpath("src\graphflow\env\")
+addpath("src\graphflow\env\scripts\")
+addpath("src\graphflow\env\utils\")
+addpath("src\graphflow\scripts\")
+addpath("src\graphflow\utils\")
+
 addpath("src\trailer-MEI\")
 addpath("src\trailer-MEI\classes\")
 addpath("src\trailer-MEI\scripts\")

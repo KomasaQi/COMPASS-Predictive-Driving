@@ -14,6 +14,9 @@ function [safe_flag, min_MEI, lc_min_MEI] = SaftyArbitration(ego,vehicleDummies,
             end
         end
     end
+    if isinf(min_MEI)
+       min_MEI = -inf;
+    end
     lc_min_MEI = inf;
     veh1 = Vehicle4Mei('x',ego.pos(1) + params.lc_default_dev*sin(ego.heading)*-lc_decision,...
         'y',ego.pos(2) - params.lc_default_dev*cos(ego.heading)*-lc_decision,'v',ego.speed,'h',ego.heading,'l',ego.length,'w',ego.width);

@@ -3,11 +3,14 @@ clc
 %% 启动SUMO仿真
 % 从参数服务器获取参数
 global params %#ok
-if exist('simCaseNumber','var')
-    params = LianYG_YC_params(simCaseNumber);
-else
-    params = LianYG_YC_params();
+if ~exist('simCaseNumber','var')
+    simCaseNumber = -1;
 end
+if ~exist('manual_control','var')
+    manual_control = false;
+end
+params = LianYG_YC_params(simCaseNumber, manual_control);
+
 % 求解步数
 plan_steps = 0;
 lastDecisionTimeGap = 0;
@@ -23,9 +26,11 @@ vehicleID = params.vehicleID;
 if params.if_start_sim
     sumoCmd = [params.sumoBinary ' -c "data\test_cases\' params.sumo_file_name '"' ' --start --quit-on-end' params.seed];
     traci.start(sumoCmd);
-    % 设置SUMO GUI的视角和跟踪车辆
-    traci.gui.setSchema(params.viewID, params.schema);
-    traci.gui.setZoom(params.viewID, params.zoomLevel);
+    if strcmpi(params.sumoBinary,'sumo-gui')
+        % 设置SUMO GUI的视角和跟踪车辆
+        traci.gui.setSchema(params.viewID, params.schema);
+        traci.gui.setZoom(params.viewID, params.zoomLevel);
+    end
     if isempty(params.InitTime)
         traci.simulationStep(); % 进行一步仿真
     else
@@ -34,8 +39,10 @@ if params.if_start_sim
         end
     end
     vehicleIDs = traci.vehicle.getIDList(); % 获取所有车辆ID
-    % 聚焦到指定车辆
-    traci.gui.trackVehicle(params.viewID, vehicleID);
+    if strcmpi(params.sumoBinary,'sumo-gui')
+        % 聚焦到指定车辆
+        traci.gui.trackVehicle(params.viewID, vehicleID);
+    end
 end
 % 创建结果输出保存文件夹
 if ~exist(params.output_dir,'dir')
@@ -273,8 +280,11 @@ hold off
 % 11 = 变道时尊重其他车辆的速度/制动间距，不进行速度调整
 % bit11、bit10：00 = 不进行子车道变更；01 = 若与TraCI请求不冲突，则进行子车道变更；10 = 即使要覆盖TraCI请求，也要进行子车道变更
 
-traci.vehicle.setLaneChangeMode(ego.vehID, 0b011001010110); % bit11 10 ... 2 1 0  % 自己采集数据的时候的模式
-% traci.vehicle.setLaneChangeMode(ego.vehID, 0b000100010010); % bit11 10 ... 2 1 0  % 我们控制的到时候的模式
+if params.manual_control
+    traci.vehicle.setLaneChangeMode(ego.vehID, 0b000100010010); % bit11 10 ... 2 1 0  % 我们控制的到时候的模式
+else
+    traci.vehicle.setLaneChangeMode(ego.vehID, 0b011001010110); % bit11 10 ... 2 1 0  % 自己采集数据的时候的模式
+end
 % traci.vehicle.setLaneChangeMode(ego.vehID, 256); % 限制不让车辆自主换道，但是可以sublanechange
 
 % setSpeedMode 说明

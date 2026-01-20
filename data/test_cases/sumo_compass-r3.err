@@ -1,0 +1,2 @@
+Warning: Value of tau=0.80 in vehicle type 'car_sport' lower than simulation step size may cause collisions.
+Warning: Vehicle 'flow_main.24' performs emergency braking on lane '96615334#0_3' with decel=9.00, wished=6.00, severity=1.00, time=66.00.

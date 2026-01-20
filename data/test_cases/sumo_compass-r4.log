@@ -1,0 +1,24 @@
+***Starting server on port 12004 ***
+Loading net-file from '../maps/lianyg_yanc.net.xml' ... done (111ms).
+Loading additional-files from '../maps/LianYG_YanC.poly.xml' ... done (32ms).
+Loading route-files incrementally from 'no1_4500_pass_1.rou.xml'
+Loading done.
+Warning: Value of tau=0.80 in vehicle type 'car_sport' lower than simulation step size may cause collisions.
+Simulation version 1.23.1 started with time: 0.00.
+Warning: Vehicle 'flow_main.31' performs emergency braking on lane '96615334#0_2' with decel=9.00, wished=6.00, severity=1.00, time=110.00.
+Warning: Vehicle 'flow_main.48' performs emergency braking on lane '96615334#0_3' with decel=9.00, wished=3.80, severity=1.00, time=154.00.
+Warning: Vehicle 'flow_exit.72' performs emergency braking on lane '96615334#0_2' with decel=9.00, wished=6.00, severity=1.00, time=177.00.
+Warning: Vehicle 'flow_main.101' performs emergency braking on lane '96615334#0_2' with decel=9.00, wished=6.00, severity=1.00, time=276.00.
+Warning: Vehicle 'flow_exit.113' performs emergency braking on lane '96615334#0_3' with decel=9.00, wished=4.00, severity=1.00, time=284.00.
+Simulation ended at time: 303.00.
+Reason: TraCI requested termination.
+Performance:
+ Duration: 6.63s
+ TraCI-Duration: 5.61s
+ Real time factor: 45.7289
+ UPS: 6284.485361
+Vehicles:
+ Inserted: 282 (Loaded: 295)
+ Running: 244
+ Waiting: 13
+ Emergency Braking: 5

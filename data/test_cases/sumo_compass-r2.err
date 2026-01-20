@@ -1,0 +1,7 @@
+Warning: Value of tau=0.80 in vehicle type 'car_sport' lower than simulation step size may cause collisions.
+Warning: Choosing new speed factor 1.22 for vehicle 'flow_exit.171' to match departure speed 22.22 (max 21.73).
+Warning: Choosing new speed factor 1.21 for vehicle 'flow_exit.206' to match departure speed 22.22 (max 19.66).
+Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
+Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
+Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
+Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.

@@ -1,0 +1,15 @@
+Warning: Value of tau=0.80 in vehicle type 'car_sport' lower than simulation step size may cause collisions.
+Warning: Vehicle 'flow_exit.20' performs emergency braking on lane '225202306#2_0' with decel=9.00, wished=6.00, severity=1.00, time=99.00.
+Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
+Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
+Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
+Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
+Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
+Warning: Vehicle 'flow_merge.25' performs emergency braking on lane '413494440#2_2' with decel=9.00, wished=6.00, severity=1.00, time=260.00.
+Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
+Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
+Warning: Vehicle 'flow_main.73' performs emergency braking on lane '413494440#1_0' with decel=9.00, wished=6.00, severity=1.00, time=274.00.
+Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
+Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
+Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
+Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
