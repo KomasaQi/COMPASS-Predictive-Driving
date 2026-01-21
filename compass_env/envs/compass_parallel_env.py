@@ -42,7 +42,7 @@ class CompassParallelEnv(gym.Env):
     }
     N_ACTIONS = 2 # (1) ACCEL [-1, 1] (2) LANE_CHANGE [-1, 1]
     EGO_FEATURE_DIM = 53
-    VEH_FEATURE_DIM = 24
+    VEH_FEATURE_DIM = 25
     
     
     def __init__(self, config: dict = None, render_mode: str | None = None, verbose: bool = False) -> None:
@@ -363,7 +363,8 @@ class CompassParallelEnv(gym.Env):
             tracking_dict_len=self.config["observation"]["tracking_dict_len"],
             relative_pos= self.config["observation"]["relative_pos"],
             ttl = self.config["observation"]["obsolate_time"],
-            ttc_inv_lim = self.config["observation"]["ttc_inv_lim"]
+            ttc_inv_lim = self.config["observation"]["ttc_inv_lim"],
+            ego_id=self.config["egoID"],
         )
         
         

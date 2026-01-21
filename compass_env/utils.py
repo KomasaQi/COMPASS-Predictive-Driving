@@ -187,6 +187,48 @@ def compress_distance(distance: float, scale_factor: float = 50.0) -> float:
     return compressed_dist
 
 
+def embed_vehicle_type(vtype: str) -> int:
+    """_summary_
+    将车辆类别映射到数字
+    Inputs:
+        vtype (string): 
+    Returns:
+        vtype_index (int): 将车辆类别到数字
+    """
+    if "eco" in vtype:
+        vtype_index = 1
+    elif "sedan" in vtype:
+        vtype_index = 2
+    elif "sport" in vtype:
+        vtype_index = 3
+    elif "suv" in vtype:
+        vtype_index = 4
+    elif "van" in vtype:
+        vtype_index = 5
+    elif "bus" in vtype:
+        vtype_index = 6
+    elif "light" in vtype:
+        vtype_index = 7 
+    elif "medium" in vtype:
+        vtype_index = 8
+    elif "heavy" in vtype:
+        vtype_index = 9
+    elif "concrete" in vtype:
+        vtype_index = 10
+    elif "standard" in vtype:
+        vtype_index = 11
+    elif "long" in vtype:
+        vtype_index = 12    
+    elif "double" in vtype:
+        vtype_index = 13
+    elif "tank" in vtype:
+        vtype_index = 0
+    else:
+        vtype_index = -1
+        
+    return vtype_index
+
+
 
 class Track:
     """
@@ -300,6 +342,7 @@ class NeighborHistoryObs:
         "mei": 21,
         "rttc_1": 22,
         "shortestdist_1": 23,
+        "vtype": 24,
     }
     
     def __init__(
@@ -307,12 +350,13 @@ class NeighborHistoryObs:
         obs_radius: float,
         vehicle_counts: int,
         history_length: int,
-        feature_dim: int = 24,
+        feature_dim: int = 25,
         tracking_dict_len: int = 50,
         ttl: int = 5,
         relative_pos: bool = True,
         ttc_inv_lim: float = 2.0,
-        verbose: int = 0
+        verbose: int = 0,
+        ego_id:str = 't_0'
     ):
         """
         :param obs_radius: 观测半径（米），这里只用于语义描述；真正筛选通常已由 context subscription 完成
@@ -324,6 +368,7 @@ class NeighborHistoryObs:
         :param relative_pos: 是否使用相对自车的位置（默认 True）
         :param ttc_inv_lim: TTC 倒数限制（默认 2.0）
         :param verbose:  verbose 等级（默认 0） 1: 正常打印 2: Debug
+        :param ego_id: 自车ID
         """
         self.R = float(obs_radius)
         self.V = int(vehicle_counts)
@@ -336,6 +381,7 @@ class NeighborHistoryObs:
         self.relative_pos = relative_pos
         self.til = ttc_inv_lim
         self.verbose = 0
+        self.ego_id = ego_id
 
         # LRU：OrderedDict 末尾为最近使用
         self.tracks: "OrderedDict[str, Track]" = OrderedDict()
@@ -378,7 +424,8 @@ class NeighborHistoryObs:
             - 对自车的MEI                   +1  21:`mei`
             - 对自车的1/RTTC                +1  22:`rttc_1`
             - 1/与自车的最近距离             +1  23:`shortestdist_1`
-            特征维度: 24
+            - vtype车辆类别                 +1  24:`vtype`
+            特征维度: 25
         所有车辆在编码时加入自车/车辆类型可学习嵌入，维度为 dim_clsmb
           
           
@@ -450,6 +497,7 @@ class NeighborHistoryObs:
              mei,                                               # 21:mei
              np.clip(1/rttc, -self.til, self.til),              # 22:rttc_1
              np.clip(1/Shortest_D*0.2, 0, self.til),            # 23:shortestdist_1
+             embed_vehicle_type(vars[tc.VAR_TYPE]),             # 24:vtype
              ],
             dtype=np.float32)
         
@@ -485,6 +533,8 @@ class NeighborHistoryObs:
         # -----------------------
         candidates = []
         for vid, vars_ in veh_vars.items():
+            if vid == self.ego_id:
+                continue
             x, y = vars_[tc.VAR_POSITION]
             dist = math.hypot(x - ex, y - ey)
             candidates.append((dist, vid, vars_))
@@ -511,6 +561,8 @@ class NeighborHistoryObs:
         # 请改为下面这种（并注释掉上面 selected 的 updated_real 逻辑）：
         #
         for vid, vars_ in veh_vars.items():
+            if vid == self.ego_id:
+                continue
             feat = self._feat_from_vars(vars=vars_, veh_id=vid)
             self._get_or_create(vid).push(feat, step_idx, real=True)
             updated_real.add(vid)

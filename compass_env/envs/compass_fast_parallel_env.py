@@ -43,7 +43,7 @@ class CompassFastParallelEnv(gym.Env):
     }
     N_ACTIONS = 2 # (1) ACCEL [-1, 1] (2) LANE_CHANGE [-1, 1]
     EGO_FEATURE_DIM = 53
-    VEH_FEATURE_DIM = 24
+    VEH_FEATURE_DIM = 25
     
     
     def __init__(self, config: dict = None, render_mode: str | None = None, verbose: bool = False) -> None:
@@ -339,11 +339,12 @@ class CompassFastParallelEnv(gym.Env):
             seed = np.random.randint(0, 10000)
         
         # 首先进行一次探测保证SUMO启动成功
-        try:
-            self.conn.getVersion()
-        except Exception as e:
-            print(f"Failed to connect to SUMO: {e}")
-            self.already_start_sumo = False
+        if self.conn is not None:
+            try:
+                self.conn.getVersion()
+            except Exception as e:
+                print(f"Failed to connect to SUMO: {e}")
+                self.already_start_sumo = False
             
         try:
             if not self.already_start_sumo:
@@ -405,7 +406,8 @@ class CompassFastParallelEnv(gym.Env):
                 tracking_dict_len=self.config["observation"]["tracking_dict_len"],
                 relative_pos= self.config["observation"]["relative_pos"],
                 ttl = self.config["observation"]["obsolate_time"],
-                ttc_inv_lim = self.config["observation"]["ttc_inv_lim"]
+                ttc_inv_lim = self.config["observation"]["ttc_inv_lim"],
+                ego_id=self.config["egoID"],
             )
             
             
