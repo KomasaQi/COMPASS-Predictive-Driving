@@ -16,8 +16,8 @@ class AgentEncoder(nn.Module):
     """
     def __init__(
         self,
-        state_channel=51,        # 自车当前状态的维度（比如速度/朝向等，排除前2维后共51维）
-        history_channel=24,      # 智能体历史序列的特征维度（最终拼接后是24维）
+        state_channel=53,       # 自车当前状态的维度（比如速度/朝向等，排除前2维后共51维）
+        history_channel=24,     # 智能体历史序列的特征维度（最终拼接后是24维）
         dim=128,                # 最终输出的特征维度（和之前Query的D=128对齐）
         hist_steps=20,          # 历史时间步数量（比如过去20秒，1Hz采样→20步，这里取20）
         use_ego_history=False,  # 是否用自车的历史轨迹编码？False=用自车当前状态单独编码（更准）
@@ -26,6 +26,7 @@ class AgentEncoder(nn.Module):
         state_dropout=0.75,     # StateAttentionEncoder中的dropout率（正则化）
         presence_index=0,       # 存在状态的索引（第0维），用于mask掉不存在的智能体
         v_type_index=-1,        # 车辆类型索引（最后一维），用于区分不同车辆类型
+        **kwargs,               # 其他超参数
     ) -> None:
         super().__init__()
         self.dim = dim
@@ -100,22 +101,23 @@ class AgentEncoder(nn.Module):
         # 初始化全0特征，把有效智能体的编码结果填进去
         x_agent = torch.zeros(B * V, self.dim, device=x_veh.device)
         x_agent[valid_agent_mask] = x_agent_tmp
-        # 还原维度：[B*V, 128] → [B, V, 128]
-        x_agent = x_agent.view(B, V, self.dim)
+
 
         # ========== 步骤5：单独编码自车(ego)状态（替换历史编码结果） ==========
         # use_ego_history=False → 不用自车的历史轨迹，用当前状态更精准
         if not self.use_ego_history:
-            ego_feature = obs["ego"][:, 2:]   # [B, Fe-2]  → 自车当前状态（排除前两维度：绝对位置）
+            ego_feature = obs["ego"]   # [B, Fe]  → 自车当前状态（排除前两维度：绝对位置）
             x_ego = self.ego_state_emb(ego_feature)  # 编码成[B, 128]
             ego_type_emb = self.type_emb(torch.zeros(B, dtype=torch.long, device=x_veh.device)) # [B, 128] → 自车类型嵌入
             x_ego += ego_type_emb                    # [B, 128] 自车类型嵌入逐元素加和
 
         # ========== 步骤6：融合智能体类型嵌入 ==========
-        x_type = self.type_emb(vtype)     # [B, V, 128] → 每个智能体的类型嵌入
-        x_agent += x_type                 # [B, V, 128] → 逐元素特征融合
-
-        return x_ego, x_agent  # 自车作为第0个智能体加入 [B, 128][B, V, 128]
+        x_type = self.type_emb(vtype.reshape(B*V))     # [B*V, 128] → 每个智能体的类型嵌入
+        x_agent[valid_agent_mask] += x_type[valid_agent_mask]  # [B*V, 128] → 逐元素特征融合
+        
+        # 还原维度：[B*V, 128] → [B, V, 128]
+        x_agent = x_agent.view(B, V, self.dim)
+        return x_ego, x_agent, valid_agent_mask.reshape(B,V)  # 自车作为第0个智能体加入 [B, 128][B, V, 128][B, V]
 
 
 class StateAttentionEncoder(nn.Module):

@@ -1,0 +1,45 @@
+***Starting server on port 12017 ***
+Loading net-file from '../maps/lianyg_yanc.net.xml' ... done (58ms).
+Loading additional-files from '../maps/LianYG_YanC.poly.xml' ... done (17ms).
+Loading route-files incrementally from 'no12_3500_cruise_3.rou.xml'
+Loading done.
+Simulation version 1.23.1 started with time: 0.00.
+Warning: Choosing new speed factor 1.25 for vehicle 'flow_main.15' to match departure speed 22.22 (max 21.13).
+Warning: Vehicle 'flow_merge.5' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=148.00.
+Warning: Vehicle 'flow_main.38' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=175.50.
+Warning: Vehicle 'flow_main.64' performs emergency braking on lane '224832136#1_0' with decel=9.00, wished=6.00, severity=1.00, time=219.50.
+Warning: Vehicle 'flow_main.48' performs emergency braking on lane '224832138#1_0' with decel=9.00, wished=6.00, severity=1.00, time=250.00.
+Warning: Vehicle 'flow_main.97' performs emergency braking on lane '224832138#1-AddedOnRampEdge_2' with decel=9.00, wished=6.00, severity=1.00, time=342.50.
+Warning: Vehicle 'flow_main.38' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=343.50.
+Warning: Vehicle 'flow_main.102' performs emergency braking on lane '224832138#1-AddedOnRampEdge_2' with decel=9.00, wished=3.50, severity=1.00, time=367.50.
+Warning: Vehicle 'flow_main.125' performs emergency braking on lane '224832136#1_0' with decel=9.00, wished=3.80, severity=1.00, time=437.00.
+Warning: Vehicle 'flow_main.135' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=460.00.
+Warning: Vehicle 'flow_main.136' performs emergency braking on lane '224832138#1_0' with decel=9.00, wished=6.00, severity=1.00, time=467.50.
+Warning: Vehicle 'flow_main.88' performs emergency braking on lane '224832138#1_2' with decel=9.00, wished=4.00, severity=1.00, time=473.50.
+Warning: Vehicle 'flow_exit.165' performs emergency braking on lane '96614679_1' with decel=9.00, wished=4.00, severity=1.00, time=489.00.
+Warning: Vehicle 'flow_merge.62' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=523.50.
+Warning: Vehicle 'flow_merge.67' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=574.50.
+Warning: Choosing new speed factor 1.33 for vehicle 'flow_main.297' to match departure speed 22.22 (max 21.30).
+Warning: Vehicle 'flow_main.135' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=632.00.
+Warning: Vehicle 'flow_main.141' performs emergency braking on lane '224832138#1_2' with decel=9.00, wished=6.00, severity=1.00, time=651.00.
+Warning: Vehicle 'flow_merge.117' performs emergency braking on lane '224832138#1_2' with decel=9.00, wished=6.00, severity=1.00, time=672.50.
+Warning: Vehicle 'flow_main.97' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=677.00.
+Warning: Vehicle 'flow_merge.99' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=681.50.
+Warning: Vehicle 'flow_merge.62' performs emergency braking on lane '224832138#1_2' with decel=9.00, wished=6.00, severity=1.00, time=688.00.
+Warning: Vehicle 'flow_main.135' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=737.00.
+Warning: Vehicle 'flow_merge.80' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=774.50.
+Warning: Vehicle 'flow_main.141' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=779.00.
+Warning: Vehicle 'flow_main.204' performs emergency braking on lane '224832138#1_2' with decel=9.00, wished=6.00, severity=1.00, time=802.50.
+Warning: Vehicle 'flow_main.135' performs emergency braking on lane '224832138#1_1' with decel=9.00, wished=6.00, severity=1.00, time=822.50.
+Simulation ended at time: 833.00.
+Reason: TraCI requested termination.
+Performance:
+ Duration: 15.29s
+ TraCI-Duration: 1.40s
+ Real time factor: 54.4729
+ UPS: 31755.558462
+Vehicles:
+ Inserted: 777 (Loaded: 2635)
+ Running: 450
+ Waiting: 1858
+ Emergency Braking: 25

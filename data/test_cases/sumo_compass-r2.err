@@ -1,0 +1,6 @@
+Warning: Vehicle 'flow_main.54' performs emergency braking on lane '48963325#2_0' with decel=9.00, wished=6.00, severity=1.00, time=415.00.
+Warning: Vehicle 'flow_main.54' performs emergency braking on lane '48963325#2_1' with decel=9.00, wished=6.00, severity=1.00, time=538.50.
+Warning: Vehicle 'flow_exit.62' performs emergency braking on lane '761727441#2_1' with decel=9.00, wished=6.00, severity=1.00, time=603.50.
+Warning: Vehicle 'flow_merge.34' performs emergency braking on lane '48963325#2_2' with decel=9.00, wished=6.00, severity=1.00, time=607.50.
+Warning: Vehicle 'flow_main.135' performs emergency braking on lane '761727441#2_2' with decel=9.00, wished=6.00, severity=1.00, time=659.00.
+Warning: Vehicle 'flow_main.141' performs emergency braking on lane '48963325#1_1' with decel=9.00, wished=6.00, severity=1.00, time=748.00.

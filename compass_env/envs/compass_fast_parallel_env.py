@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import traci
 from traci import constants as tc
-import os, copy
+import os, copy, time
 import sys
 import numpy as np
 import random
@@ -13,7 +13,9 @@ import pandas as pd
 import math
 import traceback
 from compass_env import utils
+from compass_env.utils import has_irregular_ndarray as cir
 from compass_env.utils import NeighborHistoryObs
+import PIL.Image as Image
 
 class CompassFastParallelEnv(gym.Env): 
     """_summary_
@@ -38,7 +40,7 @@ class CompassFastParallelEnv(gym.Env):
     """
     
     metadata = {
-        "render_modes": ["human", "console"],
+        "render_modes": ["human", "console", "rgb_array"],
         "valid_cases": [i for i in range(1, 28+1)],
     }
     N_ACTIONS = 2 # (1) ACCEL [-1, 1] (2) LANE_CHANGE [-1, 1]
@@ -68,7 +70,7 @@ class CompassFastParallelEnv(gym.Env):
         self.traci_port = int(self.config["simulation"].get("traci_port", 8813))
         
           
-        if render_mode == "human":
+        if render_mode == "human" or render_mode == "rgb_array":
             render_cmd = 'sumo-gui'
         else:
             render_cmd = 'sumo'
@@ -113,6 +115,7 @@ class CompassFastParallelEnv(gym.Env):
         self.completed_mission = False # whether the mission is completed
         self.traci_cmd_working = False
         self.collision_state = False
+        self._init_info()
         
         # Level files and Reloading
         self.level_files = utils.get_state_files(self.config["level_file_path"])
@@ -177,25 +180,28 @@ class CompassFastParallelEnv(gym.Env):
                     "max_accel": 1.5, # the maximum acceleration of the ego vehicle
                     "max_decel": 2.5, # the maximum deceleration of the ego vehicle
                     "lc_time": 4, # the time duration of attempting lane change (not execution time)
-                    "lc_thred": 0.33, # the threshold th of lane change action [-1:-th):R, [-th:th]:K, (th:1]:L
+                    "lc_thred": 0.8, # the threshold th of lane change action [-1:-th):R, [-th:th]:K, (th:1]:L
                 },
             },
             "reward":{ 
                 "acc_reward": -0.1, # the reward of accelerating and decelerating
-                "lane_change_reward": -0.1, # the reward when changing lane
-                "speed_reward": 0.5, # the reward when speeding up
-                "min_reward_speed_ratio": 0.6, # the minimum speed ratio to the allowed speed to calculate the reward
-                "allowed_lane_reward": 0.02, # the reward when staying in the allowed lane 
-                "mission_reward": 5.0, # the reward when completing the navigation task 
-                "keep_right_reward": 0.05, # the reward when keeping right when in cruise mission
+                "lane_change_reward": -0.5, # the reward when changing lane
+                "speed_reward": 1.5, # the reward when speeding up
+                "min_reward_speed_ratio": 0.4, # the minimum speed ratio to the allowed speed to calculate the reward
+                "allowed_lane_reward": 0.4, # the reward when staying in the allowed lane 
+                "mission_reward": 100.0, # the reward when completing the navigation task 
+                "keep_right_reward": 0.5, # the reward when keeping right when in cruise mission
                 "speed_limit_reward": -0.5, # the reward when exceeding the speed limit
                 "ttc_inv_reward": -0.5, # the reward of time-to-collision with the front vehicle 
                 "mei_reward": -0.3, # the reward of modified Emergency Index with all other vehicles 
                 "ttc_2d_inv_reward": -0.3, # the reward of 2D time-to-collision with all other vehicle 
-                "hw_inv_reward": -0.02, # the reward of heading away of the front vehicle as well as left right front neihgbors 
-                "lc_block_penalty": -1.0, # the penalty when lane change is blocked
-                "repeat_move_penalty": -0.05, # the penalty when change lane when last TraCI command still works
-                "collision_penalty": -5.0, # the penalty when colliding with other vehicles
+                "hw_inv_reward": -0.2, # the reward of heading away of the front vehicle as well as left right front neihgbors 
+                "lc_block_penalty": -0.01, # the penalty when lane change is blocked
+                "repeat_move_penalty": -2.5, # the penalty when change lane when last TraCI command still works
+                "collision_penalty": -100.0, # the penalty when colliding with other vehicles
+                "allowed_lane_base_reward": 0.3, # the baisc reward when staying in the allowed lane not change with condition
+                "allowed_lane_mid_coeff": 1.0, # the reward when staying in the allowed lane over a middle range linearly increase
+                "allowed_lane_final_reward": 15.0, # the reward when staying in the allowed lane before about 100 m to the end
             },
             "simulation":{
                 "time_step": 1.0, # the time step of the simulation in seconds
@@ -211,6 +217,7 @@ class CompassFastParallelEnv(gym.Env):
                 "zoom": 80000,
                 "screen_width": 640,  # [px]
                 "screen_height": 640,  # [px]
+                "cache_img_name": "compass_env/output/screenshot.png",
             },
             "case_num": -1, # the index of the current test case -1 means randomly choose a test case
             "files":{
@@ -218,8 +225,12 @@ class CompassFastParallelEnv(gym.Env):
                 "test_case_info": "COMPASS_TestCase_LianYG_YanC.xlsx", # TODO: use this param
             },
             "level_file_path": os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "levels"),
+            "test_mode": False, # enable to test the environment, not include opti penalty regarding TraCI in the reward
+            "auto_mode": False, # enable to use auto run mode: to run default IDM + MOBIL planner
+            "reload_state": True, # enable to reload the state from the saved files
+            "random_seed_range": 100000, # the range of random seed to choose from
 
-        } # TODO: implement other parameters
+        } 
         
         return config
 
@@ -238,10 +249,9 @@ class CompassFastParallelEnv(gym.Env):
             self.conn.simulationStep(self.time + self.time_bias)
 
         except Exception as e:
-            info = {"fatal_sumo": True, "fatal_msg": str(e)}
-            print(info["fatal_msg"])
+            print(f"Fatal SUMO error: {str(e)}")
             self.already_start_sumo = False
-            return self.stored_obs, self.stored_reward, True, False, info
+            return self.stored_obs, self.stored_reward, True, False, self.info
         
         # Update vehicle state
         self._update_vehicle_state()
@@ -254,10 +264,18 @@ class CompassFastParallelEnv(gym.Env):
         if terminated or truncated:
             self.done = True
         # Optionally we can pass additional info, we are not using that for now
-        info = {}
         self.stored_obs = observation
         self.stored_reward = reward
-        return observation, reward, terminated, truncated, info
+        
+        # 检查是否存在异常值，若有就触发truncated并返回存储的值
+        if cir(observation['ego']) or cir(observation['veh']): 
+            return self.stored_obs, self.stored_reward, False, True, self.info
+        
+        return observation, reward, terminated, truncated, self.info
+
+
+
+
 
     def _start_sumo(self, seed: int):
         # 0) 关闭旧连接
@@ -328,23 +346,39 @@ class CompassFastParallelEnv(gym.Env):
         self.completed_mission = False
         self.traci_cmd_working = False
         self.collision_state = False
+        self._init_info()
         
-        # 重置测试用例
-        if self.config["case_num"] == -1:
-            self.current_case = np.random.choice(self.metadata["valid_cases"])
+        if options is not None and isinstance(options, dict) and "case_id" in options:
+            case_id = options["case_id"]
         else:
-            self.current_case = self.config["case_num"]
+            case_id = None
+            
+        # 重置测试用例
+        if case_id is None:
+            if self.config["case_num"] == -1:
+                self.current_case = np.random.choice(self.metadata["valid_cases"])
+            else:
+                self.current_case = self.config["case_num"]
+        else:
+            self.current_case = case_id
+            
         self._get_case_info()
         if seed is None:
-            seed = np.random.randint(0, 10000)
+            seed = np.random.randint(0, self.config["random_seed_range"])
         
-        # 首先进行一次探测保证SUMO启动成功
-        if self.conn is not None:
-            try:
-                self.conn.getVersion()
-            except Exception as e:
-                print(f"Failed to connect to SUMO: {e}")
-                self.already_start_sumo = False
+        if case_id is None:
+            # 首先进行一次探测保证SUMO启动成功
+            if self.conn is not None:
+                try:
+                    self.conn.getVersion()
+                except Exception as e:
+                    print(f"Failed to connect to SUMO: {e}")
+                    self.already_start_sumo = False
+        else:
+            self.already_start_sumo = False
+        
+        if not self.config["reload_state"]:
+            self.already_start_sumo = False
             
         try:
             if not self.already_start_sumo:
@@ -358,7 +392,7 @@ class CompassFastParallelEnv(gym.Env):
             ego_id = self.config["egoID"]
             
             # 设置可视化界面
-            if self.render_mode == 'human':
+            if self.render_mode == 'human' or self.render_mode == 'rgb_array':
                 ViewID = self.config["gui"]["view"]
                 self.conn.simulation.getTime()
                 self.conn.gui.setSchema(ViewID, self.config["gui"]["schema"])
@@ -416,8 +450,6 @@ class CompassFastParallelEnv(gym.Env):
             
             
             observation = self._get_observation()
-            # Optionally we can pass additional info, we are not using that for now
-            info = {}
             if not self.already_start_sumo:
                 self.already_start_sumo = True
         except Exception as e:
@@ -426,7 +458,7 @@ class CompassFastParallelEnv(gym.Env):
             self.already_start_sumo = False
             observation, info = self.reset(seed=seed, options=options)
         
-        
+        info = self.info
         return observation, info
 
     def _apply_action(self, action):
@@ -467,11 +499,12 @@ class CompassFastParallelEnv(gym.Env):
                 
             speed_des_cmd = self.ego_vars[tc.VAR_SPEED] + acc_cmd * dt
             
-            self.conn.vehicle.setSpeed(egoID, speed_des_cmd)
-            if 0 <= target < lane_num:
-                if lc_cmd is not None:
-                    self.conn.vehicle.changeLaneRelative(egoID, lc_cmd, settings['lc_time']) # 1: 相对车道变化，0: 绝对车道变化
-            # TODO:添加非法换道惩罚
+            if not self.config["auto_mode"]: # 如果非自动模式，就发布横纵向指令
+                # 发布速度指令
+                self.conn.vehicle.setSpeed(egoID, speed_des_cmd)
+                if 0 <= target < lane_num:
+                    if lc_cmd is not None:
+                        self.conn.vehicle.changeLaneRelative(egoID, lc_cmd, settings['lc_time']) # 1: 相对车道变化，0: 绝对车道变化
                 
             # 处理重复车道变化指令惩罚
             repeat_lc_penalty = self.config["reward"]["repeat_move_penalty"] if repeat_lc_cmd else 0.0
@@ -582,7 +615,8 @@ class CompassFastParallelEnv(gym.Env):
         til = self.config["observation"]["ttc_inv_lim"]
         
         ego_state = np.array([
-            0.0,0.0, # ego_vars[tc.VAR_POSITION][0], ego_vars[tc.VAR_POSITION][1],     # 0:x 1:y
+            utils.compress_distance(self.last_dist_to_goal),                           # 0: dist_to_goal
+            utils.compress_distance(remLaneDist),                                      # 1:rem_lane_dist 
             utils.normalize_speed(ego_vars[tc.VAR_SPEED]), ego_vars[tc.VAR_SPEED_LAT], # 2:vx (normalize) 3:vy
             np.cos(heading), np.sin(heading),                                          # 4:cos_h 5:sin_h
             signal_state[0], signal_state[1], signal_state[2],                         # 6:left 7:right 8:brake
@@ -613,7 +647,13 @@ class CompassFastParallelEnv(gym.Env):
         
         
         can_reach = can_reach_multi[extend_lane_num]
-        allowed_lane_reward = self.config["reward"]["allowed_lane_reward"] if can_reach else 0.0
+        base_reward = self.config["reward"]["allowed_lane_base_reward"]
+        mid_coeff = self.config["reward"]["allowed_lane_mid_coeff"]
+        final_coeff = self.config["reward"]["allowed_lane_final_reward"]
+        total_coeff = self.config["reward"]["allowed_lane_reward"]
+        
+        allowed_lane_reward = total_coeff * (base_reward + mid_coeff * (1 - remLaneDist/laneLength) + final_coeff * np.exp(-remLaneDist*0.07)) 
+        allowed_lane_reward = allowed_lane_reward if can_reach else 0.0
         self.cached_rewards.update({"allowed_lane_reward": allowed_lane_reward})
         
         if self.verbose:
@@ -825,20 +865,29 @@ class CompassFastParallelEnv(gym.Env):
         # 操作合规奖励：
         # (1) 换道代价惩罚
         try:
-            lane_change_reward = self.config["reward"]["lane_change_reward"] if (self.time - self.last_lc_time) <= self.config["simulation"]["time_step"] else 0.0
+            if self.config["test_mode"]:
+                lane_change_reward = 0.0
+            else:
+                lane_change_reward = self.config["reward"]["lane_change_reward"] if (self.time - self.last_lc_time) <= self.config["simulation"]["time_step"] else 0.0
         except Exception as e:
             print("lane_change_reward error:{}".format(e))
             lane_change_reward = 0.0
         # (2) 换道阻塞惩罚
         try:
-            lc_block_penalty = self.cached_rewards["lc_block_penalty"]
+            if self.config["test_mode"]:
+                lc_block_penalty = 0.0
+            else:
+                lc_block_penalty = self.cached_rewards["lc_block_penalty"]
         except Exception as e:
             print("lc_block_penalty error:{}".format(e))
             lc_block_penalty = 0.0
         
         # (3) 重复换道惩罚
         try:
-            repeat_lc_penalty = self.cached_rewards["repeat_lc_penalty"]
+            if self.config["test_mode"]:
+                repeat_lc_penalty = 0.0
+            else:
+                repeat_lc_penalty = self.cached_rewards["repeat_lc_penalty"]
         except Exception as e:
             print("repeat_lc_penalty error:{}".format(e))
             repeat_lc_penalty = 0.0
@@ -847,6 +896,31 @@ class CompassFastParallelEnv(gym.Env):
            
         
         reward = safe_reward + effi_reward + navi_reward + rule_reward + comf_reward + opt_reward
+        
+        
+        self.info.update({
+            "ttc_inv_penalty": ttc_inv_penalty,
+            "mei_reward": mei_reward,
+            "rttc_inv_reward": rttc_inv_reward,
+            "hw_penalty": hw_penalty,
+            "safe_reward": safe_reward,
+            "collision_penalty": collision_penalty,
+            "speed_reward": speed_reward,
+            "effi_reward": effi_reward,
+            "allowed_lane_reward": allowed_lane_reward,
+            "mission_reward": mission_reward,
+            "navi_reward": navi_reward,
+            "keep_right_reward": keep_right_reward,
+            "speed_limit_reward": speed_limit_reward,
+            "rule_reward": rule_reward,
+            "acc_reward": acc_reward,
+            "comf_reward": comf_reward,
+            "lane_change_reward": lane_change_reward,
+            "lc_block_penalty": lc_block_penalty,
+            "repeat_lc_penalty": repeat_lc_penalty,
+            "opt_reward": opt_reward,
+            "reward": reward
+        })
         
         # 以表格形式打印奖励
         if self.verbose:
@@ -881,6 +955,8 @@ class CompassFastParallelEnv(gym.Env):
                 # 总奖励
                 ("Total Reward", reward)
             ]
+            
+
 
             # 2. 定义ANSI转义字符（用于终端中加粗文本，是最直观的醒目方式）
             BOLD_START = "\033[1m"
@@ -923,10 +999,32 @@ class CompassFastParallelEnv(gym.Env):
         
         return float(reward)
 
+
     def render(self):
-        # TODO: Add actual render
-        # self.conn.gui.screenshot(viewID=self.config["gui"]["view"], filename="compass_env/output/screenshot.png", width=640,height=480)
-        pass
+        if self.render_mode != "rgb_array":
+            # 非 GUI 模式下不给图像
+            return None
+
+        if self.conn is None:
+            raise RuntimeError("SUMO connection is None. Did you call reset() successfully?")
+
+        view_id = self.config["gui"]["view"]
+
+        # 1) 把缓存路径强制变成“绝对路径”，避免 SUMO cwd / Python cwd 不一致
+        img_path = self.config["gui"]["cache_img_name"].split(".")[0] + f"_{self.steps}.png"
+        img_path = os.path.abspath(img_path)
+
+        # 2) 自动创建目录（SUMO 不会帮你建）
+        os.makedirs(os.path.dirname(img_path), exist_ok=True)
+        
+        # 3) 调用截图
+        self.conn.gui.screenshot(
+            viewID=view_id,
+            filename=img_path,
+            width=int(self.config["gui"]["screen_width"]),
+            height=int(self.config["gui"]["screen_height"]),
+        )
+        return None
 
     def close(self):
         try:
@@ -945,7 +1043,10 @@ class CompassFastParallelEnv(gym.Env):
         # 到达终点即停止
         :return: bool，True=终止，False=未终止
         """
-        speed_terminated = self.ego_vars[tc.VAR_SPEED] < self.config["simulation"]["min_velocity_to_terminate"]
+        if self.config['test_mode']:
+            speed_terminated = False
+        else:
+            speed_terminated = self.ego_vars[tc.VAR_SPEED] < self.config["simulation"]["min_velocity_to_terminate"]
         dist_to_goal = np.linalg.norm(np.array(self.ego_vars[tc.VAR_POSITION]) - self.case_info["goal"])
         goal_tolerance = self.config["simulation"]["goal_tolerance"]
         goal_terminated = dist_to_goal <= goal_tolerance or (
@@ -1313,3 +1414,29 @@ class CompassFastParallelEnv(gym.Env):
         if abs(x) < eps:
             return 0.0
         return 1.0 / x
+    
+
+    def _init_info(self):
+        self.info = {
+            "ttc_inv_penalty": 0.0,
+            "mei_reward": 0.0,
+            "rttc_inv_reward": 0.0,
+            "hw_penalty": 0.0,
+            "safe_reward": 0.0,
+            "collision_penalty": 0.0,
+            "speed_reward": 0.0,
+            "effi_reward": 0.0,
+            "allowed_lane_reward": 0.0,
+            "mission_reward": 0.0,
+            "navi_reward": 0.0,
+            "keep_right_reward": 0.0,
+            "speed_limit_reward": 0.0,
+            "rule_reward": 0.0,
+            "acc_reward": 0.0,
+            "comf_reward": 0.0,
+            "lane_change_reward": 0.0,
+            "lc_block_penalty": 0.0,
+            "repeat_lc_penalty": 0.0,
+            "opt_reward": 0.0,
+            "reward": 0.0,
+        }

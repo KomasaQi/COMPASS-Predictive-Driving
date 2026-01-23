@@ -1,0 +1,17 @@
+***Starting server on port 12019 ***
+Loading net-file from '../maps/lianyg_yanc.net.xml' ... done (57ms).
+Loading additional-files from '../maps/LianYG_YanC.poly.xml' ... done (17ms).
+Loading route-files incrementally from 'no27_1500_exit_7.rou.xml'
+Loading done.
+Simulation version 1.23.1 started with time: 0.00.
+Simulation ended at time: 289.00.
+Reason: TraCI requested termination.
+Performance:
+ Duration: 0.89s
+ TraCI-Duration: 0.33s
+ Real time factor: 324.719
+ UPS: 38538.202247
+Vehicles:
+ Inserted: 124
+ Running: 112
+ Waiting: 0

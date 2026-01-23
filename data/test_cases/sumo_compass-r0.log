@@ -1,0 +1,37 @@
+***Starting server on port 12000 ***
+Loading net-file from '../maps/lianyg_yanc.net.xml' ... done (113ms).
+Loading additional-files from '../maps/LianYG_YanC.poly.xml' ... done (32ms).
+Loading route-files incrementally from 'no1_4500_pass_1.rou.xml'
+Loading done.
+Simulation started with time: 0.00.
+Warning: Vehicle 'flow_exit.33' performs emergency braking on lane '96615334#0_2' with decel=9.00, wished=6.00, severity=1.00, time=84.50.
+Warning: Vehicle 'flow_main.40' performs emergency braking on lane '96615334#0_2' with decel=9.00, wished=6.00, severity=1.00, time=132.50.
+Warning: Vehicle 'flow_main.41' performs emergency braking on lane '96615334#0_3' with decel=9.00, wished=6.00, severity=1.00, time=138.50.
+Warning: Choosing new speed factor 1.17 for vehicle 'flow_exit.69' to match departure speed 22.22 (max 18.40).
+Warning: Vehicle 'flow_main.54' performs emergency braking on lane '96615334#0_3' with decel=9.00, wished=4.00, severity=1.00, time=176.00.
+Warning: Vehicle 'flow_main.71' performs emergency braking on lane '96615334#0_3' with decel=9.00, wished=6.00, severity=1.00, time=205.00.
+Warning: Teleporting vehicle 'flow_main.71'; collision with vehicle 'flow_main.65', lane='96615334#0_2', gap=-6.10, latGap=-1.70, time=206.00, stage=move.
+Warning: Vehicle 'flow_main.71' ends teleporting on edge '96615334#0-AddedOffRampEdge', time=206.00.
+Warning: Vehicle 'flow_main.73' performs emergency braking on lane '96615334#0_3' with decel=9.00, wished=4.00, severity=1.00, time=209.00.
+Warning: Vehicle 'flow_main.58' performs emergency braking on lane '96615334#2-AddedOnRampEdge_2' with decel=9.00, wished=4.00, severity=1.00, time=244.00.
+Warning: Choosing new speed factor 1.23 for vehicle 'flow_exit.118' to match departure speed 22.22 (max 20.60).
+Warning: Vehicle 'flow_main.93' performs emergency braking on lane '96615334#2-AddedOnRampEdge_2' with decel=9.00, wished=6.00, severity=1.00, time=393.00.
+Warning: Vehicle 'flow_merge.37' performs emergency braking on lane '96615334#2_1' with decel=9.00, wished=6.00, severity=1.00, time=417.00.
+Warning: Vehicle 'flow_merge.51' performs emergency braking on lane '96615334#2-AddedOnRampEdge_1' with decel=9.00, wished=3.80, severity=1.00, time=478.50.
+Warning: Vehicle 'flow_main.155' performs emergency braking on lane '96615334#0_3' with decel=9.00, wished=6.00, severity=1.00, time=500.00.
+Warning: Vehicle 'flow_main.140' performs emergency braking on lane '96615334#2-AddedOnRampEdge_2' with decel=9.00, wished=6.00, severity=1.00, time=551.00.
+Warning: Vehicle 'flow_main.166' performs emergency braking on lane '96615334#0_3' with decel=9.00, wished=6.00, severity=1.00, time=552.00.
+Warning: Choosing new speed factor 1.20 for vehicle 'flow_exit.243' to match departure speed 22.22 (max 19.58).
+Simulation ended at time: 611.00.
+Reason: TraCI requested termination.
+Performance:
+ Duration: 104.47s
+ TraCI-Duration: 22.85s
+ Real time factor: 5.84879
+ UPS: 2394.769590
+Vehicles:
+ Inserted: 530 (Loaded: 596)
+ Running: 286
+ Waiting: 66
+ Teleports: 1 (Collisions: 1)
+ Emergency Braking: 13

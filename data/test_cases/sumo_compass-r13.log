@@ -1,0 +1,19 @@
+***Starting server on port 12013 ***
+Loading net-file from '../maps/lianyg_yanc.net.xml' ... done (114ms).
+Loading additional-files from '../maps/LianYG_YanC.poly.xml' ... done (54ms).
+Loading route-files incrementally from 'no23_2000_exit_6.rou.xml'
+Loading done.
+Simulation version 1.23.1 started with time: 0.00.
+Warning: Vehicle 'flow_main.19' performs emergency braking on lane '761727441#2_2' with decel=9.00, wished=6.00, severity=1.00, time=231.00.
+Simulation ended at time: 272.00.
+Reason: TraCI requested termination.
+Performance:
+ Duration: 8.80s
+ TraCI-Duration: 7.44s
+ Real time factor: 30.9161
+ UPS: 4457.717663
+Vehicles:
+ Inserted: 153
+ Running: 133
+ Waiting: 0
+ Emergency Braking: 1

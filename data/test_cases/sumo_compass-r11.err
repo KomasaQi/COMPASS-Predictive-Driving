@@ -1,0 +1,13 @@
+Warning: Choosing new speed factor 1.25 for vehicle 'flow_merge.36' to match departure speed 10.00 (max 9.57).
+Warning: Vehicle 'flow_exit.36' performs emergency braking on lane '96615334#2_1' with decel=7.00, wished=3.50, severity=1.00, time=153.00.
+Warning: Choosing new speed factor 1.25 for vehicle 'flow_exit.46' to match departure speed 22.22 (max 19.95).
+Warning: Vehicle 'flow_main.19' performs emergency braking on lane '96614679_1' with decel=9.00, wished=6.00, severity=1.00, time=231.50.
+Warning: Vehicle 'flow_merge.34' performs emergency braking on lane '96614679_1' with decel=9.00, wished=6.00, severity=1.00, time=244.50.
+Warning: Vehicle 'flow_main.97' performs emergency braking on lane '96615334#2_1' with decel=9.00, wished=6.00, severity=1.00, time=286.50.
+Warning: Vehicle 'flow_main.55' performs emergency braking on lane '96614679_0' with decel=9.00, wished=6.00, severity=1.00, time=290.50.
+Warning: Vehicle 'flow_main.54' performs emergency braking on lane '96614679_1' with decel=9.00, wished=6.00, severity=1.00, time=341.50.
+Warning: Vehicle 'flow_main.79' performs emergency braking on lane ':2254297764_2_0' with decel=9.00, wished=3.80, severity=1.00, time=364.50.
+Warning: Vehicle 'flow_merge.83' performs emergency braking on lane '96614679_0' with decel=9.00, wished=6.00, severity=1.00, time=387.00.
+Warning: Vehicle 'flow_main.48' performs emergency braking on lane '96614679_1' with decel=9.00, wished=6.00, severity=1.00, time=430.50.
+Warning: Vehicle 'flow_merge.69' performs emergency braking on lane '96614679_2' with decel=9.00, wished=4.00, severity=1.00, time=431.00.
+Warning: Vehicle 'flow_exit.107' performs emergency braking on lane '96615334#2_1' with decel=7.00, wished=3.00, severity=1.00, time=431.50.

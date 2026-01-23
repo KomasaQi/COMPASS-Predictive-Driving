@@ -1,7 +1,4 @@
-Warning: Value of tau=0.80 in vehicle type 'car_sport' lower than simulation step size may cause collisions.
-Warning: Vehicle 'flow_main.18' performs emergency braking on lane '413494440#1_1' with decel=9.00, wished=3.80, severity=1.00, time=134.00.
-Warning: Vehicle 'flow_main.27' performs emergency braking on lane '413494440#1_1' with decel=9.00, wished=6.00, severity=1.00, time=147.00.
-Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
-Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
-Warning: Vehicle 'flow_exit.30' performs emergency braking on lane ':225202306#2-AddedOffRampNode_0_0' with decel=9.00, wished=4.00, severity=1.00, time=206.00.
-Warning: Ignoring indexOffset -1 for vehicle 't_0' on laneIndex 0.
+Warning: Vehicle 'flow_main.7' performs emergency braking on lane '761727432#2_2' with decel=9.00, wished=6.00, severity=1.00, time=54.50.
+Warning: Vehicle 'flow_main.48' performs emergency braking on lane '761727432#2_0' with decel=9.00, wished=6.00, severity=1.00, time=181.00.
+Warning: Vehicle 'flow_main.19' performs emergency braking on lane '761727441#2_1' with decel=9.00, wished=6.00, severity=1.00, time=202.00.
+Warning: Vehicle 'flow_main.24' performs emergency braking on lane '761727441#2_2' with decel=9.00, wished=6.00, severity=1.00, time=207.00.
